@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Nero Blog</title>
+  <title>Seafile 批量导入账号名称及电话号码 | Nero Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里就是一堆流水账和技术笔记 | LINUX初学者 | 黑苹果初学者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nero Blog">
-<meta property="og:url" content="http://hexo.neroxps.cn/index.html">
+  <meta name="description" content="前言seafile 可以使用 CSV 导入用户名密码来新建用户,但是只能导入用户名和密码,名称则无法导入,但是用户名只能用邮箱这点不是很方便,故此需要找到一个批量导入账号名称的办法. 数据库结构seafile 的账号和密码均存储在 mysql 的 ccnet-db 数据库内,但账号的详细信息例如名称、电话、部门这些信息是存储在 seahub-db 数据库里面. 123456789101112131">
+<meta name="keywords" content="Seafile,Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seafile 批量导入账号名称及电话号码">
+<meta property="og:url" content="http://hexo.neroxps.cn/2016/11/05/Seafile-import-Username-phonenumber/index.html">
 <meta property="og:site_name" content="Nero Blog">
-<meta property="og:description" content="这里就是一堆流水账和技术笔记 | LINUX初学者 | 黑苹果初学者">
+<meta property="og:description" content="前言seafile 可以使用 CSV 导入用户名密码来新建用户,但是只能导入用户名和密码,名称则无法导入,但是用户名只能用邮箱这点不是很方便,故此需要找到一个批量导入账号名称的办法. 数据库结构seafile 的账号和密码均存储在 mysql 的 ccnet-db 数据库内,但账号的详细信息例如名称、电话、部门这些信息是存储在 seahub-db 数据库里面. 123456789101112131">
+<meta property="og:updated_time" content="2017-07-17T07:41:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nero Blog">
-<meta name="twitter:description" content="这里就是一堆流水账和技术笔记 | LINUX初学者 | 黑苹果初学者">
+<meta name="twitter:title" content="Seafile 批量导入账号名称及电话号码">
+<meta name="twitter:description" content="前言seafile 可以使用 CSV 导入用户名密码来新建用户,但是只能导入用户名和密码,名称则无法导入,但是用户名只能用邮箱这点不是很方便,故此需要找到一个批量导入账号名称的办法. 数据库结构seafile 的账号和密码均存储在 mysql 的 ccnet-db 数据库内,但账号的详细信息例如名称、电话、部门这些信息是存储在 seahub-db 数据库里面. 123456789101112131">
   
     <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
   
@@ -62,91 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-oneblog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/17/oneblog/" class="article-date">
-  <time datetime="2017-07-17T07:45:10.000Z" itemprop="datePublished">2017-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/17/oneblog/">oneblog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="test-blog"><a href="#test-blog" class="headerlink" title="test blog"></a>test blog</h1><p>test</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.neroxps.cn/2017/07/17/oneblog/" data-id="cj57unqs200017cye619hpw6x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/17/hello-world/" class="article-date">
-  <time datetime="2017-07-17T05:36:46.000Z" itemprop="datePublished">2017-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.neroxps.cn/2017/07/17/hello-world/" data-id="cj57unqsa00047cyekecxji19" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Seafile-import-Username-phonenumber" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Seafile-import-Username-phonenumber" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/11/05/Seafile-import-Username-phonenumber/" class="article-date">
   <time datetime="2016-11-04T16:00:00.000Z" itemprop="datePublished">2016-11-05</time>
@@ -163,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/05/Seafile-import-Username-phonenumber/">Seafile 批量导入账号名称及电话号码</a>
+    <h1 class="article-title" itemprop="name">
+      Seafile 批量导入账号名称及电话号码
     </h1>
   
 
@@ -199,10 +117,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/17/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
