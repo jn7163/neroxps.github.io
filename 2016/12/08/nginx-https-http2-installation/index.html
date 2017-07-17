@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Centos7 部署 http2 | Nero Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。后来 Google 了一番，发现 http2 需要 openssl 1.0.2 版本支持，而 Centos7 默认 yum 的 openssl 版本是 1.0.1 故此需要使用新版的 openssl 1.1.0c 编译 nginx。 下载 openssl">
+<meta name="keywords" content="nginx,http2.https,安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7 部署 http2">
+<meta property="og:url" content="http://hexo.neroxps.cn/2016/12/08/nginx-https-http2-installation/index.html">
+<meta property="og:site_name" content="Nero Blog">
+<meta property="og:description" content="前言最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。后来 Google 了一番，发现 http2 需要 openssl 1.0.2 版本支持，而 Centos7 默认 yum 的 openssl 版本是 1.0.1 故此需要使用新版的 openssl 1.1.0c 编译 nginx。 下载 openssl">
+<meta property="og:updated_time" content="2017-07-17T09:40:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos7 部署 http2">
+<meta name="twitter:description" content="前言最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。后来 Google 了一番，发现 http2 需要 openssl 1.0.2 版本支持，而 Centos7 默认 yum 的 openssl 版本是 1.0.1 故此需要使用新版的 openssl 1.1.0c 编译 nginx。 下载 openssl">
+  
+    <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nero Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nginx-https-http2-installation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/08/nginx-https-http2-installation/" class="article-date">
+  <time datetime="2016-12-07T16:00:00.000Z" itemprop="datePublished">2016-12-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Centos7 部署 http2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。后来 Google 了一番，发现 http2 需要 openssl 1.0.2 版本支持，而 Centos7 默认 yum 的 openssl 版本是 1.0.1 故此需要使用新版的 openssl 1.1.0c 编译 nginx。</p>
+<h2 id="下载-openssl-源码"><a href="#下载-openssl-源码" class="headerlink" title="下载 openssl 源码"></a>下载 openssl 源码</h2><p>到 openssl 官网下载源码：<a href="https://www.openssl.org/source/" target="_blank" rel="external">https://www.openssl.org/source/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /usr/src</div><div class="line">wget https://www.openssl.org/source/openssl-1.1.0c.tar.gz</div><div class="line">tar xzf openssl-1.1.0c.tar.gz &amp;&amp; rm openssl-1.1.0c.tar.gz -f</div></pre></td></tr></table></figure>
+<h2 id="卸载旧版-nginx-编译安装-nginx"><a href="#卸载旧版-nginx-编译安装-nginx" class="headerlink" title="卸载旧版 nginx 编译安装 nginx"></a>卸载旧版 nginx 编译安装 nginx</h2><h3 id="下载-nginx-源码包"><a href="#下载-nginx-源码包" class="headerlink" title="下载 nginx 源码包"></a>下载 nginx 源码包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /usr/src</div><div class="line">yum remove nginx</div><div class="line">wget http://nginx.org/download/nginx-1.10.2.tar.gz</div><div class="line">tar xzf nginx-1.10.2.tar.gz &amp;&amp; rm -f nginx-1.10.2.tar.gz</div><div class="line">cd nginx-1.10.2</div></pre></td></tr></table></figure>
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># 使用官方参数配置，仅添加 openssl 源码 --with-openssl=/usr/src/openssl-1.1.0c</div><div class="line">./configure --prefix=/etc/nginx \</div><div class="line">--sbin-path=/usr/sbin/nginx \</div><div class="line">--conf-path=/etc/nginx/nginx.conf \</div><div class="line">--error-log-path=/var/log/nginx/error.log \</div><div class="line">--http-log-path=/var/log/nginx/access.log \</div><div class="line">--pid-path=/var/run/nginx.pid \</div><div class="line">--lock-path=/var/run/nginx.lock \</div><div class="line">--http-client-body-temp-path=/var/cache/nginx/client_temp \</div><div class="line">--http-proxy-temp-path=/var/cache/nginx/proxy_temp \</div><div class="line">--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \</div><div class="line">--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \</div><div class="line">--http-scgi-temp-path=/var/cache/nginx/scgi_temp \</div><div class="line">--user=nginx \</div><div class="line">--group=nginx \</div><div class="line">--with-openssl=/usr/src/openssl-1.1.0c \</div><div class="line">--with-http_ssl_module \</div><div class="line">--with-http_realip_module \</div><div class="line">--with-http_addition_module \</div><div class="line">--with-http_sub_module \</div><div class="line">--with-http_dav_module \</div><div class="line">--with-http_flv_module \</div><div class="line">--with-http_mp4_module \</div><div class="line">--with-http_gunzip_module \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--with-http_random_index_module \</div><div class="line">--with-http_secure_link_module \</div><div class="line">--with-http_stub_status_module \</div><div class="line">--with-http_auth_request_module \</div><div class="line">--with-threads \</div><div class="line">--with-stream \</div><div class="line">--with-stream_ssl_module \</div><div class="line">--with-http_slice_module \</div><div class="line">--with-mail \</div><div class="line">--with-mail_ssl_module \</div><div class="line">--with-file-aio \</div><div class="line">--with-http_v2_module \</div><div class="line">--with-ipv6 </div><div class="line"></div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>查询 nginx 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@vultr conf.d]# nginx -V</div><div class="line">nginx version: nginx/1.10.2</div><div class="line">built by gcc 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) </div><div class="line">built with OpenSSL 1.1.0c  10 Nov 2016</div><div class="line">TLS SNI support enabled</div><div class="line">configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-openssl=/usr/src/openssl-1.1.0c --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-http_auth_request_module --with-threads --with-stream --with-stream_ssl_module --with-http_slice_module --with-mail --with-mail_ssl_module --with-file-aio --with-http_v2_module --with-ipv6</div></pre></td></tr></table></figure>
+<p>已经是 openssl 1.1.0c 版本了</p>
+<h3 id="编写-systemd-服务文件"><a href="#编写-systemd-服务文件" class="headerlink" title="编写 systemd 服务文件"></a>编写 systemd 服务文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">vim /etc/systemd/system/multi-user.target.wants/nginx.service</div><div class="line"></div><div class="line"># 输入以下内容</div><div class="line"></div><div class="line">[Unit]</div><div class="line">Description=nginx - high performance web server</div><div class="line">Documentation=http://nginx.org/en/docs/</div><div class="line">After=network.target remote-fs.target nss-lookup.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/run/nginx.pid</div><div class="line">ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf</div><div class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</div><div class="line">ExecReload=/bin/kill -s HUP $MAINPID</div><div class="line">ExecStop=/bin/kill -s QUIT $MAINPID</div><div class="line">PrivateTmp=true</div><div class="line"> </div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">[root@localhost ~]# cat /etc/systemd/system/multi-user.target.wants/nginx.service</div><div class="line">[Unit]</div><div class="line">Description=nginx - high performance web server</div><div class="line">Documentation=http://nginx.org/en/docs/</div><div class="line">After=network.target remote-fs.target nss-lookup.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/run/nginx.pid</div><div class="line">ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf</div><div class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</div><div class="line">ExecReload=/bin/kill -s HUP $MAINPID</div><div class="line">ExecStop=/bin/kill -s QUIT $MAINPID</div><div class="line">PrivateTmp=true</div><div class="line"> </div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line"></div><div class="line">:wq</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">systemctl daemon-reload</div><div class="line">systemctl start nginx</div><div class="line"></div><div class="line"># 修改 nginx 主配置提取自 rpm 包</div><div class="line"></div><div class="line">vim /etc/nginx/nginx.conf</div><div class="line"></div><div class="line"></div><div class="line">user  nginx;</div><div class="line">worker_processes  1;</div><div class="line"></div><div class="line">error_log  /var/log/nginx/error.log warn;</div><div class="line">pid        /var/run/nginx.pid;</div><div class="line"></div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       /etc/nginx/mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</div><div class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</div><div class="line"></div><div class="line">    access_log  /var/log/nginx/access.log  main;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    #tcp_nopush     on;</div><div class="line"></div><div class="line">    keepalive_timeout  65;</div><div class="line"></div><div class="line">    #gzip  on;</div><div class="line"></div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">[root@vultr ~]# nginx -s reload</div></pre></td></tr></table></figure>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>刷新一下页面，发现已经是 http2 协议了。</p>
+<p>END</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2016/12/08/nginx-https-http2-installation/" data-id="cj57yn7pb001cdnqj60p4delb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/15/seaf-cli-gitblog-sync/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          利用 Seafile 命令行客户端同步 GitBlog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/06/ac1000-reijie/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">TP-Link AC1000 在锐捷网路内设置 AP 上线</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/17/images-test/">images-test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Nero Hau<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

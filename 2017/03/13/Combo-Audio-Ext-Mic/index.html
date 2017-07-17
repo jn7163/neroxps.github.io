@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使二合一声卡耳机麦克风生效整理 | Nero Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。  帖子链接：【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想  修改 AppleALC过程整理根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样">
+<meta name="keywords" content="黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使二合一声卡耳机麦克风生效整理">
+<meta property="og:url" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/index.html">
+<meta property="og:site_name" content="Nero Blog">
+<meta property="og:description" content="前言自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。  帖子链接：【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想  修改 AppleALC过程整理根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样">
+<meta property="og:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png">
+<meta property="og:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-02.png">
+<meta property="og:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-03.png">
+<meta property="og:updated_time" content="2017-07-17T09:40:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使二合一声卡耳机麦克风生效整理">
+<meta name="twitter:description" content="前言自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。  帖子链接：【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想  修改 AppleALC过程整理根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样">
+<meta name="twitter:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nero Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Combo-Audio-Ext-Mic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/13/Combo-Audio-Ext-Mic/" class="article-date">
+  <time datetime="2017-03-12T16:00:00.000Z" itemprop="datePublished">2017-03-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/黑苹果/">黑苹果</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使二合一声卡耳机麦克风生效整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。</p>
+<blockquote>
+<p>帖子链接：<a href="http://bbs.pcbeta.com/viewthread-1734702-1-1.html" target="_blank" rel="external">【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想</a></p>
+</blockquote>
+<h1 id="修改-AppleALC"><a href="#修改-AppleALC" class="headerlink" title="修改 AppleALC"></a>修改 AppleALC</h1><h2 id="过程整理"><a href="#过程整理" class="headerlink" title="过程整理"></a>过程整理</h2><p>根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样，他内置麦克风有效节点是 Node 0x1a 而我的是 Node 0x1b，故此我并不可以直接使用他的驱动以及方法。</p>
+<p>后来我看他的过程，是使用 layout13，他 layout13 本来就有 LineIn 这个线路输入节点，而我并没有，Pathmap 里面也没有关于 0x19 （25）节点的路径，故此我声卡要耳机麦克风生效的话，必须使用符合以下条件。</p>
+<ul>
+<li>layout4.xml 设定 Inputs 的 Mic 和 LineIn。</li>
+<li>添加 LineIn 的 MuteGPIO（如果你的节点是 VREF_80 或者其他数值的话）</li>
+<li>PlatformsX.xml 中需要添加 Node 0X19 的有效路径。</li>
+<li>PinConfigData.kext 里添加 Node 0x19的 ConfigData。</li>
+</ul>
+<blockquote>
+<p>关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：<a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></p>
+</blockquote>
+<h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
+<ul>
+<li>MuteGPIO 由 Noid 0x19 的VREF_80 0x50+0x0100+0x19 &gt; 1342242841（我的 Node 节点是 VREF_HIZ，但是从 ID3 和 ID13 提取的都有这个，当时我不确定是否这个值会影响结果，故此我也加进去了）</li>
+<li>SignalProcessing 可以放在 Mic，也可以放在 LineIn，放在那里那里就有麦克风降噪。详细可以看看紫米的帖子<strong><a href="http://bbs.pcbeta.com/viewthread-623626-1-1.html" target="_blank" rel="external">完整製作仿冒 LegacyHDA.kext (12/16)</a></strong></li>
+</ul>
+<h2 id="Platforms4-xml"><a href="#Platforms4-xml" class="headerlink" title="Platforms4.xml"></a>Platforms4.xml</h2><p>在 AppleALC 里面，ALC233 ID4 的 PathMaps 是没有 Node 0x19 的路径的，因为 Node 19在我们的 Codec 里面根本不是有效节点。</p>
+<p>但既然关云长羽说尝试一下将 Node 0x19这个当成有效的 LineIn 节点来做，那么我就直接按照仿冒贴的方法，找到 0X19的 PathMaps。（怎么找请看上面说到的紫米帖）</p>
+<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-02.png" alt="PathMaps配置"></p>
+<h2 id="PinConfigData-kext-添加-Node-0X19-的-ConfigData"><a href="#PinConfigData-kext-添加-Node-0X19-的-ConfigData" class="headerlink" title="PinConfigData.kext 添加 Node 0X19 的 ConfigData"></a>PinConfigData.kext 添加 Node 0X19 的 ConfigData</h2><p>这里我偷了下懒，直接从 ID3 和 ID13 复制了 019开头的四组节点信息过来，因为同款声卡，Codec 是一样的，既然前人已经写了数据，那么应该差不了多少。</p>
+<p>提取 AppleALC ID4 的 ConfigData</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F90 </div><div class="line">01B71C20 01B71D00 01B71EA0 01B71F90 </div><div class="line">02171C30 02171D10 02171E21 02171F01 </div><div class="line">01470C02</div></pre></td></tr></table></figure>
+<p>AppleALC 提取的 ID13</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F99 </div><div class="line">02171C20 02171D10 02171E21 02171F03 </div><div class="line">01A71C30 01A71D01 01A71EA0 01A71F99 </div><div class="line">01971C40 01971D10 01971E81 01971F03</div></pre></td></tr></table></figure>
+<p>后来我将 Node 0X19 从 ID13提取出来，然后放入 ID4 的 ConfigData 中，最终的 ConfigData（其中我将最后一个数字改成1，并不是必须，我看紫米的帖子后瞎折腾的，后来成功后发现可用，也就留着没改了。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F90 </div><div class="line">01B71C10 01B71D00 01B71EA0 01B71F90 </div><div class="line">02171C30 02171D10 02171E21 02171F01 </div><div class="line">01971C20 01971D10 01971E81 01971F01</div></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>OK 修改好 AppleALC 编译后，测试一下关云长羽的方法，的确成功了，线路输入有了，而且也有电频输入。</p>
+<p>可是，发现了一个问题，第二次插入后再也无法切换回线路输入，而且耳机插入后，又像以前那样只有背景声了。（感觉问题更糟糕了）</p>
+<p>用 EAPD-Codec-Commander-master RM 项目的 widget_dump.sh 查看，发现一开机因为我用了脚本，开机是设置 0X19为24，故此第一次插入是正常的，然而拔出后，0X19变成02了，而 0X1B（内置麦克风节点）变成24，再插入耳机，这两个数字不会变了，一直是那样。</p>
+<p>后来反复研究无果，编译 AppleALC，修改了无数遍 layout 和 Pathmap，折腾的死去活来的。</p>
+<p>第二天，复习关云长羽的帖子，发现他提到的 ALCPlugFix 帖子，我又去看了下这个项目的代码和关云长羽提到的 main.m 文件源码部分，不会编程，但是我发现了一个比较有趣的地方。</p>
+<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-03.png" alt="main.m"></p>
+<h1 id="使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定"><a href="#使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定" class="headerlink" title="使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定"></a>使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定</h1><p>ALCPlugFix 这个程序，作者没有写任何的说明，我也是从关云长羽的帖子得知这个程序。</p>
+<p><strong><a href="https://github.com/goodwin/ALCPlugFix" target="_blank" rel="external">ALCPlugFix 项目地址</a></strong></p>
+<p>后来发现个程序会检测耳机的插入和拔出情况，根据插入或者拔出，可以运行 Shell。</p>
+<p>我现在需要的就是：</p>
+<p>插入耳机的时候 Node 0x19 Pin Widget Control 为 24，Node 0X1B Pin Widget Control 为 02。</p>
+<p>拔出耳机时候 Node 0x19 Pin Widget Control 为 02，Node 0X1B Pin Widget Control 为 24。</p>
+<p>最终我根据上章节结果里截图的设置。并且编译后运行 ALCPlugFix 后，耳机的所有问题都得到解决了。</p>
+<p>还发现作者已经写好了开机自运行的安装脚本。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>下载我编译好的 <strong><a href="https://blog.neroxps.cn/blog/macOS/ALCPlugFix.zip" target="_blank" rel="external">ALCPlugFix.zip</a></strong>（编译只适合 ALC233 的情况，如果是需要运行其他的 hda-verb 命令，自己按照上图填好你需要的 hda-verb 命令。）</p>
+<p>cd 到 ALCPlugFix 的解压目录，运行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x install.sh</div><div class="line">sudo ./install.sh</div></pre></td></tr></table></figure>
+<p>脚本会安装 ALCPlugFix 和 hda-verb 到 /usr/bin，然后安装 good.win.ALCPlugFix.plist 自启动服务，并加载。（hda-verb 需要放入 CodecCommander.kext）</p>
+<p>和我一样都是 9CC3 的朋友可以直接下载我做好的 <strong><a href="https://blog.neroxps.cn/blog/macOS/AppleALC_For_ALC233_LayoutID4.zip" target="_blank" rel="external">AppleALC_For_ALC233_LayoutID4.zip</a></strong>驱动。</p>
+<p>提供 <strong><a href="https://blog.neroxps.cn/blog/macOS/AppleALC_For_ALC233_LayoutID4_Codec.zip" target="_blank" rel="external">AppleALC_For_ALC233_LayoutID4 源码参考</a></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/" data-id="cj57yn7ok000hdnqj9pyjxqi8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/18/2017-04-18-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          最近小记（2017年04月18日）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/09/9CC3-EFI-README/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">华硕 VM510L EFI 分享 9CC3笔记本主板芯片通用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/17/images-test/">images-test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Nero Hau<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

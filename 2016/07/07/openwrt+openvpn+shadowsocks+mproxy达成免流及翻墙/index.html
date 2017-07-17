@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>openwrt openvpn shadowsocks mproxy达成免流及翻墙 | Nero Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言突然有一天，某群的q友说研究免流，这样就把我带入免流世界，从此走上这个折腾的道路！ 还是建议大家，有wifi的时候还是用wifi，因为4G很耗电的！ 不说废话了，首先我的路由是最老最老最老最老的hg255d，几年前从马老板家淘的，固件是明月永在的固件https://myop.cf/ 话说这个固件还不错，功能挺全的。最基本的openwrt的功能都有。最重要是有我们今天的主角之一openvpn。">
+<meta name="keywords" content="OpenWRT,shadowsocks,shadowsocks-R,免流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openwrt openvpn shadowsocks mproxy达成免流及翻墙">
+<meta property="og:url" content="http://hexo.neroxps.cn/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/index.html">
+<meta property="og:site_name" content="Nero Blog">
+<meta property="og:description" content="前言突然有一天，某群的q友说研究免流，这样就把我带入免流世界，从此走上这个折腾的道路！ 还是建议大家，有wifi的时候还是用wifi，因为4G很耗电的！ 不说废话了，首先我的路由是最老最老最老最老的hg255d，几年前从马老板家淘的，固件是明月永在的固件https://myop.cf/ 话说这个固件还不错，功能挺全的。最基本的openwrt的功能都有。最重要是有我们今天的主角之一openvpn。">
+<meta property="og:updated_time" content="2017-07-17T09:40:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="openwrt openvpn shadowsocks mproxy达成免流及翻墙">
+<meta name="twitter:description" content="前言突然有一天，某群的q友说研究免流，这样就把我带入免流世界，从此走上这个折腾的道路！ 还是建议大家，有wifi的时候还是用wifi，因为4G很耗电的！ 不说废话了，首先我的路由是最老最老最老最老的hg255d，几年前从马老板家淘的，固件是明月永在的固件https://myop.cf/ 话说这个固件还不错，功能挺全的。最基本的openwrt的功能都有。最重要是有我们今天的主角之一openvpn。">
+  
+    <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nero Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/" class="article-date">
+  <time datetime="2016-07-06T16:00:00.000Z" itemprop="datePublished">2016-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IT技术/">IT技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      openwrt openvpn shadowsocks mproxy达成免流及翻墙
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然有一天，某群的q友说研究免流，这样就把我带入免流世界，从此走上这个折腾的道路！</p>
+<p>还是建议大家，有wifi的时候还是用wifi，因为4G很耗电的！</p>
+<p>不说废话了，首先我的路由是最老最老最老最老的hg255d，几年前从马老板家淘的，固件是明月永在的固件<a href="https://myop.cf/" target="_blank" rel="external">https://myop.cf/</a> 话说这个固件还不错，功能挺全的。最基本的openwrt的功能都有。最重要是有我们今天的主角之一openvpn。</p>
+<p>我的手机是iPhone，所以只能用openvpn作为免流的载具。而Android手机更多选择，可以使用HTTP Injector也可以使用openvpn<br><strong>手机客户端</strong><br><strong>安卓：</strong><br><strong>HTTP Injector</strong> <a href="https://play.google.com/store/apps/details?id=com.evozi.injector" title="Google Play" target="_blank" rel="external">Google Play</a> | <a href="http://www.coolapk.com/apk/com.evozi.injector" title="酷安" target="_blank" rel="external">酷安</a><br><strong>openvpn</strong> <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn" title="Google Play" target="_blank" rel="external">Google Play</a> | <a href="http://www.coolapk.com/apk/net.openvpn.openvpn" title="酷安" target="_blank" rel="external">酷安</a></p>
+<p><strong>IPhone</strong>:<br><strong>openvpn</strong> <a href="https://itunes.apple.com/us/app/openvpn-connect/id590379981?mt=8" title="App Store" target="_blank" rel="external">App Store</a> (需要美区账户)</p>
+<h2 id="免流原理分析"><a href="#免流原理分析" class="headerlink" title="免流原理分析"></a>免流原理分析</h2><p>免流我的理解，其实就是透过http代理，将流量伪装成发往运营商免费流量的目的地，再通过代理服务器上网从而达到免流的目的。</p>
+<p>无论使用openvpn,还是HTTP Injector,都必须使用http代理,通常使用squid（因为猫腻就在http代理）.但是我这里介绍的方式是用mproxy.</p>
+<p><strong>mproxy</strong> :用C语言实现的一个http代理服务器,代码量只有700行左右。由于只需要C语言即刻，所以openwrt肯定可以用的了。</p>
+<p><strong>修改过的mproxy</strong>:上面说到,想要免流就必须骗过运营商,让运营商计费系统以为你流量的目的地是免流量的地址,但是原版的mproxy会根据openvpn客户端封装的remote地址将流量转发到Remote,这显然不是我们希望的!<br>所以,我们就需要修改版的mproxy.</p>
+<p>流量流程如下:<br>手机浏览器google→→①→→openvpn-client →→②→→mproxy→→③→→openvpn-server→→④→→google</p>
+<p>修改过的mproxy作用,就是让mproxy忽视openvpn-client的remote地址,将收到的流量全部重定向到openvpn-server上,那么我们的openvpn就建立起连接.<br>过程③就是其中猫腻所在,正常的mproxy会将流量在过程③中直接转发到例如wap.10086.cn.这个地址肯定不会有openvpn-server的存在,所以就一直连接失败咯.</p>
+<h2 id="服务器搭建"><a href="#服务器搭建" class="headerlink" title="服务器搭建"></a>服务器搭建</h2><h3 id="1-openwrt安装openvpn"><a href="#1-openwrt安装openvpn" class="headerlink" title="1.openwrt安装openvpn"></a>1.openwrt安装openvpn</h3><p>修改opkg源,编辑/etc/opkg<br>以下是hg255d的源,因为hg255d的CPU是ramips的rt305x,所以我就到openwrt.org找到官方源<br>root@OpenWrt:/#vi /etc/opkg.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dest root /</div><div class="line">dest ram /tmp</div><div class="line">lists_dir ext /var/opkg-lists</div><div class="line">option overlay_root /overlay</div><div class="line">src/gz barrier_breaker_base http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/base/</div><div class="line">src/gz barrier_breaker_luci http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/luci</div><div class="line">src/gz barrier_breaker_management http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/management</div><div class="line">src/gz barrier_breaker_oldpackages http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/oldpackages</div><div class="line">src/gz barrier_breaker_packages http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/packages</div><div class="line">src/gz barrier_breaker_routing http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/routing</div><div class="line">src/gz barrier_breaker_telephony http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/telephony</div><div class="line">src/gz barrier_breaker_wifischedule http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/wifischedule</div></pre></td></tr></table></figure></p>
+<p>:wq保存<br>opkg update<br>opkg list |grep openvpn</p>
+<p>发现已经有openvpn在list里面了,直接装.<br>opkg install openvpn openvpn-easy-rsa<br>检查一下是否安装成功<br>opkg list-installed |grep openvpn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# opkg list-installed |grep openvpn</div><div class="line">luci-app-openvpn - 0.12+git-15.143.53098-670e046-1</div><div class="line">openvpn-easy-rsa - 2013-01-30-2</div><div class="line">openvpn-openssl - 2.3.6-2</div></pre></td></tr></table></figure></p>
+<p>OK已经安装成功了</p>
+<h3 id="2-启用虚拟网卡tap0并加入br-lan网桥-这里引用的是openwrt-org-cn-ccbcfan写的教程"><a href="#2-启用虚拟网卡tap0并加入br-lan网桥-这里引用的是openwrt-org-cn-ccbcfan写的教程" class="headerlink" title="2. 启用虚拟网卡tap0并加入br-lan网桥.(这里引用的是openwrt.org.cn,ccbcfan写的教程)"></a>2. 启用虚拟网卡tap0并加入br-lan网桥.(这里引用的是openwrt.org.cn,ccbcfan写的教程)</h3><blockquote>
+<p>引用自<a href="http://www.openwrt.org.cn/bbs/thread-365-1-1.html" title="[原创]openwrt下架设openvpn服务器的方法！！！" target="_blank" rel="external">[原创]openwrt下架设openvpn服务器的方法！！！</a><br>建立脚本/etc/openvpn/startupscript内容如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">#!/bin/sh</span></div><div class="line">&gt; <span class="comment">#/etc/openvpn/startupscript</span></div><div class="line">&gt; <span class="comment"># OpenVPN Bridge Config File</span></div><div class="line">&gt; <span class="comment"># Creates TAP devices for use by OpenVPN and bridges them into OpenWRT Bridge</span></div><div class="line">&gt; <span class="comment"># Taken from http://openvpn.net/bridge.html</span></div><div class="line">&gt; <span class="comment"># Define Bridge Interface</span></div><div class="line">&gt; <span class="comment"># Preexisting on OpenWRT</span></div><div class="line">&gt; br=<span class="string">"br-lan"</span></div><div class="line">&gt; <span class="comment"># Define list of TAP interfaces to be bridged,</span></div><div class="line">&gt; <span class="comment"># for example tap="tap0 tap1 tap2".</span></div><div class="line">&gt; tap=<span class="string">"tap0"</span></div><div class="line">&gt; <span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">&gt;         up)</div><div class="line">&gt;                 <span class="comment"># Make sure module is loaded</span></div><div class="line">&gt;                 insmod tun</div><div class="line">&gt;                 <span class="comment"># Build tap devices</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     openvpn --mktun --dev <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="comment"># Add TAP interfaces to OpenWRT bridge</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     brctl addif <span class="variable">$br</span> <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="comment">#Configure bridged interfaces</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     ifconfig <span class="variable">$t</span> 0.0.0.0 promisc up</div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;         ;;</div><div class="line">&gt;         down)</div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     ifconfig <span class="variable">$t</span> 0.0.0.0 down</div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     brctl delif <span class="variable">$br</span> <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     openvpn --rmtun --dev <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 rmmod tun</div><div class="line">&gt;         ;;</div><div class="line">&gt;          *)</div><div class="line">&gt;                 <span class="built_in">echo</span> <span class="string">"<span class="variable">$0</span> &#123;up|down&#125;"</span></div><div class="line">&gt;         ;;</div><div class="line">&gt; <span class="keyword">esac</span></div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>修改脚本执行权限：chmod +x /etc/openvpn/startupscript<br>然后执行一次：<br>/etc/openvpn/startupscript  up</p>
+<p>就可以将tap0加入到br-lan桥中了。<br>root@OpenWrt# brctl show      ###显示现有网桥情况，多了个tap0.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; bridge name        bridge id                STP enabled        interfaces</div><div class="line">&gt; br-lan                8000.007404037df3           no                eth1.0</div><div class="line">&gt;                                                                  wlan0</div><div class="line">&gt;                                                                  tap0</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>每次重启路由后，你需要重新执行一次脚本才能正常启用openvpn，你也可以修改一下将启动脚本放到/etc/init.d/，增加/etc/rc.d启动项，做到开机自动启动。更简单的办法是：将/etc/openvpn/startupscript  up 加入到/etc/rc.local中开机自动启动网桥部分！！</p>
+</blockquote>
+<h3 id="3-生成证书"><a href="#3-生成证书" class="headerlink" title="3.生成证书"></a>3.生成证书</h3><p>第一步中我们安装了openvpn-easy-rsa,这货就是用来生成证书用的,安装后,我们发现在/etc下有个文件夹叫easy-rsa的目录,这个就是它的工作目录了.<br>首先 我们需要修改/etc/easy-rsa/vars,将证书模板修改成我们自己的信息<br>root@OpenWrt:~# vi /etc/easy-rsa/vars<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export KEY_COUNTRY=&quot;CN&quot;</div><div class="line">export KEY_PROVINCE=&quot;CA&quot;       </div><div class="line">export KEY_CITY=&quot;ZS&quot;           </div><div class="line">export KEY_ORG=&quot;openwrt&quot;</div><div class="line">export KEY_EMAIL=&quot;email@tom.com&quot;</div><div class="line">export KEY_OU=&quot;openwrt&quot;</div></pre></td></tr></table></figure></p>
+<p>赋予vars执行权限<br>输入命令<code>chmod +x /etc/easy-rsa/vars</code><br>root@OpenWrt:~# chmod +x /etc/easy-rsa/vars<br>执行vars<br>输入命令<code>/etc/easy-rsa/vars</code><br>root@OpenWrt:~# /etc/easy-rsa/vars<br>NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys<br>清理证书目录<br>root@OpenWrt:/# clean-all<br>NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys<br>此时我们看看/etc/easy-rsa/里只有三个文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# ls -al /etc/easy-rsa/</div><div class="line">drwxr-xr-x    3 root     root             0 Jul  5 11:18 .</div><div class="line">drwxr-xr-x    1 root     root             0 Jul  5 11:15 ..</div><div class="line">drwx------    2 root     root             0 Jul  5 11:33 keys</div><div class="line">-rw-r--r--    1 root     root          8245 Dec  2  2014 openssl-1.0.0.cnf</div><div class="line">-rwxr-xr-x    1 root     root          2056 Jul  5 11:17 vars</div></pre></td></tr></table></figure></p>
+<p>其中keys就是我们刚刚初始化的keys目录,里面存的就是我们的证书和客户端的密匙<br>首先我们生成CA证书,一路回车即可,因为我们已经修改过vars模板,这里不需要修改了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/etc/easy-rsa# build-ca</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">.....+++</div><div class="line">.+++</div><div class="line">writing new private key to &apos;ca.key&apos;</div><div class="line">-----</div><div class="line">You are about to be asked to enter information that will be incorporated</div><div class="line">into your certificate request.</div><div class="line">What you are about to enter is what is called a Distinguished Name or a DN.</div><div class="line">There are quite a few fields but you can leave some blank</div><div class="line">For some fields there will be a default value,</div><div class="line">If you enter &apos;.&apos;, the field will be left blank.</div><div class="line">-----</div><div class="line">Country Name (2 letter code) [CN]:</div><div class="line">State or Province Name (full name) [CA]:</div><div class="line">Locality Name (eg, city) [ZS]:</div><div class="line"></div><div class="line">Organization Name (eg, company) [openwrt]:Organizational Unit Name (eg, section) [openwrt]:</div><div class="line">Common Name (eg, your name or your server&apos;s hostname) [openwrt CA]:</div><div class="line">Name [EasyRSA]:</div><div class="line">Email Address [email@tom.com]:</div></pre></td></tr></table></figure></p>
+<p>此时看看keys目录已经多了个ca.crt和ca.key文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/etc/easy-rsa# ls keys/</div><div class="line">ca.crt     ca.key     index.txt  serial</div></pre></td></tr></table></figure></p>
+<p>接着我们继续,生成dh(迪菲·赫尔曼参数),这个时间会比较久,我hg255d用了差不多5分钟时间.<br>输入命令<code>build-dh</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/etc/easy-rsa# build-dh</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating DH parameters, 2048 bit long safe prime, generator 2</div><div class="line">This is going to take a long time</div><div class="line">..........................................................................................................+..............................................+........................................................+..........................................+......................................+...+...............................................................................+.........+.........................+............................................+..............................+........................................+........+.......................+...............................................................................................................+................................+..+..+.....+............+..............................................................................................................................................................................++*++*</div></pre></td></tr></table></figure></p>
+<p>查看下keys,多了个dh2048.pem文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# ls /etc/easy-rsa/keys/</div><div class="line">ca.crt      ca.key      dh2048.pem  index.txt   serial</div></pre></td></tr></table></figure></p>
+<p>证明已经成功<br>继续生成服务器的证书输入命令<code>build-key-server server</code> 依然是一路回车,见到y就按y回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# build-key-server server</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">..................+++</div><div class="line">.....................................................+++</div><div class="line">writing new private key to &apos;server.key&apos;</div><div class="line">-----</div><div class="line">You are about to be asked to enter information that will be incorporated</div><div class="line">into your certificate request.</div><div class="line">What you are about to enter is what is called a Distinguished Name or a DN.</div><div class="line">There are quite a few fields but you can leave some blank</div><div class="line">For some fields there will be a default value,</div><div class="line">If you enter &apos;.&apos;, the field will be left blank.</div><div class="line">-----</div><div class="line">Country Name (2 letter code) [CN]:</div><div class="line">State or Province Name (full name) [CA]:</div><div class="line">Locality Name (eg, city) [ZS]:</div><div class="line">Organization Name (eg, company) [openwrt]:</div><div class="line">Organizational Unit Name (eg, section) [openwrt]:</div><div class="line">Common Name (eg, your name or your server&apos;s hostname) [server]:</div><div class="line">Name [EasyRSA]:</div><div class="line">Email Address [email@tom.com]:</div><div class="line"></div><div class="line">Please enter the following &apos;extra&apos; attributes</div><div class="line">to be sent with your certificate request</div><div class="line">A challenge password []:</div><div class="line">An optional company name []:</div><div class="line">Using configuration from /etc/easy-rsa/openssl-1.0.0.cnf</div><div class="line">Check that the request matches the signature</div><div class="line">Signature ok</div><div class="line">The Subject&apos;s Distinguished Name is as follows</div><div class="line">countryName           :PRINTABLE:&apos;CN&apos;</div><div class="line">stateOrProvinceName   :PRINTABLE:&apos;CA&apos;</div><div class="line">localityName          :PRINTABLE:&apos;ZS&apos;</div><div class="line">organizationName      :PRINTABLE:&apos;openwrt&apos;</div><div class="line">organizationalUnitName:PRINTABLE:&apos;openwrt&apos;</div><div class="line">commonName            :PRINTABLE:&apos;server&apos;</div><div class="line">name                  :PRINTABLE:&apos;EasyRSA&apos;</div><div class="line">emailAddress          :IA5STRING:&apos;email@tom.com&apos;</div><div class="line">Certificate is to be certified until Jul  3 05:56:39 2026 GMT (3650 days)</div><div class="line">Sign the certificate? [y/n]:y</div><div class="line"></div><div class="line"></div><div class="line">1 out of 1 certificate requests certified, commit? [y/n]y</div><div class="line">Write out database with 1 new entries</div></pre></td></tr></table></figure></p>
+<p>再次查看keys已经发现多了很多文件,server的crt;csr;key都在了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# ls /etc/easy-rsa/keys/</div><div class="line">01.pem          dh2048.pem      index.txt.old   server.crt</div><div class="line">ca.crt          index.txt       serial          server.csr</div><div class="line">ca.key          index.txt.attr  serial.old      server.key</div></pre></td></tr></table></figure></p>
+<p>继续生成客户端证书<br>输入命令 <code>build-key client</code><br>依然是一路回车,看到y选y回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# build-key client</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">..............................................................................................+++</div><div class="line">...............................................................................+++</div><div class="line">writing new private key to &apos;client.key&apos;</div><div class="line">-----</div><div class="line">You are about to be asked to enter information that will be incorporated</div><div class="line">into your certificate request.</div><div class="line">What you are about to enter is what is called a Distinguished Name or a DN.</div><div class="line">There are quite a few fields but you can leave some blank</div><div class="line">For some fields there will be a default value,</div><div class="line">If you enter &apos;.&apos;, the field will be left blank.</div><div class="line">-----</div><div class="line">Country Name (2 letter code) [CN]:</div><div class="line">State or Province Name (full name) [CA]:</div><div class="line">Locality Name (eg, city) [ZS]:</div><div class="line">Organization Name (eg, company) [openwrt]:</div><div class="line">Organizational Unit Name (eg, section) [openwrt]:</div><div class="line">Common Name (eg, your name or your server&apos;s hostname) [client]:</div><div class="line">Name [EasyRSA]:</div><div class="line">Email Address [email@tom.com]:</div><div class="line"></div><div class="line">Please enter the following &apos;extra&apos; attributes</div><div class="line">to be sent with your certificate request</div><div class="line">A challenge password []:</div><div class="line">An optional company name []:</div><div class="line">Using configuration from /etc/easy-rsa/openssl-1.0.0.cnf</div><div class="line">Check that the request matches the signature</div><div class="line">Signature ok</div><div class="line">The Subject&apos;s Distinguished Name is as follows</div><div class="line">countryName           :PRINTABLE:&apos;CN&apos;</div><div class="line">stateOrProvinceName   :PRINTABLE:&apos;CA&apos;</div><div class="line">localityName          :PRINTABLE:&apos;ZS&apos;</div><div class="line">organizationName      :PRINTABLE:&apos;openwrt&apos;</div><div class="line">organizationalUnitName:PRINTABLE:&apos;openwrt&apos;</div><div class="line">commonName            :PRINTABLE:&apos;client&apos;</div><div class="line">name                  :PRINTABLE:&apos;EasyRSA&apos;</div><div class="line">emailAddress          :IA5STRING:&apos;email@tom.com&apos;</div><div class="line">Certificate is to be certified until Jul  3 06:01:22 2026 GMT (3650 days)</div><div class="line">Sign the certificate? [y/n]:y</div><div class="line"></div><div class="line"></div><div class="line">1 out of 1 certificate requests certified, commit? [y/n]y</div><div class="line">Write out database with 1 new entries</div><div class="line">Data Base Updated</div></pre></td></tr></table></figure></p>
+<p>证书已生成完毕,接下来下一步骤配置openvpn服务器</p>
+<h3 id="4-配置openvpn-server"><a href="#4-配置openvpn-server" class="headerlink" title="4.配置openvpn-server"></a>4.配置openvpn-server</h3><p>编辑openvpn配置文件<br><code>root@OpenWrt:~# vi /etc/openvpn/server.conf</code>,这个文件本来是不存在的,因为我用明月永在的openvpn的luci修改配置老启动失败,所以我直接用配置文件来启动服务了.</p>
+<p>只要写着<code>option enable &#39;0&#39;</code>,这些模板都不会被生效,那么我们按<code>G</code>到最后一行,再按<code>o</code>新加一行编辑输入以下代码.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">port 444									#监听444端口</div><div class="line">proto tcp                                   #使用tcp_server模式</div><div class="line">dev tun                                     #使用tun模式,这里模式有两个,一个tap,一个tun,按照我不完全的理解,tun才能使用iptables控制并且连接路由后翻墙.</div><div class="line">ca /etc/easy-rsa/keys/ca.crt                #这里是我们步骤3生成的ca证书路径</div><div class="line">cert /etc/easy-rsa/keys/server.crt          #这里是我们步骤3生成的server证书路径</div><div class="line">key /etc/easy-rsa/keys/server.key           #这里是我们步骤3生成的server密钥的路径</div><div class="line">dh /etc/easy-rsa/keys/dh2048.pem            #这里是我们步骤3生成的迪菲·赫尔曼参数路径</div><div class="line">keepalive 10 120                            #设置服务器等待时间与超时时间,我这里默认是120秒,这里的参数设置大了的话,会让你4G信号不好的时候维持等待时间更长,防止4G信号不好掉线.</div><div class="line">comp_lzo                                    #启用压缩</div><div class="line">persist_key                                 #持久化选项可以尽量避免访问在重启时由于用户权限降低而无法访问的某些资源。</div><div class="line">persist_tun                                 #同上               </div><div class="line">status /var/log/openvpn-status.log          #启动日志,方便我们检查为何openvpn无法启动</div><div class="line">verb 3                                      #指定日志详细级别</div><div class="line">server 10.8.0.0 255.255.255.0               #指定openvpn客户端获取的IP地址</div><div class="line">push redirect-gateway def1 bypass-dhcp      #将默认网关推给客户端</div><div class="line">push dhcp-option DNS 192.168.1.1			#将DNS推给客户端,这里我设置路由的IP地址,因为翻墙我们还需要解决dns污染问题!路由采用chinadns+gfwlist白名单方案</div></pre></td></tr></table></figure></p>
+<p>输入<code>:wq</code>保存</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/" data-id="cj57yn7pg001idnqjiyd5c9yg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/05/Seafile-import-Username-phonenumber/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Seafile 批量导入账号名称及电话号码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/31/welcome/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">欢迎使用GitBlog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/17/images-test/">images-test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Nero Hau<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

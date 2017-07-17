@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>华硕 VM510LI 黑苹果手记 | Nero Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝 准备工作趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容： 导出显卡 Bios 备用方法：  打开 AIDA64 Engineer； 查看，勾上状态栏。（此时软件下方应该会出现了一个框。） 右键状态栏 Video D">
+<meta name="keywords" content="黑苹果,Mac,Hackintosh,ASUS,VM510LI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华硕 VM510LI 黑苹果手记">
+<meta property="og:url" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/index.html">
+<meta property="og:site_name" content="Nero Blog">
+<meta property="og:description" content="前言装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝 准备工作趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容： 导出显卡 Bios 备用方法：  打开 AIDA64 Engineer； 查看，勾上状态栏。（此时软件下方应该会出现了一个框。） 右键状态栏 Video D">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/img/no_kext_summary.JPG">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/img/RAM.jpg">
+<meta property="og:updated_time" content="2017-07-17T09:40:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="华硕 VM510LI 黑苹果手记">
+<meta name="twitter:description" content="前言装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝 准备工作趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容： 导出显卡 Bios 备用方法：  打开 AIDA64 Engineer； 查看，勾上状态栏。（此时软件下方应该会出现了一个框。） 右键状态栏 Video D">
+<meta name="twitter:image" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/img/no_kext_summary.JPG">
+  
+    <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nero Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ASUS-VM510LI-Hackintosh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/18/ASUS-VM510LI-Hackintosh/" class="article-date">
+  <time datetime="2017-01-17T16:00:00.000Z" itemprop="datePublished">2017-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/黑苹果/">黑苹果</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      华硕 VM510LI 黑苹果手记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容：</p>
+<h4 id="导出显卡-Bios-备用"><a href="#导出显卡-Bios-备用" class="headerlink" title="导出显卡 Bios 备用"></a>导出显卡 Bios 备用</h4><p>方法：</p>
+<ol>
+<li>打开 AIDA64 Engineer；</li>
+<li>查看，勾上状态栏。（此时软件下方应该会出现了一个框。）</li>
+<li>右键状态栏 Video Debug。</li>
+<li>Video Bios Dump</li>
+<li>点开显示设备→图形处理器（GPU）查看 PCI 设备的 ID（8086-1616）</li>
+<li>将导出的 bin 文件重命名为 8086-1616.rom 备用。</li>
+</ol>
+<h4 id="导出-ACPI-的-DSDT-和-SSDT（Windows）"><a href="#导出-ACPI-的-DSDT-和-SSDT（Windows）" class="headerlink" title="导出 ACPI 的 DSDT 和 SSDT（Windows）"></a>导出 ACPI 的 DSDT 和 SSDT（Windows）</h4><blockquote>
+<p><strong>建议使用 Ubuntu 方法提取</strong></p>
+</blockquote>
+<p>DSDT 和 SSDT 是必须导出的，但是有很多方法，我比较喜欢在 Linux 导出，不知道为啥感觉它纯正点（其实是一样的，就是个人感觉 Linux 好一点而已。）</p>
+<p>新版的 AIDA64 Engineer 可以在 WIN10 下导出 DSDT 和 SSDT 了。老板好像是不可以的。</p>
+<blockquote>
+<p>本笔记的 AIDA64 Engineer 版本为 5.80.4000</p>
+</blockquote>
+<p>方法：</p>
+<ol>
+<li>菜单栏工具</li>
+<li>ACPI 浏览器</li>
+<li>Save DSDT</li>
+<li>Save Table</li>
+<li>一个一个 SSDT 保存。SSDT 开头才需要保存，其他不需要管。</li>
+</ol>
+<h4 id="导出-EDID-参数"><a href="#导出-EDID-参数" class="headerlink" title="导出 EDID 参数"></a>导出 EDID 参数</h4><p>这个只是备用，看远景上扒贴看到很多人驱动核心显卡后内置屏幕无法显示，只能接入 HDMI 接外屏，这时候就需要注入 EDID 参数了（还有上面提取到的 Video Bios）</p>
+<p>方法：</p>
+<ol>
+<li>安装 EDID Viewer</li>
+<li>菜单栏 Read EDID</li>
+<li>选择 @monitor.inf 开头的选项，按 Show EDID Informations 按钮。</li>
+<li>滚到最下面，选中 RAW Data 下方的所有16进制字符。</li>
+<li>打开记事本粘贴进去，并去掉所有换行符和空格，开头的0x00-0x70这一段全部不要。</li>
+</ol>
+<h4 id="记下-AMD-的显卡-VEN-和-DEV-的-ID"><a href="#记下-AMD-的显卡-VEN-和-DEV-的-ID" class="headerlink" title="记下 AMD 的显卡 VEN 和 DEV 的 ID"></a>记下 AMD 的显卡 VEN 和 DEV 的 ID</h4><ol>
+<li>设备管理器</li>
+<li>显示适配器</li>
+<li>AMD Radeon（TM）R5 M320</li>
+<li>属性切换到硬件 ID</li>
+<li>PCI\VEN<em> <strong>1002</strong>&amp;DEV</em><strong>6665</strong>&amp;SUBSYS_192D1043&amp;REV_83</li>
+</ol>
+<p>这个记下来，因为我目前不知道笔记本到底能不能驱动独立显卡，<del>这个显卡虽然不牛，但是有比没有好嘛。</del></p>
+<p><del>一般笔记本的做法都是屏蔽独显，但是如果能用上独显就更好。先记下，日后扒帖子找办法驱动。</del></p>
+<p>妈蛋，打完上面那句话后，上网查了下我的 R5 M320，网上说比我核心显卡 HD5500更差，看来是没必要驱动了，果断屏蔽掉，浪费电。</p>
+<h4 id="Windows-最后"><a href="#Windows-最后" class="headerlink" title="Windows 最后"></a>Windows 最后</h4><p>以上都做完后，基本上就可以和 Windows 说拜拜了。当然我只会将 Windows 做一个镜像，等黑苹果吃不下的时候，或者急需要使用 Windows 系统的时候迅速还原。</p>
+<p>最后你可以下载个鲁大师，保存一下配置截图，方便有啥问题到远景论坛求助。</p>
+<p>AIDA64 则可以导出详细报告，这样可以快速确定鲁大师搞不清楚的一些芯片型号，例如我这个笔记本，鲁大师显示的是 Intel 的声卡，估计是 HDMI 搞鬼，但是实际上是 Realtek ALC233 这个声卡 AppleALC 项目有驱动，只是要慢慢试 ID 了。</p>
+<h4 id="Ubuntu-下提取-ACPI-下的-DSDT-和-SSDT"><a href="#Ubuntu-下提取-ACPI-下的-DSDT-和-SSDT" class="headerlink" title="Ubuntu 下提取 ACPI 下的 DSDT 和 SSDT"></a>Ubuntu 下提取 ACPI 下的 DSDT 和 SSDT</h4><p>我是不太放心 Windows 下提取的 DSDT 和 SSDT，总觉得不够全，故此我又做了个 Ubuntu 的 Live CD 启动盘，来获取 DSDT 和 SSDT。</p>
+<p>方法见我另一篇博客：<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
+<p>从《制作Ubuntu启动U盘》看起。</p>
+<p>我这台 VM510LI 在 Windows 下提取的 SSDT 就12个，但是在 Linux 下，dynamic 文件夹下还有三个 SSDT，总共14个。</p>
+<h4 id="Ubuntu-下提取-codec"><a href="#Ubuntu-下提取-codec" class="headerlink" title="Ubuntu 下提取 codec"></a>Ubuntu 下提取 codec</h4><p>codec 是制作仿冒声卡必备，虽然我这个声卡 AppleALC 项目支持，但既然已经到 Ubuntu 下了，顺手也备份下来，或许以后用得着。</p>
+<p>方法同上。</p>
+<h2 id="安装-macOS-Sierra"><a href="#安装-macOS-Sierra" class="headerlink" title="安装 macOS Sierra"></a>安装 macOS Sierra</h2><p>一切准备好后，我们就可以开始抛弃 Windows 系统，投入 macOS Sierra 的怀抱了，当然装之前先用 PE 备份 C盘，以后需要Windows 的时候可以立刻恢复，不需要装系统，装软件那么麻烦。</p>
+<h4 id="安装思路构想"><a href="#安装思路构想" class="headerlink" title="安装思路构想"></a>安装思路构想</h4><p><del>我想法是把 Clover 安装到 U盘的 EFI 分区中，再将安装镜像也写入到 U盘中，那么以后修改了 mac 下的驱动什么的，进不去系统了，也可以用恢复盘搞回来。</del></p>
+<p>实验证明，我的 U盘没法这样做，好像是需要量产后才可以一个 U盘两个分区，故此采用传统方案，将 Clover 做到 U盘里面，再将安装镜像写到硬盘里。</p>
+<h4 id="下载必要的软件"><a href="#下载必要的软件" class="headerlink" title="下载必要的软件"></a>下载必要的软件</h4><ul>
+<li><a href="http://www.osx86.net/files/file/4482-bootdiskutility/" target="_blank" rel="external">BootDiskUtility</a></li>
+<li><a href="http://pan.baidu.com/s/1kV6WEIN" target="_blank" rel="external">Clover3961_U_macOS S 10.12.2正式版(16C67).dmg</a> 密码：l8v7</li>
+<li><a href="http://www.mediafire.com/file/mtyyvnaodzu/Leopard+hd+install+helper+v0.3.zip" target="_blank" rel="external">Leopard hd install helper v0.3</a></li>
+<li>一个U盘（不小于8G）</li>
+</ul>
+<h4 id="安装必备的驱动文件"><a href="#安装必备的驱动文件" class="headerlink" title="安装必备的驱动文件"></a>安装必备的驱动文件</h4><ul>
+<li><a href="http://www.osx86.net/files/file/3465-nullcpupowermanagement-32-64-bit/" target="_blank" rel="external">NullCPUPowerManagement.kext</a></li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads" target="_blank" rel="external">FakeSMC.kext</a></li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads" target="_blank" rel="external">VoodooPS2Controller.kext</a></li>
+</ul>
+<blockquote>
+<p>NullCPUPowerManagement.kext 和 FakeSMC.kext 是必须的，第一个禁用苹果原生电源驱动，第二个是骗过 macOS install 告诉他运行在一台白苹果当中。</p>
+<p>VoodooPS2Controller.kext 是键盘驱动，不放的话，安装盘内无法用触摸板和键盘。</p>
+</blockquote>
+<h4 id="将-Clover-安装到-U盘"><a href="#将-Clover-安装到-U盘" class="headerlink" title="将 Clover 安装到 U盘"></a>将 Clover 安装到 U盘</h4><ol>
+<li>打开 BootDiskUtility 选择自己的 U盘。</li>
+<li>点击菜单栏的 Options → Configuration</li>
+<li>【Check at Satrtup】 勾上</li>
+<li>【Save after DL】 勾上</li>
+<li>点击 【Check Now】 按钮获取最新版的 Clover</li>
+<li>点击 【OK】按钮</li>
+<li>点击 【Format Disk】按钮【确定】等待软件写入，提示 All done 表示制作完成。</li>
+<li></li>
+</ol>
+<h4 id="将-macOS-安装盘写入系统硬盘中（Win10为例）"><a href="#将-macOS-安装盘写入系统硬盘中（Win10为例）" class="headerlink" title="将 macOS 安装盘写入系统硬盘中（Win10为例）"></a>将 macOS 安装盘写入系统硬盘中（Win10为例）</h4><ol>
+<li>右键【开始】按钮，【磁盘管理】。</li>
+<li>选择 D盘右键【压缩卷】输入【11264】（也就是11GB）【确定】</li>
+<li>右键压缩出来的11G 空间【新建简单卷】，点三次【下一步】，选择【不要格式化这个卷】→【下一步】→【完成】</li>
+<li>管理员权限运行 Leopard hd install helper v0.3 文件夹下的 ddmac.exe </li>
+<li>选择镜像文件为下载的 Clover3961_U_macOS S 10.12.2正式版(16C67)，取消所有的勾，目标分区选择刚刚压缩的卷，我这里是 E盘，注意别选错，否则会丢失数据。点击【开始】</li>
+<li>此时程序进度条在动，中途会无响应，无需理会，等待恢复即可。</li>
+</ol>
+<h4 id="安装-macOS"><a href="#安装-macOS" class="headerlink" title="安装 macOS"></a>安装 macOS</h4><ol>
+<li>插入已经安装好 Clover 的U盘。</li>
+<li>Bios 选择此 U盘启动。</li>
+<li>移动光标到 macOS，回车。</li>
+<li>但是进入后立即重启，猜测是和苹果原生电源管理问题，将 NullCPUPowerManagement.kext 放入 <code>EFI/CLOVER/kexts/10.12</code>（10.12这个文件夹需要自己新建）</li>
+<li>五国处理，见下一章节。</li>
+<li>进入后点下一步，一直到选择硬盘地方，此时应当无法看到可安装的盘，点击上方菜单栏，工具，磁盘工具，找到我们需要安装的 SSD 盘，分区图选择 GUID，点击确定抹掉。后面就可以选择这个磁盘安装了。</li>
+</ol>
+<h4 id="五国处理"><a href="#五国处理" class="headerlink" title="五国处理"></a>五国处理</h4><h5 id="can’t-perform-kext-scan-no-kext-summary"><a href="#can’t-perform-kext-scan-no-kext-summary" class="headerlink" title="can’t perform kext scan: no kext summary"></a>can’t perform kext scan: no kext summary</h5><p>进入进行入安装盘出现五国 can’t perform kext scan: no kext summary。</p>
+<p><img src="/2017/01/18/ASUS-VM510LI-Hackintosh/./img/no_kext_summary.JPG" alt="can&#39;t perform kext scan: no kext summary"></p>
+<p>出现以上五国信息，我上网查了下，有几个可能。</p>
+<ul>
+<li>下载的安装镜像盘有问题，后来我校验我的镜像盘的 md5 和对方发布的时候写的一样，而且我 dell 也是用这个盘来装的，故此不应该出现这样的问题。</li>
+<li>主板 Bios 设置问题，需要关闭 VT-d，但是我关闭了问题依旧。</li>
+<li>内存问题，MacOS 无法正确识别笔记本的内存导致的。</li>
+</ul>
+<p>后来经过排查，发现我的笔记本共8G内存，4GX2。但是其中有一条内存是直接焊在主板上，根本没法拆下来的，我再翻查了下我用 AIDA64 生成的 Reports，SDP 也只能看到添加的那条三星内存，焊接在主板上的内存是看不到的。</p>
+<p><img src="/2017/01/18/ASUS-VM510LI-Hackintosh/./img/RAM.jpg" alt="RAM"></p>
+<p>后来搜索后发现 Clover 是可以解决这种情况，仅需要将 SMBIOS&gt;Trust 勾上就可以解决这个五国问题了。</p>
+<h5 id="ACPI-Error-DSM-Namespace-lookup-failure"><a href="#ACPI-Error-DSM-Namespace-lookup-failure" class="headerlink" title="ACPI Error: [_DSM] Namespace lookup failure"></a>ACPI Error: [_DSM] Namespace lookup failure</h5><p>这个 _DSM 是与显卡相关的错误，遇到这个错误我们就要利用之前在 Ubuntu 提取的 DSDT 和 SSDT 来解决了。</p>
+<p>反编译得到的 SSDT.aml 和 DSDT.aml 文件，最终得到的是 *.dsl 文件。</p>
+<p>用 MaciASL 打开 DSDT.dsl，点击界面上方的 Patch 按钮，找到 [syn] Remove _DSM methods，点击它，再点击 Apply 应用。</p>
+<p>修改 DSDT 和 SSDT 的方法请参考我上一篇转载的博文 :<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
+<p>将编译好的 DSDT 和 SSDT 放入到 U盘的 EFI/CLOVER/ACPI/patched 目录，**注意：SSDT的命名方式必须为 SSDT-1.aml、SSDT-2.aml。</p>
+<p>在 Clover 的配置文件加入 SSDT 的排列顺序，ACPI&gt;SortedOrder。从 SSDT-1.aml 排序下去。DSDT name 填写 DSDT.aml。</p>
+<p>最后勾上 Drop OEM，我理解的意思应该就是拒绝所有主板提供的 SSDT 和 DSDT。</p>
+<p>其实去除了这个 _DSM methods 后，后面要驱动显卡还得加回来，但是这个函数的内容肯定不是原始那样，具体 ASL 编程我也不懂，都是依葫芦画瓢。</p>
+<h4 id="DSDT-与-SSDT-的错误修复及常用补丁应用。"><a href="#DSDT-与-SSDT-的错误修复及常用补丁应用。" class="headerlink" title="DSDT 与 SSDT 的错误修复及常用补丁应用。"></a>DSDT 与 SSDT 的错误修复及常用补丁应用。</h4><p>在利用 DSDT 和 SSDT 帮我们解决我们的驱动问题的之前，我们需要修复反编译带来的错误。</p>
+<p>我使用 iasl -da -dl *.aml 反编译后得到的 dsl 遇到几个错误的问题这里记录一下。</p>
+<p>首先需要将 MaciASL 的编译器改成6.1，Preference&gt;iASL&gt;ACPI 6.1。</p>
+<p><strong>DSDT.dsl 错误修复</strong></p>
+<ul>
+<li><p>4500, 6126, syntax error, unexpected PARSEOP_ZERO<br>这里有一大段 Zero，我猜测是反编译出来的垃圾，这里可以全部删掉。</p>
+</li>
+<li><p>4525, 6126, syntax error, unexpected PARSEOP_ZERO<br>同上</p>
+</li>
+<li><p>11019, 6126, syntax error, unexpected ‘}’</p>
+</li>
+</ul>
+<p>出错代码段如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Method (ADBG, 1, Serialized)</div><div class="line">&#123;</div><div class="line">    If (CondRefOf (MDBG))</div><div class="line">    &#123;</div><div class="line">        Return (MDBG)</div><div class="line">        Arg0</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Return (Zero)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ADBG 错误，利用 [syn]Fix ADBG Error 修复。</p>
+<p>修复后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Method (ADBG, 1, Serialized)</div><div class="line">&#123;</div><div class="line">    </div><div class="line">    Return(0)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>SSDT-3.dsl 错误修复</strong></p>
+<ul>
+<li>477, 6126, syntax error, unexpected PARSEOP_ADD</li>
+</ul>
+<p>错误代码段如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">If (ECON)</div><div class="line">                &#123;</div><div class="line">                    Store (\_SB.PCI0.LPCB.H_EC.ECRD, RefOf (\_SB.PCI0.LPCB.H_EC.PLMX))</div><div class="line">                    Local0  //是这行导致错误</div><div class="line">                    Add (0x0AAC, Multiply (Local0, 0x0A), Local0)</div><div class="line">                    Store (Local0, PTMP)</div><div class="line">                    Return (Local0)</div><div class="line">                &#125;</div></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">If (ECON)</div><div class="line">&#123;</div><div class="line">    Store (\_SB.PCI0.LPCB.H_EC.ECRD (RefOf (\_SB.PCI0.LPCB.H_EC.PLMX)), Local0) //改法</div><div class="line">    Add (0x0AAC, Multiply (Local0, 0x0A), Local0)</div><div class="line">    Store (Local0, PTMP)</div><div class="line">    Return (Local0)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>549, 6126, syntax error, unexpected PARSEOP_MULTIPLY</li>
+</ul>
+<p>错误代码段如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">If (ECON)</div><div class="line">&#123;</div><div class="line">    Store (\_SB.PCI0.LPCB.H_EC.ECRD, RefOf (\_SB.PCI0.LPCB.H_EC.PECH))</div><div class="line">    Local0  //语法错误</div><div class="line">    Multiply (Local0, 0x0A, Local0)</div><div class="line">    Store (\_SB.PCI0.LPCB.H_EC.ECRD, RefOf (\_SB.PCI0.LPCB.H_EC.PECL))</div><div class="line">    Local1  //语法错误</div><div class="line">    ShiftRight (Local1, 0x02, Local1)</div><div class="line">    Store (Divide (Multiply (Local1, 0x0A), 0x40, ), Local1)</div><div class="line">    Add (Local0, Local1, Local0)</div><div class="line">    Add (0x0AAC, Local0, Local0)</div><div class="line">    Store (Local0, PTMP)</div><div class="line">    Return (Local0)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">If (ECON)</div><div class="line">&#123;</div><div class="line">    Store (\_SB.PCI0.LPCB.H_EC.ECRD (RefOf (\_SB.PCI0.LPCB.H_EC.PECH)),Local0)</div><div class="line">    Multiply (Local0, 0x0A, Local0)</div><div class="line">    Store (\_SB.PCI0.LPCB.H_EC.ECRD (RefOf (\_SB.PCI0.LPCB.H_EC.PECL)),Local1)</div><div class="line">    ShiftRight (Local1, 0x02, Local1)</div><div class="line">    Store (Divide (Multiply (Local1, 0x0A), 0x40, ), Local1)</div><div class="line">    Add (Local0, Local1, Local0)</div><div class="line">    Add (0x0AAC, Local0, Local0)</div><div class="line">    Store (Local0, PTMP)</div><div class="line">    Return (Local0)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>475, 6086, Not a control method, cannot invoke (_SB.PCI0.LPCB.H_EC.ECRD is a Integer)</li>
+<li>547, 6086, Not a control method, cannot invoke (_SB.PCI0.LPCB.H_EC.ECRD is a Integer)</li>
+<li>549, 6086, Not a control method, cannot invoke (_SB.PCI0.LPCB.H_EC.ECRD is a Integer)</li>
+</ul>
+<p>这三个错误其实是一个意思，就是没有找到引入的模块（瞎猜的），我的解决办法。</p>
+<p>搜索 H_EC.ECRD 找到头部附近 External</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">External (_SB_.PCI0.LPCB.H_EC.ECRD, IntObj)    // Warning: Unknown object</div></pre></td></tr></table></figure>
+<p>H_EC.ECRD 应该是一个方法，但是这里引入方法方式不对，应该是 MethodObj 才对。</p>
+<p>修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">External (_SB_.PCI0.LPCB.H_EC.ECRD, MethodObj)</div></pre></td></tr></table></figure>
+<p>其余 SSDT 均无错误。</p>
+<h4 id="常用补丁应用"><a href="#常用补丁应用" class="headerlink" title="常用补丁应用"></a>常用补丁应用</h4><p>在 <a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a> 中，常用补丁里面提及了一些常用补丁，并且这些补丁一般不会造成什么问题，后来我翻查了 RehabMan 的原帖，有两个补丁是有条件限制的，这些补丁要看自己的情况而添加。</p>
+<p>引用原话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&quot;Fix _WAK Arg0 v2&quot;</div><div class="line">&quot;HPET Fix&quot;</div><div class="line">&quot;SMBUS Fix&quot;</div><div class="line">&quot;IRQ Fix&quot;</div><div class="line">&quot;RTC Fix&quot;</div><div class="line">&quot;OS Check Fix&quot;</div><div class="line">&quot;Fix Mutex with non-zero SyncLevel&quot;</div><div class="line">&quot;Fix PNOT/PPNT&quot; (use only if you&apos;re dropping CPU related SSDTs) 仅适用于删除了 CPU 的 SSDT 使用。</div><div class="line">&quot;Add IMEI&quot; (do not use if your DSDT or SSDTs already have IMEI/HECI/MEI device) 如果你的 DSDT 或 SSDT 存在 IMEI/HECI/MEI 的 device 的话，就不要用这个补丁。</div></pre></td></tr></table></figure>
+<p>最终我只应用了以下补丁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&quot;Fix _WAK Arg0 v2&quot;</div><div class="line">&quot;HPET Fix&quot;</div><div class="line">&quot;SMBUS Fix&quot;</div><div class="line">&quot;IRQ Fix&quot;</div><div class="line">&quot;RTC Fix&quot;</div><div class="line">&quot;OS Check Fix&quot;</div><div class="line">&quot;Fix Mutex with non-zero SyncLevel&quot;</div></pre></td></tr></table></figure>
+<p>注意，一般应用 RehabMan 大神写的补丁不会造成编译错误，但是也会有例外情况，故此应用补丁，每应用一个后都需要编译（Compile）一下，看看是否有错误。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/" data-id="cj57yn7oi000fdnqjlvi2hn7l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/31/ASUS-VM510LI-Disable-graphics/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          华硕 VM510LI 屏蔽独显
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/14/ubuntu-全局翻墙-自动分流/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ubuntu 通过 ShadowsocksR-libev 全局翻墙</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/17/images-test/">images-test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Nero Hau<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

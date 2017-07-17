@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>zabbix-agent 安装及升级 | Nero Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装 zabbix-agent 到 Debian 参考 Zabbix Documentation 3.2  通过默认源安装 zabbix-agent1sudo apt-get install zabbix-agent 但是这样安装的 zabbix-agent 版本是比较老的版本 123zabbix_agent -VZabbix agent v2.2.7 (revision 50148) (24">
+<meta name="keywords" content="Zabbix">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zabbix-agent 安装及升级">
+<meta property="og:url" content="http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/index.html">
+<meta property="og:site_name" content="Nero Blog">
+<meta property="og:description" content="安装 zabbix-agent 到 Debian 参考 Zabbix Documentation 3.2  通过默认源安装 zabbix-agent1sudo apt-get install zabbix-agent 但是这样安装的 zabbix-agent 版本是比较老的版本 123zabbix_agent -VZabbix agent v2.2.7 (revision 50148) (24">
+<meta property="og:updated_time" content="2017-07-17T09:40:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zabbix-agent 安装及升级">
+<meta name="twitter:description" content="安装 zabbix-agent 到 Debian 参考 Zabbix Documentation 3.2  通过默认源安装 zabbix-agent1sudo apt-get install zabbix-agent 但是这样安装的 zabbix-agent 版本是比较老的版本 123zabbix_agent -VZabbix agent v2.2.7 (revision 50148) (24">
+  
+    <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nero Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Zabbix-agent-installation-Debian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/15/Zabbix-agent-installation-Debian/" class="article-date">
+  <time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished">2017-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IT技术-Linux/">IT技术 Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zabbix-agent 安装及升级
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装-zabbix-agent-到-Debian"><a href="#安装-zabbix-agent-到-Debian" class="headerlink" title="安装 zabbix-agent 到 Debian"></a>安装 zabbix-agent 到 Debian</h2><blockquote>
+<p>参考 <a href="https://www.zabbix.com/documentation/3.2/manual/installation/install_from_packages/agent_installation" target="_blank" rel="external">Zabbix Documentation 3.2</a></p>
+</blockquote>
+<h3 id="通过默认源安装-zabbix-agent"><a href="#通过默认源安装-zabbix-agent" class="headerlink" title="通过默认源安装 zabbix-agent"></a>通过默认源安装 zabbix-agent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zabbix-agent</div></pre></td></tr></table></figure>
+<p>但是这样安装的 zabbix-agent 版本是比较老的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zabbix_agent -V</div><div class="line">Zabbix agent v2.2.7 (revision 50148) (24 October 2014)</div><div class="line">Compilation time: Feb  3 2017 17:23:53</div></pre></td></tr></table></figure>
+<h3 id="通过-Zabbix-源安装新版本"><a href="#通过-Zabbix-源安装新版本" class="headerlink" title="通过 Zabbix 源安装新版本"></a>通过 Zabbix 源安装新版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line"># dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line"># apt-get update</div><div class="line"># apt-get install zabbix-agent</div><div class="line"># zabbix_agentd -V</div><div class="line">zabbix_agentd (daemon) (Zabbix) 3.2.6</div><div class="line">Revision 67849 4 May 2017, compilation time: May  6 2017 15:59:40</div></pre></td></tr></table></figure>
+<h2 id="升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）"><a href="#升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）" class="headerlink" title="升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）"></a>升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）</h2><p>如果是之前安装 zabbix-agent 是用系统默认源安装的话，版本比较久，那么可以通过上面方法安装最新版本。</p>
+<blockquote>
+<p>注：笔者的 zabbix-server 版本是3.2版本，要确定自己的 zabbix-agent 是否适用于 zabbix-server。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install --only-upgrade zabbix-agent</div><div class="line"></div><div class="line">注意，这里更新的时候会问你选择如何处理已有的配置文件，这里可以选择 N，使用原来的配置文件。</div></pre></td></tr></table></figure>
+<h3 id="遇到错误"><a href="#遇到错误" class="headerlink" title="遇到错误"></a>遇到错误</h3><p>安装到最后会报告安装失败，其实已经安装好了，但是因为 2.2 的配置文件引入的其他配置的目录路径是 /etc/zabbix/zabbix_agentd.conf.d，而 3.2是 /etc/zabbix/zabbix_agentd.d 故此会刷出报错日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">7月 15 14:49:22 gooderp-backup zabbix_agentd[22098]: zabbix_agentd [22098]: /etc/zabbix/zabbix_agentd.conf.d: [2] No such file or directory</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: zabbix-agent.service: control process exited, code=exited status=1</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: Failed to start Zabbix Agent.</div></pre></td></tr></table></figure>
+<p>这个简单，只需要替换下配置文件的路径名称即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo sed -i &quot;s/zabbix_agentd.conf.d/zabbix_agentd.d/g&quot; /etc/zabbix/zabbix_agentd.conf</div><div class="line">$ sudo systemctl restart zabbix-agent</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/" data-id="cj57yn7oy000ydnqjkifpqy4j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/17/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/13/Zabbix-SMTP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Zabbix 邮件警告</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/17/images-test/">images-test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Nero Hau<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

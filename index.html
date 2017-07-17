@@ -146,24 +146,906 @@
 
 
   
+    <article id="post-Zabbix-agent-installation-Debian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/15/Zabbix-agent-installation-Debian/" class="article-date">
+  <time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished">2017-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IT技术-Linux/">IT技术 Linux</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装-zabbix-agent-到-Debian"><a href="#安装-zabbix-agent-到-Debian" class="headerlink" title="安装 zabbix-agent 到 Debian"></a>安装 zabbix-agent 到 Debian</h2><blockquote>
+<p>参考 <a href="https://www.zabbix.com/documentation/3.2/manual/installation/install_from_packages/agent_installation" target="_blank" rel="external">Zabbix Documentation 3.2</a></p>
+</blockquote>
+<h3 id="通过默认源安装-zabbix-agent"><a href="#通过默认源安装-zabbix-agent" class="headerlink" title="通过默认源安装 zabbix-agent"></a>通过默认源安装 zabbix-agent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zabbix-agent</div></pre></td></tr></table></figure>
+<p>但是这样安装的 zabbix-agent 版本是比较老的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zabbix_agent -V</div><div class="line">Zabbix agent v2.2.7 (revision 50148) (24 October 2014)</div><div class="line">Compilation time: Feb  3 2017 17:23:53</div></pre></td></tr></table></figure>
+<h3 id="通过-Zabbix-源安装新版本"><a href="#通过-Zabbix-源安装新版本" class="headerlink" title="通过 Zabbix 源安装新版本"></a>通过 Zabbix 源安装新版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line"># dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line"># apt-get update</div><div class="line"># apt-get install zabbix-agent</div><div class="line"># zabbix_agentd -V</div><div class="line">zabbix_agentd (daemon) (Zabbix) 3.2.6</div><div class="line">Revision 67849 4 May 2017, compilation time: May  6 2017 15:59:40</div></pre></td></tr></table></figure>
+<h2 id="升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）"><a href="#升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）" class="headerlink" title="升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）"></a>升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）</h2><p>如果是之前安装 zabbix-agent 是用系统默认源安装的话，版本比较久，那么可以通过上面方法安装最新版本。</p>
+<blockquote>
+<p>注：笔者的 zabbix-server 版本是3.2版本，要确定自己的 zabbix-agent 是否适用于 zabbix-server。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install --only-upgrade zabbix-agent</div><div class="line"></div><div class="line">注意，这里更新的时候会问你选择如何处理已有的配置文件，这里可以选择 N，使用原来的配置文件。</div></pre></td></tr></table></figure>
+<h3 id="遇到错误"><a href="#遇到错误" class="headerlink" title="遇到错误"></a>遇到错误</h3><p>安装到最后会报告安装失败，其实已经安装好了，但是因为 2.2 的配置文件引入的其他配置的目录路径是 /etc/zabbix/zabbix_agentd.conf.d，而 3.2是 /etc/zabbix/zabbix_agentd.d 故此会刷出报错日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">7月 15 14:49:22 gooderp-backup zabbix_agentd[22098]: zabbix_agentd [22098]: /etc/zabbix/zabbix_agentd.conf.d: [2] No such file or directory</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: zabbix-agent.service: control process exited, code=exited status=1</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: Failed to start Zabbix Agent.</div></pre></td></tr></table></figure>
+<p>这个简单，只需要替换下配置文件的路径名称即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo sed -i &quot;s/zabbix_agentd.conf.d/zabbix_agentd.d/g&quot; /etc/zabbix/zabbix_agentd.conf</div><div class="line">$ sudo systemctl restart zabbix-agent</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/" data-id="cj57yn7oy000ydnqjkifpqy4j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Zabbix-SMTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/13/Zabbix-SMTP/" class="article-date">
+  <time datetime="2017-07-12T16:00:00.000Z" itemprop="datePublished">2017-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IT技术-Linux/">IT技术 Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="触发器邮件警告"><a href="#触发器邮件警告" class="headerlink" title="触发器邮件警告"></a>触发器邮件警告</h1><p>Zabbix 默认的邮箱警告有个 SMTP HELO 的值，我一直不知道怎么填写，反正这个值一直报错，网上爬文一堆都是通过脚本来发邮件的。</p>
+<h2 id="部署-sendEmail-环境"><a href="#部署-sendEmail-环境" class="headerlink" title="部署 sendEmail 环境"></a>部署 sendEmail 环境</h2><blockquote>
+<p>参考文献1：<a href="http://www.jianshu.com/p/78ec2aba6824" target="_blank" rel="external">Zabbix通过stmp邮件报警</a></p>
+<p>参考文献2：<a href="http://xiao987334176.blog.51cto.com/2202382/1768339" target="_blank" rel="external">zabbix 3.0.2邮件报警</a></p>
+</blockquote>
+<p>这里需要用到 sendEmail <a href="http://caspian.dotconf.net/menu/Software/SendEmail/" target="_blank" rel="external">下载地址</a>，它是基于 perl 写的一个脚本，如果用 SSL 加密的话需要依赖 perl 的 <strong>Net::SSLeay</strong> 和 <strong>IO::Socket::SSL</strong> 模块，debian 和 Ubuntu 的源都可以直接安装这个软件，另外安装 <code>libcrypt-ssleay-perl libio-socket-ssl-perl ca-certificates</code> 这三个包即可。</p>
+<p>但是我查了下，zabbix/zabbix-server-mysql:latest 是使用 alpine 的，我测试的时候 sendEmail 官网下载的脚本会遇到 <code>invalid SSL_version</code> 的报错。Google 一番后据说要修改 <code>/usr/share/perl5/IO/Socket/SSL.pm</code> 这个依赖文件，但是我改了之后就会报 SSL 鉴定错误，故此不能这样做。</p>
+<p>最终爬贴找到了这个帖子<strong><a href="https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/net-mail/sendEmail/files/1.56-overzealous-version-check.patch?view=log" target="_blank" rel="external">1.56-overzealous-version-check.patch</a></strong></p>
+<p>例子中是将 sendEmail 的 SSL_version 定义为 SSLv3，但是我使用的 QQ 邮箱和 Gmail 目前都在使用 TLSv1 协议，故此我需要将这个改成 TLSv1。</p>
+<p>说回来我是 Docker 环境，故此我需要基于 zabbix/zabbix-server-mysql:latest 构建一个新的镜像。</p>
+<h3 id="1-创建-Docker-构建文件夹"><a href="#1-创建-Docker-构建文件夹" class="headerlink" title="1. 创建 Docker 构建文件夹"></a>1. 创建 Docker 构建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir ~/zabbix-server-mysql-sendEmail</div></pre></td></tr></table></figure>
+<h3 id="2-创建-Dockerfile"><a href="#2-创建-Dockerfile" class="headerlink" title="2. 创建 Dockerfile"></a>2. 创建 Dockerfile</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/zabbix-server-mysql-sendEmail/Dockerfile</div><div class="line">FROM zabbix/zabbix-server-mysql</div><div class="line">RUN sed -i &apos;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&apos; /etc/apk/repositories &amp;&amp; \</div><div class="line">apk add --no-cache perl-crypt-ssleay perl-io-socket-ssl ca-certificates tzdata &amp;&amp; \</div><div class="line">wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz -P /tmp/ &amp;&amp; \</div><div class="line">tar xzf /tmp/sendEmail-v1.56.tar.gz -C /tmp/ &amp;&amp; \</div><div class="line">rm -f /tmp/sendEmail-v1.56.tar.gz &amp;&amp; \</div><div class="line">sed -i &quot;s/SSL_version =&gt; &apos;SSLv3 TLSv1&apos;/SSL_version =&gt; &apos;TLSv1&apos;/g&quot; /tmp/sendEmail-v1.56/sendEmail &amp;&amp; \</div><div class="line">mv /tmp/sendEmail-v1.56/sendEmail /usr/bin &amp;&amp; \</div><div class="line">chmod +x /usr/bin/sendEmail &amp;&amp; \</div><div class="line">rm -rf /tmp/* &amp;&amp; \</div><div class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; \</div><div class="line">echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone </div><div class="line"></div><div class="line">EXPOSE 10051/TCP 162/UDP</div><div class="line"></div><div class="line">WORKDIR /var/lib/zabbix</div><div class="line"></div><div class="line">ENTRYPOINT [&quot;/bin/bash&quot;]</div><div class="line"></div><div class="line">CMD [&quot;/run_zabbix_component.sh&quot;, &quot;server&quot;, &quot;mysql&quot;]</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="3-构建镜像"><a href="#3-构建镜像" class="headerlink" title="3. 构建镜像"></a>3. 构建镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/zabbix-server-mysql-sendEmail</div><div class="line">docker build -t nero/zabbix-server-mysql:latest .</div></pre></td></tr></table></figure>
+<h3 id="4-停止官方使用的镜像，启用新镜像"><a href="#4-停止官方使用的镜像，启用新镜像" class="headerlink" title="4. 停止官方使用的镜像，启用新镜像"></a>4. 停止官方使用的镜像，启用新镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">docker rm -f zabbix-server #这里我之前启用镜像的时候使用的是别名</div><div class="line">docker run --name zabbix-server \</div><div class="line">--link zabbix-db:mysql-server \</div><div class="line">--restart=always \</div><div class="line">-e MYSQL_USER=zabbix \</div><div class="line">-e MYSQL_PASSWORD=zabbix \</div><div class="line">-e ZBX_IPMIPOLLERS=3 \</div><div class="line">-e ZBX_STARTVMWARECOLLECTORS=5 \</div><div class="line">-e ZBX_DEBUGLEVEL=3 \</div><div class="line">-v /home/nero/zabbix/externalscripts:/usr/lib/zabbix/externalscripts \</div><div class="line">-v /home/nero/zabbix/alertscripts:/usr/lib/zabbix/alertscripts \</div><div class="line">-p 10051:10051 \</div><div class="line">-d nero/zabbix-server-mysql</div></pre></td></tr></table></figure>
+<h3 id="5-编写-sendEmail-的发信脚本"><a href="#5-编写-sendEmail-的发信脚本" class="headerlink" title="5. 编写 sendEmail 的发信脚本"></a>5. 编写 sendEmail 的发信脚本</h3><blockquote>
+<p>参考自 <a href="http://www.jianshu.com/p/78ec2aba6824" target="_blank" rel="external">Zabbix通过stmp邮件报警</a></p>
+</blockquote>
+<p>我修改了下他的脚本，他脚本会自动转换字符编码，另外输出日志方便排查，但是日志不太详细，我给 sendEmail 加了 -v 参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">SMTP_server=&apos;smtp.qq.com:587&apos;    # SMTP服务器，我用 QQ TLS 的端口。</div><div class="line">username=&apos;email@email.com&apos;     # 用户名</div><div class="line">password=&apos; smtp_password&apos;             # 密码</div><div class="line">from_email_address=&apos;email@email.com&apos; # 发件人Email地址</div><div class="line">to_email_address=&quot;$1&quot;               # 收件人Email地址，zabbix传入的第一个参数</div><div class="line">message_subject_utf8=&quot;$2&quot;           # 邮件标题，zabbix传入的第二个参数</div><div class="line">message_body_utf8=&quot;$3&quot;              # 邮件内容，zabbix传入的第三个参数</div><div class="line"></div><div class="line">echo &quot;`date +&quot;%F %T&quot;` send to $to_email_address&quot; &gt;&gt; /tmp/send.log</div><div class="line"></div><div class="line"># 转换邮件标题为GB2312，解决邮件标题含有中文，收到邮件显示乱码的问题。</div><div class="line">message_subject_gb2312=`iconv -t GB2312 -f UTF-8 &lt;&lt; EOF</div><div class="line">$message_subject_utf8</div><div class="line">EOF`</div><div class="line">[ $? -eq 0 ] &amp;&amp; message_subject=&quot;$message_subject_gb2312&quot; || message_subject=&quot;$message_subject_utf8&quot;</div><div class="line">bhnaqekboudsdcca</div><div class="line"># 转换邮件内容为GB2312</div><div class="line">message_body_gb2312=`iconv -t GB2312 -f UTF-8 &lt;&lt; EOF</div><div class="line">$message_body_utf8</div><div class="line">EOF`</div><div class="line">[ $? -eq 0 ] &amp;&amp; message_body=&quot;$message_body_gb2312&quot; || message_body=&quot;$message_body_utf8&quot;</div><div class="line"></div><div class="line"># 发送邮件</div><div class="line">sendEmail=&apos;/usr/bin/sendEmail&apos;</div><div class="line">$sendEmail -s &quot;$SMTP_server&quot; -xu &quot;$username&quot; -xp &quot;$password&quot; -f &quot;$from_email_address&quot; -t &quot;$to_email_address&quot; -u &quot;$message_subject&quot; -m &quot;$message_body&quot; -o message-content-type=text -o message-charset=gb2312 -o tls=yes -v &gt;&gt; /tmp/send.log</div><div class="line"></div><div class="line">echo $? &gt;&gt; /tmp/send.log</div><div class="line">echo &quot;zabbix 参数1 = $1&quot; &gt;&gt; /tmp/send.log</div><div class="line">echo &quot;zabbix 参数2 = $2&quot; &gt;&gt; /tmp/send.log</div><div class="line">echo &quot;zabbix 参数3 = $3&quot; &gt;&gt; /tmp/send.log</div><div class="line">echo &gt;&gt; /tmp/send.log</div><div class="line">echo &gt;&gt; /tmp/send.log</div><div class="line">echo &gt;&gt; /tmp/send.log</div></pre></td></tr></table></figure>
+<h2 id="Zabbix-设置邮件告警"><a href="#Zabbix-设置邮件告警" class="headerlink" title="Zabbix 设置邮件告警"></a>Zabbix 设置邮件告警</h2><blockquote>
+<p>我这里的 Zabbix 版本是3.2版本，不同版本界面略有不同，据说2.0的版本不需要加脚本参数，3.0开始需要加脚本参数了。</p>
+</blockquote>
+<h3 id="1-创建报价媒介类型"><a href="#1-创建报价媒介类型" class="headerlink" title="1. 创建报价媒介类型"></a>1. 创建报价媒介类型</h3><p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-01.png" alt="zabbix-01"></p>
+<h3 id="2-输入报警媒介类型参数"><a href="#2-输入报警媒介类型参数" class="headerlink" title="2. 输入报警媒介类型参数"></a>2. 输入报警媒介类型参数</h3><p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-02.png" alt="zabbix-02"></p>
+<p>这里注意，脚本参数顺序不要错，否则会导致发信失败。</p>
+<table>
+<thead>
+<tr>
+<th>脚本参数</th>
+<th>参数</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一个参数</td>
+<td>{ALERT.SENDTO}</td>
+<td>目的邮箱地址</td>
+</tr>
+<tr>
+<td>第二个参数</td>
+<td>{ALERT.SUBJECT}</td>
+<td>邮件主题</td>
+</tr>
+<tr>
+<td>第三个参数</td>
+<td>{ALERT.MESSAGE}</td>
+<td>邮件内容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-配置用户收信邮箱"><a href="#3-配置用户收信邮箱" class="headerlink" title="3. 配置用户收信邮箱"></a>3. 配置用户收信邮箱</h3><p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-03.png" alt="zabbix-03"></p>
+<hr>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-04.png" alt="zabbix-04"></p>
+<hr>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-05.png" alt="zabbix-05"></p>
+<hr>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-06.png" alt="zabbix-06"></p>
+<h3 id="4-配置动作"><a href="#4-配置动作" class="headerlink" title="4. 配置动作"></a>4. 配置动作</h3><p>这里我建立一个触发器警告，当触发器条件为真的时候，就发出警告邮件。</p>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-07.png" alt="zabbix-07"></p>
+<p><strong>注意这里事件源选择触发器</strong></p>
+<hr>
+<p>按图片重复添加动作条件</p>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-08.png" alt="zabbix-08"></p>
+<hr>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-09.png" alt="zabbix-09"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">默认接收人：『服务器警报』 &#123;HOST.NAME&#125;:&#123;ITEM.NAME&#125;</div><div class="line"></div><div class="line">默认信息：</div><div class="line">告警主机: &#123;HOSTNAME1&#125;</div><div class="line">告警时间: &#123;EVENT.DATE&#125; &#123;EVENT.TIME&#125;</div><div class="line">告警等级: &#123;TRIGGER.SEVERITY&#125;</div><div class="line">告警信息: &#123;TRIGGER.NAME&#125;</div><div class="line">告警项目: &#123;TRIGGER.KEY1&#125;</div><div class="line">问题详情: &#123;ITEM.NAME&#125;: &#123;ITEM.VALUE&#125;</div><div class="line">当前状态: &#123;TRIGGER.STATUS&#125;: &#123;ITEM.VALUE1&#125;</div><div class="line">事件ID: &#123;EVENT.ID&#125;</div></pre></td></tr></table></figure>
+<p>其余参数按照图片设置，目前还没理解透这里所有选项，这里就不班门弄斧。</p>
+<hr>
+<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-10.png" alt="zabbix-10"></p>
+<p>这里是触发器值为假后的操作，你可以自定义恢复公式，也可以按照原来的公式为假后发送邮件，告诉我们这个监控值正常了。</p>
+<p>里面的内容除了<strong>默认接收人</strong>也就是邮件标题外，其余内容和上面的一样。</p>
+<h4 id="调试邮件告警"><a href="#调试邮件告警" class="headerlink" title="调试邮件告警"></a>调试邮件告警</h4><p>监控邮件发送日志，就可以调试邮件的发送状态了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">docker exec -it zabbix-server tail -f /tmp/send.log</div><div class="line">2017-07-12 17:53:07 send to neroxps@gmail.com</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: DEBUG =&gt; Connecting to smtp.qq.com:587</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: DEBUG =&gt; My IP address is: 172.17.0.3</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       220 smtp.qq.com Esmtp QQ Mail Server</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   EHLO </div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       250-smtp.qq.com, 250-PIPELINING, 250-SIZE 73400320, 250-STARTTLS, 250-AUTH LOGIN PLAIN, 250-AUTH=LOGIN, 250-MAILCOMPRESS, 250 8BITMIME</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   STARTTLS</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       220 Ready to start TLS</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: DEBUG =&gt; TLS session initialized :)</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   EHLO </div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       250-smtp.qq.com, 250-PIPELINING, 250-SIZE 73400320, 250-AUTH LOGIN PLAIN, 250-AUTH=LOGIN, 250-MAILCOMPRESS, 250 8BITMIME</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: DEBUG =&gt; SMTP-AUTH: Using LOGIN authentication method</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   AUTH LOGIN</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       334 VXNlcm5hbWU6</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   </div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       334 UGFzc3dvcmQ6</div><div class="line">Jul 12 17:53:07 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   </div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       235 Authentication successful</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: DEBUG =&gt; User authentication was successful (Method: LOGIN)</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   MAIL FROM:&lt;email@email.com&gt;</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       250 Ok</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   RCPT TO:&lt;neroxps@gmail.com&gt;</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       250 Ok</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending:   DATA</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: INFO =&gt; Sending message body</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: Setting content-type: text/plain</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: SUCCESS =&gt; Received:       250 Ok: queued as</div><div class="line">Jul 12 17:53:08 1890ce4a57bf sendEmail[172]: Email was sent successfully!  From: &lt;email@email.com&gt; To: &lt;neroxps@gmail.com&gt; Subject: [『服务器警报恢复』 Gen8-ipmi:02-CPU] Server: [smtp.qq.com:587]</div><div class="line">0</div><div class="line">zabbix 参数1 = neroxps@gmail.com</div><div class="line">zabbix 参数2 = 『服务器警报恢复』 Gen8-ipmi:02-CPU</div><div class="line">zabbix 参数3 = 告警主机: Gen8-ipmi</div><div class="line">告警时间: 2017.07.12 17:50:58</div><div class="line">告警等级: High</div><div class="line">告警信息: Gen8-ipmi CPU温度过高-test006</div><div class="line">告警项目: 02-CPU</div><div class="line">问题详情: 02-CPU: 40 ℃</div><div class="line">当前状态: OK: 40 ℃</div><div class="line">事件ID: 4858</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/" data-id="cj57yn7ov000udnqjv2rh41j8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Zabbix-Installation-Docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/01/Zabbix-Installation-Docker/" class="article-date">
+  <time datetime="2017-06-30T16:00:00.000Z" itemprop="datePublished">2017-07-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IT技术-Linux/">IT技术 Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Zabbix-搭建文档"><a href="#Zabbix-搭建文档" class="headerlink" title="Zabbix 搭建文档"></a>Zabbix 搭建文档</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>计划使用 docker 搭建 Zabbix 监控系统。</p>
+<h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>参考 <a href="https://yeasy.gitbooks.io/docker_practice/content/install/ubuntu.html" target="_blank" rel="external">Ubuntu、Debian 系列安装 Docker</a></p>
+<h2 id="部署-Mariadb-Server"><a href="#部署-Mariadb-Server" class="headerlink" title="部署 Mariadb-Server"></a>部署 Mariadb-Server</h2><h3 id="一、建立数据库本地目录"><a href="#一、建立数据库本地目录" class="headerlink" title="一、建立数据库本地目录"></a>一、建立数据库本地目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/zabbix/database/mysql</div><div class="line">mkdir ~/zabbix/database/conf.d</div></pre></td></tr></table></figure>
+<h3 id="二、运行-Mariadb-Server-Docker"><a href="#二、运行-Mariadb-Server-Docker" class="headerlink" title="二、运行 Mariadb-Server Docker"></a>二、运行 Mariadb-Server Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">docker run --name zabbix-db \</div><div class="line">--restart=always \</div><div class="line">-e MYSQL_ROOT_PASSWORD=<span class="string">'mysql_root_password'</span> \</div><div class="line">-e MYSQL_DATABASE=zabbix \</div><div class="line">-e MYSQL_USER=zabbix \</div><div class="line">-e MYSQL_PASSWORD=zabbix \</div><div class="line">-v /home/nero/zabbix/database/mysql:/var/lib/mysql \</div><div class="line">-v /home/nero/zabbix/database/conf.d:/etc/mysql/conf.d \</div><div class="line">-d mariadb</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这里会产生一个问题，由于默认的 mariadb 是使用<code>latin1</code>字符集来创建数据库，这时候我们在 Zabbix 录入中文字符的时候会导致出错，故此需要进入 mariadb-docker 内删除新建好的<code>zabbix</code>数据库，再使用<code>utf8</code>新建数据库。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it zabbix-db mysql -uroot -p<span class="string">'mysql_root_password'</span></div><div class="line">MariaDB [(none)]&gt; drop database zabbix;</div><div class="line">MariaDB [(none)]&gt; create database zabbix default charset utf8;</div></pre></td></tr></table></figure>
+<p>此时，数据库已经以 utf8 新建好了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MariaDB [(none)]&gt; show create database zabbix;</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">| Database | Create Database                                                 |</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">| zabbix   | CREATE DATABASE `zabbix` /*!40100 DEFAULT CHARACTER SET utf8 */ |</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</div><div class="line"></div><div class="line">MariaDB [(none)]&gt;quit</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2017年07月15日更新<br>怪自己看文档不仔细，今天扒 zabbix 的部署文档发现，我应该运行 mariadb 容器的时候就要定义数据库字符编码。<br><a href="https://www.zabbix.com/documentation/3.2/manual/installation/containers" target="_blank" rel="external">Zabbix Documentation 3.2-5 Installation from containers</a></p>
+</blockquote>
+<p><strong>注意，这里我是使用 mariadb，和 zabbix 官方文档使用是 mysql 的 docker，参数会有所不同。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">docker run --name zabbix-db \</div><div class="line">--restart=always \</div><div class="line">-e MYSQL_ROOT_PASSWORD=&apos;mysql_root_password&apos; \</div><div class="line">-e MYSQL_DATABASE=zabbix \</div><div class="line">-e MYSQL_USER=zabbix \</div><div class="line">-e MYSQL_PASSWORD=zabbix \</div><div class="line">-v /home/nero/zabbix/database/mysql:/var/lib/mysql \</div><div class="line">-v /home/nero/zabbix/database/conf.d:/etc/mysql/conf.d \</div><div class="line">-d mariadb --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
+<h2 id="部署-Zabbix-Server-MySQL-Docker"><a href="#部署-Zabbix-Server-MySQL-Docker" class="headerlink" title="部署 Zabbix-Server-MySQL Docker"></a>部署 Zabbix-Server-MySQL Docker</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker run --name zabbix-server \</div><div class="line">--link zabbix-db:mysql-server \</div><div class="line">--restart=always \</div><div class="line">-e MYSQL_USER=zabbix \</div><div class="line">-e MYSQL_PASSWORD=zabbix \</div><div class="line">-p 10051:10051 \</div><div class="line">-d zabbix/zabbix-server-mysql</div></pre></td></tr></table></figure>
+<h2 id="部署-Zabbix-WEB-nginx-MySQL-Docerk"><a href="#部署-Zabbix-WEB-nginx-MySQL-Docerk" class="headerlink" title="部署 Zabbix-WEB-nginx-MySQL Docerk"></a>部署 Zabbix-WEB-nginx-MySQL Docerk</h2><p>由于 Zabbix 图形字体中文显示会产生乱码，故此需要将中文字体放入 Zabbix 的 WEB 目录中，并修改一个 php 文件才可以修正中文乱码问题。</p>
+<h3 id="一、下载官方-zabbix-web-nginx-mysql-镜像"><a href="#一、下载官方-zabbix-web-nginx-mysql-镜像" class="headerlink" title="一、下载官方 zabbix-web-nginx-mysql 镜像"></a>一、下载官方 zabbix-web-nginx-mysql 镜像</h3><p><code>docker pull zabbix-web-nginx-mysql</code></p>
+<h3 id="二、上传中文字体-simhei-ttf（本例使用黑体字体）"><a href="#二、上传中文字体-simhei-ttf（本例使用黑体字体）" class="headerlink" title="二、上传中文字体 simhei.ttf（本例使用黑体字体）"></a>二、上传中文字体 simhei.ttf（本例使用黑体字体）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir ~/zabbix-web-docker-cn</div><div class="line">rz <span class="comment">#使用 rz 命令传输文件，如何传输本文档不体现</span></div></pre></td></tr></table></figure>
+<h3 id="三、编写-Dockerfile-文件"><a href="#三、编写-Dockerfile-文件" class="headerlink" title="三、编写 Dockerfile 文件"></a>三、编写 Dockerfile 文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/zabbix-web-docker-cn/Dockerfile</div><div class="line">FROM zabbix/zabbix-web-nginx-mysql</div><div class="line">COPY simhei.ttf /usr/share/zabbix/fonts</div><div class="line">EXPOSE 80/TCP 443/TCP</div><div class="line">WORKDIR /usr/share/zabbix</div><div class="line">RUN sed -i <span class="string">'s/graphfont/simhei/g'</span> ./include/defines.inc.php</div><div class="line">VOLUME [<span class="string">"/etc/ssl/nginx"</span>]</div><div class="line">CMD [<span class="string">"/run_zabbix_component.sh"</span>, <span class="string">"frontend"</span>, <span class="string">"mysql"</span>, <span class="string">"nginx"</span>]</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="四、构建镜像"><a href="#四、构建镜像" class="headerlink" title="四、构建镜像"></a>四、构建镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">$ docker build -t nero/zabbix-web-nginx-mysql .</div><div class="line"></div><div class="line">Sending build context to Docker daemon  9.755MB</div><div class="line">Step 1/7 : FROM zabbix/zabbix-web-nginx-mysql</div><div class="line"> ---- 256dc87663d0</div><div class="line">Step 2/7 : COPY simhei.ttf /usr/share/zabbix/fonts</div><div class="line"> ---- 5743f1ab270b</div><div class="line">Removing intermediate container 78381e68fbbe</div><div class="line">Step 3/7 : EXPOSE 80/TCP 443/TCP</div><div class="line"> ---- Running <span class="keyword">in</span> 0c6786e828fc</div><div class="line"> ---- d24d892858a6</div><div class="line">Removing intermediate container 0c6786e828fc</div><div class="line">Step 4/7 : WORKDIR /usr/share/zabbix</div><div class="line"> ---- dc7c79f00b1c</div><div class="line">Removing intermediate container e6975c59dbc8</div><div class="line">Step 5/7 : RUN sed -i <span class="string">'s/graphfont/simhei/g'</span> ./include/defines.inc.php</div><div class="line"> ---- Running <span class="keyword">in</span> 27e5405d3ca7</div><div class="line"> ---- 6ca4c53d4b51</div><div class="line">Removing intermediate container 27e5405d3ca7</div><div class="line">Step 6/7 : VOLUME /etc/ssl/nginx</div><div class="line"> ---- Running <span class="keyword">in</span> 8f28060ed68e</div><div class="line"> ---- 2b4307bc9c9a</div><div class="line">Removing intermediate container 8f28060ed68e</div><div class="line">Step 7/7 : CMD /run_zabbix_component.sh frontend mysql nginx</div><div class="line"> ---- Running <span class="keyword">in</span> 184feb09f237</div><div class="line"> ---- b6da55ae29b6</div><div class="line">Removing intermediate container 184feb09f237</div><div class="line">Successfully built b6da55ae29b6</div><div class="line">Successfully tagged nero/zabbix-web-nginx-mysql:latest</div></pre></td></tr></table></figure>
+<h3 id="五、运行镜像"><a href="#五、运行镜像" class="headerlink" title="五、运行镜像"></a>五、运行镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">docker run --name zabbix-web \</div><div class="line">--link zabbix-db:mysql-server \</div><div class="line">--link zabbix-server:zabbix-server \</div><div class="line">-e MYSQL_USER=zabbix \</div><div class="line">-e MYSQL_PASSWORD=zabbix \</div><div class="line">-e PHP_TZ=<span class="string">'Asia/Hong_Kong'</span> \</div><div class="line">-e ZBX_SERVER_NAME=<span class="string">'Rslnc monit Server'</span> \</div><div class="line">-p 80:80 \</div><div class="line">--restart=always \</div><div class="line">-d nero/zabbix-web-nginx-mysql</div></pre></td></tr></table></figure>
+<h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><h3 id="数据库编码格式导致中文输入字符无法保存"><a href="#数据库编码格式导致中文输入字符无法保存" class="headerlink" title="数据库编码格式导致中文输入字符无法保存"></a>数据库编码格式导致中文输入字符无法保存</h3><p>由于之前使用的 docker 创建的 zabbix 数据库默认是以<code>latin1</code>字符编码创建的，故此在问题输入『消息』的时候会报字符编码错误。</p>
+<p>那么数据库里面已经有原始数据存在，所以我需要将数据导出，再将数据转换成<code>utf8</code>编码。</p>
+<blockquote>
+<p>参考：# <a href="http://www.cnblogs.com/iloveyoucc/p/4763244.html" target="_blank" rel="external">MySQL数据库从GBK转换到UTF-8最简单解决方案（也适用于其它编码转换）</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it zabbix-db bash</div><div class="line"><span class="comment"># mysqldump -d -u root -p'mysql_root_password' zabbix &gt; /etc/mysql/conf.d/zabbix.sql</span></div><div class="line"><span class="comment"># mysqldump --default-character-set=utf8 -t -u root -p'mysql_root_password' zabbix &gt; /etc/mysql/conf.d/zabbix-data.sql</span></div><div class="line"><span class="comment"># sed -i 's/latin1/utf8/g' /etc/mysql/conf.d/zabbix.sql</span></div><div class="line"><span class="comment"># mysql -uroot -p'mysql_root_password'</span></div><div class="line">MariaDB [(none)]&gt; drop database zabbix;</div><div class="line">MariaDB [(none)]&gt; create database zabbix default charset utf8;</div><div class="line">MariaDB [(none)]&gt; use zabbix;</div><div class="line">MariaDB [zabbix]&gt; <span class="built_in">source</span> /etc/mysql/conf.d/zabbix.sql</div><div class="line">MariaDB [zabbix]&gt; <span class="built_in">source</span> /etc/mysql/conf.d/zabbix-data.sql</div><div class="line">MariaDB [zabbix]&gt; quit</div><div class="line"><span class="comment"># exit</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/" data-id="cj57yn7p40014dnqjzqhwq78u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-GoodERP-Setup-Debian-8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/15/GoodERP-Setup-Debian-8/" class="article-date">
+  <time datetime="2017-06-14T16:00:00.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/15/GoodERP-Setup-Debian-8/">记 GoodERP 部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li><a href="www.gooderp.org">GoodERP 官方网址</a></li>
+<li><a href="https://github.com/osbzr/gooderp_addons" target="_blank" rel="external">GoodERP GitHub</a> </li>
+<li><a href="https://github.com/osbzr/base" target="_blank" rel="external">GoodERP 核心基于 Odoo 项目</a></li>
+<li><a href="http://best.gooderp.org/" target="_blank" rel="external">GoodERP 论坛</a></li>
+</ul>
+<h1 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h1><ul>
+<li>系统：Debian 8 最小化安装</li>
+<li>内存：4G </li>
+<li>硬盘：40G </li>
+</ul>
+<blockquote>
+<p>参考官方论坛：<a href="http://best.gooderp.org/d/7" target="_blank" rel="external">Debian\ubuntu上源码安装GoodERP</a></p>
+</blockquote>
+<h2 id="GoodERP-需要准备"><a href="#GoodERP-需要准备" class="headerlink" title="GoodERP 需要准备"></a>GoodERP 需要准备</h2><p>由于 GoodERP 是基于 Odoo 做的二次开发，故此可以参考 Odoo 的源码搭建文档。</p>
+<ul>
+<li><strong>Python 2.7</strong></li>
+<li><strong>PostgreSQL</strong></li>
+<li><strong>Nodejs</strong></li>
+</ul>
+<h3 id="切换国内163源"><a href="#切换国内163源" class="headerlink" title="切换国内163源"></a>切换国内163源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list</div><div class="line">deb http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">EOF</div><div class="line">sudo apt update &amp;&amp; sudo apt -y upgrade</div></pre></td></tr></table></figure>
+<h3 id="安装必要的软件"><a href="#安装必要的软件" class="headerlink" title="安装必要的软件"></a>安装必要的软件</h3><blockquote>
+<p><strong>注意：由于使用了 nodesource.com 的安装脚本，建议搭建翻墙环境运行以下命令</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y curl wget git vim unzip python python-setuptools\</div><div class="line">&amp;&amp; curl -sL https://bootstrap.pypa.io/get-pip.py | sudo -E python - \</div><div class="line">&amp;&amp; curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \</div><div class="line">&amp;&amp; sudo apt-get install -y nodejs \</div><div class="line">&amp;&amp; sudo npm config set registry https://registry.npm.taobao.org \</div><div class="line">&amp;&amp; sudo npm install -g less \</div><div class="line">&amp;&amp; sudo apt-get -y build-dep python-lxml \</div><div class="line">&amp;&amp; sudo apt-get -y install libldap2-dev libsasl2-dev \</div><div class="line">&amp;&amp; curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \</div><div class="line">&amp;&amp; echo &apos;40e8b906de658a2221b15e4e8cd82565a47d7ee8 wkhtmltox.deb&apos; | sha1sum -c - \</div><div class="line">&amp;&amp; sudo dpkg --force-depends -i wkhtmltox.deb \</div><div class="line">&amp;&amp; sudo apt-get -y install -f --no-install-recommends</div></pre></td></tr></table></figure>
+<h1 id="PostgreSQL-安装"><a href="#PostgreSQL-安装" class="headerlink" title="PostgreSQL 安装"></a>PostgreSQL 安装</h1><h2 id="通过-apt-get-安装-PostgreSQL"><a href="#通过-apt-get-安装-PostgreSQL" class="headerlink" title="通过 apt-get 安装 PostgreSQL"></a>通过 apt-get 安装 PostgreSQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y postgresql postgresql-server-dev-9.4</div></pre></td></tr></table></figure>
+<h2 id="配置-PostgreSQL"><a href="#配置-PostgreSQL" class="headerlink" title="配置 PostgreSQL"></a>配置 PostgreSQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u postgres createuser --createdb --no-createrole --no-superuser --pwprompt good #创建数据库用户good，输入两次密码good</div></pre></td></tr></table></figure>
+<h1 id="GoodERP-安装"><a href="#GoodERP-安装" class="headerlink" title="GoodERP 安装"></a>GoodERP 安装</h1><h2 id="步骤1：新建-good-用户"><a href="#步骤1：新建-good-用户" class="headerlink" title="步骤1：新建 good 用户"></a>步骤1：新建 good 用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo adduser good</div><div class="line">sudo su good</div><div class="line">cd ~</div></pre></td></tr></table></figure>
+<h2 id="步骤2：从-Github-中下载-GoodERP-源代码"><a href="#步骤2：从-Github-中下载-GoodERP-源代码" class="headerlink" title="步骤2：从 Github 中下载 GoodERP 源代码"></a>步骤2：从 Github 中下载 GoodERP 源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone http://github.com/osbzr/gooderp_addons </div><div class="line">git clone http://github.com/osbzr/base</div><div class="line">exit</div></pre></td></tr></table></figure>
+<h2 id="步骤3：修改-pip-源为国内源（豆瓣）"><a href="#步骤3：修改-pip-源为国内源（豆瓣）" class="headerlink" title="步骤3：修改 pip 源为国内源（豆瓣）"></a>步骤3：修改 pip 源为国内源（豆瓣）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo mkdir ~/.pip</div><div class="line">cat &lt;&lt;EOF | sudo tee ~/.pip/pip.conf</div><div class="line">[global]</div><div class="line">index-url = https://pypi.douban.com/simple</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h2 id="步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）"><a href="#步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）" class="headerlink" title="步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）"></a>步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r base/requirements.txt -i https://pypi.douban.com/simple \</div><div class="line">&amp;&amp; sudo pip install simplejson httplib2 -i https://pypi.douban.com/simple</div></pre></td></tr></table></figure>
+<h1 id="配置-GoodERP"><a href="#配置-GoodERP" class="headerlink" title="配置 GoodERP"></a>配置 GoodERP</h1><h2 id="编辑-gooderp-conf"><a href="#编辑-gooderp-conf" class="headerlink" title="编辑 ~/gooderp.conf"></a>编辑 ~/gooderp.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/gooderp.conf</div><div class="line">[options]</div><div class="line">db_user = good</div><div class="line">db_password = good</div><div class="line">addons_path = /home/good/gooderp_addons</div><div class="line">logfile = /home/good/gooderp.log</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><h3 id="1-创建服务文件"><a href="#1-创建服务文件" class="headerlink" title="1. 创建服务文件"></a>1. 创建服务文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/gooderp.service </div><div class="line">[Unit]</div><div class="line">Description=GoodERP</div><div class="line">Documentation=http://www.gooderp.org/</div><div class="line">After=network.target postgresql.service</div><div class="line"></div><div class="line">[Service]</div><div class="line"># Ubuntu/Debian convention:</div><div class="line">Type=simple</div><div class="line">User=good</div><div class="line">ExecStart=/usr/bin/python /home/good/base/odoo-bin -c /home/good/gooderp.conf</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="2-让配置文件生效"><a href="#2-让配置文件生效" class="headerlink" title="2. 让配置文件生效"></a>2. 让配置文件生效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl daemon-reload</div></pre></td></tr></table></figure>
+<h3 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable gooderp.service</div><div class="line">sudo systemctl enable postgresql.service</div><div class="line">sudo systemctl start gooderp.service</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/" data-id="cj57yn7oo000ndnqjgfnjbwn6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-给_Seafile_部署_onlyoffice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/27/给_Seafile_部署_onlyoffice/" class="article-date">
+  <time datetime="2017-05-26T16:00:00.000Z" itemprop="datePublished">2017-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Seafile/">Seafile</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/27/给_Seafile_部署_onlyoffice/">给 Seafile 部署 onlyoffice</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><blockquote>
+<p>参考 <a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">《Docker 从入门到实践》</a></p>
+</blockquote>
+<p>我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
+<h3 id="给-Docker-添加加速器"><a href="#给-Docker-添加加速器" class="headerlink" title="给 Docker 添加加速器"></a>给 Docker 添加加速器</h3><p>因为 Docker 的镜像服务器是在国外，所以我们给 Docker 添加国内镜像加速器，这里我使用阿里云的镜像加速器，如何申请阿里云的镜像加速器请自行百度。</p>
+<p>编辑 /usr/lib/systemd/system/docker.service 找到 <code>ExecStart=/usr/bin/dockerd</code> 改成如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com</div></pre></td></tr></table></figure>
+<p><strong>注：–registry-mirror= 后的网址请修改成阿里云申请的加速器地址</strong></p>
+<p>修改后重载 systemd 配置、启动 Docker、设置 Docker 为开机自启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div><div class="line">systemctl start docker</div><div class="line">systemctl enable docker</div></pre></td></tr></table></figure>
+<h3 id="部署-OnlyOffice-documentserver"><a href="#部署-OnlyOffice-documentserver" class="headerlink" title="部署 OnlyOffice-documentserver"></a>部署 OnlyOffice-documentserver</h3><ul>
+<li>构建 OnlyOffice-documentserver 镜像</li>
+</ul>
+<p>这里，你有两个选择</p>
+<ol>
+<li>部署官方的 onlyoffice Docker 镜像，但因为官方的 Docker 镜像里没有中文字体，故此显示中文字体上会出现各种异常。</li>
+<li>我基于官方的 Docker 镜像制作了一个 Dockerfile <a href="https://github.com/neroxps/Docker-Only-Office-Chinese-font" target="_blank" rel="external">项目地址</a>，只要利用这个 Dockerfile 构建镜像即可。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/neroxps/Docker-Only-Office-Chinese-font.git</div><div class="line">cd Docker-Only-Office-Chinese-font</div><div class="line">docker build -t onlyoffice/chinese .</div></pre></td></tr></table></figure>
+<blockquote>
+<p>winfont 目录下是 windows 下的中文字体，如果你有其他字体需要，也可以将字体上传到这个目录里面，再构建镜像。</p>
+</blockquote>
+<p>构建完毕后查看下我们现在的镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server Docker-Only-Office-Chinese-font]# docker images</div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">onlyoffice/chinese          latest              5065553b1240        About a minute ago   1.68GB</div><div class="line">onlyoffice/documentserver   latest              f5ff5f9ec0c4        2 weeks ago          1.41GB</div></pre></td></tr></table></figure>
+<p>onlyoffice 的 documentserver 镜像是提供在线编辑服务的，镜像内已包含了 nginx 服务器，支持 80 端口和 443 端口，如果有合法证书，我们可以使用 https 连接。</p>
+<blockquote>
+<p>onlyoffice-documentserver Docker 使用方法参考 <a href="https://github.com/ONLYOFFICE/Docker-DocumentServer" target="_blank" rel="external">Docker-DocumentServer</a></p>
+</blockquote>
+<ul>
+<li>将证书复制到 onlyoffice 证书目录路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#假设当前目录在证书目录下</div><div class="line">mkdir -p /app/onlyoffice/DocumentServer/data/certs</div><div class="line">cp fullchain1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.crt</div><div class="line">cp privkey1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.key</div><div class="line">openssl dhparam -out /app/onlyoffice/DocumentServer/data/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
+<ul>
+<li>生成 onlyoffice 日志目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /app/onlyoffice/DocumentServer/logs</div></pre></td></tr></table></figure>
+<h3 id="运行-OnlyOffice-documentserver"><a href="#运行-OnlyOffice-documentserver" class="headerlink" title="运行 OnlyOffice-documentserver"></a>运行 OnlyOffice-documentserver</h3><p>完成部署后我们就可以运行 OnlyOffice-documentserver 了。</p>
+<p>由于我的 Seafile 是用 nginx 部署了 https，443端口已被占用了，大家如果公网 ip 多可以忽略，我是部署在内网，公网是 ADSL，故此只有一个公网 ip，所以 OnlyOffice-documentserver 不能使用 443 端口了。</p>
+<ul>
+<li>使用 https</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 7443:443 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<ul>
+<li>使用 http</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 780:80 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<p>这时候我们可以运行 <code>docker logs office</code> 来观察运行情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server certs]# docker logs office</div><div class="line">guest</div><div class="line"> * Starting PostgreSQL 9.3 database server                               [ OK ] </div><div class="line"> * Starting message broker rabbitmq-server                               [ OK ] </div><div class="line">Starting redis-server: redis-server.</div><div class="line">Starting supervisor: supervisord.</div><div class="line">Generating AllFonts.js, please wait...Done</div><div class="line">onlyoffice-documentserver:docservice: stopped</div><div class="line">onlyoffice-documentserver:docservice: started</div><div class="line">onlyoffice-documentserver:converter: stopped</div><div class="line">onlyoffice-documentserver:converter: started</div></pre></td></tr></table></figure>
+<p>通过 web 访问 <a href="https://demo.domain.com:7443" target="_blank" rel="external">https://demo.domain.com:7443</a> 可以看到 『Document Server is running』表明服务已经正常运行了。</p>
+<h3 id="配置-Seafile-6-1-0，让其使用-onlyoffice"><a href="#配置-Seafile-6-1-0，让其使用-onlyoffice" class="headerlink" title="配置 Seafile 6.1.0，让其使用 onlyoffice"></a>配置 Seafile 6.1.0，让其使用 onlyoffice</h3><blockquote>
+<p>参考 <a href="https://manual.seafile.com/deploy/only_office.html" target="_blank" rel="external">Seafile Manual/Only Office</a></p>
+</blockquote>
+<ul>
+<li>编辑 seahub_settings.py 加入下方配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Enable Only Office</div><div class="line">ENABLE_ONLYOFFICE = True</div><div class="line">VERIFY_ONLYOFFICE_CERTIFICATE = True</div><div class="line">ONLYOFFICE_APIJS_URL = &apos;https://demo.domain.com:7443/web-apps/apps/api/documents/api.js&apos;</div><div class="line">ONLYOFFICE_FILE_EXTENSION = (&apos;doc&apos;, &apos;docx&apos;, &apos;ppt&apos;, &apos;pptx&apos;, &apos;xls&apos;, &apos;xlsx&apos;, &apos;odt&apos;, &apos;fodt&apos;, &apos;odp&apos;, &apos;fodp&apos;, &apos;ods&apos;, &apos;fods&apos;)</div></pre></td></tr></table></figure>
+<p><strong>注1：其中 <code>VERIFY_ONLYOFFICE_CERTIFICATE</code> 选项如果 onlyoffice 使用了 https 的话可以选择更改为 True 提高安全性，如果是使用 http 协议则改为 False</strong></p>
+<p><strong>注2：如果没使用 memcached 的话，还需要执行 <code>rm /tmp/seahub_cached/</code>清空缓存</strong></p>
+<ul>
+<li>重启 seahub 使得配置生效</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#假设当前在 seafile-server-latest 目录下</div><div class="line">rm -f ../conf/seahub_settings.pyc</div><div class="line">./seahub.sh restart-fastcgi</div></pre></td></tr></table></figure>
+<p>尽情享受吧！</p>
+<h3 id="使用体会"><a href="#使用体会" class="headerlink" title="使用体会"></a>使用体会</h3><p>onlyoffice 还是不错的，加载速度快，界面友善，我与同事测试过，多人同时编辑一个文件的时候毫无问题。</p>
+<p>但是它目前缺点也十分明显，界面没有中文语言，对中文支持也不好，例如我们在 word 里面的字体叫『等线』，但是 onlyoffice 里面叫 『DengXian』，有时候它并不能识别，故此会识别成默认英文字体，导致一堆口口。</p>
+<p>据说 Seafile 在端午节后会着重优化 onlyoffice 的体验，我们期待吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/" data-id="cj57yn7pq001tdnqjjvf0s7kz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017-04-18-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/2017-04-18-blog/" class="article-date">
+  <time datetime="2017-04-17T16:00:00.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/日记/">日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/2017-04-18-blog/">最近小记（2017年04月18日）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开年至今，一直非常忙碌，过年前后将老婆公司送的华硕 VM510LI 装成黑苹果，并逐步完善了。</p>
+<p>但是好景不长，更新 macOS 10.12.4 正式版后睡眠唤醒屏幕无显示，仅有背光。郁闷了我很久，该情况在10.12.3也出现，后来更换显卡 ig 解决的，现在又出现，我将情况发到 tonymacx86 请教 RehabMan 大神（<a href="https://www.tonymacx86.com/threads/macos10-12-4-wake-up-black-screen-only-backlight.218828/" target="_blank" rel="external">macOS10.12.4 Wake up black screen(Only backlight)</a>），谁知道大神给我说，我的 hotpatch 太复杂了，他也没空调试，让我使用静态方式来修改 ACPI。</p>
+<p>只是最近工作都比较多，屁事一堆，今天终于比较有空，继续研究下怎么修复这个问题。（然而既然有空搞，为何浪费时间来写这篇废话呢？xD）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/04/18/2017-04-18-blog/" data-id="cj57yn7nv0001dnqjl03boycr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日记/">日记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Combo-Audio-Ext-Mic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/13/Combo-Audio-Ext-Mic/" class="article-date">
+  <time datetime="2017-03-12T16:00:00.000Z" itemprop="datePublished">2017-03-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/黑苹果/">黑苹果</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/13/Combo-Audio-Ext-Mic/">使二合一声卡耳机麦克风生效整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。</p>
+<blockquote>
+<p>帖子链接：<a href="http://bbs.pcbeta.com/viewthread-1734702-1-1.html" target="_blank" rel="external">【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想</a></p>
+</blockquote>
+<h1 id="修改-AppleALC"><a href="#修改-AppleALC" class="headerlink" title="修改 AppleALC"></a>修改 AppleALC</h1><h2 id="过程整理"><a href="#过程整理" class="headerlink" title="过程整理"></a>过程整理</h2><p>根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样，他内置麦克风有效节点是 Node 0x1a 而我的是 Node 0x1b，故此我并不可以直接使用他的驱动以及方法。</p>
+<p>后来我看他的过程，是使用 layout13，他 layout13 本来就有 LineIn 这个线路输入节点，而我并没有，Pathmap 里面也没有关于 0x19 （25）节点的路径，故此我声卡要耳机麦克风生效的话，必须使用符合以下条件。</p>
+<ul>
+<li>layout4.xml 设定 Inputs 的 Mic 和 LineIn。</li>
+<li>添加 LineIn 的 MuteGPIO（如果你的节点是 VREF_80 或者其他数值的话）</li>
+<li>PlatformsX.xml 中需要添加 Node 0X19 的有效路径。</li>
+<li>PinConfigData.kext 里添加 Node 0x19的 ConfigData。</li>
+</ul>
+<blockquote>
+<p>关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：<a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></p>
+</blockquote>
+<h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
+<ul>
+<li>MuteGPIO 由 Noid 0x19 的VREF_80 0x50+0x0100+0x19 &gt; 1342242841（我的 Node 节点是 VREF_HIZ，但是从 ID3 和 ID13 提取的都有这个，当时我不确定是否这个值会影响结果，故此我也加进去了）</li>
+<li>SignalProcessing 可以放在 Mic，也可以放在 LineIn，放在那里那里就有麦克风降噪。详细可以看看紫米的帖子<strong><a href="http://bbs.pcbeta.com/viewthread-623626-1-1.html" target="_blank" rel="external">完整製作仿冒 LegacyHDA.kext (12/16)</a></strong></li>
+</ul>
+<h2 id="Platforms4-xml"><a href="#Platforms4-xml" class="headerlink" title="Platforms4.xml"></a>Platforms4.xml</h2><p>在 AppleALC 里面，ALC233 ID4 的 PathMaps 是没有 Node 0x19 的路径的，因为 Node 19在我们的 Codec 里面根本不是有效节点。</p>
+<p>但既然关云长羽说尝试一下将 Node 0x19这个当成有效的 LineIn 节点来做，那么我就直接按照仿冒贴的方法，找到 0X19的 PathMaps。（怎么找请看上面说到的紫米帖）</p>
+<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-02.png" alt="PathMaps配置"></p>
+<h2 id="PinConfigData-kext-添加-Node-0X19-的-ConfigData"><a href="#PinConfigData-kext-添加-Node-0X19-的-ConfigData" class="headerlink" title="PinConfigData.kext 添加 Node 0X19 的 ConfigData"></a>PinConfigData.kext 添加 Node 0X19 的 ConfigData</h2><p>这里我偷了下懒，直接从 ID3 和 ID13 复制了 019开头的四组节点信息过来，因为同款声卡，Codec 是一样的，既然前人已经写了数据，那么应该差不了多少。</p>
+<p>提取 AppleALC ID4 的 ConfigData</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F90 </div><div class="line">01B71C20 01B71D00 01B71EA0 01B71F90 </div><div class="line">02171C30 02171D10 02171E21 02171F01 </div><div class="line">01470C02</div></pre></td></tr></table></figure>
+<p>AppleALC 提取的 ID13</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F99 </div><div class="line">02171C20 02171D10 02171E21 02171F03 </div><div class="line">01A71C30 01A71D01 01A71EA0 01A71F99 </div><div class="line">01971C40 01971D10 01971E81 01971F03</div></pre></td></tr></table></figure>
+<p>后来我将 Node 0X19 从 ID13提取出来，然后放入 ID4 的 ConfigData 中，最终的 ConfigData（其中我将最后一个数字改成1，并不是必须，我看紫米的帖子后瞎折腾的，后来成功后发现可用，也就留着没改了。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F90 </div><div class="line">01B71C10 01B71D00 01B71EA0 01B71F90 </div><div class="line">02171C30 02171D10 02171E21 02171F01 </div><div class="line">01971C20 01971D10 01971E81 01971F01</div></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>OK 修改好 AppleALC 编译后，测试一下关云长羽的方法，的确成功了，线路输入有了，而且也有电频输入。</p>
+<p>可是，发现了一个问题，第二次插入后再也无法切换回线路输入，而且耳机插入后，又像以前那样只有背景声了。（感觉问题更糟糕了）</p>
+<p>用 EAPD-Codec-Commander-master RM 项目的 widget_dump.sh 查看，发现一开机因为我用了脚本，开机是设置 0X19为24，故此第一次插入是正常的，然而拔出后，0X19变成02了，而 0X1B（内置麦克风节点）变成24，再插入耳机，这两个数字不会变了，一直是那样。</p>
+<p>后来反复研究无果，编译 AppleALC，修改了无数遍 layout 和 Pathmap，折腾的死去活来的。</p>
+<p>第二天，复习关云长羽的帖子，发现他提到的 ALCPlugFix 帖子，我又去看了下这个项目的代码和关云长羽提到的 main.m 文件源码部分，不会编程，但是我发现了一个比较有趣的地方。</p>
+<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-03.png" alt="main.m"></p>
+<h1 id="使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定"><a href="#使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定" class="headerlink" title="使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定"></a>使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定</h1><p>ALCPlugFix 这个程序，作者没有写任何的说明，我也是从关云长羽的帖子得知这个程序。</p>
+<p><strong><a href="https://github.com/goodwin/ALCPlugFix" target="_blank" rel="external">ALCPlugFix 项目地址</a></strong></p>
+<p>后来发现个程序会检测耳机的插入和拔出情况，根据插入或者拔出，可以运行 Shell。</p>
+<p>我现在需要的就是：</p>
+<p>插入耳机的时候 Node 0x19 Pin Widget Control 为 24，Node 0X1B Pin Widget Control 为 02。</p>
+<p>拔出耳机时候 Node 0x19 Pin Widget Control 为 02，Node 0X1B Pin Widget Control 为 24。</p>
+<p>最终我根据上章节结果里截图的设置。并且编译后运行 ALCPlugFix 后，耳机的所有问题都得到解决了。</p>
+<p>还发现作者已经写好了开机自运行的安装脚本。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>下载我编译好的 <strong><a href="https://blog.neroxps.cn/blog/macOS/ALCPlugFix.zip" target="_blank" rel="external">ALCPlugFix.zip</a></strong>（编译只适合 ALC233 的情况，如果是需要运行其他的 hda-verb 命令，自己按照上图填好你需要的 hda-verb 命令。）</p>
+<p>cd 到 ALCPlugFix 的解压目录，运行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x install.sh</div><div class="line">sudo ./install.sh</div></pre></td></tr></table></figure>
+<p>脚本会安装 ALCPlugFix 和 hda-verb 到 /usr/bin，然后安装 good.win.ALCPlugFix.plist 自启动服务，并加载。（hda-verb 需要放入 CodecCommander.kext）</p>
+<p>和我一样都是 9CC3 的朋友可以直接下载我做好的 <strong><a href="https://blog.neroxps.cn/blog/macOS/AppleALC_For_ALC233_LayoutID4.zip" target="_blank" rel="external">AppleALC_For_ALC233_LayoutID4.zip</a></strong>驱动。</p>
+<p>提供 <strong><a href="https://blog.neroxps.cn/blog/macOS/AppleALC_For_ALC233_LayoutID4_Codec.zip" target="_blank" rel="external">AppleALC_For_ALC233_LayoutID4 源码参考</a></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/" data-id="cj57yn7ok000hdnqj9pyjxqi8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-9CC3-EFI-README" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/09/9CC3-EFI-README/" class="article-date">
+  <time datetime="2017-03-08T16:00:00.000Z" itemprop="datePublished">2017-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/黑苹果/">黑苹果</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/09/9CC3-EFI-README/">华硕 VM510L EFI 分享 9CC3笔记本主板芯片通用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><p>本文件适用于华硕 9CC3 笔记本芯片组。查看方法，win 下鲁大师 &gt; 详细报表。</p>
+<p>本 CLOVER 所有的 ACPI 修改均使用 Hotpatch 方式，补丁模块化，故无 DSDT。</p>
+<p>本 EFI 在 VM510LI 测试通过</p>
+<p>欢迎各位 9CC3 笔记本芯片组的朋友测试，可加群一齐讨论与反馈问题 QQ 群号:621151130</p>
+<p>EFI 下载地址：<a href="https://blog.neroxps.cn/blog/macOS/9CC3-EFI-2017-03-09.zip" target="_blank" rel="external">9CC3-EFI-2017-03-09.zip</a></p>
+<h2 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h2><ul>
+<li>CLOVER （Clover 目录，请放置在 EFI目录下。需要注意的只有两个地方，CLOVER 的 ACPI 文件夹和 Kext 文件夹。）</li>
+<li>Hotpatch （ 所使用到的 hotpatch 源代码。）</li>
+<li>Library/Extensions/DummyX86PP_MBP121_800.kext （建议放在系统盘 /Library/Extensions 下并修复权限，DummyX86PP_MBP121_800.kext 是为了修改 X86PlatformPlugin 中的机型数据，将最低 1300MHz 频率改成最低 800MHz。（可要可不要））</li>
+<li>UHD-4K/SSDT-Config.aml（如果是4K 屏幕请替换此文件到 CLOVER/ACPI/patched。</li>
+<li>usr/bin/hda-verb （睡眠唤醒无声及开机耳机只有背景声使用，配合 CodecCommander.kext 使用，详见帖子 <a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></li>
+</ul>
+<h2 id="ACPI-文件说明"><a href="#ACPI-文件说明" class="headerlink" title="ACPI 文件说明"></a>ACPI 文件说明</h2><h3 id="SSDT-BATT-VM510LI-aml"><a href="#SSDT-BATT-VM510LI-aml" class="headerlink" title="SSDT-BATT-VM510LI.aml"></a>SSDT-BATT-VM510LI.aml</h3><blockquote>
+<p>ASUS R557LI 无需使用此 SSDT，仅需放入 ACPIBatteryManager.kext<br>ASUS W519LI 电量无法显示，暂时未知什么问题导致。#2017年03月09日10:24:06</p>
+</blockquote>
+<p><strong>作用：</strong></p>
+<p>修复 9CC3 的电量显示，需要配合 ACPIBatteryManager.kext 驱动使用。</p>
+<p><strong>使用方法：</strong></p>
+<ol>
+<li>在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-BATT-VM510LI.aml</li>
+<li>EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</li>
+</ol>
+<p>补丁1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Comment：change Method(TACH,1,N) to XACH, optionally pair with SSDT-BATT-VM510LI.aml</div><div class="line">Find：54414348 09</div><div class="line">Replace：58414348 09</div></pre></td></tr></table></figure>
+<p>补丁2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Comment：change Method(_BIX,0,N) to XBIX, optionally pair with SSDT-BATT-VM510LI.aml</div><div class="line">Find：5F424958 00</div><div class="line">Replace：58424958 00</div><div class="line">``` </div><div class="line"></div><div class="line"></div><div class="line">补丁3：</div></pre></td></tr></table></figure>
+<p>Comment：change Method(BIFA,0,N) to XIFA, optionally pair with SSDT-BATT-VM510LI.aml<br>Find：42494641 00<br>Replace：58494641 00<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">补丁4：</div></pre></td></tr></table></figure></p>
+<p>Comment：change Method(SMBR,3,N) to XMBR, optionally pair with SSDT-BATT-VM510LI.aml<br>Find：534D4252 0B<br>Replace：584D4252 0B<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">补丁5：</div></pre></td></tr></table></figure></p>
+<p>Comment：change Method(ECSB,7,N) to XCSB, optionally pair with SSDT-BATT-VM510LI.aml<br>Find：45435342 07<br>Replace：58435342 07<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">补丁6：</div></pre></td></tr></table></figure></p>
+<p>Comment：change Method(SMBW,5,N) to XMBW, optionally pair with SSDT-BATT-VM510LI.aml<br>Find：534D4257 0D<br>Replace：584D4257 0D<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### SSDT-CodecCommander.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">用于配置 CodecCommander.kext，修复睡眠唤醒无声问题。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 将本 SSDT 放入 EFI &gt; CLOVER &gt; ACPI &gt; Patches，并且 SortedOrder 加入 SSDT-CodecCommander.aml。</div><div class="line">2. 将 CodecCommander.kext 放入 CLOVER &gt; Kext</div><div class="line"></div><div class="line">### SSDT-Config.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">用于配置 Hotpatch 其他补丁，例如 SSDT-PNLF.aml、SSDT-IGPU.aml 等都需要读取这 SSDT 里面的配置。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">将本 SSDT 放入 EFI &gt; CLOVER &gt; ACPI &gt; Patches。</div><div class="line"></div><div class="line">**配置说明：**</div></pre></td></tr></table></figure></p>
+<p>// configuration data for other SSDTs in this pack</p>
+<p>DefinitionBlock(“”, “SSDT”, 2, “hack”, “RMCF”, 0)<br>{<br>    Device(RMCF)<br>    {<br>        Name(_ADR, 0)   // do not remove</p>
+<pre><code>    Method(HELP)
+    {
+        Store(&quot;TYPE indicates type of the computer. 0: desktop, 1: laptop&quot;, Debug)
+        Store(&quot;HIGH selects display type. 1: high resolution, 2: low resolution&quot;, Debug)
+        Store(&quot;DPTS for laptops only. 1: enables/disables DGPU in _WAK/_PTS&quot;, Debug)
+        Store(&quot;SHUT enables shutdown fix. 1: disables _PTS code when Arg0==5&quot;, Debug)
+        Store(&quot;AUDL indicates audio layout-id for patched AppleHDA. Ones: no injection&quot;, Debug)
+        Store(&quot;BKLT indicates the type of backlight control. 0: IntelBacklight, 1: AppleBacklight&quot;, Debug)
+        Store(&quot;LMAX indicates max for IGPU PWM backlight. Ones: Use default, other values must match framebuffer&quot;, Debug)
+    }
+
+    // TYPE: Indicates the type of computer... desktop or laptop
+    //
+    //  0: desktop
+    //  0: 台式机
+    //  1: laptop
+    //  1: 笔记本
+    Name(TYPE, 1)
+
+    // HIGH: High resolution/low resolution selection.  Affects IGPU injection.
+    // HIGH: 高分辨率/低分辨率选择。 影响IGPU注入。
+    // For 1600x900+ on Sandy/Ivy, use 1
+    // 对于1600x900 +在Sandy / Ivy，请使用1
+    // For UHD/QHD+ on Haswell/Broadwell, use 1
+    // 对于Haswell / Broadwell的UHD / QHD +，请使用1
+    // Others (low resolution), use 0
+    // 其他（低分辨率），使用0
+    Name(HIGH, 0)
+
+    // DPTS: For laptops only: set to 1 if you want to enable and
+    // DPTS：仅适用于笔记本电脑：如果要启用和，请设置为1
+    //  disable the DGPU _PTS and _WAK.
+    //  禁用DGPU _PTS和_WAK。
+    //  0: does not manipulate the DGPU in _WAK and _PTS
+    //  0：不操作_WAK和_PTS中的DGPU
+    //  1: disables the DGPU in _WAK and enables it in _PTS
+    //  1：禁用_WAK中的DGPU，并在_PTS中启用它
+    Name(DPTS, 0)
+
+    // SHUT: Shutdown fix, disable _PTS code when Arg0==5 (shutdown)
+    // SHUT：关闭修复，当Arg0 == 5（关闭）时禁用_PTS代码，
+    //  0: does not affect _PTS behavior during shutdown
+    //  0：在关闭期间不影响_PTS行为
+    //  1: disables _PTS code during shutdown
+    //  1：在关闭期间禁用_PTS代码
+    Name(SHUT, 0)
+
+    // AUDL: Audio Layout
+    // AUDL：音频布局
+    // The value here will be used to inject layout-id for HDEF and HDAU
+    // 这里的值将用于注入HDEF和HDAU的layout-id
+    // If set to Ones, no audio injection will be done.
+    // 如果设置为Ones，则不会进行音频插入。
+    Name(AUDL, Ones)
+
+    // BKLT: Backlight control type
+    // BKLT：背光控制类型
+    // 0: Using IntelBacklight.kext
+    // 0：使用IntelBacklight.kext
+    // 1: Using AppleBacklight.kext + AppleBacklightInjector.kext
+    // 1：使用AppleBacklight.kext + AppleBacklightInjector.kext
+    Name(BKLT, 0)
+
+    // LMAX: Backlight PWM MAX.  Must match framebuffer in use.
+    // LMAX：背光PWM最大值。 必须匹配使用中的帧缓冲区。
+    // Ones: Default will be used (0x710 for Ivy/Sandy, 0xad9 for Haswell/Broadwell)
+    // Ones：将使用默认（Ivy / Sandy 的默认值是 0x710，Haswell / Broadwell 的默认值是 0xad9）
+    // Other values: must match framebuffer
+    // 其他值：必须与framebuffer相匹配
+    Name(LMAX, Ones)
+}
+</code></pre><p>}<br>//EOF<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上面 RM 都注释了，我以 Google 翻译过来，方便理解。</div><div class="line"></div><div class="line">* 第一个值，**TYPE** 从 SSDT-IGPU 调用，影响显卡 ID 的注入。查看了下代码，好像是区分是否注入高分屏 ID 有关。</div><div class="line">* 第二个值，**HIGH** 从 SSDT-IGPU 调用，影响点卡 ID 的注入。当 TYPE 设置成笔记本才生效。</div><div class="line">* 第三个值，**DPTS** 从 SSDT-PTSWAK 调用，这个 SSDT 是重写了睡眠和唤醒的方法，加入了一些我们补丁需要用到的代码，这里设置 1 则会在睡眠的时候开启显卡，唤醒后关闭显卡。</div><div class="line">* 第四个值，**SHUT** 从 SSDT-PTSWAK 调用，这个 SSDT 功能同上，这里设置 1 则会在关机的时候禁用 _PTS，和 Shutdown fix 同理。</div><div class="line">* 第五个值，**AUDL** 从 SSDT-HDAU 和 SSDT-HDEF 调用，这两个 SSDT 前者负责注入声卡 ID，后者则负责注入 HDMI 声卡 ID，而这个值就是控制两个 SSDT 注入声卡的行为，如果写 Ones 则什么都不注入，如果写 3，则声卡的 layout-id 则为 3。</div><div class="line">* 第六个值，**BKLT** 从 SSDT-PNLF 调用，这个 SSDT 看名字大家应该都很熟悉，就是加入 PNLF 设备，用来启用我们的笔记本亮度调节驱动的，而这个值是控制亮度调节的驱动是用哪一种，0 是使用 IntelBacklight.kext，1 是使用 AppleBacklight.kext + AppleBacklightInjector.kext。</div><div class="line">* 第七个值，**LMAX** 从 SSDT-PNLF 调用，这个 SSDT 同上，这个值是设置背光的 PWM 最大值，Ones 是使用默认值，Ivy / Sandy 的默认值是 0x710，Haswell / Broadwell 的默认值是 0xad9，你也可以设置其他值，但是这个值必须与 framebuffer 相匹配。</div><div class="line"></div><div class="line"></div><div class="line">### SSDT-DAMD-VM510LI.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">用于屏蔽 9CC3 芯片组的独立显卡（AMD 与 NVIDIA 通用）</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-DAMD-VM510LI.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line"></div><div class="line">补丁1：</div></pre></td></tr></table></figure></p>
+<p>Comment：change Method(SGOF,0,Serialized) to XGOF, optionally pair with SSDT-DAMD-VM510LI.aml<br>Find：53474F46 08<br>Replace：58474F46 08<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">补丁2：</div></pre></td></tr></table></figure></p>
+<p>Comment：Comment:change Method(_REG,0,Serialized) to XREG, optionally pair with SSDT-DAMD-VM510LI.aml<br>Find：5F524547 02<br>Replace：58524547 02<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### SSDT-Fn-VM510LI.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">配合 AsusNBFnKeys.kext 驱动使用，修改 _QE0 和 _QF0 方法而实现 FN 亮度调整功能。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-Fn-VM510LI.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line"></div><div class="line">补丁1：</div></pre></td></tr></table></figure></p>
+<p>Comment：change _Q0E to XQ0E, optionally pair with SSDT-Fn.aml<br>Find：5F513045<br>Replace：58513045<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">补丁2：</div></pre></td></tr></table></figure></p>
+<p>Comment：change _Q0F to XQ0F, optionally pair with SSDT-Fn.aml<br>Find：5F513046<br>Replace：58513046<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### SSDT-HDAU.aml 与 SSDT-HDEF.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">注入音频 layout-id 使得声卡出声，需要配合 AppleALC.kext。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-HDEF.aml 和 SSDT-HDEF.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line">3. 修改 SSDT-Config.aml 的 AUDL 字段为所对应的  layout-id，9CC3 是 ALC233（ALC3236），最佳的 layout-id 是4，故此此值应当设置为4。</div><div class="line"></div><div class="line">补丁：</div></pre></td></tr></table></figure></p>
+<p>Comment：change B0D3 to HDAU, optionally pair with SSDT-HDAU.aml<br>Find：42304433<br>Replace：48444155<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">### SSDT-IGPU.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">注入显卡 AAPL,snb-platform-id 驱动核心显卡。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-IGPU.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line">3. 修改 SSDT-Config.aml 的 TYPE 字段为 1。</div><div class="line">4. 如果是高分辨率（超过1080P）屏幕，请修改 SSDT-Config.aml 的 HIGH 字段为 1，其余分辨率为 0。</div><div class="line"></div><div class="line"></div><div class="line">补丁：</div></pre></td></tr></table></figure></p>
+<p>Comment：change GFX0 to IGPU, optionally pair with SSDT-IGPU.aml<br>Find：47465830<br>Replace：49475055<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### SSDT-PNLF.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">亮度调节补丁，本补丁支持两种驱动方式。（AppleBacklight.kext + AppleBacklightInjector.kext 或 IntelBacklight.kext） 目前使用的是 IntelBacklight.kext</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; SortedOrder 加入 SSDT-PNLF.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line">### SSDT-PRW.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">修复 USB 睡眠唤醒补丁。</div><div class="line"></div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-PRW.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line"></div><div class="line">补丁：</div></pre></td></tr></table></figure></p>
+<p>Comment：change Method(GPRW,2,N) to XPRW, pair with SSDT-PRW.aml<br>Find：47505257 02<br>Replace：58505257 02<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### SSDT-SMBUS.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">SMBUS fix 补丁。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; SortedOrder 加入 SSDT-SMBUS.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line">### SSDT-ssdtPRGen.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">CPU I5 5200U 的 SSDT，用于加载 X86PlatformPlugin 的机型参数，使得加载原生电源管理。</div><div class="line"></div><div class="line">如果是其他 CPU，请自行使用 ssdtPRGen.sh 生成自己 CPU 的 SSDT，重命名为 SSDT-ssdtPRGen.aml 放入 EFI &gt; CLOVER &gt; ACPI &gt; Patches。</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; SortedOrder 加入 SSDT-ssdtPRGen.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line">### SSDT-XOSI.aml</div><div class="line"></div><div class="line">**作用：**</div><div class="line"></div><div class="line">OS Check Fix</div><div class="line"></div><div class="line">**使用方法：**</div><div class="line"></div><div class="line">1. 在 CLOVER 的 config.list &gt; ACPI &gt; DSDT &gt; Patches 添加以下补丁，并且 SortedOrder 加入 SSDT-XOSI.aml。</div><div class="line">2. EFI &gt; CLOVER &gt; ACPI &gt; Patches 放入本 SSDT。</div><div class="line"></div><div class="line">补丁：</div></pre></td></tr></table></figure></p>
+<p>Comment：change _OSI to XOSI, pair with SSDT-XOSI.aml<br>Find：5F4F5349<br>Replace：584F5349<br>```</p>
+<h2 id="Kext-文件说明"><a href="#Kext-文件说明" class="headerlink" title="Kext 文件说明"></a>Kext 文件说明</h2><table>
+<thead>
+<tr>
+<th>驱动名称</th>
+<th>版本号</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACPIBatteryManager.kext</td>
+<td>2016-1118</td>
+<td>配合 SSDT-BATT-VM510LI 显示电量。</td>
+</tr>
+<tr>
+<td>AppleALC.kext</td>
+<td>1.0.19</td>
+<td>驱动声卡，需配合 SSDT-HDAU.aml 与 SSDT-HDEF.aml 使用。 另注入 ID 需在 SSDT-Config.aml 的 AUDL 字段注入 layout-id，根据 9CC3 提取的 Codec 得出，最符合的 layout-id 是4。</td>
+</tr>
+<tr>
+<td>ApplePS2SmartTouchPad.kext</td>
+<td>v4.7 beta 5</td>
+<td>触摸板与键盘驱动</td>
+</tr>
+<tr>
+<td>AsusNBFnKeys.kext</td>
+<td>v2.6</td>
+<td>华硕专用 FN 驱动，需配合 SSDT-Fn-VM510LI.aml 使用。</td>
+</tr>
+<tr>
+<td>CodecCommander.kext</td>
+<td>2016-0721</td>
+<td>修复睡眠唤醒后无声问题，修复耳机只有背景声问题。</td>
+</tr>
+<tr>
+<td>IntelBacklight.kext</td>
+<td>2017-0206</td>
+<td>显示屏亮度驱动，需配合 SSDT-PNLF.aml 使用。</td>
+</tr>
+<tr>
+<td>RealtekRTL8111.kext</td>
+<td>2015-1230</td>
+<td>有线网卡驱动</td>
+</tr>
+<tr>
+<td>FakeSMC.kext and FakeSMC*.kext</td>
+<td>2017-0117</td>
+<td>黑苹果必备驱动</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Clover-配置文件-Config-list-说明"><a href="#Clover-配置文件-Config-list-说明" class="headerlink" title="Clover 配置文件 Config.list 说明"></a>Clover 配置文件 Config.list 说明</h2><h3 id="ACPI"><a href="#ACPI" class="headerlink" title="ACPI"></a>ACPI</h3><h4 id="Fixes"><a href="#Fixes" class="headerlink" title="Fixes"></a>Fixes</h4><ul>
+<li>AddDTGP_0001 （添加 DTGP 方法，修复 ACPI 出现的 DTGP 错误）</li>
+<li>FIX_ACST_4000000 （修复 ASUS 与 Apple 的电源管理寄存器命名冲突）</li>
+<li>FIX_RTC_20000 （RTC Fix 从RTC设备中排除IRQ（0））</li>
+<li>FIX_S3D_2000000 （通过更正_S3D方法解决一些睡眠/唤醒问题。）</li>
+<li>FIX_WAK_200000 （同等于 DSDT Fix _WAK Arg0 v2 补丁）</li>
+<li>FixHPET_0010 （同等于 DSDT HPET Fix 补丁）</li>
+<li>FixIPIC_0040 （同等于 IRQ Fix 补丁）</li>
+<li>NewWay_80000000 （应用新补丁，Clover 从 4006 版本开始取消此选项。）</li>
+</ul>
+<h4 id="Patches"><a href="#Patches" class="headerlink" title="Patches"></a>Patches</h4><ul>
+<li>change _OSI to XOSI, pair with SSDT-XOSI.aml （配合 SSDT-XOSI 使用，同等于 OS Check Fix。）</li>
+<li>change EHC1 to EH01 （修复 USB 设备命名，使其更符合 Apple 规范。）</li>
+<li>change EHC2 to EH02 （同上）</li>
+<li>Rename _DSM to XDSM （修复开机关于 _DSM 五国问题。）</li>
+<li>change GFX0 to IGPU, optionally pair with SSDT-IGPU.aml （修改 GFX0 设备名称，更符合 Apple 规范，另配合 SSDT-IGPU.aml 注入显卡 ID，驱动显卡。）</li>
+<li>change Method(GPRW,2,N) to XPRW, pair with SSDT-PRW.aml （配合 SSDT-PRW.aml 修复 USB 唤醒问题，同等于 USB3 _PRW 0X0D（或0X6D）(instant wake）。）</li>
+<li>change B0D3 to HDAU, optionally pair with SSDT-HDAU.aml （配合 SSDT-HDAU.aml 与 SSDT-HDEF.aml 和 AppleALC.kext 驱动声卡。）</li>
+<li>change _Q0E to XQ0E, optionally pair with SSDT-Fn.aml （配合 SSDT-Fn.aml 与 AsusNBFnKeys.kext 使 FN f5 f6 的亮度调整按键生效。）</li>
+<li>change _Q0F to XQ0F, optionally pair with SSDT-Fn.aml （同上。）</li>
+<li>change Method(TACH,1,N) to XACH, optionally pair with SSDT-BATT-VM510LI.aml （配合 SSDT-BATT-VM510LI.aml 和 ACPIBatteryManager.kext 显示电量。）</li>
+<li>change Method(_BIX,0,N) to XBIX, optionally pair with SSDT-BATT-VM510LI.aml （同上。）</li>
+<li>change Method(BIFA,0,N) to XIFA, optionally pair with SSDT-BATT-VM510LI.aml（同上。）</li>
+<li>change Method(SMBR,3,N) to XMBR, optionally pair with SSDT-BATT-VM510LI.aml（同上。）</li>
+<li>change Method(ECSB,7,N) to XCSB, optionally pair with SSDT-BATT-VM510LI.aml（同上。）</li>
+<li>change Method(SMBW,5,N) to XMBW, optionally pair with SSDT-BATT-VM510LI.aml（同上。）</li>
+<li>change Method(SGOF,0,Serialized) to XGOF, optionally pair with SSDT-DAMD-VM510LI.aml （配合 SSDT-DAMD-VM510LI.aml 屏蔽独显。）</li>
+<li>Comment:change Method(_REG,0,Serialized) to XREG, optionally pair with SSDT-DAMD-VM510LI.aml （同上。）</li>
+</ul>
+<h4 id="DropTables"><a href="#DropTables" class="headerlink" title="DropTables"></a>DropTables</h4><ul>
+<li>SSDT Cpc_Tabl （禁用主板提供的 cpuPR SSDT，换成我们使用 ssdtPRGen 生成的 ssdt。）</li>
+<li>DMAR</li>
+</ul>
+<h3 id="KernelAndKextPatches"><a href="#KernelAndKextPatches" class="headerlink" title="KernelAndKextPatches"></a>KernelAndKextPatches</h3><h4 id="KextsToPatch"><a href="#KextsToPatch" class="headerlink" title="KextsToPatch"></a>KextsToPatch</h4><ul>
+<li>AirPort Extreme （我更换了 BCM94352hmb 使用的补丁，9CC3 是 ar9565 的网卡，无需此补丁，我这里禁用了此补丁）</li>
+<li>AirPortBrcm4360 - fcvo, 10.12.x (credit the-darkvoid) （同上）</li>
+<li>10.11-BCM94352-5GHz-US-FCC-dv （同上）</li>
+<li>TRIM function for non-Apple SSDs （为 SSDT 开启 TRIM）</li>
+<li>Boot graphics glitch, 10.12.dp1 （改善 10.12 开机撕裂苹果图标的补丁，只能加快撕裂的消失时间，并不能完全去掉。）</li>
+<li>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.12.0 ( (based on Austere.J patch) （取消 10.12 限制 minStolenSize 的限制，9CC3 可以在 Bios 设置，故此我禁用此补丁。）</li>
+<li>HDMI-audio 0x16260006 （HDMI 音频补丁）</li>
+<li>change 15 port limit to 20 in AppleUSBXHCIPCI （15个 USB 端口限制补丁，9CC3 并没有超过15个，可不用此补丁，这里默认禁用）</li>
+</ul>
+<h3 id="SMBIOS"><a href="#SMBIOS" class="headerlink" title="SMBIOS"></a>SMBIOS</h3><ul>
+<li>机型选择 MacBookPro12,1</li>
+<li>如果开机遇到 can’t perform kext scan: no kext summary 的五国，请勾上 Trust，默认是启用 Trust。</li>
+</ul>
+<h1 id="AR9565"><a href="#AR9565" class="headerlink" title="AR9565"></a>AR9565</h1><p><strong>AR9565 蓝牙无解</strong></p>
+<p>驱动下载地址：<a href="https://blog.neroxps.cn/blog/macOS/9565.zip" target="_blank" rel="external">9565.zip</a></p>
+<p>作者发布下载地址：<a href="http://www.mediafire.com/file/2rjm76vro8ha28l/9565.zip" target="_blank" rel="external">9565.zip</a></p>
+<p>发布地址（需要翻墙）：<a href="https://www.youtube.com/watch?v=4Q_bLKSCFDU" target="_blank" rel="external">Kext for wifi ar9565 for hackintosh macOS Sierra 10.12 (16A323)</a></p>
+<p>使用说明：</p>
+<ol>
+<li>open terminal and write</li>
+<li>defaults write com.apple.finder AppleShowAllFiles YES</li>
+<li>killall Finder</li>
+<li>go to System/Library/Extensions and delete IO80211Family.kext and IO80211FamilyV2.kext</li>
+<li>open kext utility and install corecapture.kext and CoreCaptureResponder.kext</li>
+<li>open clover configurator and mount your efi partition</li>
+<li>go to EFI/CLOVER/kexts/10.12 and move IO80211Family.kext</li>
+<li>reboot enjoy</li>
+</ol>
+<p>My youtube channel <a href="https://www.youtube.com/channel/UCzxRc20c5_bC2zaBFQ4GFsQ" target="_blank" rel="external">https://www.youtube.com/channel/UCzxRc20c5_bC2zaBFQ4GFsQ</a></p>
+<p>Like and fap thanks for watching.</p>
+<ol>
+<li>打开终端 执行 （显示隐藏文件）<br><code>defaults write com.apple.finder AppleShowAllFiles YES</code><br><code>killall Finder</code></li>
+<li>删除S/L/E内的 IO80211Family.kext和IO80211FamilyV2.kext</li>
+<li>使用kext utility 安装 corecapture.kext 和 CoreCaptureResponder.kext</li>
+<li>把IO80211Family.kext放到EFI/CLOVER/kexts/10.12</li>
+<li>重启</li>
+</ol>
+<h1 id="解决-ALC233-唤醒无声及带麦克风耳机只有背景声"><a href="#解决-ALC233-唤醒无声及带麦克风耳机只有背景声" class="headerlink" title="解决 ALC233 唤醒无声及带麦克风耳机只有背景声"></a>解决 ALC233 唤醒无声及带麦克风耳机只有背景声</h1><p>请看此贴 <a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">关于耳机只有背景声及唤醒无声的探讨【更新ALC233解决方案】</a></p>
+<h1 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h1><ol>
+<li>二合一耳机麦克风无输入。</li>
+<li>SD 读卡器 ID 为 0x0129 无解。</li>
+<li>亮度无法保存。</li>
+<li>VGA 无输出。</li>
+<li>ASUS W519LI 电量无法显示，暂时未知什么问题导致。 #2017年03月09日10:24:06</li>
+</ol>
+<h1 id="高分屏"><a href="#高分屏" class="headerlink" title="高分屏"></a>高分屏</h1><p>如 ASUS FL5800L </p>
+<ol>
+<li>更换 UHD 目录下的 SSDT-Config.aml 文件（HIGH 字段改成1）。</li>
+<li>突破高分屏限制开启内屏请参考 <a href="http://bbs.pcbeta.com/viewthread-1730701-1-1.html" target="_blank" rel="external">驱动显卡后4k屏幕点不亮的问题</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/03/09/9CC3-EFI-README/" data-id="cj57yn7o10005dnqjwoj24c90" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
     </div>
   </div>
 
@@ -181,6 +1063,18 @@
         
           <li>
             <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
           </li>
         
       </ul>

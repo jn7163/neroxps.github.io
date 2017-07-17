@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>给 Seafile 部署 onlyoffice | Nero Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装 Docker 参考 《Docker 从入门到实践》  我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。 1curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - 给 Docker 添加加速器因为 Doc">
+<meta name="keywords" content="seafile,onlyoffice">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给 Seafile 部署 onlyoffice">
+<meta property="og:url" content="http://hexo.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/index.html">
+<meta property="og:site_name" content="Nero Blog">
+<meta property="og:description" content="安装 Docker 参考 《Docker 从入门到实践》  我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。 1curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - 给 Docker 添加加速器因为 Doc">
+<meta property="og:updated_time" content="2017-07-17T09:40:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给 Seafile 部署 onlyoffice">
+<meta name="twitter:description" content="安装 Docker 参考 《Docker 从入门到实践》  我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。 1curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - 给 Docker 添加加速器因为 Doc">
+  
+    <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nero Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-给_Seafile_部署_onlyoffice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/27/给_Seafile_部署_onlyoffice/" class="article-date">
+  <time datetime="2017-05-26T16:00:00.000Z" itemprop="datePublished">2017-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Seafile/">Seafile</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      给 Seafile 部署 onlyoffice
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><blockquote>
+<p>参考 <a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">《Docker 从入门到实践》</a></p>
+</blockquote>
+<p>我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
+<h3 id="给-Docker-添加加速器"><a href="#给-Docker-添加加速器" class="headerlink" title="给 Docker 添加加速器"></a>给 Docker 添加加速器</h3><p>因为 Docker 的镜像服务器是在国外，所以我们给 Docker 添加国内镜像加速器，这里我使用阿里云的镜像加速器，如何申请阿里云的镜像加速器请自行百度。</p>
+<p>编辑 /usr/lib/systemd/system/docker.service 找到 <code>ExecStart=/usr/bin/dockerd</code> 改成如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com</div></pre></td></tr></table></figure>
+<p><strong>注：–registry-mirror= 后的网址请修改成阿里云申请的加速器地址</strong></p>
+<p>修改后重载 systemd 配置、启动 Docker、设置 Docker 为开机自启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div><div class="line">systemctl start docker</div><div class="line">systemctl enable docker</div></pre></td></tr></table></figure>
+<h3 id="部署-OnlyOffice-documentserver"><a href="#部署-OnlyOffice-documentserver" class="headerlink" title="部署 OnlyOffice-documentserver"></a>部署 OnlyOffice-documentserver</h3><ul>
+<li>构建 OnlyOffice-documentserver 镜像</li>
+</ul>
+<p>这里，你有两个选择</p>
+<ol>
+<li>部署官方的 onlyoffice Docker 镜像，但因为官方的 Docker 镜像里没有中文字体，故此显示中文字体上会出现各种异常。</li>
+<li>我基于官方的 Docker 镜像制作了一个 Dockerfile <a href="https://github.com/neroxps/Docker-Only-Office-Chinese-font" target="_blank" rel="external">项目地址</a>，只要利用这个 Dockerfile 构建镜像即可。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/neroxps/Docker-Only-Office-Chinese-font.git</div><div class="line">cd Docker-Only-Office-Chinese-font</div><div class="line">docker build -t onlyoffice/chinese .</div></pre></td></tr></table></figure>
+<blockquote>
+<p>winfont 目录下是 windows 下的中文字体，如果你有其他字体需要，也可以将字体上传到这个目录里面，再构建镜像。</p>
+</blockquote>
+<p>构建完毕后查看下我们现在的镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server Docker-Only-Office-Chinese-font]# docker images</div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">onlyoffice/chinese          latest              5065553b1240        About a minute ago   1.68GB</div><div class="line">onlyoffice/documentserver   latest              f5ff5f9ec0c4        2 weeks ago          1.41GB</div></pre></td></tr></table></figure>
+<p>onlyoffice 的 documentserver 镜像是提供在线编辑服务的，镜像内已包含了 nginx 服务器，支持 80 端口和 443 端口，如果有合法证书，我们可以使用 https 连接。</p>
+<blockquote>
+<p>onlyoffice-documentserver Docker 使用方法参考 <a href="https://github.com/ONLYOFFICE/Docker-DocumentServer" target="_blank" rel="external">Docker-DocumentServer</a></p>
+</blockquote>
+<ul>
+<li>将证书复制到 onlyoffice 证书目录路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#假设当前目录在证书目录下</div><div class="line">mkdir -p /app/onlyoffice/DocumentServer/data/certs</div><div class="line">cp fullchain1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.crt</div><div class="line">cp privkey1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.key</div><div class="line">openssl dhparam -out /app/onlyoffice/DocumentServer/data/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
+<ul>
+<li>生成 onlyoffice 日志目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /app/onlyoffice/DocumentServer/logs</div></pre></td></tr></table></figure>
+<h3 id="运行-OnlyOffice-documentserver"><a href="#运行-OnlyOffice-documentserver" class="headerlink" title="运行 OnlyOffice-documentserver"></a>运行 OnlyOffice-documentserver</h3><p>完成部署后我们就可以运行 OnlyOffice-documentserver 了。</p>
+<p>由于我的 Seafile 是用 nginx 部署了 https，443端口已被占用了，大家如果公网 ip 多可以忽略，我是部署在内网，公网是 ADSL，故此只有一个公网 ip，所以 OnlyOffice-documentserver 不能使用 443 端口了。</p>
+<ul>
+<li>使用 https</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 7443:443 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<ul>
+<li>使用 http</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 780:80 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<p>这时候我们可以运行 <code>docker logs office</code> 来观察运行情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server certs]# docker logs office</div><div class="line">guest</div><div class="line"> * Starting PostgreSQL 9.3 database server                               [ OK ] </div><div class="line"> * Starting message broker rabbitmq-server                               [ OK ] </div><div class="line">Starting redis-server: redis-server.</div><div class="line">Starting supervisor: supervisord.</div><div class="line">Generating AllFonts.js, please wait...Done</div><div class="line">onlyoffice-documentserver:docservice: stopped</div><div class="line">onlyoffice-documentserver:docservice: started</div><div class="line">onlyoffice-documentserver:converter: stopped</div><div class="line">onlyoffice-documentserver:converter: started</div></pre></td></tr></table></figure>
+<p>通过 web 访问 <a href="https://demo.domain.com:7443" target="_blank" rel="external">https://demo.domain.com:7443</a> 可以看到 『Document Server is running』表明服务已经正常运行了。</p>
+<h3 id="配置-Seafile-6-1-0，让其使用-onlyoffice"><a href="#配置-Seafile-6-1-0，让其使用-onlyoffice" class="headerlink" title="配置 Seafile 6.1.0，让其使用 onlyoffice"></a>配置 Seafile 6.1.0，让其使用 onlyoffice</h3><blockquote>
+<p>参考 <a href="https://manual.seafile.com/deploy/only_office.html" target="_blank" rel="external">Seafile Manual/Only Office</a></p>
+</blockquote>
+<ul>
+<li>编辑 seahub_settings.py 加入下方配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Enable Only Office</div><div class="line">ENABLE_ONLYOFFICE = True</div><div class="line">VERIFY_ONLYOFFICE_CERTIFICATE = True</div><div class="line">ONLYOFFICE_APIJS_URL = &apos;https://demo.domain.com:7443/web-apps/apps/api/documents/api.js&apos;</div><div class="line">ONLYOFFICE_FILE_EXTENSION = (&apos;doc&apos;, &apos;docx&apos;, &apos;ppt&apos;, &apos;pptx&apos;, &apos;xls&apos;, &apos;xlsx&apos;, &apos;odt&apos;, &apos;fodt&apos;, &apos;odp&apos;, &apos;fodp&apos;, &apos;ods&apos;, &apos;fods&apos;)</div></pre></td></tr></table></figure>
+<p><strong>注1：其中 <code>VERIFY_ONLYOFFICE_CERTIFICATE</code> 选项如果 onlyoffice 使用了 https 的话可以选择更改为 True 提高安全性，如果是使用 http 协议则改为 False</strong></p>
+<p><strong>注2：如果没使用 memcached 的话，还需要执行 <code>rm /tmp/seahub_cached/</code>清空缓存</strong></p>
+<ul>
+<li>重启 seahub 使得配置生效</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#假设当前在 seafile-server-latest 目录下</div><div class="line">rm -f ../conf/seahub_settings.pyc</div><div class="line">./seahub.sh restart-fastcgi</div></pre></td></tr></table></figure>
+<p>尽情享受吧！</p>
+<h3 id="使用体会"><a href="#使用体会" class="headerlink" title="使用体会"></a>使用体会</h3><p>onlyoffice 还是不错的，加载速度快，界面友善，我与同事测试过，多人同时编辑一个文件的时候毫无问题。</p>
+<p>但是它目前缺点也十分明显，界面没有中文语言，对中文支持也不好，例如我们在 word 里面的字体叫『等线』，但是 onlyoffice 里面叫 『DengXian』，有时候它并不能识别，故此会识别成默认英文字体，导致一堆口口。</p>
+<p>据说 Seafile 在端午节后会着重优化 onlyoffice 的体验，我们期待吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/" data-id="cj57yn7pq001tdnqjjvf0s7kz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/15/GoodERP-Setup-Debian-8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          记 GoodERP 部署
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/18/2017-04-18-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">最近小记（2017年04月18日）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/ERP-Linux-GoodERP-Odoo/" style="font-size: 10px;">ERP,Linux,GoodERP,Odoo</a> <a href="/tags/GitBlog/" style="font-size: 10px;">GitBlog</a> <a href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/" style="font-size: 10px;">OpenWRT,shadowsocks,shadowsocks-R,免流</a> <a href="/tags/Seafile-Pro/" style="font-size: 10px;">Seafile Pro</a> <a href="/tags/Seafile-Gitblog-seaf-cli/" style="font-size: 10px;">Seafile,Gitblog,seaf-cli</a> <a href="/tags/Seafile-Mysql/" style="font-size: 10px;">Seafile,Mysql</a> <a href="/tags/Zabbix/" style="font-size: 16.67px;">Zabbix</a> <a href="/tags/nginx-http2-https-安全/" style="font-size: 10px;">nginx,http2.https,安全</a> <a href="/tags/seafile-onlyoffice/" style="font-size: 10px;">seafile,onlyoffice</a> <a href="/tags/shadowsocksR/" style="font-size: 10px;">shadowsocksR</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/日记/" style="font-size: 13.33px;">日记</a> <a href="/tags/重庆火锅/" style="font-size: 10px;">重庆火锅</a> <a href="/tags/锐捷-TP-Link-无线/" style="font-size: 10px;">锐捷,TP-Link,无线</a> <a href="/tags/黑苹果-Mac-Hackintosh/" style="font-size: 10px;">黑苹果,Mac,Hackintosh</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS, ACPI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/" style="font-size: 20px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a> <a href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/" style="font-size: 10px;">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/17/images-test/">images-test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/Zabbix-SMTP/">Zabbix 邮件警告</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Nero Hau<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
