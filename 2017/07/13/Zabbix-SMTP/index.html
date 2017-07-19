@@ -12,21 +12,21 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="触发器邮件警告Zabbix 默认的邮箱警告有个 SMTP HELO 的值，我一直不知道怎么填写，反正这个值一直报错，网上爬文一堆都是通过脚本来发邮件的。 部署 sendEmail 环境 参考文献1：Zabbix通过stmp邮件报警 参考文献2：zabbix 3.0.2邮件报警  这里需要用到 sendEmail 下载地址，它是基于 perl 写的一个脚本，如果用 SSL 加密的话需要依赖 perl">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-01.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-02.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-03.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-04.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-05.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-06.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-07.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-08.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-09.png">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-10.png">
-<meta property="og:updated_time" content="2017-07-17T09:40:56.000Z">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-01.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-02.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-03.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-04.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-05.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-06.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-07.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-08.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-09.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-10.png">
+<meta property="og:updated_time" content="2017-07-19T03:44:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zabbix 邮件警告">
 <meta name="twitter:description" content="触发器邮件警告Zabbix 默认的邮箱警告有个 SMTP HELO 的值，我一直不知道怎么填写，反正这个值一直报错，网上爬文一堆都是通过脚本来发邮件的。 部署 sendEmail 环境 参考文献1：Zabbix通过stmp邮件报警 参考文献2：zabbix 3.0.2邮件报警  这里需要用到 sendEmail 下载地址，它是基于 perl 写的一个脚本，如果用 SSL 加密的话需要依赖 perl">
-<meta name="twitter:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-01.png">
+<meta name="twitter:image" content="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/zabbix-01.png">
   
     <link rel="alternate" href="/atom.xml" title="Nero Blog" type="application/atom+xml">
   
@@ -66,7 +66,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.neroxps.cn"></form>
@@ -123,8 +123,8 @@
 <h2 id="Zabbix-设置邮件告警"><a href="#Zabbix-设置邮件告警" class="headerlink" title="Zabbix 设置邮件告警"></a>Zabbix 设置邮件告警</h2><blockquote>
 <p>我这里的 Zabbix 版本是3.2版本，不同版本界面略有不同，据说2.0的版本不需要加脚本参数，3.0开始需要加脚本参数了。</p>
 </blockquote>
-<h3 id="1-创建报价媒介类型"><a href="#1-创建报价媒介类型" class="headerlink" title="1. 创建报价媒介类型"></a>1. 创建报价媒介类型</h3><p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-01.png" alt="zabbix-01"></p>
-<h3 id="2-输入报警媒介类型参数"><a href="#2-输入报警媒介类型参数" class="headerlink" title="2. 输入报警媒介类型参数"></a>2. 输入报警媒介类型参数</h3><p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-02.png" alt="zabbix-02"></p>
+<h3 id="1-创建报价媒介类型"><a href="#1-创建报价媒介类型" class="headerlink" title="1. 创建报价媒介类型"></a>1. 创建报价媒介类型</h3><p><img src="/2017/07/13/Zabbix-SMTP/zabbix-01.png" alt="zabbix-01"></p>
+<h3 id="2-输入报警媒介类型参数"><a href="#2-输入报警媒介类型参数" class="headerlink" title="2. 输入报警媒介类型参数"></a>2. 输入报警媒介类型参数</h3><p><img src="/2017/07/13/Zabbix-SMTP/zabbix-02.png" alt="zabbix-02"></p>
 <p>这里注意，脚本参数顺序不要错，否则会导致发信失败。</p>
 <table>
 <thead>
@@ -152,25 +152,25 @@
 </tr>
 </tbody>
 </table>
-<h3 id="3-配置用户收信邮箱"><a href="#3-配置用户收信邮箱" class="headerlink" title="3. 配置用户收信邮箱"></a>3. 配置用户收信邮箱</h3><p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-03.png" alt="zabbix-03"></p>
+<h3 id="3-配置用户收信邮箱"><a href="#3-配置用户收信邮箱" class="headerlink" title="3. 配置用户收信邮箱"></a>3. 配置用户收信邮箱</h3><p><img src="/2017/07/13/Zabbix-SMTP/zabbix-03.png" alt="zabbix-03"></p>
 <hr>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-04.png" alt="zabbix-04"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-04.png" alt="zabbix-04"></p>
 <hr>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-05.png" alt="zabbix-05"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-05.png" alt="zabbix-05"></p>
 <hr>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-06.png" alt="zabbix-06"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-06.png" alt="zabbix-06"></p>
 <h3 id="4-配置动作"><a href="#4-配置动作" class="headerlink" title="4. 配置动作"></a>4. 配置动作</h3><p>这里我建立一个触发器警告，当触发器条件为真的时候，就发出警告邮件。</p>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-07.png" alt="zabbix-07"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-07.png" alt="zabbix-07"></p>
 <p><strong>注意这里事件源选择触发器</strong></p>
 <hr>
 <p>按图片重复添加动作条件</p>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-08.png" alt="zabbix-08"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-08.png" alt="zabbix-08"></p>
 <hr>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-09.png" alt="zabbix-09"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-09.png" alt="zabbix-09"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">默认接收人：『服务器警报』 &#123;HOST.NAME&#125;:&#123;ITEM.NAME&#125;</div><div class="line"></div><div class="line">默认信息：</div><div class="line">告警主机: &#123;HOSTNAME1&#125;</div><div class="line">告警时间: &#123;EVENT.DATE&#125; &#123;EVENT.TIME&#125;</div><div class="line">告警等级: &#123;TRIGGER.SEVERITY&#125;</div><div class="line">告警信息: &#123;TRIGGER.NAME&#125;</div><div class="line">告警项目: &#123;TRIGGER.KEY1&#125;</div><div class="line">问题详情: &#123;ITEM.NAME&#125;: &#123;ITEM.VALUE&#125;</div><div class="line">当前状态: &#123;TRIGGER.STATUS&#125;: &#123;ITEM.VALUE1&#125;</div><div class="line">事件ID: &#123;EVENT.ID&#125;</div></pre></td></tr></table></figure>
 <p>其余参数按照图片设置，目前还没理解透这里所有选项，这里就不班门弄斧。</p>
 <hr>
-<p><img src="/2017/07/13/Zabbix-SMTP/file/Zabbix-SMTP/zabbix-10.png" alt="zabbix-10"></p>
+<p><img src="/2017/07/13/Zabbix-SMTP/zabbix-10.png" alt="zabbix-10"></p>
 <p>这里是触发器值为假后的操作，你可以自定义恢复公式，也可以按照原来的公式为假后发送邮件，告诉我们这个监控值正常了。</p>
 <p>里面的内容除了<strong>默认接收人</strong>也就是邮件标题外，其余内容和上面的一样。</p>
 <h4 id="调试邮件告警"><a href="#调试邮件告警" class="headerlink" title="调试邮件告警"></a>调试邮件告警</h4><p>监控邮件发送日志，就可以调试邮件的发送状态了。</p>
@@ -179,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/" data-id="cj57yn7ov000udnqjv2rh41j8" class="article-share-link">Share</a>
+      <a data-url="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/" data-id="cj57yn7ov000udnqjv2rh41j8" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
@@ -191,7 +191,7 @@
 <nav id="article-nav">
   
     <a href="/2017/07/15/Zabbix-agent-installation-Debian/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           zabbix-agent 安装及升级
@@ -201,7 +201,7 @@
   
   
     <a href="/2017/07/01/Zabbix-Installation-Docker/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">使用 Docker 部署 Zabbix 3.2 记录</div>
     </a>
   
@@ -216,7 +216,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorieën</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术/">IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT技术-Linux/">IT技术 Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile/">Seafile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Seafile-IT技术/">Seafile,IT技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/饮食/">饮食</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/黑苹果/">黑苹果</a></li></ul>
     </div>
@@ -226,7 +226,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ERP-Linux-GoodERP-Odoo/">ERP,Linux,GoodERP,Odoo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitBlog/">GitBlog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT-shadowsocks-shadowsocks-R-免流/">OpenWRT,shadowsocks,shadowsocks-R,免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Pro/">Seafile Pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Gitblog-seaf-cli/">Seafile,Gitblog,seaf-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seafile-Mysql/">Seafile,Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http2-https-安全/">nginx,http2.https,安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seafile-onlyoffice/">seafile,onlyoffice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocksR/">shadowsocksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆火锅/">重庆火锅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锐捷-TP-Link-无线/">锐捷,TP-Link,无线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh/">黑苹果,Mac,Hackintosh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-ACPI/">黑苹果,Mac,Hackintosh,ASUS, ACPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI/">黑苹果,Mac,Hackintosh,ASUS,VM510LI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-ALC233/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,ALC233</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果-Mac-Hackintosh-ASUS-VM510LI-BCM94252HMB/">黑苹果,Mac,Hackintosh,ASUS,VM510LI,BCM94252HMB</a></li></ul>
     </div>
@@ -245,7 +245,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
     </div>
@@ -255,17 +255,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2017/07/17/images-test/">images-test</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/17/hello-world/">Hello World</a>
-          </li>
         
           <li>
             <a href="/2017/07/15/Zabbix-agent-installation-Debian/">zabbix-agent 安装及升级</a>
@@ -277,6 +269,14 @@
         
           <li>
             <a href="/2017/07/01/Zabbix-Installation-Docker/">使用 Docker 部署 Zabbix 3.2 记录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/15/GoodERP-Setup-Debian-8/">记 GoodERP 部署</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/27/给_Seafile_部署_onlyoffice/">给 Seafile 部署 onlyoffice</a>
           </li>
         
       </ul>
