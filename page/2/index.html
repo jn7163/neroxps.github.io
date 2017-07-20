@@ -1405,248 +1405,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2017/01/14/ubuntu-全局翻墙-自动分流/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nero Hau">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nero Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/14/ubuntu-全局翻墙-自动分流/" itemprop="url">Ubuntu 通过 ShadowsocksR-libev 全局翻墙</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-14T00:00:00+08:00">
-                2017-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT技术-Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">IT技术 Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/14/ubuntu-全局翻墙-自动分流/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/14/ubuntu-全局翻墙-自动分流/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/14/ubuntu-全局翻墙-自动分流/" class="leancloud_visitors" data-flag-title="Ubuntu 通过 ShadowsocksR-libev 全局翻墙">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><p>编译 ShadowsocksR-libev,编译方法详见<a href="https://github.com/breakwa11/shadowsocks-libev" target="_blank" rel="external">编译 shadowsocksR-libev</a></p>
-<h2 id="配置-ShadowsocksR-libev"><a href="#配置-ShadowsocksR-libev" class="headerlink" title="配置 ShadowsocksR-libev"></a>配置 ShadowsocksR-libev</h2><p>新建<code>/etc/shadowsocks-libev/nero.conf</code>添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line"> &quot;server&quot;: &quot;server&quot;,</div><div class="line"></div><div class="line"> &quot;server_port&quot;: server-port,</div><div class="line"></div><div class="line"> &quot;local_address&quot;: &quot;127.0.0.1&quot;,</div><div class="line"></div><div class="line"> &quot;local_port&quot;: 1090,</div><div class="line"></div><div class="line"> &quot;password&quot;: &quot;password&quot;,</div><div class="line"></div><div class="line"> &quot;timeout&quot;: 120,</div><div class="line"></div><div class="line"> &quot;udp_timeout&quot;: 60,</div><div class="line"></div><div class="line"> &quot;method&quot;: &quot;rc4-md5&quot;,</div><div class="line"></div><div class="line"> &quot;protocol&quot;: &quot;auth_sha1&quot;,</div><div class="line"></div><div class="line"> &quot;protocol_param&quot;: &quot;&quot;,</div><div class="line"></div><div class="line"> &quot;obfs&quot;: &quot;http_simple&quot;,</div><div class="line"></div><div class="line"> &quot;obfs_param&quot;: &quot;networksolutions.com&quot;,</div><div class="line"></div><div class="line"> &quot;dns_ipv6&quot;: false,</div><div class="line"></div><div class="line"> &quot;connect_verbose_info&quot;: 0,</div><div class="line"></div><div class="line"> &quot;redirect&quot;: &quot;&quot;,</div><div class="line"></div><div class="line"> &quot;fast_open&quot;: false</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="停止-Shadowsocks-libev-server-运行-并启用-Shadowsocks-libev-redir"><a href="#停止-Shadowsocks-libev-server-运行-并启用-Shadowsocks-libev-redir" class="headerlink" title="停止 Shadowsocks-libev-server 运行,并启用 Shadowsocks-libev-redir"></a>停止 Shadowsocks-libev-server 运行,并启用 Shadowsocks-libev-redir</h2><p>因为我们是客户端不需要 Shadowsocks-libev-server,而默认安装好之后会启动 Shadowsocks-libev-server 所以我们要停止他</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">systemctl stop shadowsocks-libev-server.service</div><div class="line"></div><div class="line">systemctl disable shadowsocks-libev-server.service</div><div class="line"></div><div class="line">systemctl enable shadowsocks-libev-redir@nero.service</div><div class="line"></div><div class="line">systemctl start shadowsocks-libev-redir@nero.service</div></pre></td></tr></table></figure>
-<p>netstat -napt |grep 1090</p>
-<p>回显如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">nero@Nero-pc:~$ sudo netstat -napt |grep regfwlist</div><div class="line"></div><div class="line">Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name</div><div class="line"></div><div class="line">tcp 0 0 127.0.0.1:1090 0.0.0.0:* LISTEN 4665/ss-redir</div></pre></td></tr></table></figure>
-<p>这样表示 Shadowsocks-libev-redir 已经正常工作了</p>
-<p>可以输入<code>systemctl is-enabled shadowsocks-libev-redir@nero.service</code>可以检查服务是否自启动.</p>
-<h2 id="配置-ipset-与-iptables（国内走国内，其余走-ss-redir）"><a href="#配置-ipset-与-iptables（国内走国内，其余走-ss-redir）" class="headerlink" title="配置 ipset 与 iptables（国内走国内，其余走 ss-redir）"></a>配置 ipset 与 iptables（国内走国内，其余走 ss-redir）</h2><p><del>我目前用的是比较傻瓜的方案,国内的IP走国内,其余 IP 全走 shadowsocks-libev-redir</del></p>
-<p>已经使用新的方法，只需要更新 gfwlist 到 dnsmasq 的配置文件，查询到的 ip 直接写入到 ipset，再用 iptables 分流。稍后会更新方法。</p>
-<p>下载配置文件到/etc下,并且导入ipset</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">cd</span> /etc</div><div class="line"></div><div class="line">sudo wget https://cloud.neroxps.cn/seafhttp/files/fa4b4273-cce8-4db3-b49e-faed66b1adf2/ipset.conf</div><div class="line"></div><div class="line">ipset ipset restore -f /etc/ipset.conf</div></pre></td></tr></table></figure>
-<p>配置iptables,由于iptables调用到ipset里面的配置,所以必须先设置好ipset再配iptables,否则会出错.配置不了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">iptables -t nat -A OUTPUT -p tcp -j REDIRECT --to-ports 1090</div><div class="line"></div><div class="line">iptables -t nat -A OUTPUT -m <span class="built_in">set</span> --match-set nogfwnet dst -j RETURN</div><div class="line"></div><div class="line">iptables -t nat -A OUTPUT -d [shadowsocks-server-ip] -j RETURN</div><div class="line"></div><div class="line">iptables -t nat -A OUTPUT -d 192.168.0.0/16 -j RETURN</div><div class="line"></div><div class="line">iptables -t nat -A OUTPUT -d 127.0.0.0/8 -j RETURN</div></pre></td></tr></table></figure>
-<p>配置好后保存iptables</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">iptables-save &gt; /etc /iptables.conf</div></pre></td></tr></table></figure>
-<p>设置开机应用ipset与iptables</p>
-<p>修改<code>/etc/network/interfaces</code>末尾添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">pre-up ipset restore -f /etc/ipset.conf</div><div class="line"></div><div class="line">pre-up iptables-restore &lt; /etc/iptables.conf</div></pre></td></tr></table></figure>
-<p>至此重启可以测试一下,重启后运行以下命令</p>
-<p>sudo iptables -t nat -L -n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">nero@Nero-pc:~$ sudo iptables -t nat -L -n</div><div class="line"></div><div class="line">[sudo] password for nero:</div><div class="line"></div><div class="line">Chain PREROUTING (policy ACCEPT)</div><div class="line"></div><div class="line">target prot opt source destination</div><div class="line"></div><div class="line">Chain INPUT (policy ACCEPT)</div><div class="line"></div><div class="line">target prot opt source destination</div><div class="line"></div><div class="line">Chain OUTPUT (policy ACCEPT)</div><div class="line"></div><div class="line">target prot opt source destination</div><div class="line"></div><div class="line">RETURN all -- 0.0.0.0/0 47.88.192.12</div><div class="line"></div><div class="line">RETURN all -- 0.0.0.0/0 127.0.0.0/8</div><div class="line"></div><div class="line">RETURN all -- 0.0.0.0/0 192.168.0.0/16</div><div class="line"></div><div class="line">RETURN all -- 0.0.0.0/0 0.0.0.0/0 match-set nogfwnet dst</div><div class="line"></div><div class="line">REDIRECT tcp -- 0.0.0.0/0 0.0.0.0/0 redir ports 1090</div><div class="line"></div><div class="line">Chain POSTROUTING (policy ACCEPT)</div><div class="line"></div><div class="line">target prot opt source destination</div></pre></td></tr></table></figure>
-<p>sudo ipset list |more</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">nero@Nero-pc:~$ sudo ipset list |more</div><div class="line"></div><div class="line">Name: nogfwnet</div><div class="line"></div><div class="line">Type: hash:net</div><div class="line"></div><div class="line">Revision: 6</div><div class="line"></div><div class="line">Header: family inet hashsize 4096 maxelem 65536</div><div class="line"></div><div class="line">Size in memory: 244960</div><div class="line"></div><div class="line">References: 1</div><div class="line"></div><div class="line">Members:</div><div class="line"></div><div class="line">103.215.32.0/21</div><div class="line"></div><div class="line">45.248.232.0/22</div><div class="line"></div><div class="line">122.12.15.0/24</div><div class="line"></div><div class="line">103.244.232.0/22</div><div class="line"></div><div class="line">还有很多很多很多很多很多很多很多很多</div></pre></td></tr></table></figure>
-<p>sudo ps aux |grep redir</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">nero@Nero-pc:~$ sudo ps aux |grep redir</div><div class="line"></div><div class="line">root 2864 0.0 0.0 24828 4464 ? Ss 15:34 0:00 /usr/bin/ss-redir -c /etc/shadowsocks-libev/config.json</div><div class="line"></div><div class="line">nero 4654 0.0 0.0 21292 1032 pts/18 S+ 16:13 0:00 grep --color=auto redir</div></pre></td></tr></table></figure>
-<p>回显以上信息表示我们配置已经正常!接下来要解决 DNS 解析的问题!</p>
-<h2 id="使用-dnsmasq-pdnsd-gfwlist-来解决-DNS-污染问题"><a href="#使用-dnsmasq-pdnsd-gfwlist-来解决-DNS-污染问题" class="headerlink" title="使用 dnsmasq+pdnsd+gfwlist 来解决 DNS 污染问题"></a>使用 dnsmasq+pdnsd+gfwlist 来解决 DNS 污染问题</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>Ubuntu 默认已安装了 dnsmasq，只需要安装 pdnsd。</p>
-<p>首先解说下他们的工作原理。</p>
-<p><img src="/2017/01/14/ubuntu-全局翻墙-自动分流/Dnsmasq-gfwlist-pdnsd.png" alt="DNS 防污染流程图"></p>
-<p>综上图所属</p>
-<ol>
-<li><p>dnsmasq 负责全局的 DNS 解析与分类,dnsmasq 接受到DNS请求时与配置文件 /etc/dnsmasq.d/gfwlist.conf 做对比。</p>
-</li>
-<li><p>符合的话丢给 pdnsd,pdnsd 收到解析请求后,将请求用 TCP 方式将域名查询请求丢给 OpenDns。(为何要用 TCP?因为 DNS 默认是 UDP 的传输方式,而并不是所有的 shadowsocks 服务器都支持 UDP 转发,故此使用 pdnsd 是一个比较稳妥的办法)</p>
-</li>
-<li><p>不符合的包则丢给系统默认的 DNS 进行解。</p>
-</li>
-</ol>
-<h3 id="1-配置-dnsmasq"><a href="#1-配置-dnsmasq" class="headerlink" title="1.配置 dnsmasq"></a>1.配置 dnsmasq</h3><p>系统默认会启动一个dnsmasq(据说是用来做缓存)我们需要关闭它,否则会启用两个dnsmasq.</p>
-<p>sudo vim /etc/NetworkManager/NetworkManager.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[main]</div><div class="line"></div><div class="line">plugins=ifupdown,keyfile,ofono</div><div class="line"></div><div class="line"><span class="comment">#dns=dnsmasq</span></div><div class="line"></div><div class="line">[ifupdown]</div><div class="line"></div><div class="line">managed=<span class="literal">false</span></div></pre></td></tr></table></figure>
-<p>将 dns=dnsmasq 注释掉即可.</p>
-<p>配置 dnsmasq.</p>
-<p>sudo vim /etc/dnsmasq.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">server=/githubusercontent.com/127.0.0.1#8053</div><div class="line"></div><div class="line">server=/github.io/127.0.0.1#8053</div></pre></td></tr></table></figure>
-<p>添加 gfwlist 获取域名走 pdnsd 查询,防止污染.</p>
-<h3 id="2-配置-Pdnsd"><a href="#2-配置-Pdnsd" class="headerlink" title="2.配置 Pdnsd"></a>2.配置 Pdnsd</h3><p>Ubuntu 默认没有安装 Pdnsd.</p>
-<p>apt-get install pdnsd</p>
-<p>添加 pdnsd 配置</p>
-<p>sudo vim /usr/share/pdnsd/user.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">global &#123;</div><div class="line"></div><div class="line">perm_cache=2048;</div><div class="line"></div><div class="line">cache_dir=<span class="string">"/var/pdnsd"</span>;</div><div class="line"></div><div class="line">run_as=<span class="string">"root"</span>;</div><div class="line"></div><div class="line">server_port = 8053;</div><div class="line"></div><div class="line">server_ip = 127.0.0.1;</div><div class="line"></div><div class="line">status_ctl = on;</div><div class="line"></div><div class="line">query_method=tcp_only;</div><div class="line"></div><div class="line">min_ttl=1m;</div><div class="line"></div><div class="line">max_ttl=1w;</div><div class="line"></div><div class="line">timeout=5;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line"></div><div class="line">label= <span class="string">"opendns"</span>;</div><div class="line"></div><div class="line">ip = 208.67.222.222, 208.67.220.220;</div><div class="line"></div><div class="line">port = 443;</div><div class="line"></div><div class="line">root_server = on;</div><div class="line"></div><div class="line">uptest= none;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line"></div><div class="line">label= <span class="string">"google dns"</span>;</div><div class="line"></div><div class="line">ip = 8.8.8.8, 8.8.4.4;</div><div class="line"></div><div class="line">root_server = on;</div><div class="line"></div><div class="line">uptest= none;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将配置应用到pdnsd</p>
-<p>sudo vim /etc/default/pdnsd</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># do we start pdnsd ?</span></div><div class="line"></div><div class="line">START_DAEMON=yes</div><div class="line"></div><div class="line"><span class="comment"># auto-mode, overrides /etc/pdsnd.conf if set [see /usr/share/pdnsd/]</span></div><div class="line"></div><div class="line">AUTO_MODE=user</div><div class="line"></div><div class="line"><span class="comment"># optional CLI options to pass to pdnsd(8)</span></div><div class="line"></div><div class="line">START_OPTIONS=</div></pre></td></tr></table></figure>
-<p>启动pdnsd</p>
-<p>systemctl start pdnsd</p>
-<p>设置随系统服务启动</p>
-<p>systemctl enable pdnsd</p>
-<h3 id="3-使用-gfwlist2dnsmasq-生成-dnsmasq-配置文件"><a href="#3-使用-gfwlist2dnsmasq-生成-dnsmasq-配置文件" class="headerlink" title="3.使用 gfwlist2dnsmasq 生成 dnsmasq 配置文件"></a>3.使用 gfwlist2dnsmasq 生成 dnsmasq 配置文件</h3><p><a href="https://github.com/cokebar/gfwlist2dnsmasq" target="_blank" rel="external">gfwlist2dnsmasq</a> 是 github 上的一个项目,他可以通过获取 github 另一个项目 <a href="https://github.com/gfwlist/gfwlist" target="_blank" rel="external">gfwlist</a> 的 gfwlist.txt,生成 /etc/dnsmasq.d/gfwlist.conf</p>
-<p>此脚本有两个,gfwlist2dnsmasq.py 是自动添加 ipset 选项,gfwlist2dnsmasq_noipset.py 是只添加 gfwlist 的域名则走 pdnsd.</p>
-<p>安装git</p>
-<p>sudo apt-get install git</p>
-<p>下载 gfwlist2dnsmasq 项目</p>
-<p>git clone <a href="https://github.com/cokebar/gfwlist2dnsmasq.git" target="_blank" rel="external">https://github.com/cokebar/gfwlist2dnsmasq.git</a></p>
-<p>cd gfwlist2dnsmasq</p>
-<p>chmod +x gfwlist2dnsmasq*.py</p>
-<p>vim ./gfwlist2dnsmasq_noipset</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">mydnsip = <span class="string">'127.0.0.1'</span></div><div class="line"></div><div class="line">mydnsport = <span class="string">'8053'</span></div></pre></td></tr></table></figure>
-<p>将 mydnsport 修改为 8053 ,因为pdnsd我们配置是8053的端口.</p>
-<p>运行脚本获取 dnsmasq 规则文件.</p>
-<p>./gfwlist2dnsmasq_noipset.py</p>
-<p>运行完毕后根目录会出现一个 dnsmasq_list.conf,将其移动到 dnsmasq 规则目录即可.</p>
-<p>sudo mv dnsmasq_list /etc/dnsmasq.d</p>
-<p>重启 dnsmasq</p>
-<p>systemctl restart dnsmasq</p>
-<p>配置 dnsmasq 随系统服务启动</p>
-<p>systemctl enable dnsmasq</p>
-<h3 id="4-测试-DNS-解析情况"><a href="#4-测试-DNS-解析情况" class="headerlink" title="4.测试 DNS 解析情况"></a>4.测试 DNS 解析情况</h3><p>安装 dnsutils</p>
-<p>sudo apt-get install dnsutils</p>
-<p>运行 dig 查询 www.facebook.com</p>
-<p>解析正常的话应当出现<code>star-mini.c10r.facebook.com. 60 IN A 31.13.78.35</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">; &lt;&lt;&gt;&gt; DiG 9.10.3-P4-Ubuntu &lt;&lt;&gt;&gt; @127.0.0.1 www.facebook.com</div><div class="line"></div><div class="line">; (1 server found)</div><div class="line"></div><div class="line">;; global options: +cmd</div><div class="line"></div><div class="line">;; Got answer:</div><div class="line"></div><div class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 46613</div><div class="line"></div><div class="line">;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1</div><div class="line"></div><div class="line">;; OPT PSEUDOSECTION:</div><div class="line"></div><div class="line">; EDNS: version: 0, flags:; udp: 1024</div><div class="line"></div><div class="line">;; QUESTION SECTION:</div><div class="line"></div><div class="line">;www.facebook.com. IN A</div><div class="line"></div><div class="line">;; ANSWER SECTION:</div><div class="line"></div><div class="line">www.facebook.com. 2262 IN CNAME star-mini.c10r.facebook.com.</div><div class="line"></div><div class="line">star-mini.c10r.facebook.com. 60 IN A 31.13.78.35</div><div class="line"></div><div class="line">;; Query time: 124 msec</div><div class="line"></div><div class="line">;; SERVER: 127.0.0.1#53(127.0.0.1)</div><div class="line"></div><div class="line">;; WHEN: Mon Aug 01 21:43:13 CST 2016</div><div class="line"></div><div class="line">;; MSG SIZE rcvd: 90</div></pre></td></tr></table></figure>
-<p>以下是被污染的例子,<code>www.facebook.com. 1126 IN A 59.24.3.173</code>,这个地址根本不是 facebook 的 ip 地址.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">; &lt;&lt;&gt;&gt; DiG 9.10.3-P4-Ubuntu &lt;&lt;&gt;&gt; @202.96.128.86 www.facebook.com</div><div class="line"></div><div class="line">; (1 server found)</div><div class="line"></div><div class="line">;; global options: +cmd</div><div class="line"></div><div class="line">;; Got answer:</div><div class="line"></div><div class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 5400</div><div class="line"></div><div class="line">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0</div><div class="line"></div><div class="line">;; QUESTION SECTION:</div><div class="line"></div><div class="line">;www.facebook.com. IN A</div><div class="line"></div><div class="line">;; ANSWER SECTION:</div><div class="line"></div><div class="line">www.facebook.com. 1126 IN A 59.24.3.173</div><div class="line"></div><div class="line">;; Query time: 8 msec</div><div class="line"></div><div class="line">;; SERVER: 202.96.128.86#53(202.96.128.86)</div><div class="line"></div><div class="line">;; WHEN: Mon Aug 01 21:42:04 CST 2016</div><div class="line"></div><div class="line">;; MSG SIZE rcvd: 50</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2017/01/05/Hackintosh-00/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2430,6 +2188,270 @@ interface FastEthernet 0/17
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/05/基本语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nero Hau">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nero Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/05/基本语法/" itemprop="url">MarkLite 基本语法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-05T00:00:00+08:00">
+                2016-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/test/" itemprop="url" rel="index">
+                    <span itemprop="name">test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/05/基本语法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/05/基本语法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/05/基本语法/" class="leancloud_visitors" data-flag-title="MarkLite 基本语法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在使用MarkLite之前你需要先了解一下关于markdown的基本语法，如果你已经掌握了，请无视本文档，如果还没有，那现在开始学习吧。</p>
+</blockquote>
+<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><ul>
+<li>使用 <code>#</code> 表示标题，一级标题使用一个 <code>#</code> ，二级标题使用两个 <code>##</code> ，以此类推，共有六级标题。</li>
+<li>使用 <code>=====</code> 表示高阶标题，使用 <code>---------</code> 表示次阶标题。</li>
+</ul>
+<ol>
+<li><code>#</code> 和标题之间最好加一个空格。不要问我为什么，貌似有时候不会被识别为标题？已经忘记自己为什么要加空格了，也许是任性。</li>
+<li><code>====</code> 和 <code>----</code> 表示标题时，大于等于2个都可以表示。</li>
+<li>我通常在标题分级时使用标题标记，这个的用处很明了了。</li>
+</ol>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 这是一级标题</div><div class="line">## 这是二级标题</div><div class="line">### 这是三级标题</div><div class="line">###### 这是六级标题</div></pre></td></tr></table></figure>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这是一级标题</div><div class="line">========</div><div class="line"></div><div class="line">这是二级标题</div><div class="line">--------------</div></pre></td></tr></table></figure>
+<h1 id="这是一级标题-1"><a href="#这是一级标题-1" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题-1"><a href="#这是二级标题-1" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="2-引用"><a href="#2-引用" class="headerlink" title="2.引用"></a>2.引用</h3><p>使用 <code>&gt;</code> 表示引用， <code>&gt;&gt;</code> 表示引用里面再套一层引用，依次类推。</p>
+<ol>
+<li>如果 <code>&gt;</code> 和 <code>&gt;&gt;</code> 嵌套使用的话，从 <code>&gt;&gt;</code> 退到 <code>&gt;</code> 时，必须之间要加一个空格或者 <code>&gt;</code> 作为过渡，否则默认为下一行和上一行是同一级别的引用。如示例所示。</li>
+<li>引用标记里可以使用其他标记，如：有序列表或无序列表标记，代码标记等。<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; 这是一级引用</div><div class="line">&gt;&gt;这是二级引用</div><div class="line">&gt;&gt;&gt; 这是三级引用</div><div class="line"></div><div class="line">&gt;这是一级引用</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>这是一级引用</p>
+<blockquote>
+<p>这是二级引用</p>
+<blockquote>
+<p>这是三级引用</p>
+</blockquote>
+</blockquote>
+<p>这是一级引用</p>
+</blockquote>
+<h3 id="1-3-代码块"><a href="#1-3-代码块" class="headerlink" title="1.3 代码块"></a>1.3 代码块</h3><p>使用三个`表示代码块。</p>
+<ol>
+<li><code>这个符号是在</code>Esc` 键下面，切换到英文下即可。</li>
+<li>本文档所有使用讲解Markdown语法标记示例的地方都是使用代码块标记的。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
+<h3 id="1-4-行内代码"><a href="#1-4-行内代码" class="headerlink" title="1.4 行内代码"></a>1.4 行内代码</h3><p>使用``表示行内代码。本页部分文字中间的英文字母就是使用行内代码标记标记的。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是`javascript`代码</div></pre></td></tr></table></figure>
+<p>这是 <code>javascript</code> 代码</p>
+<h4 id="1-5-链接"><a href="#1-5-链接" class="headerlink" title="1.5 链接"></a>1.5 链接</h4><p>使用 <code>[](link)</code> 表示行内链接。其中：</p>
+<ul>
+<li><code>[]</code> 内的内容为要添加链接的文字。</li>
+<li><code>link</code> 为链接地址。</li>
+</ul>
+<p>示例</p>
+<p>我觉得<a href="https://appsto.re/cn/jK8Cbb.i" target="_blank" rel="external">MarkLite</a>真是个牛逼的编辑器😊.</p>
+<h3 id="1-6-导入图片"><a href="#1-6-导入图片" class="headerlink" title="1.6 导入图片"></a>1.6 导入图片</h3><p>使用 <code>![Alt text](/path/to/img.jpg)</code> 导入图片。其中：</p>
+<ul>
+<li><code>Alt text</code> 为如果图片无法显示时显示的文字；</li>
+<li><code>/path/to/img.jpg</code> 为图片所在路径；</li>
+</ul>
+<p>点击辅助键盘中的添加图片按钮，<strong>MarkLite</strong>会自动帮你帮你把图片上传到图片存储服务器，并补齐链接，让你一步到位，是不是很方便😊</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![MarkLite](https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg)</div></pre></td></tr></table></figure>
+<p><img src="https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg" alt="MarkLite"></p>
+<h4 id="1-7-粗体和斜体"><a href="#1-7-粗体和斜体" class="headerlink" title="1.7 粗体和斜体"></a>1.7 粗体和斜体</h4><ol>
+<li>使用 <code>**</code> 或者 <code>__</code> 表示粗体。</li>
+<li>使用 <code>*</code> 或者 <code>_</code> 表示斜体。</li>
+<li>前后的 <code>*</code> 或 <code>_</code> 与要 <strong>加粗或倾斜</strong> 的字体之间不能有空格。</li>
+</ol>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**粗体1**    __粗体2__</div><div class="line">*斜体1*    _斜体2_</div></pre></td></tr></table></figure>
+<p>粗体1 <strong>粗体2</strong></p>
+<p><em>斜体1</em> <em>斜体2</em></p>
+<h4 id="1-8-列表"><a href="#1-8-列表" class="headerlink" title="1.8 列表"></a>1.8 列表</h4><p>使用 <code>1\. 2\. 3.</code> 表示有序列表，使用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 表示无序列表。</p>
+<ol>
+<li>无序列表或有序列表标记和后面的文字之间要有一个空格隔开。</li>
+<li>有序列表标记不是按照你写的数字进行显示的，而是根据当前有序列表标记所在位置显示的，如示例1所示。</li>
+<li>无序列表的项目符号是按照实心圆、空心圆、实心方格的层级关系递进的，如例2所示。通常情况下，同一层级使用同一种标记表示，便于自己查看和管理。</li>
+<li>无序列表和有序列表标记的使用场景也很明了，故不多说。</li>
+</ol>
+<p>示例</p>
+<h4 id="例1：有序列表"><a href="#例1：有序列表" class="headerlink" title="例1：有序列表"></a>例1：有序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1\. 第一点</div><div class="line">2\. 第二点</div><div class="line">4\. 第三点</div></pre></td></tr></table></figure>
+<ol>
+<li>第一点</li>
+<li>第二点</li>
+<li>第三点</li>
+</ol>
+<h4 id="例2：无序列表"><a href="#例2：无序列表" class="headerlink" title="例2：无序列表"></a>例2：无序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ 呵呵</div><div class="line">	* 嘉嘉</div><div class="line">	- 嘻嘻</div><div class="line">	- 吼吼</div><div class="line">		- 嘎嘎</div><div class="line">		+ 桀桀</div><div class="line">* 哈哈</div></pre></td></tr></table></figure>
+<ul>
+<li>呵呵<ul>
+<li>嘉嘉</li>
+<li>嘻嘻</li>
+<li>吼吼<ul>
+<li>嘎嘎</li>
+<li>桀桀</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>哈哈</li>
+</ul>
+<h4 id="1-9-分割线"><a href="#1-9-分割线" class="headerlink" title="1.9 分割线"></a>1.9 分割线</h4><p>使用 <code>---</code> 或者 <code>***</code> 或者 <code>* * *</code> 表示水平分割线。</p>
+<ol>
+<li>只要 <code>*</code> 或者 <code>-</code> 大于等于三个就可组成一条平行线。</li>
+<li>使用 <code>---</code> 作为水平分割线时，要在它的前后都空一行，防止 <code>---</code> 被当成标题标记的表示方式。</li>
+</ol>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">* * *</div></pre></td></tr></table></figure>
+<h4 id="1-11-删除线"><a href="#1-11-删除线" class="headerlink" title="1.11 删除线"></a>1.11 删除线</h4><p>使用 <code>~~</code> 表示删除线。</p>
+<ol>
+<li>注意 <code>~~</code> 和 要添加删除线的文字之间不能有空格。</li>
+<li>我常使用在显示的告诉自己这行文字是要删除的。</li>
+</ol>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~这是一条删除线~~</div></pre></td></tr></table></figure>
+<p><del>这是一条删除线</del></p>
+<p><em>想要了解更多语法，请自行上网查阅</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/05/2016-12-5-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2629,7 +2651,7 @@ interface FastEthernet 0/17
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2640,7 +2662,7 @@ interface FastEthernet 0/17
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -2651,7 +2673,7 @@ interface FastEthernet 0/17
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

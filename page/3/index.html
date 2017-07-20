@@ -302,270 +302,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/05/基本语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nero Hau">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nero Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/05/基本语法/" itemprop="url">MarkLite 基本语法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-05T00:00:00+08:00">
-                2016-12-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/test/" itemprop="url" rel="index">
-                    <span itemprop="name">test</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/05/基本语法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/05/基本语法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/05/基本语法/" class="leancloud_visitors" data-flag-title="MarkLite 基本语法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>在使用MarkLite之前你需要先了解一下关于markdown的基本语法，如果你已经掌握了，请无视本文档，如果还没有，那现在开始学习吧。</p>
-</blockquote>
-<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><ul>
-<li>使用 <code>#</code> 表示标题，一级标题使用一个 <code>#</code> ，二级标题使用两个 <code>##</code> ，以此类推，共有六级标题。</li>
-<li>使用 <code>=====</code> 表示高阶标题，使用 <code>---------</code> 表示次阶标题。</li>
-</ul>
-<ol>
-<li><code>#</code> 和标题之间最好加一个空格。不要问我为什么，貌似有时候不会被识别为标题？已经忘记自己为什么要加空格了，也许是任性。</li>
-<li><code>====</code> 和 <code>----</code> 表示标题时，大于等于2个都可以表示。</li>
-<li>我通常在标题分级时使用标题标记，这个的用处很明了了。</li>
-</ol>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 这是一级标题</div><div class="line">## 这是二级标题</div><div class="line">### 这是三级标题</div><div class="line">###### 这是六级标题</div></pre></td></tr></table></figure>
-<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这是一级标题</div><div class="line">========</div><div class="line"></div><div class="line">这是二级标题</div><div class="line">--------------</div></pre></td></tr></table></figure>
-<h1 id="这是一级标题-1"><a href="#这是一级标题-1" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题-1"><a href="#这是二级标题-1" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="2-引用"><a href="#2-引用" class="headerlink" title="2.引用"></a>2.引用</h3><p>使用 <code>&gt;</code> 表示引用， <code>&gt;&gt;</code> 表示引用里面再套一层引用，依次类推。</p>
-<ol>
-<li>如果 <code>&gt;</code> 和 <code>&gt;&gt;</code> 嵌套使用的话，从 <code>&gt;&gt;</code> 退到 <code>&gt;</code> 时，必须之间要加一个空格或者 <code>&gt;</code> 作为过渡，否则默认为下一行和上一行是同一级别的引用。如示例所示。</li>
-<li>引用标记里可以使用其他标记，如：有序列表或无序列表标记，代码标记等。<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; 这是一级引用</div><div class="line">&gt;&gt;这是二级引用</div><div class="line">&gt;&gt;&gt; 这是三级引用</div><div class="line"></div><div class="line">&gt;这是一级引用</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>这是一级引用</p>
-<blockquote>
-<p>这是二级引用</p>
-<blockquote>
-<p>这是三级引用</p>
-</blockquote>
-</blockquote>
-<p>这是一级引用</p>
-</blockquote>
-<h3 id="1-3-代码块"><a href="#1-3-代码块" class="headerlink" title="1.3 代码块"></a>1.3 代码块</h3><p>使用三个`表示代码块。</p>
-<ol>
-<li><code>这个符号是在</code>Esc` 键下面，切换到英文下即可。</li>
-<li>本文档所有使用讲解Markdown语法标记示例的地方都是使用代码块标记的。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
-<h3 id="1-4-行内代码"><a href="#1-4-行内代码" class="headerlink" title="1.4 行内代码"></a>1.4 行内代码</h3><p>使用``表示行内代码。本页部分文字中间的英文字母就是使用行内代码标记标记的。</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是`javascript`代码</div></pre></td></tr></table></figure>
-<p>这是 <code>javascript</code> 代码</p>
-<h4 id="1-5-链接"><a href="#1-5-链接" class="headerlink" title="1.5 链接"></a>1.5 链接</h4><p>使用 <code>[](link)</code> 表示行内链接。其中：</p>
-<ul>
-<li><code>[]</code> 内的内容为要添加链接的文字。</li>
-<li><code>link</code> 为链接地址。</li>
-</ul>
-<p>示例</p>
-<p>我觉得<a href="https://appsto.re/cn/jK8Cbb.i" target="_blank" rel="external">MarkLite</a>真是个牛逼的编辑器😊.</p>
-<h3 id="1-6-导入图片"><a href="#1-6-导入图片" class="headerlink" title="1.6 导入图片"></a>1.6 导入图片</h3><p>使用 <code>![Alt text](/path/to/img.jpg)</code> 导入图片。其中：</p>
-<ul>
-<li><code>Alt text</code> 为如果图片无法显示时显示的文字；</li>
-<li><code>/path/to/img.jpg</code> 为图片所在路径；</li>
-</ul>
-<p>点击辅助键盘中的添加图片按钮，<strong>MarkLite</strong>会自动帮你帮你把图片上传到图片存储服务器，并补齐链接，让你一步到位，是不是很方便😊</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![MarkLite](https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg)</div></pre></td></tr></table></figure>
-<p><img src="https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg" alt="MarkLite"></p>
-<h4 id="1-7-粗体和斜体"><a href="#1-7-粗体和斜体" class="headerlink" title="1.7 粗体和斜体"></a>1.7 粗体和斜体</h4><ol>
-<li>使用 <code>**</code> 或者 <code>__</code> 表示粗体。</li>
-<li>使用 <code>*</code> 或者 <code>_</code> 表示斜体。</li>
-<li>前后的 <code>*</code> 或 <code>_</code> 与要 <strong>加粗或倾斜</strong> 的字体之间不能有空格。</li>
-</ol>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**粗体1**    __粗体2__</div><div class="line">*斜体1*    _斜体2_</div></pre></td></tr></table></figure>
-<p>粗体1 <strong>粗体2</strong></p>
-<p><em>斜体1</em> <em>斜体2</em></p>
-<h4 id="1-8-列表"><a href="#1-8-列表" class="headerlink" title="1.8 列表"></a>1.8 列表</h4><p>使用 <code>1\. 2\. 3.</code> 表示有序列表，使用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 表示无序列表。</p>
-<ol>
-<li>无序列表或有序列表标记和后面的文字之间要有一个空格隔开。</li>
-<li>有序列表标记不是按照你写的数字进行显示的，而是根据当前有序列表标记所在位置显示的，如示例1所示。</li>
-<li>无序列表的项目符号是按照实心圆、空心圆、实心方格的层级关系递进的，如例2所示。通常情况下，同一层级使用同一种标记表示，便于自己查看和管理。</li>
-<li>无序列表和有序列表标记的使用场景也很明了，故不多说。</li>
-</ol>
-<p>示例</p>
-<h4 id="例1：有序列表"><a href="#例1：有序列表" class="headerlink" title="例1：有序列表"></a>例1：有序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1\. 第一点</div><div class="line">2\. 第二点</div><div class="line">4\. 第三点</div></pre></td></tr></table></figure>
-<ol>
-<li>第一点</li>
-<li>第二点</li>
-<li>第三点</li>
-</ol>
-<h4 id="例2：无序列表"><a href="#例2：无序列表" class="headerlink" title="例2：无序列表"></a>例2：无序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ 呵呵</div><div class="line">	* 嘉嘉</div><div class="line">	- 嘻嘻</div><div class="line">	- 吼吼</div><div class="line">		- 嘎嘎</div><div class="line">		+ 桀桀</div><div class="line">* 哈哈</div></pre></td></tr></table></figure>
-<ul>
-<li>呵呵<ul>
-<li>嘉嘉</li>
-<li>嘻嘻</li>
-<li>吼吼<ul>
-<li>嘎嘎</li>
-<li>桀桀</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>哈哈</li>
-</ul>
-<h4 id="1-9-分割线"><a href="#1-9-分割线" class="headerlink" title="1.9 分割线"></a>1.9 分割线</h4><p>使用 <code>---</code> 或者 <code>***</code> 或者 <code>* * *</code> 表示水平分割线。</p>
-<ol>
-<li>只要 <code>*</code> 或者 <code>-</code> 大于等于三个就可组成一条平行线。</li>
-<li>使用 <code>---</code> 作为水平分割线时，要在它的前后都空一行，防止 <code>---</code> 被当成标题标记的表示方式。</li>
-</ol>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">* * *</div></pre></td></tr></table></figure>
-<h4 id="1-11-删除线"><a href="#1-11-删除线" class="headerlink" title="1.11 删除线"></a>1.11 删除线</h4><p>使用 <code>~~</code> 表示删除线。</p>
-<ol>
-<li>注意 <code>~~</code> 和 要添加删除线的文字之间不能有空格。</li>
-<li>我常使用在显示的告诉自己这行文字是要删除的。</li>
-</ol>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~这是一条删除线~~</div></pre></td></tr></table></figure>
-<p><del>这是一条删除线</del></p>
-<p><em>想要了解更多语法，请自行上网查阅</em></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/05/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -684,6 +420,162 @@
 
 
 <h1 id="以下测试视频播放功能"><a href="#以下测试视频播放功能" class="headerlink" title="以下测试视频播放功能"></a>以下测试视频播放功能</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/IKfQE7ZrLVw" frameborder="0" allowfullscreen></iframe>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/03/oneblog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nero Hau">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nero Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/03/oneblog/" itemprop="url">Hello World!</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-03T00:00:00+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/03/oneblog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/03/oneblog/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/03/oneblog/" class="leancloud_visitors" data-flag-title="Hello World!">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="这是我的第一篇博客"><a href="#这是我的第一篇博客" class="headerlink" title="这是我的第一篇博客"></a>这是我的第一篇博客</h1><p>这是用 GitBlog 写的第一篇博客,安装不复杂,先用用再说</p>
 
           
         
@@ -980,162 +872,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/03/oneblog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nero Hau">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nero Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/03/oneblog/" itemprop="url">Hello World!</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-03T00:00:00+08:00">
-                2016-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Blog/" itemprop="url" rel="index">
-                    <span itemprop="name">Blog</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/03/oneblog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/03/oneblog/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/03/oneblog/" class="leancloud_visitors" data-flag-title="Hello World!">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="这是我的第一篇博客"><a href="#这是我的第一篇博客" class="headerlink" title="这是我的第一篇博客"></a>这是我的第一篇博客</h1><p>这是用 GitBlog 写的第一篇博客,安装不复杂,先用用再说</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/11/05/Seafile-import-Username-phonenumber/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1263,195 +999,6 @@
 <h2 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h2><ol>
 <li>2016年11月7日:经 Seafile 中文论坛兄弟(skipto)提醒,数据库 id 字段是自动添加,无需导入,把 id 导入字段删除.</li>
 </ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nero Hau">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nero Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/" itemprop="url">openwrt openvpn shadowsocks mproxy达成免流及翻墙</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-07T00:00:00+08:00">
-                2016-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT技术/" itemprop="url" rel="index">
-                    <span itemprop="name">IT技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/07/07/openwrt+openvpn+shadowsocks+mproxy达成免流及翻墙/" class="leancloud_visitors" data-flag-title="openwrt openvpn shadowsocks mproxy达成免流及翻墙">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然有一天，某群的q友说研究免流，这样就把我带入免流世界，从此走上这个折腾的道路！</p>
-<p>还是建议大家，有wifi的时候还是用wifi，因为4G很耗电的！</p>
-<p>不说废话了，首先我的路由是最老最老最老最老的hg255d，几年前从马老板家淘的，固件是明月永在的固件<a href="https://myop.cf/" target="_blank" rel="external">https://myop.cf/</a> 话说这个固件还不错，功能挺全的。最基本的openwrt的功能都有。最重要是有我们今天的主角之一openvpn。</p>
-<p>我的手机是iPhone，所以只能用openvpn作为免流的载具。而Android手机更多选择，可以使用HTTP Injector也可以使用openvpn<br><strong>手机客户端</strong><br><strong>安卓：</strong><br><strong>HTTP Injector</strong> <a href="https://play.google.com/store/apps/details?id=com.evozi.injector" title="Google Play" target="_blank" rel="external">Google Play</a> | <a href="http://www.coolapk.com/apk/com.evozi.injector" title="酷安" target="_blank" rel="external">酷安</a><br><strong>openvpn</strong> <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn" title="Google Play" target="_blank" rel="external">Google Play</a> | <a href="http://www.coolapk.com/apk/net.openvpn.openvpn" title="酷安" target="_blank" rel="external">酷安</a></p>
-<p><strong>IPhone</strong>:<br><strong>openvpn</strong> <a href="https://itunes.apple.com/us/app/openvpn-connect/id590379981?mt=8" title="App Store" target="_blank" rel="external">App Store</a> (需要美区账户)</p>
-<h2 id="免流原理分析"><a href="#免流原理分析" class="headerlink" title="免流原理分析"></a>免流原理分析</h2><p>免流我的理解，其实就是透过http代理，将流量伪装成发往运营商免费流量的目的地，再通过代理服务器上网从而达到免流的目的。</p>
-<p>无论使用openvpn,还是HTTP Injector,都必须使用http代理,通常使用squid（因为猫腻就在http代理）.但是我这里介绍的方式是用mproxy.</p>
-<p><strong>mproxy</strong> :用C语言实现的一个http代理服务器,代码量只有700行左右。由于只需要C语言即刻，所以openwrt肯定可以用的了。</p>
-<p><strong>修改过的mproxy</strong>:上面说到,想要免流就必须骗过运营商,让运营商计费系统以为你流量的目的地是免流量的地址,但是原版的mproxy会根据openvpn客户端封装的remote地址将流量转发到Remote,这显然不是我们希望的!<br>所以,我们就需要修改版的mproxy.</p>
-<p>流量流程如下:<br>手机浏览器google→→①→→openvpn-client →→②→→mproxy→→③→→openvpn-server→→④→→google</p>
-<p>修改过的mproxy作用,就是让mproxy忽视openvpn-client的remote地址,将收到的流量全部重定向到openvpn-server上,那么我们的openvpn就建立起连接.<br>过程③就是其中猫腻所在,正常的mproxy会将流量在过程③中直接转发到例如wap.10086.cn.这个地址肯定不会有openvpn-server的存在,所以就一直连接失败咯.</p>
-<h2 id="服务器搭建"><a href="#服务器搭建" class="headerlink" title="服务器搭建"></a>服务器搭建</h2><h3 id="1-openwrt安装openvpn"><a href="#1-openwrt安装openvpn" class="headerlink" title="1.openwrt安装openvpn"></a>1.openwrt安装openvpn</h3><p>修改opkg源,编辑/etc/opkg<br>以下是hg255d的源,因为hg255d的CPU是ramips的rt305x,所以我就到openwrt.org找到官方源<br>root@OpenWrt:/#vi /etc/opkg.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dest root /</div><div class="line">dest ram /tmp</div><div class="line">lists_dir ext /var/opkg-lists</div><div class="line">option overlay_root /overlay</div><div class="line">src/gz barrier_breaker_base http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/base/</div><div class="line">src/gz barrier_breaker_luci http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/luci</div><div class="line">src/gz barrier_breaker_management http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/management</div><div class="line">src/gz barrier_breaker_oldpackages http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/oldpackages</div><div class="line">src/gz barrier_breaker_packages http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/packages</div><div class="line">src/gz barrier_breaker_routing http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/routing</div><div class="line">src/gz barrier_breaker_telephony http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/telephony</div><div class="line">src/gz barrier_breaker_wifischedule http://downloads.openwrt.org/barrier_breaker/14.07/ramips/rt305x/packages/wifischedule</div></pre></td></tr></table></figure></p>
-<p>:wq保存<br>opkg update<br>opkg list |grep openvpn</p>
-<p>发现已经有openvpn在list里面了,直接装.<br>opkg install openvpn openvpn-easy-rsa<br>检查一下是否安装成功<br>opkg list-installed |grep openvpn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# opkg list-installed |grep openvpn</div><div class="line">luci-app-openvpn - 0.12+git-15.143.53098-670e046-1</div><div class="line">openvpn-easy-rsa - 2013-01-30-2</div><div class="line">openvpn-openssl - 2.3.6-2</div></pre></td></tr></table></figure></p>
-<p>OK已经安装成功了</p>
-<h3 id="2-启用虚拟网卡tap0并加入br-lan网桥-这里引用的是openwrt-org-cn-ccbcfan写的教程"><a href="#2-启用虚拟网卡tap0并加入br-lan网桥-这里引用的是openwrt-org-cn-ccbcfan写的教程" class="headerlink" title="2. 启用虚拟网卡tap0并加入br-lan网桥.(这里引用的是openwrt.org.cn,ccbcfan写的教程)"></a>2. 启用虚拟网卡tap0并加入br-lan网桥.(这里引用的是openwrt.org.cn,ccbcfan写的教程)</h3><blockquote>
-<p>引用自<a href="http://www.openwrt.org.cn/bbs/thread-365-1-1.html" title="[原创]openwrt下架设openvpn服务器的方法！！！" target="_blank" rel="external">[原创]openwrt下架设openvpn服务器的方法！！！</a><br>建立脚本/etc/openvpn/startupscript内容如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">#!/bin/sh</span></div><div class="line">&gt; <span class="comment">#/etc/openvpn/startupscript</span></div><div class="line">&gt; <span class="comment"># OpenVPN Bridge Config File</span></div><div class="line">&gt; <span class="comment"># Creates TAP devices for use by OpenVPN and bridges them into OpenWRT Bridge</span></div><div class="line">&gt; <span class="comment"># Taken from http://openvpn.net/bridge.html</span></div><div class="line">&gt; <span class="comment"># Define Bridge Interface</span></div><div class="line">&gt; <span class="comment"># Preexisting on OpenWRT</span></div><div class="line">&gt; br=<span class="string">"br-lan"</span></div><div class="line">&gt; <span class="comment"># Define list of TAP interfaces to be bridged,</span></div><div class="line">&gt; <span class="comment"># for example tap="tap0 tap1 tap2".</span></div><div class="line">&gt; tap=<span class="string">"tap0"</span></div><div class="line">&gt; <span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">&gt;         up)</div><div class="line">&gt;                 <span class="comment"># Make sure module is loaded</span></div><div class="line">&gt;                 insmod tun</div><div class="line">&gt;                 <span class="comment"># Build tap devices</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     openvpn --mktun --dev <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="comment"># Add TAP interfaces to OpenWRT bridge</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     brctl addif <span class="variable">$br</span> <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="comment">#Configure bridged interfaces</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     ifconfig <span class="variable">$t</span> 0.0.0.0 promisc up</div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;         ;;</div><div class="line">&gt;         down)</div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     ifconfig <span class="variable">$t</span> 0.0.0.0 down</div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     brctl delif <span class="variable">$br</span> <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 <span class="keyword">for</span> t <span class="keyword">in</span> <span class="variable">$tap</span>; <span class="keyword">do</span></div><div class="line">&gt;                     openvpn --rmtun --dev <span class="variable">$t</span></div><div class="line">&gt;                 <span class="keyword">done</span></div><div class="line">&gt;                 rmmod tun</div><div class="line">&gt;         ;;</div><div class="line">&gt;          *)</div><div class="line">&gt;                 <span class="built_in">echo</span> <span class="string">"<span class="variable">$0</span> &#123;up|down&#125;"</span></div><div class="line">&gt;         ;;</div><div class="line">&gt; <span class="keyword">esac</span></div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>修改脚本执行权限：chmod +x /etc/openvpn/startupscript<br>然后执行一次：<br>/etc/openvpn/startupscript  up</p>
-<p>就可以将tap0加入到br-lan桥中了。<br>root@OpenWrt# brctl show      ###显示现有网桥情况，多了个tap0.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; bridge name        bridge id                STP enabled        interfaces</div><div class="line">&gt; br-lan                8000.007404037df3           no                eth1.0</div><div class="line">&gt;                                                                  wlan0</div><div class="line">&gt;                                                                  tap0</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>每次重启路由后，你需要重新执行一次脚本才能正常启用openvpn，你也可以修改一下将启动脚本放到/etc/init.d/，增加/etc/rc.d启动项，做到开机自动启动。更简单的办法是：将/etc/openvpn/startupscript  up 加入到/etc/rc.local中开机自动启动网桥部分！！</p>
-</blockquote>
-<h3 id="3-生成证书"><a href="#3-生成证书" class="headerlink" title="3.生成证书"></a>3.生成证书</h3><p>第一步中我们安装了openvpn-easy-rsa,这货就是用来生成证书用的,安装后,我们发现在/etc下有个文件夹叫easy-rsa的目录,这个就是它的工作目录了.<br>首先 我们需要修改/etc/easy-rsa/vars,将证书模板修改成我们自己的信息<br>root@OpenWrt:~# vi /etc/easy-rsa/vars<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export KEY_COUNTRY=&quot;CN&quot;</div><div class="line">export KEY_PROVINCE=&quot;CA&quot;       </div><div class="line">export KEY_CITY=&quot;ZS&quot;           </div><div class="line">export KEY_ORG=&quot;openwrt&quot;</div><div class="line">export KEY_EMAIL=&quot;email@tom.com&quot;</div><div class="line">export KEY_OU=&quot;openwrt&quot;</div></pre></td></tr></table></figure></p>
-<p>赋予vars执行权限<br>输入命令<code>chmod +x /etc/easy-rsa/vars</code><br>root@OpenWrt:~# chmod +x /etc/easy-rsa/vars<br>执行vars<br>输入命令<code>/etc/easy-rsa/vars</code><br>root@OpenWrt:~# /etc/easy-rsa/vars<br>NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys<br>清理证书目录<br>root@OpenWrt:/# clean-all<br>NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys<br>此时我们看看/etc/easy-rsa/里只有三个文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# ls -al /etc/easy-rsa/</div><div class="line">drwxr-xr-x    3 root     root             0 Jul  5 11:18 .</div><div class="line">drwxr-xr-x    1 root     root             0 Jul  5 11:15 ..</div><div class="line">drwx------    2 root     root             0 Jul  5 11:33 keys</div><div class="line">-rw-r--r--    1 root     root          8245 Dec  2  2014 openssl-1.0.0.cnf</div><div class="line">-rwxr-xr-x    1 root     root          2056 Jul  5 11:17 vars</div></pre></td></tr></table></figure></p>
-<p>其中keys就是我们刚刚初始化的keys目录,里面存的就是我们的证书和客户端的密匙<br>首先我们生成CA证书,一路回车即可,因为我们已经修改过vars模板,这里不需要修改了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/etc/easy-rsa# build-ca</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">.....+++</div><div class="line">.+++</div><div class="line">writing new private key to &apos;ca.key&apos;</div><div class="line">-----</div><div class="line">You are about to be asked to enter information that will be incorporated</div><div class="line">into your certificate request.</div><div class="line">What you are about to enter is what is called a Distinguished Name or a DN.</div><div class="line">There are quite a few fields but you can leave some blank</div><div class="line">For some fields there will be a default value,</div><div class="line">If you enter &apos;.&apos;, the field will be left blank.</div><div class="line">-----</div><div class="line">Country Name (2 letter code) [CN]:</div><div class="line">State or Province Name (full name) [CA]:</div><div class="line">Locality Name (eg, city) [ZS]:</div><div class="line"></div><div class="line">Organization Name (eg, company) [openwrt]:Organizational Unit Name (eg, section) [openwrt]:</div><div class="line">Common Name (eg, your name or your server&apos;s hostname) [openwrt CA]:</div><div class="line">Name [EasyRSA]:</div><div class="line">Email Address [email@tom.com]:</div></pre></td></tr></table></figure></p>
-<p>此时看看keys目录已经多了个ca.crt和ca.key文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/etc/easy-rsa# ls keys/</div><div class="line">ca.crt     ca.key     index.txt  serial</div></pre></td></tr></table></figure></p>
-<p>接着我们继续,生成dh(迪菲·赫尔曼参数),这个时间会比较久,我hg255d用了差不多5分钟时间.<br>输入命令<code>build-dh</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/etc/easy-rsa# build-dh</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating DH parameters, 2048 bit long safe prime, generator 2</div><div class="line">This is going to take a long time</div><div class="line">..........................................................................................................+..............................................+........................................................+..........................................+......................................+...+...............................................................................+.........+.........................+............................................+..............................+........................................+........+.......................+...............................................................................................................+................................+..+..+.....+............+..............................................................................................................................................................................++*++*</div></pre></td></tr></table></figure></p>
-<p>查看下keys,多了个dh2048.pem文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# ls /etc/easy-rsa/keys/</div><div class="line">ca.crt      ca.key      dh2048.pem  index.txt   serial</div></pre></td></tr></table></figure></p>
-<p>证明已经成功<br>继续生成服务器的证书输入命令<code>build-key-server server</code> 依然是一路回车,见到y就按y回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# build-key-server server</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">..................+++</div><div class="line">.....................................................+++</div><div class="line">writing new private key to &apos;server.key&apos;</div><div class="line">-----</div><div class="line">You are about to be asked to enter information that will be incorporated</div><div class="line">into your certificate request.</div><div class="line">What you are about to enter is what is called a Distinguished Name or a DN.</div><div class="line">There are quite a few fields but you can leave some blank</div><div class="line">For some fields there will be a default value,</div><div class="line">If you enter &apos;.&apos;, the field will be left blank.</div><div class="line">-----</div><div class="line">Country Name (2 letter code) [CN]:</div><div class="line">State or Province Name (full name) [CA]:</div><div class="line">Locality Name (eg, city) [ZS]:</div><div class="line">Organization Name (eg, company) [openwrt]:</div><div class="line">Organizational Unit Name (eg, section) [openwrt]:</div><div class="line">Common Name (eg, your name or your server&apos;s hostname) [server]:</div><div class="line">Name [EasyRSA]:</div><div class="line">Email Address [email@tom.com]:</div><div class="line"></div><div class="line">Please enter the following &apos;extra&apos; attributes</div><div class="line">to be sent with your certificate request</div><div class="line">A challenge password []:</div><div class="line">An optional company name []:</div><div class="line">Using configuration from /etc/easy-rsa/openssl-1.0.0.cnf</div><div class="line">Check that the request matches the signature</div><div class="line">Signature ok</div><div class="line">The Subject&apos;s Distinguished Name is as follows</div><div class="line">countryName           :PRINTABLE:&apos;CN&apos;</div><div class="line">stateOrProvinceName   :PRINTABLE:&apos;CA&apos;</div><div class="line">localityName          :PRINTABLE:&apos;ZS&apos;</div><div class="line">organizationName      :PRINTABLE:&apos;openwrt&apos;</div><div class="line">organizationalUnitName:PRINTABLE:&apos;openwrt&apos;</div><div class="line">commonName            :PRINTABLE:&apos;server&apos;</div><div class="line">name                  :PRINTABLE:&apos;EasyRSA&apos;</div><div class="line">emailAddress          :IA5STRING:&apos;email@tom.com&apos;</div><div class="line">Certificate is to be certified until Jul  3 05:56:39 2026 GMT (3650 days)</div><div class="line">Sign the certificate? [y/n]:y</div><div class="line"></div><div class="line"></div><div class="line">1 out of 1 certificate requests certified, commit? [y/n]y</div><div class="line">Write out database with 1 new entries</div></pre></td></tr></table></figure></p>
-<p>再次查看keys已经发现多了很多文件,server的crt;csr;key都在了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# ls /etc/easy-rsa/keys/</div><div class="line">01.pem          dh2048.pem      index.txt.old   server.crt</div><div class="line">ca.crt          index.txt       serial          server.csr</div><div class="line">ca.key          index.txt.attr  serial.old      server.key</div></pre></td></tr></table></figure></p>
-<p>继续生成客户端证书<br>输入命令 <code>build-key client</code><br>依然是一路回车,看到y选y回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:/# build-key client</div><div class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/easy-rsa/keys</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">..............................................................................................+++</div><div class="line">...............................................................................+++</div><div class="line">writing new private key to &apos;client.key&apos;</div><div class="line">-----</div><div class="line">You are about to be asked to enter information that will be incorporated</div><div class="line">into your certificate request.</div><div class="line">What you are about to enter is what is called a Distinguished Name or a DN.</div><div class="line">There are quite a few fields but you can leave some blank</div><div class="line">For some fields there will be a default value,</div><div class="line">If you enter &apos;.&apos;, the field will be left blank.</div><div class="line">-----</div><div class="line">Country Name (2 letter code) [CN]:</div><div class="line">State or Province Name (full name) [CA]:</div><div class="line">Locality Name (eg, city) [ZS]:</div><div class="line">Organization Name (eg, company) [openwrt]:</div><div class="line">Organizational Unit Name (eg, section) [openwrt]:</div><div class="line">Common Name (eg, your name or your server&apos;s hostname) [client]:</div><div class="line">Name [EasyRSA]:</div><div class="line">Email Address [email@tom.com]:</div><div class="line"></div><div class="line">Please enter the following &apos;extra&apos; attributes</div><div class="line">to be sent with your certificate request</div><div class="line">A challenge password []:</div><div class="line">An optional company name []:</div><div class="line">Using configuration from /etc/easy-rsa/openssl-1.0.0.cnf</div><div class="line">Check that the request matches the signature</div><div class="line">Signature ok</div><div class="line">The Subject&apos;s Distinguished Name is as follows</div><div class="line">countryName           :PRINTABLE:&apos;CN&apos;</div><div class="line">stateOrProvinceName   :PRINTABLE:&apos;CA&apos;</div><div class="line">localityName          :PRINTABLE:&apos;ZS&apos;</div><div class="line">organizationName      :PRINTABLE:&apos;openwrt&apos;</div><div class="line">organizationalUnitName:PRINTABLE:&apos;openwrt&apos;</div><div class="line">commonName            :PRINTABLE:&apos;client&apos;</div><div class="line">name                  :PRINTABLE:&apos;EasyRSA&apos;</div><div class="line">emailAddress          :IA5STRING:&apos;email@tom.com&apos;</div><div class="line">Certificate is to be certified until Jul  3 06:01:22 2026 GMT (3650 days)</div><div class="line">Sign the certificate? [y/n]:y</div><div class="line"></div><div class="line"></div><div class="line">1 out of 1 certificate requests certified, commit? [y/n]y</div><div class="line">Write out database with 1 new entries</div><div class="line">Data Base Updated</div></pre></td></tr></table></figure></p>
-<p>证书已生成完毕,接下来下一步骤配置openvpn服务器</p>
-<h3 id="4-配置openvpn-server"><a href="#4-配置openvpn-server" class="headerlink" title="4.配置openvpn-server"></a>4.配置openvpn-server</h3><p>编辑openvpn配置文件<br><code>root@OpenWrt:~# vi /etc/openvpn/server.conf</code>,这个文件本来是不存在的,因为我用明月永在的openvpn的luci修改配置老启动失败,所以我直接用配置文件来启动服务了.</p>
-<p>只要写着<code>option enable &#39;0&#39;</code>,这些模板都不会被生效,那么我们按<code>G</code>到最后一行,再按<code>o</code>新加一行编辑输入以下代码.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">port 444									#监听444端口</div><div class="line">proto tcp                                   #使用tcp_server模式</div><div class="line">dev tun                                     #使用tun模式,这里模式有两个,一个tap,一个tun,按照我不完全的理解,tun才能使用iptables控制并且连接路由后翻墙.</div><div class="line">ca /etc/easy-rsa/keys/ca.crt                #这里是我们步骤3生成的ca证书路径</div><div class="line">cert /etc/easy-rsa/keys/server.crt          #这里是我们步骤3生成的server证书路径</div><div class="line">key /etc/easy-rsa/keys/server.key           #这里是我们步骤3生成的server密钥的路径</div><div class="line">dh /etc/easy-rsa/keys/dh2048.pem            #这里是我们步骤3生成的迪菲·赫尔曼参数路径</div><div class="line">keepalive 10 120                            #设置服务器等待时间与超时时间,我这里默认是120秒,这里的参数设置大了的话,会让你4G信号不好的时候维持等待时间更长,防止4G信号不好掉线.</div><div class="line">comp_lzo                                    #启用压缩</div><div class="line">persist_key                                 #持久化选项可以尽量避免访问在重启时由于用户权限降低而无法访问的某些资源。</div><div class="line">persist_tun                                 #同上               </div><div class="line">status /var/log/openvpn-status.log          #启动日志,方便我们检查为何openvpn无法启动</div><div class="line">verb 3                                      #指定日志详细级别</div><div class="line">server 10.8.0.0 255.255.255.0               #指定openvpn客户端获取的IP地址</div><div class="line">push redirect-gateway def1 bypass-dhcp      #将默认网关推给客户端</div><div class="line">push dhcp-option DNS 192.168.1.1			#将DNS推给客户端,这里我设置路由的IP地址,因为翻墙我们还需要解决dns污染问题!路由采用chinadns+gfwlist白名单方案</div></pre></td></tr></table></figure></p>
-<p>输入<code>:wq</code>保存</p>
 
           
         
@@ -1729,7 +1276,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1740,7 +1287,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1751,7 +1298,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
