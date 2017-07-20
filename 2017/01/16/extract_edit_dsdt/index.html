@@ -113,13 +113,13 @@
 
 
 
-<meta name="description" content="本文说明本文转载至远景论坛 daxuexinsheng 的帖子 [教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程] 近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。  [toc] 翻译授权信息  本教程原作者是tonymacx86网站的">
+<meta name="description" content="本文说明本文转载至远景论坛 daxuexinsheng 的帖子 [教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程] 近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。  翻译授权信息  本教程原作者是tonymacx86网站的Rehabm">
 <meta name="keywords" content="黑苹果,Mac,Hackintosh,dsdt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【转载】【教程】 【授权翻译】 使用补丁修改DSDT&#x2F;SSDT 【DSDT&#x2F;SSDT综合教程】">
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/index.html">
 <meta property="og:site_name" content="Nero Blog">
-<meta property="og:description" content="本文说明本文转载至远景论坛 daxuexinsheng 的帖子 [教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程] 近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。  [toc] 翻译授权信息  本教程原作者是tonymacx86网站的">
+<meta property="og:description" content="本文说明本文转载至远景论坛 daxuexinsheng 的帖子 [教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程] 近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。  翻译授权信息  本教程原作者是tonymacx86网站的Rehabm">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-01.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-02.jpg">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-03.jpg">
@@ -132,10 +132,10 @@
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-10.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-11.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-12.png">
-<meta property="og:updated_time" content="2017-07-20T00:40:44.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:28:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转载】【教程】 【授权翻译】 使用补丁修改DSDT&#x2F;SSDT 【DSDT&#x2F;SSDT综合教程】">
-<meta name="twitter:description" content="本文说明本文转载至远景论坛 daxuexinsheng 的帖子 [教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程] 近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。  [toc] 翻译授权信息  本教程原作者是tonymacx86网站的">
+<meta name="twitter:description" content="本文说明本文转载至远景论坛 daxuexinsheng 的帖子 [教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程] 近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。  翻译授权信息  本教程原作者是tonymacx86网站的Rehabm">
 <meta name="twitter:image" content="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-01.png">
 
 
@@ -444,7 +444,6 @@
 <h2 id="本文说明"><a href="#本文说明" class="headerlink" title="本文说明"></a>本文说明</h2><p>本文转载至远景论坛 daxuexinsheng 的帖子 <a href="http://bbs.pcbeta.com/viewthread-1571455-1-1.html" target="_blank" rel="external">[教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
 <p>近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。</p>
 </blockquote>
-<p>[toc]</p>
 <h2 id="翻译授权信息"><a href="#翻译授权信息" class="headerlink" title="翻译授权信息"></a>翻译授权信息</h2><p>  本教程原作者是tonymacx86网站的Rehabman。本贴，是对原贴的 翻译 与 补充。已经得到Rehabman的授权。相关信息如下：</p>
 <p><img src="/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-01.png" alt="授权信息"></p>
 <p>  请尊重原贴作者 与 本贴楼主。原作者把自己丰富的经验分享给了大家，本贴作者每个贴子平均花了3个小时翻译。<br>所以，转载请注明出处：</p>
@@ -460,6 +459,7 @@
 <li>使用补丁修改</li>
 <li>编译并保存，再放到引导特定的目录</li>
 </ul>
+<a id="more"></a>
 <h2 id="提取原始ACPI文件"><a href="#提取原始ACPI文件" class="headerlink" title="提取原始ACPI文件"></a>提取原始ACPI文件</h2><p>  所有BIOS都实现了把ACPI文件提交给操作系统的功能。所以，基于任何操作系统，你都可以通过操作系统提取出原始ACPI文件，之后再进行修改。Linux、OS X、Windows、Clover都可以用来提取原始ACPI文件。这些方式提取的文件是完全相同的，只是由于使用的提取工具不同，文件名会不同。</p>
 <p>  本教程将主要介绍3种提取方式：在OS X使用patchmatic工具（Rehabman编写的终端程序），在Clover启动界面按F4，还有使用Linux。</p>
 <h3 id="使用patchmatic工具提取"><a href="#使用patchmatic工具提取" class="headerlink" title="使用patchmatic工具提取"></a>使用patchmatic工具提取</h3><p>  如果你已经有了OS X环境，并且还没有使用修改过的DSDT/SSDT，就可以使用patchmatic工具提取原始DSDT/SSDT。到这里下载编译好的patchmatic工具：<a href="https://github.com/RehabMan/OS-X-MaciASL-patchmatic" target="_blank" rel="external">https://github.com/RehabMan/OS-X-MaciASL-patchmatic</a> （仔细阅读patchmatic工具的README）。为了方便使用，你可以把程序拷贝到 /usr/bin 文件夹。（放到这里，在任何地方都可以调用）</p>
@@ -747,7 +747,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

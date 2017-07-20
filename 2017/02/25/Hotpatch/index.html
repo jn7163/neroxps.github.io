@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/02/25/Hotpatch/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="本笔记参考 RehabMan 指南 [Guide] Using Clover to “hotpatch” ACPI   [TOC] Hotpatch 简述什么是 Hotpatch?  RehabMan 的介绍是:  That guide uses what is known as “static patching”. In order to inject patched ACPI files,">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:25:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="华硕 VM510LI Hotpatch">
 <meta name="twitter:description" content="本笔记参考 RehabMan 指南 [Guide] Using Clover to “hotpatch” ACPI   [TOC] Hotpatch 简述什么是 Hotpatch?  RehabMan 的介绍是:  That guide uses what is known as “static patching”. In order to inject patched ACPI files,">
@@ -443,6 +443,7 @@
 <p>如果有兴趣可以去看看 RahabMan 帖子.</p>
 <p>之前我在 DSDT 打的补丁有.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot;Fix _WAK Arg0 v2&quot; </div><div class="line">&quot;HPET Fix&quot; </div><div class="line">&quot;SMBUS Fix&quot;</div><div class="line">&quot;IRQ Fix&quot; </div><div class="line">&quot;RTC Fix&quot; </div><div class="line">&quot;OS Check Fix（Windows 7）&quot; </div><div class="line">&quot;OS Check Fix（Windows 8）&quot; </div><div class="line">&quot;Fix Mutex with non-zero SyncLevel&quot; //对比了下 这个补丁是不需要打的</div><div class="line">&quot;Rename GFX0 to IGPU&quot; </div><div class="line">&quot;Brightness fix(Haswell/Broadwell)&quot;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="Clover-常规补丁"><a href="#Clover-常规补丁" class="headerlink" title="Clover 常规补丁"></a>Clover 常规补丁</h2><ul>
 <li><code>Fix _WAK Arg0 v2</code>  →   <code>ACPI &gt; DSDT &gt; FIX_WAK_200000</code></li>
 <li><code>IRQ Fix</code> 和 <code>HPET Fix</code> → <code>ACPI &gt; DSDT &gt; FixHPET_0010</code> 和 <code>ACPI &gt; DSDT &gt; FixIPIC_0040</code></li>
@@ -842,7 +843,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/06.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/07.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/08.png">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:30:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TP-Link AC1000 在锐捷网路内设置 AP 上线">
 <meta name="twitter:description" content="网络拓扑及环境说明  配置目的:实现不同 SSID 分配不同 VLAN SSID = Office = Vlan 53 SSID = Guest = Vlan 54 管理 VLAN = VLAN 52   无线产品 TP-Link AC1000 TP-Link TL-AP306I-PoE   交换机产品 核心交换机: 锐捷 S8610 接入交换机: 锐捷 S3760E-24 POE供电交换机接在接">
@@ -498,7 +498,8 @@ ip dhcp pool vlan054
  network 172.16.54.0 255.255.255.0
  dns-server 202.96.128.166
  default-router 172.16.54.254
-</code></pre><h3 id="2-接入交换机配置"><a href="#2-接入交换机配置" class="headerlink" title="2. 接入交换机配置"></a>2. 接入交换机配置</h3><pre><code># 配置 AP 管理 VLAN 与业务 VLAN.
+</code></pre><a id="more"></a>
+<h3 id="2-接入交换机配置"><a href="#2-接入交换机配置" class="headerlink" title="2. 接入交换机配置"></a>2. 接入交换机配置</h3><pre><code># 配置 AP 管理 VLAN 与业务 VLAN.
 vlan 52
  name AP管理
 vlan 53
@@ -582,8 +583,8 @@ interface FastEthernet 0/17
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/05/2016-12-5-blog/" rel="next" title="重庆老火锅">
-                <i class="fa fa-chevron-left"></i> 重庆老火锅
+              <a href="/2016/12/05/test/" rel="next" title="Seafile 在线测试">
+                <i class="fa fa-chevron-left"></i> Seafile 在线测试
               </a>
             
           </div>
@@ -669,7 +670,7 @@ interface FastEthernet 0/17
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

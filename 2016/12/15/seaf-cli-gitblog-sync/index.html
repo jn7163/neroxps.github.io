@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="前言由于 GitBlog 无后台编辑，故此每次在电脑写好博客，还需要用 SSH 或其他方式上传文件比较麻烦，而服务器本来就部署了 Seafile，故此可以使用 Seafile 的命令行客户端来作为同步工具。 需要使用工具 已搭建好的 Seafile 服务器（搭建方法详细请看官方手册） Seafile Terminal 客户端和 Windows 客户端（https://www.seafile.com">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:24:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用 Seafile 命令行客户端同步 GitBlog">
 <meta name="twitter:description" content="前言由于 GitBlog 无后台编辑，故此每次在电脑写好博客，还需要用 SSH 或其他方式上传文件比较麻烦，而服务器本来就部署了 Seafile，故此可以使用 Seafile 的命令行客户端来作为同步工具。 需要使用工具 已搭建好的 Seafile 服务器（搭建方法详细请看官方手册） Seafile Terminal 客户端和 Windows 客户端（https://www.seafile.com">
@@ -436,6 +436,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-cli_4.3.2_x86-64.tar.gz</div><div class="line">tar xzf seafile-cli_4.3.2_x86-64.tar.gz</div></pre></td></tr></table></figure>
 <p>####初始化和安装守护进程</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> seafile-cli-4.3.2</div><div class="line"><span class="comment"># 选择存储seafile客户端设置的文件夹（例如）~/.seafile-client</span></div><div class="line">mkdir ~/.seafile-client            <span class="comment"># 创建客户端设置文件夹</span></div><div class="line">./seaf-cli init -d ~/.seafile-client  <span class="comment"># 初始化客户端，并指定客户端的配置文件目录</span></div><div class="line">./seaf-cli start	<span class="comment"># 启动守护程序</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>####在您的环境中安装 Seafile 客户端</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 建立 seaf-cli 命令软连接到系统环境中</span></div><div class="line">ln -s `readlink -f seaf-cli` /usr/bin/</div></pre></td></tr></table></figure>
 <p>####建立同步</p>
@@ -508,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/05/Hackintosh-00/" rel="prev" title="黑苹果手记">
-                黑苹果手记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/12/vmware-fusion-8-pro-key/" rel="prev" title="【转载】 VMware Fusion 8 Pro 序列号">
+                【转载】 VMware Fusion 8 Pro 序列号 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +586,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

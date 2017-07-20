@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hexo.neroxps.cn/"/>
-  <updated>2017-07-19T12:47:36.000Z</updated>
+  <updated>2017-07-20T02:21:07.000Z</updated>
   <id>http://hexo.neroxps.cn/</id>
   
   <author>
@@ -20,29 +20,41 @@
     <link href="http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/"/>
     <id>http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:21:07.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安装-zabbix-agent-到-Debian"><a href="#安装-zabbix-agent-到-Debian" class="headerlink" title="安装 zabbix-agent 到 Debian"></a>安装 zabbix-agent 到 Debian</h2><blockquote>
 <p>参考 <a href="https://www.zabbix.com/documentation/3.2/manual/installation/install_from_packages/agent_installation" target="_blank" rel="external">Zabbix Documentation 3.2</a></p>
 </blockquote>
-<h3 id="通过默认源安装-zabbix-agent"><a href="#通过默认源安装-zabbix-agent" class="headerlink" title="通过默认源安装 zabbix-agent"></a>通过默认源安装 zabbix-agent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zabbix-agent</div></pre></td></tr></table></figure>
+<h3 id="通过默认源安装-zabbix-agent"><a href="#通过默认源安装-zabbix-agent" class="headerlink" title="通过默认源安装 zabbix-agent"></a>通过默认源安装 zabbix-agent</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zabbix-agent</div></pre></td></tr></table></figure>
 <p>但是这样安装的 zabbix-agent 版本是比较老的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zabbix_agent -V</div><div class="line">Zabbix agent v2.2.7 (revision 50148) (24 October 2014)</div><div class="line">Compilation time: Feb  3 2017 17:23:53</div></pre></td></tr></table></figure>
-<h3 id="通过-Zabbix-源安装新版本"><a href="#通过-Zabbix-源安装新版本" class="headerlink" title="通过 Zabbix 源安装新版本"></a>通过 Zabbix 源安装新版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line"># dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line"># apt-get update</div><div class="line"># apt-get install zabbix-agent</div><div class="line"># zabbix_agentd -V</div><div class="line">zabbix_agentd (daemon) (Zabbix) 3.2.6</div><div class="line">Revision 67849 4 May 2017, compilation time: May  6 2017 15:59:40</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zabbix_agent -V</div><div class="line">Zabbix agent v2.2.7 (revision 50148) (24 October 2014)</div><div class="line">Compilation time: Feb  3 2017 17:23:53</div></pre></td></tr></table></figure>
+<h3 id="通过-Zabbix-源安装新版本"><a href="#通过-Zabbix-源安装新版本" class="headerlink" title="通过 Zabbix 源安装新版本"></a>通过 Zabbix 源安装新版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</span></div><div class="line"><span class="comment"># dpkg -i zabbix-release_3.2-1+jessie_all.deb</span></div><div class="line"><span class="comment"># apt-get update</span></div><div class="line"><span class="comment"># apt-get install zabbix-agent</span></div><div class="line"><span class="comment"># zabbix_agentd -V</span></div><div class="line">zabbix_agentd (daemon) (Zabbix) 3.2.6</div><div class="line">Revision 67849 4 May 2017, compilation time: May  6 2017 15:59:40</div></pre></td></tr></table></figure>
 <h2 id="升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）"><a href="#升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）" class="headerlink" title="升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）"></a>升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）</h2><p>如果是之前安装 zabbix-agent 是用系统默认源安装的话，版本比较久，那么可以通过上面方法安装最新版本。</p>
 <blockquote>
 <p>注：笔者的 zabbix-server 版本是3.2版本，要确定自己的 zabbix-agent 是否适用于 zabbix-server。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install --only-upgrade zabbix-agent</div><div class="line"></div><div class="line">注意，这里更新的时候会问你选择如何处理已有的配置文件，这里可以选择 N，使用原来的配置文件。</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo dpkg -i zabbix-release_3.2-1+jessie_all.deb</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install --only-upgrade zabbix-agent</div><div class="line"></div><div class="line">注意，这里更新的时候会问你选择如何处理已有的配置文件，这里可以选择 N，使用原来的配置文件。</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="遇到错误"><a href="#遇到错误" class="headerlink" title="遇到错误"></a>遇到错误</h3><p>安装到最后会报告安装失败，其实已经安装好了，但是因为 2.2 的配置文件引入的其他配置的目录路径是 /etc/zabbix/zabbix_agentd.conf.d，而 3.2是 /etc/zabbix/zabbix_agentd.d 故此会刷出报错日志如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">7月 15 14:49:22 gooderp-backup zabbix_agentd[22098]: zabbix_agentd [22098]: /etc/zabbix/zabbix_agentd.conf.d: [2] No such file or directory</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: zabbix-agent.service: control process exited, code=exited status=1</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: Failed to start Zabbix Agent.</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">7月 15 14:49:22 gooderp-backup zabbix_agentd[22098]: zabbix_agentd [22098]: /etc/zabbix/zabbix_agentd.conf.d: [2] No such file or directory</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: zabbix-agent.service: control process exited, code=exited status=1</div><div class="line">7月 15 14:49:22 gooderp-backup systemd[1]: Failed to start Zabbix Agent.</div></pre></td></tr></table></figure>
 <p>这个简单，只需要替换下配置文件的路径名称即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo sed -i &quot;s/zabbix_agentd.conf.d/zabbix_agentd.d/g&quot; /etc/zabbix/zabbix_agentd.conf</div><div class="line">$ sudo systemctl restart zabbix-agent</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo sed -i <span class="string">"s/zabbix_agentd.conf.d/zabbix_agentd.d/g"</span> /etc/zabbix/zabbix_agentd.conf</div><div class="line">$ sudo systemctl restart zabbix-agent</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;安装-zabbix-agent-到-Debian&quot;&gt;&lt;a href=&quot;#安装-zabbix-agent-到-Debian&quot; class=&quot;headerlink&quot; title=&quot;安装 zabbix-agent 到 Debian&quot;&gt;&lt;/a&gt;安装 zabbix-ag
+      &lt;h2 id=&quot;安装-zabbix-agent-到-Debian&quot;&gt;&lt;a href=&quot;#安装-zabbix-agent-到-Debian&quot; class=&quot;headerlink&quot; title=&quot;安装 zabbix-agent 到 Debian&quot;&gt;&lt;/a&gt;安装 zabbix-agent 到 Debian&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;参考 &lt;a href=&quot;https://www.zabbix.com/documentation/3.2/manual/installation/install_from_packages/agent_installation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zabbix Documentation 3.2&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;通过默认源安装-zabbix-agent&quot;&gt;&lt;a href=&quot;#通过默认源安装-zabbix-agent&quot; class=&quot;headerlink&quot; title=&quot;通过默认源安装 zabbix-agent&quot;&gt;&lt;/a&gt;通过默认源安装 zabbix-agent&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install zabbix-agent&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;但是这样安装的 zabbix-agent 版本是比较老的版本&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;zabbix_agent -V&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Zabbix agent v2.2.7 (revision 50148) (24 October 2014)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Compilation time: Feb  3 2017 17:23:53&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;通过-Zabbix-源安装新版本&quot;&gt;&lt;a href=&quot;#通过-Zabbix-源安装新版本&quot; class=&quot;headerlink&quot; title=&quot;通过 Zabbix 源安装新版本&quot;&gt;&lt;/a&gt;通过 Zabbix 源安装新版本&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# dpkg -i zabbix-release_3.2-1+jessie_all.deb&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# apt-get update&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# apt-get install zabbix-agent&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# zabbix_agentd -V&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;zabbix_agentd (daemon) (Zabbix) 3.2.6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Revision 67849 4 May 2017, compilation time: May  6 2017 15:59:40&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）&quot;&gt;&lt;a href=&quot;#升级-zabbix-agent-到官方新版本-2-2-7-升级到-3-2-6）&quot; class=&quot;headerlink&quot; title=&quot;升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）&quot;&gt;&lt;/a&gt;升级 zabbix-agent 到官方新版本(2.2.7 升级到 3.2.6）&lt;/h2&gt;&lt;p&gt;如果是之前安装 zabbix-agent 是用系统默认源安装的话，版本比较久，那么可以通过上面方法安装最新版本。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：笔者的 zabbix-server 版本是3.2版本，要确定自己的 zabbix-agent 是否适用于 zabbix-server。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ wget http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix-release/zabbix-release_3.2-1+jessie_all.deb&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ sudo dpkg -i zabbix-release_3.2-1+jessie_all.deb&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ sudo apt-get update&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ sudo apt-get install --only-upgrade zabbix-agent&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;注意，这里更新的时候会问你选择如何处理已有的配置文件，这里可以选择 N，使用原来的配置文件。&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -58,7 +70,7 @@
     <link href="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/"/>
     <id>http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/</id>
     <published>2017-07-12T16:00:00.000Z</published>
-    <updated>2017-07-20T01:37:09.000Z</updated>
+    <updated>2017-07-20T02:19:22.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="触发器邮件警告"><a href="#触发器邮件警告" class="headerlink" title="触发器邮件警告"></a>触发器邮件警告</h1><p>Zabbix 默认的邮箱警告有个 SMTP HELO 的值，我一直不知道怎么填写，反正这个值一直报错，网上爬文一堆都是通过脚本来发邮件的。</p>
 <h2 id="部署-sendEmail-环境"><a href="#部署-sendEmail-环境" class="headerlink" title="部署 sendEmail 环境"></a>部署 sendEmail 环境</h2><blockquote>
@@ -71,6 +83,7 @@
 <p>例子中是将 sendEmail 的 SSL_version 定义为 SSLv3，但是我使用的 QQ 邮箱和 Gmail 目前都在使用 TLSv1 协议，故此我需要将这个改成 TLSv1。</p>
 <p>说回来我是 Docker 环境，故此我需要基于 zabbix/zabbix-server-mysql:latest 构建一个新的镜像。</p>
 <h3 id="1-创建-Docker-构建文件夹"><a href="#1-创建-Docker-构建文件夹" class="headerlink" title="1. 创建 Docker 构建文件夹"></a>1. 创建 Docker 构建文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir ~/zabbix-server-mysql-sendEmail</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="2-创建-Dockerfile"><a href="#2-创建-Dockerfile" class="headerlink" title="2. 创建 Dockerfile"></a>2. 创建 Dockerfile</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/zabbix-server-mysql-sendEmail/Dockerfile</div><div class="line">FROM zabbix/zabbix-server-mysql</div><div class="line">RUN sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g'</span> /etc/apk/repositories &amp;&amp; \</div><div class="line">apk add --no-cache perl-crypt-ssleay perl-io-socket-ssl ca-certificates tzdata &amp;&amp; \</div><div class="line">wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz -P /tmp/ &amp;&amp; \</div><div class="line">tar xzf /tmp/sendEmail-v1.56.tar.gz -C /tmp/ &amp;&amp; \</div><div class="line">rm -f /tmp/sendEmail-v1.56.tar.gz &amp;&amp; \</div><div class="line">sed -i <span class="string">"s/SSL_version =&gt; 'SSLv3 TLSv1'/SSL_version =&gt; 'TLSv1'/g"</span> /tmp/sendEmail-v1.56/sendEmail &amp;&amp; \</div><div class="line">mv /tmp/sendEmail-v1.56/sendEmail /usr/bin &amp;&amp; \</div><div class="line">chmod +x /usr/bin/sendEmail &amp;&amp; \</div><div class="line">rm -rf /tmp/* &amp;&amp; \</div><div class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; \</div><div class="line"><span class="built_in">echo</span> <span class="string">"Asia/Shanghai"</span> &gt; /etc/timezone </div><div class="line"></div><div class="line">EXPOSE 10051/TCP 162/UDP</div><div class="line"></div><div class="line">WORKDIR /var/lib/zabbix</div><div class="line"></div><div class="line">ENTRYPOINT [<span class="string">"/bin/bash"</span>]</div><div class="line"></div><div class="line">CMD [<span class="string">"/run_zabbix_component.sh"</span>, <span class="string">"server"</span>, <span class="string">"mysql"</span>]</div><div class="line">EOF</div></pre></td></tr></table></figure>
 <h3 id="3-构建镜像"><a href="#3-构建镜像" class="headerlink" title="3. 构建镜像"></a>3. 构建镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/zabbix-server-mysql-sendEmail</div><div class="line">docker build -t nero/zabbix-server-mysql:latest .</div></pre></td></tr></table></figure>
 <h3 id="4-停止官方使用的镜像，启用新镜像"><a href="#4-停止官方使用的镜像，启用新镜像" class="headerlink" title="4. 停止官方使用的镜像，启用新镜像"></a>4. 停止官方使用的镜像，启用新镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">docker rm -f zabbix-server <span class="comment">#这里我之前启用镜像的时候使用的是别名</span></div><div class="line">docker run --name zabbix-server \</div><div class="line">--link zabbix-db:mysql-server \</div><div class="line">--restart=always \</div><div class="line">-e MYSQL_USER=zabbix \</div><div class="line">-e MYSQL_PASSWORD=zabbix \</div><div class="line">-e ZBX_IPMIPOLLERS=3 \</div><div class="line">-e ZBX_STARTVMWARECOLLECTORS=5 \</div><div class="line">-e ZBX_DEBUGLEVEL=3 \</div><div class="line">-v /home/nero/zabbix/externalscripts:/usr/lib/zabbix/externalscripts \</div><div class="line">-v /home/nero/zabbix/alertscripts:/usr/lib/zabbix/alertscripts \</div><div class="line">-p 10051:10051 \</div><div class="line">-d nero/zabbix-server-mysql</div></pre></td></tr></table></figure>
@@ -138,7 +151,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;触发器邮件警告&quot;&gt;&lt;a href=&quot;#触发器邮件警告&quot; class=&quot;headerlink&quot; title=&quot;触发器邮件警告&quot;&gt;&lt;/a&gt;触发器邮件警告&lt;/h1&gt;&lt;p&gt;Zabbix 默认的邮箱警告有个 SMTP HELO 的值，我一直不知道怎么填写，反正这个值一直报错
+      &lt;h1 id=&quot;触发器邮件警告&quot;&gt;&lt;a href=&quot;#触发器邮件警告&quot; class=&quot;headerlink&quot; title=&quot;触发器邮件警告&quot;&gt;&lt;/a&gt;触发器邮件警告&lt;/h1&gt;&lt;p&gt;Zabbix 默认的邮箱警告有个 SMTP HELO 的值，我一直不知道怎么填写，反正这个值一直报错，网上爬文一堆都是通过脚本来发邮件的。&lt;/p&gt;
+&lt;h2 id=&quot;部署-sendEmail-环境&quot;&gt;&lt;a href=&quot;#部署-sendEmail-环境&quot; class=&quot;headerlink&quot; title=&quot;部署 sendEmail 环境&quot;&gt;&lt;/a&gt;部署 sendEmail 环境&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;参考文献1：&lt;a href=&quot;http://www.jianshu.com/p/78ec2aba6824&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zabbix通过stmp邮件报警&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考文献2：&lt;a href=&quot;http://xiao987334176.blog.51cto.com/2202382/1768339&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zabbix 3.0.2邮件报警&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里需要用到 sendEmail &lt;a href=&quot;http://caspian.dotconf.net/menu/Software/SendEmail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;下载地址&lt;/a&gt;，它是基于 perl 写的一个脚本，如果用 SSL 加密的话需要依赖 perl 的 &lt;strong&gt;Net::SSLeay&lt;/strong&gt; 和 &lt;strong&gt;IO::Socket::SSL&lt;/strong&gt; 模块，debian 和 Ubuntu 的源都可以直接安装这个软件，另外安装 &lt;code&gt;libcrypt-ssleay-perl libio-socket-ssl-perl ca-certificates&lt;/code&gt; 这三个包即可。&lt;/p&gt;
+&lt;p&gt;但是我查了下，zabbix/zabbix-server-mysql:latest 是使用 alpine 的，我测试的时候 sendEmail 官网下载的脚本会遇到 &lt;code&gt;invalid SSL_version&lt;/code&gt; 的报错。Google 一番后据说要修改 &lt;code&gt;/usr/share/perl5/IO/Socket/SSL.pm&lt;/code&gt; 这个依赖文件，但是我改了之后就会报 SSL 鉴定错误，故此不能这样做。&lt;/p&gt;
+&lt;p&gt;最终爬贴找到了这个帖子&lt;strong&gt;&lt;a href=&quot;https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/net-mail/sendEmail/files/1.56-overzealous-version-check.patch?view=log&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;1.56-overzealous-version-check.patch&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;例子中是将 sendEmail 的 SSL_version 定义为 SSLv3，但是我使用的 QQ 邮箱和 Gmail 目前都在使用 TLSv1 协议，故此我需要将这个改成 TLSv1。&lt;/p&gt;
+&lt;p&gt;说回来我是 Docker 环境，故此我需要基于 zabbix/zabbix-server-mysql:latest 构建一个新的镜像。&lt;/p&gt;
+&lt;h3 id=&quot;1-创建-Docker-构建文件夹&quot;&gt;&lt;a href=&quot;#1-创建-Docker-构建文件夹&quot; class=&quot;headerlink&quot; title=&quot;1. 创建 Docker 构建文件夹&quot;&gt;&lt;/a&gt;1. 创建 Docker 构建文件夹&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;mkdir ~/zabbix-server-mysql-sendEmail&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -154,7 +177,7 @@
     <link href="http://hexo.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/"/>
     <id>http://hexo.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/</id>
     <published>2017-06-30T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:19:38.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Zabbix-搭建文档"><a href="#Zabbix-搭建文档" class="headerlink" title="Zabbix 搭建文档"></a>Zabbix 搭建文档</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>计划使用 docker 搭建 Zabbix 监控系统。</p>
 <h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>参考 <a href="https://yeasy.gitbooks.io/docker_practice/content/install/ubuntu.html" target="_blank" rel="external">Ubuntu、Debian 系列安装 Docker</a></p>
@@ -164,6 +187,7 @@
 <p>这里会产生一个问题，由于默认的 mariadb 是使用<code>latin1</code>字符集来创建数据库，这时候我们在 Zabbix 录入中文字符的时候会导致出错，故此需要进入 mariadb-docker 内删除新建好的<code>zabbix</code>数据库，再使用<code>utf8</code>新建数据库。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it zabbix-db mysql -uroot -p<span class="string">'mysql_root_password'</span></div><div class="line">MariaDB [(none)]&gt; drop database zabbix;</div><div class="line">MariaDB [(none)]&gt; create database zabbix default charset utf8;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>此时，数据库已经以 utf8 新建好了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MariaDB [(none)]&gt; show create database zabbix;</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">| Database | Create Database                                                 |</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">| zabbix   | CREATE DATABASE `zabbix` /*!40100 DEFAULT CHARACTER SET utf8 */ |</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</div><div class="line"></div><div class="line">MariaDB [(none)]&gt;quit</div></pre></td></tr></table></figure>
 <blockquote>
@@ -188,7 +212,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Zabbix-搭建文档&quot;&gt;&lt;a href=&quot;#Zabbix-搭建文档&quot; class=&quot;headerlink&quot; title=&quot;Zabbix 搭建文档&quot;&gt;&lt;/a&gt;Zabbix 搭建文档&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;head
+      &lt;h1 id=&quot;Zabbix-搭建文档&quot;&gt;&lt;a href=&quot;#Zabbix-搭建文档&quot; class=&quot;headerlink&quot; title=&quot;Zabbix 搭建文档&quot;&gt;&lt;/a&gt;Zabbix 搭建文档&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;计划使用 docker 搭建 Zabbix 监控系统。&lt;/p&gt;
+&lt;h2 id=&quot;安装-Docker&quot;&gt;&lt;a href=&quot;#安装-Docker&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker&quot;&gt;&lt;/a&gt;安装 Docker&lt;/h2&gt;&lt;p&gt;参考 &lt;a href=&quot;https://yeasy.gitbooks.io/docker_practice/content/install/ubuntu.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ubuntu、Debian 系列安装 Docker&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;部署-Mariadb-Server&quot;&gt;&lt;a href=&quot;#部署-Mariadb-Server&quot; class=&quot;headerlink&quot; title=&quot;部署 Mariadb-Server&quot;&gt;&lt;/a&gt;部署 Mariadb-Server&lt;/h2&gt;&lt;h3 id=&quot;一、建立数据库本地目录&quot;&gt;&lt;a href=&quot;#一、建立数据库本地目录&quot; class=&quot;headerlink&quot; title=&quot;一、建立数据库本地目录&quot;&gt;&lt;/a&gt;一、建立数据库本地目录&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;mkdir -p ~/zabbix/database/mysql&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;mkdir ~/zabbix/database/conf.d&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;二、运行-Mariadb-Server-Docker&quot;&gt;&lt;a href=&quot;#二、运行-Mariadb-Server-Docker&quot; class=&quot;headerlink&quot; title=&quot;二、运行 Mariadb-Server Docker&quot;&gt;&lt;/a&gt;二、运行 Mariadb-Server Docker&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;docker run --name zabbix-db \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--restart=always \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-e MYSQL_ROOT_PASSWORD=&lt;span class=&quot;string&quot;&gt;&#39;mysql_root_password&#39;&lt;/span&gt; \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-e MYSQL_DATABASE=zabbix \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-e MYSQL_USER=zabbix \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-e MYSQL_PASSWORD=zabbix \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-v /home/nero/zabbix/database/mysql:/var/lib/mysql \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-v /home/nero/zabbix/database/conf.d:/etc/mysql/conf.d \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-d mariadb&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里会产生一个问题，由于默认的 mariadb 是使用&lt;code&gt;latin1&lt;/code&gt;字符集来创建数据库，这时候我们在 Zabbix 录入中文字符的时候会导致出错，故此需要进入 mariadb-docker 内删除新建好的&lt;code&gt;zabbix&lt;/code&gt;数据库，再使用&lt;code&gt;utf8&lt;/code&gt;新建数据库。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ docker &lt;span class=&quot;built_in&quot;&gt;exec&lt;/span&gt; -it zabbix-db mysql -uroot -p&lt;span class=&quot;string&quot;&gt;&#39;mysql_root_password&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;MariaDB [(none)]&amp;gt; drop database zabbix;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;MariaDB [(none)]&amp;gt; create database zabbix default charset utf8;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -204,7 +235,7 @@
     <link href="http://hexo.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/"/>
     <id>http://hexo.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/</id>
     <published>2017-06-14T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:28:06.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
 <li><a href="www.gooderp.org">GoodERP 官方网址</a></li>
@@ -226,28 +257,50 @@
 <li><strong>PostgreSQL</strong></li>
 <li><strong>Nodejs</strong></li>
 </ul>
-<h3 id="切换国内163源"><a href="#切换国内163源" class="headerlink" title="切换国内163源"></a>切换国内163源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list</div><div class="line">deb http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">EOF</div><div class="line">sudo apt update &amp;&amp; sudo apt -y upgrade</div></pre></td></tr></table></figure>
+<h3 id="切换国内163源"><a href="#切换国内163源" class="headerlink" title="切换国内163源"></a>切换国内163源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list</div><div class="line">deb http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">EOF</div><div class="line">sudo apt update &amp;&amp; sudo apt -y upgrade</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="安装必要的软件"><a href="#安装必要的软件" class="headerlink" title="安装必要的软件"></a>安装必要的软件</h3><blockquote>
 <p><strong>注意：由于使用了 nodesource.com 的安装脚本，建议搭建翻墙环境运行以下命令</strong></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y curl wget git vim unzip python python-setuptools\</div><div class="line">&amp;&amp; curl -sL https://bootstrap.pypa.io/get-pip.py | sudo -E python - \</div><div class="line">&amp;&amp; curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \</div><div class="line">&amp;&amp; sudo apt-get install -y nodejs \</div><div class="line">&amp;&amp; sudo npm config set registry https://registry.npm.taobao.org \</div><div class="line">&amp;&amp; sudo npm install -g less \</div><div class="line">&amp;&amp; sudo apt-get -y build-dep python-lxml \</div><div class="line">&amp;&amp; sudo apt-get -y install libldap2-dev libsasl2-dev \</div><div class="line">&amp;&amp; curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \</div><div class="line">&amp;&amp; echo &apos;40e8b906de658a2221b15e4e8cd82565a47d7ee8 wkhtmltox.deb&apos; | sha1sum -c - \</div><div class="line">&amp;&amp; sudo dpkg --force-depends -i wkhtmltox.deb \</div><div class="line">&amp;&amp; sudo apt-get -y install -f --no-install-recommends</div></pre></td></tr></table></figure>
-<h1 id="PostgreSQL-安装"><a href="#PostgreSQL-安装" class="headerlink" title="PostgreSQL 安装"></a>PostgreSQL 安装</h1><h2 id="通过-apt-get-安装-PostgreSQL"><a href="#通过-apt-get-安装-PostgreSQL" class="headerlink" title="通过 apt-get 安装 PostgreSQL"></a>通过 apt-get 安装 PostgreSQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y postgresql postgresql-server-dev-9.4</div></pre></td></tr></table></figure>
-<h2 id="配置-PostgreSQL"><a href="#配置-PostgreSQL" class="headerlink" title="配置 PostgreSQL"></a>配置 PostgreSQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u postgres createuser --createdb --no-createrole --no-superuser --pwprompt good #创建数据库用户good，输入两次密码good</div></pre></td></tr></table></figure>
-<h1 id="GoodERP-安装"><a href="#GoodERP-安装" class="headerlink" title="GoodERP 安装"></a>GoodERP 安装</h1><h2 id="步骤1：新建-good-用户"><a href="#步骤1：新建-good-用户" class="headerlink" title="步骤1：新建 good 用户"></a>步骤1：新建 good 用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo adduser good</div><div class="line">sudo su good</div><div class="line">cd ~</div></pre></td></tr></table></figure>
-<h2 id="步骤2：从-Github-中下载-GoodERP-源代码"><a href="#步骤2：从-Github-中下载-GoodERP-源代码" class="headerlink" title="步骤2：从 Github 中下载 GoodERP 源代码"></a>步骤2：从 Github 中下载 GoodERP 源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone http://github.com/osbzr/gooderp_addons </div><div class="line">git clone http://github.com/osbzr/base</div><div class="line">exit</div></pre></td></tr></table></figure>
-<h2 id="步骤3：修改-pip-源为国内源（豆瓣）"><a href="#步骤3：修改-pip-源为国内源（豆瓣）" class="headerlink" title="步骤3：修改 pip 源为国内源（豆瓣）"></a>步骤3：修改 pip 源为国内源（豆瓣）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo mkdir ~/.pip</div><div class="line">cat &lt;&lt;EOF | sudo tee ~/.pip/pip.conf</div><div class="line">[global]</div><div class="line">index-url = https://pypi.douban.com/simple</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h2 id="步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）"><a href="#步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）" class="headerlink" title="步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）"></a>步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r base/requirements.txt -i https://pypi.douban.com/simple \</div><div class="line">&amp;&amp; sudo pip install simplejson httplib2 -i https://pypi.douban.com/simple</div></pre></td></tr></table></figure>
-<h1 id="配置-GoodERP"><a href="#配置-GoodERP" class="headerlink" title="配置 GoodERP"></a>配置 GoodERP</h1><h2 id="编辑-gooderp-conf"><a href="#编辑-gooderp-conf" class="headerlink" title="编辑 ~/gooderp.conf"></a>编辑 ~/gooderp.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/gooderp.conf</div><div class="line">[options]</div><div class="line">db_user = good</div><div class="line">db_password = good</div><div class="line">addons_path = /home/good/gooderp_addons</div><div class="line">logfile = /home/good/gooderp.log</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><h3 id="1-创建服务文件"><a href="#1-创建服务文件" class="headerlink" title="1. 创建服务文件"></a>1. 创建服务文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/gooderp.service </div><div class="line">[Unit]</div><div class="line">Description=GoodERP</div><div class="line">Documentation=http://www.gooderp.org/</div><div class="line">After=network.target postgresql.service</div><div class="line"></div><div class="line">[Service]</div><div class="line"># Ubuntu/Debian convention:</div><div class="line">Type=simple</div><div class="line">User=good</div><div class="line">ExecStart=/usr/bin/python /home/good/base/odoo-bin -c /home/good/gooderp.conf</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h3 id="2-让配置文件生效"><a href="#2-让配置文件生效" class="headerlink" title="2. 让配置文件生效"></a>2. 让配置文件生效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl daemon-reload</div></pre></td></tr></table></figure>
-<h3 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable gooderp.service</div><div class="line">sudo systemctl enable postgresql.service</div><div class="line">sudo systemctl start gooderp.service</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y curl wget git vim unzip python python-setuptools\</div><div class="line">&amp;&amp; curl -sL https://bootstrap.pypa.io/get-pip.py | sudo -E python - \</div><div class="line">&amp;&amp; curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \</div><div class="line">&amp;&amp; sudo apt-get install -y nodejs \</div><div class="line">&amp;&amp; sudo npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org \</div><div class="line">&amp;&amp; sudo npm install -g less \</div><div class="line">&amp;&amp; sudo apt-get -y build-dep python-lxml \</div><div class="line">&amp;&amp; sudo apt-get -y install libldap2-dev libsasl2-dev \</div><div class="line">&amp;&amp; curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \</div><div class="line">&amp;&amp; <span class="built_in">echo</span> <span class="string">'40e8b906de658a2221b15e4e8cd82565a47d7ee8 wkhtmltox.deb'</span> | sha1sum -c - \</div><div class="line">&amp;&amp; sudo dpkg --force-depends -i wkhtmltox.deb \</div><div class="line">&amp;&amp; sudo apt-get -y install -f --no-install-recommends</div></pre></td></tr></table></figure>
+<h1 id="PostgreSQL-安装"><a href="#PostgreSQL-安装" class="headerlink" title="PostgreSQL 安装"></a>PostgreSQL 安装</h1><h2 id="通过-apt-get-安装-PostgreSQL"><a href="#通过-apt-get-安装-PostgreSQL" class="headerlink" title="通过 apt-get 安装 PostgreSQL"></a>通过 apt-get 安装 PostgreSQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y postgresql postgresql-server-dev-9.4</div></pre></td></tr></table></figure>
+<h2 id="配置-PostgreSQL"><a href="#配置-PostgreSQL" class="headerlink" title="配置 PostgreSQL"></a>配置 PostgreSQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u postgres createuser --createdb --no-createrole --no-superuser --pwprompt good <span class="comment">#创建数据库用户good，输入两次密码good</span></div></pre></td></tr></table></figure>
+<h1 id="GoodERP-安装"><a href="#GoodERP-安装" class="headerlink" title="GoodERP 安装"></a>GoodERP 安装</h1><h2 id="步骤1：新建-good-用户"><a href="#步骤1：新建-good-用户" class="headerlink" title="步骤1：新建 good 用户"></a>步骤1：新建 good 用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo adduser good</div><div class="line">sudo su good</div><div class="line"><span class="built_in">cd</span> ~</div></pre></td></tr></table></figure>
+<h2 id="步骤2：从-Github-中下载-GoodERP-源代码"><a href="#步骤2：从-Github-中下载-GoodERP-源代码" class="headerlink" title="步骤2：从 Github 中下载 GoodERP 源代码"></a>步骤2：从 Github 中下载 GoodERP 源代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http://github.com/osbzr/gooderp_addons </div><div class="line">git <span class="built_in">clone</span> http://github.com/osbzr/base</div><div class="line"><span class="built_in">exit</span></div></pre></td></tr></table></figure>
+<h2 id="步骤3：修改-pip-源为国内源（豆瓣）"><a href="#步骤3：修改-pip-源为国内源（豆瓣）" class="headerlink" title="步骤3：修改 pip 源为国内源（豆瓣）"></a>步骤3：修改 pip 源为国内源（豆瓣）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo mkdir ~/.pip</div><div class="line">cat &lt;&lt;EOF | sudo tee ~/.pip/pip.conf</div><div class="line">[global]</div><div class="line">index-url = https://pypi.douban.com/simple</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2017-07-20更新以上步骤是多余的，不操作也没问题</p>
+</blockquote>
+<h2 id="步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）"><a href="#步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）" class="headerlink" title="步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）"></a>步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r base/requirements.txt -i https://pypi.douban.com/simple \</div><div class="line">&amp;&amp; sudo pip install simplejson httplib2 -i https://pypi.douban.com/simple</div></pre></td></tr></table></figure>
+<h1 id="配置-GoodERP"><a href="#配置-GoodERP" class="headerlink" title="配置 GoodERP"></a>配置 GoodERP</h1><h2 id="编辑-gooderp-conf"><a href="#编辑-gooderp-conf" class="headerlink" title="编辑 ~/gooderp.conf"></a>编辑 ~/gooderp.conf</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/gooderp.conf</div><div class="line">[options]</div><div class="line">db_user = good</div><div class="line">db_password = good</div><div class="line">addons_path = /home/good/gooderp_addons</div><div class="line">logfile = /home/good/gooderp.log</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><h3 id="1-创建服务文件"><a href="#1-创建服务文件" class="headerlink" title="1. 创建服务文件"></a>1. 创建服务文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/gooderp.service </div><div class="line">[Unit]</div><div class="line">Description=GoodERP</div><div class="line">Documentation=http://www.gooderp.org/</div><div class="line">After=network.target postgresql.service</div><div class="line"></div><div class="line">[Service]</div><div class="line"><span class="comment"># Ubuntu/Debian convention:</span></div><div class="line">Type=simple</div><div class="line">User=good</div><div class="line">ExecStart=/usr/bin/python /home/good/base/odoo-bin -c /home/good/gooderp.conf</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="2-让配置文件生效"><a href="#2-让配置文件生效" class="headerlink" title="2. 让配置文件生效"></a>2. 让配置文件生效</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl daemon-reload</div></pre></td></tr></table></figure>
+<h3 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl <span class="built_in">enable</span> gooderp.service</div><div class="line">sudo systemctl <span class="built_in">enable</span> postgresql.service</div><div class="line">sudo systemctl start gooderp.service</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
       &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;www.gooderp.org&quot;&gt;GoodERP 官方网址&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;htt
+&lt;li&gt;&lt;a href=&quot;https://github.com/osbzr/gooderp_addons&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GoodERP GitHub&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/osbzr/base&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GoodERP 核心基于 Odoo 项目&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://best.gooderp.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GoodERP 论坛&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;部署环境&quot;&gt;&lt;a href=&quot;#部署环境&quot; class=&quot;headerlink&quot; title=&quot;部署环境&quot;&gt;&lt;/a&gt;部署环境&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;系统：Debian 8 最小化安装&lt;/li&gt;
+&lt;li&gt;内存：4G &lt;/li&gt;
+&lt;li&gt;硬盘：40G &lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考官方论坛：&lt;a href=&quot;http://best.gooderp.org/d/7&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Debian\ubuntu上源码安装GoodERP&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;GoodERP-需要准备&quot;&gt;&lt;a href=&quot;#GoodERP-需要准备&quot; class=&quot;headerlink&quot; title=&quot;GoodERP 需要准备&quot;&gt;&lt;/a&gt;GoodERP 需要准备&lt;/h2&gt;&lt;p&gt;由于 GoodERP 是基于 Odoo 做的二次开发，故此可以参考 Odoo 的源码搭建文档。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Python 2.7&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nodejs&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;切换国内163源&quot;&gt;&lt;a href=&quot;#切换国内163源&quot; class=&quot;headerlink&quot; title=&quot;切换国内163源&quot;&gt;&lt;/a&gt;切换国内163源&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;cat &amp;lt;&amp;lt;EOF | sudo tee /etc/apt/sources.list&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb http://mirrors.163.com/debian/ jessie main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb-src http://mirrors.163.com/debian/ jessie main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;EOF&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -269,19 +322,20 @@
     <link href="http://hexo.neroxps.cn/2017/05/27/%E7%BB%99_Seafile_%E9%83%A8%E7%BD%B2_onlyoffice/"/>
     <id>http://hexo.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/</id>
     <published>2017-05-26T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:31:08.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><blockquote>
 <p>参考 <a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">《Docker 从入门到实践》</a></p>
 </blockquote>
 <p>我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
 <h3 id="给-Docker-添加加速器"><a href="#给-Docker-添加加速器" class="headerlink" title="给 Docker 添加加速器"></a>给 Docker 添加加速器</h3><p>因为 Docker 的镜像服务器是在国外，所以我们给 Docker 添加国内镜像加速器，这里我使用阿里云的镜像加速器，如何申请阿里云的镜像加速器请自行百度。</p>
 <p>编辑 /usr/lib/systemd/system/docker.service 找到 <code>ExecStart=/usr/bin/dockerd</code> 改成如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com</div></pre></td></tr></table></figure>
 <p><strong>注：–registry-mirror= 后的网址请修改成阿里云申请的加速器地址</strong></p>
+<a id="more"></a>
 <p>修改后重载 systemd 配置、启动 Docker、设置 Docker 为开机自启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div><div class="line">systemctl start docker</div><div class="line">systemctl enable docker</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div><div class="line">systemctl start docker</div><div class="line">systemctl <span class="built_in">enable</span> docker</div></pre></td></tr></table></figure>
 <h3 id="部署-OnlyOffice-documentserver"><a href="#部署-OnlyOffice-documentserver" class="headerlink" title="部署 OnlyOffice-documentserver"></a>部署 OnlyOffice-documentserver</h3><ul>
 <li>构建 OnlyOffice-documentserver 镜像</li>
 </ul>
@@ -290,12 +344,12 @@
 <li>部署官方的 onlyoffice Docker 镜像，但因为官方的 Docker 镜像里没有中文字体，故此显示中文字体上会出现各种异常。</li>
 <li>我基于官方的 Docker 镜像制作了一个 Dockerfile <a href="https://github.com/neroxps/Docker-Only-Office-Chinese-font" target="_blank" rel="external">项目地址</a>，只要利用这个 Dockerfile 构建镜像即可。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/neroxps/Docker-Only-Office-Chinese-font.git</div><div class="line">cd Docker-Only-Office-Chinese-font</div><div class="line">docker build -t onlyoffice/chinese .</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/neroxps/Docker-Only-Office-Chinese-font.git</div><div class="line"><span class="built_in">cd</span> Docker-Only-Office-Chinese-font</div><div class="line">docker build -t onlyoffice/chinese .</div></pre></td></tr></table></figure>
 <blockquote>
 <p>winfont 目录下是 windows 下的中文字体，如果你有其他字体需要，也可以将字体上传到这个目录里面，再构建镜像。</p>
 </blockquote>
 <p>构建完毕后查看下我们现在的镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server Docker-Only-Office-Chinese-font]# docker images</div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">onlyoffice/chinese          latest              5065553b1240        About a minute ago   1.68GB</div><div class="line">onlyoffice/documentserver   latest              f5ff5f9ec0c4        2 weeks ago          1.41GB</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server Docker-Only-Office-Chinese-font]<span class="comment"># docker images</span></div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">onlyoffice/chinese          latest              5065553b1240        About a minute ago   1.68GB</div><div class="line">onlyoffice/documentserver   latest              f5ff5f9ec0c4        2 weeks ago          1.41GB</div></pre></td></tr></table></figure>
 <p>onlyoffice 的 documentserver 镜像是提供在线编辑服务的，镜像内已包含了 nginx 服务器，支持 80 端口和 443 端口，如果有合法证书，我们可以使用 https 连接。</p>
 <blockquote>
 <p>onlyoffice-documentserver Docker 使用方法参考 <a href="https://github.com/ONLYOFFICE/Docker-DocumentServer" target="_blank" rel="external">Docker-DocumentServer</a></p>
@@ -303,23 +357,23 @@
 <ul>
 <li>将证书复制到 onlyoffice 证书目录路径</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#假设当前目录在证书目录下</div><div class="line">mkdir -p /app/onlyoffice/DocumentServer/data/certs</div><div class="line">cp fullchain1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.crt</div><div class="line">cp privkey1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.key</div><div class="line">openssl dhparam -out /app/onlyoffice/DocumentServer/data/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#假设当前目录在证书目录下</span></div><div class="line">mkdir -p /app/onlyoffice/DocumentServer/data/certs</div><div class="line">cp fullchain1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.crt</div><div class="line">cp privkey1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.key</div><div class="line">openssl dhparam -out /app/onlyoffice/DocumentServer/data/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
 <ul>
 <li>生成 onlyoffice 日志目录</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /app/onlyoffice/DocumentServer/logs</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /app/onlyoffice/DocumentServer/logs</div></pre></td></tr></table></figure>
 <h3 id="运行-OnlyOffice-documentserver"><a href="#运行-OnlyOffice-documentserver" class="headerlink" title="运行 OnlyOffice-documentserver"></a>运行 OnlyOffice-documentserver</h3><p>完成部署后我们就可以运行 OnlyOffice-documentserver 了。</p>
 <p>由于我的 Seafile 是用 nginx 部署了 https，443端口已被占用了，大家如果公网 ip 多可以忽略，我是部署在内网，公网是 ADSL，故此只有一个公网 ip，所以 OnlyOffice-documentserver 不能使用 443 端口了。</p>
 <ul>
 <li>使用 https</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 7443:443 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 7443:443 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
 <ul>
 <li>使用 http</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 780:80 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 780:80 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
 <p>这时候我们可以运行 <code>docker logs office</code> 来观察运行情况。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server certs]# docker logs office</div><div class="line">guest</div><div class="line"> * Starting PostgreSQL 9.3 database server                               [ OK ] </div><div class="line"> * Starting message broker rabbitmq-server                               [ OK ] </div><div class="line">Starting redis-server: redis-server.</div><div class="line">Starting supervisor: supervisord.</div><div class="line">Generating AllFonts.js, please wait...Done</div><div class="line">onlyoffice-documentserver:docservice: stopped</div><div class="line">onlyoffice-documentserver:docservice: started</div><div class="line">onlyoffice-documentserver:converter: stopped</div><div class="line">onlyoffice-documentserver:converter: started</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server certs]<span class="comment"># docker logs office</span></div><div class="line">guest</div><div class="line"> * Starting PostgreSQL 9.3 database server                               [ OK ] </div><div class="line"> * Starting message broker rabbitmq-server                               [ OK ] </div><div class="line">Starting redis-server: redis-server.</div><div class="line">Starting supervisor: supervisord.</div><div class="line">Generating AllFonts.js, please wait...Done</div><div class="line">onlyoffice-documentserver:docservice: stopped</div><div class="line">onlyoffice-documentserver:docservice: started</div><div class="line">onlyoffice-documentserver:converter: stopped</div><div class="line">onlyoffice-documentserver:converter: started</div></pre></td></tr></table></figure>
 <p>通过 web 访问 <a href="https://demo.domain.com:7443" target="_blank" rel="external">https://demo.domain.com:7443</a> 可以看到 『Document Server is running』表明服务已经正常运行了。</p>
 <h3 id="配置-Seafile-6-1-0，让其使用-onlyoffice"><a href="#配置-Seafile-6-1-0，让其使用-onlyoffice" class="headerlink" title="配置 Seafile 6.1.0，让其使用 onlyoffice"></a>配置 Seafile 6.1.0，让其使用 onlyoffice</h3><blockquote>
 <p>参考 <a href="https://manual.seafile.com/deploy/only_office.html" target="_blank" rel="external">Seafile Manual/Only Office</a></p>
@@ -327,13 +381,13 @@
 <ul>
 <li>编辑 seahub_settings.py 加入下方配置</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Enable Only Office</div><div class="line">ENABLE_ONLYOFFICE = True</div><div class="line">VERIFY_ONLYOFFICE_CERTIFICATE = True</div><div class="line">ONLYOFFICE_APIJS_URL = &apos;https://demo.domain.com:7443/web-apps/apps/api/documents/api.js&apos;</div><div class="line">ONLYOFFICE_FILE_EXTENSION = (&apos;doc&apos;, &apos;docx&apos;, &apos;ppt&apos;, &apos;pptx&apos;, &apos;xls&apos;, &apos;xlsx&apos;, &apos;odt&apos;, &apos;fodt&apos;, &apos;odp&apos;, &apos;fodp&apos;, &apos;ods&apos;, &apos;fods&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Enable Only Office</span></div><div class="line">ENABLE_ONLYOFFICE = True</div><div class="line">VERIFY_ONLYOFFICE_CERTIFICATE = True</div><div class="line">ONLYOFFICE_APIJS_URL = <span class="string">'https://demo.domain.com:7443/web-apps/apps/api/documents/api.js'</span></div><div class="line">ONLYOFFICE_FILE_EXTENSION = (<span class="string">'doc'</span>, <span class="string">'docx'</span>, <span class="string">'ppt'</span>, <span class="string">'pptx'</span>, <span class="string">'xls'</span>, <span class="string">'xlsx'</span>, <span class="string">'odt'</span>, <span class="string">'fodt'</span>, <span class="string">'odp'</span>, <span class="string">'fodp'</span>, <span class="string">'ods'</span>, <span class="string">'fods'</span>)</div></pre></td></tr></table></figure>
 <p><strong>注1：其中 <code>VERIFY_ONLYOFFICE_CERTIFICATE</code> 选项如果 onlyoffice 使用了 https 的话可以选择更改为 True 提高安全性，如果是使用 http 协议则改为 False</strong></p>
 <p><strong>注2：如果没使用 memcached 的话，还需要执行 <code>rm /tmp/seahub_cached/</code>清空缓存</strong></p>
 <ul>
 <li>重启 seahub 使得配置生效</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#假设当前在 seafile-server-latest 目录下</div><div class="line">rm -f ../conf/seahub_settings.pyc</div><div class="line">./seahub.sh restart-fastcgi</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#假设当前在 seafile-server-latest 目录下</span></div><div class="line">rm -f ../conf/seahub_settings.pyc</div><div class="line">./seahub.sh restart-fastcgi</div></pre></td></tr></table></figure>
 <p>尽情享受吧！</p>
 <h3 id="使用体会"><a href="#使用体会" class="headerlink" title="使用体会"></a>使用体会</h3><p>onlyoffice 还是不错的，加载速度快，界面友善，我与同事测试过，多人同时编辑一个文件的时候毫无问题。</p>
 <p>但是它目前缺点也十分明显，界面没有中文语言，对中文支持也不好，例如我们在 word 里面的字体叫『等线』，但是 onlyoffice 里面叫 『DengXian』，有时候它并不能识别，故此会识别成默认英文字体，导致一堆口口。</p>
@@ -343,7 +397,14 @@
     <summary type="html">
     
       &lt;h3 id=&quot;安装-Docker&quot;&gt;&lt;a href=&quot;#安装-Docker&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker&quot;&gt;&lt;/a&gt;安装 Docker&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;参考 &lt;a href=&quot;https://www.gitbo
+&lt;p&gt;参考 &lt;a href=&quot;https://www.gitbook.com/book/yeasy/docker_practice/details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Docker 从入门到实践》&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;给-Docker-添加加速器&quot;&gt;&lt;a href=&quot;#给-Docker-添加加速器&quot; class=&quot;headerlink&quot; title=&quot;给 Docker 添加加速器&quot;&gt;&lt;/a&gt;给 Docker 添加加速器&lt;/h3&gt;&lt;p&gt;因为 Docker 的镜像服务器是在国外，所以我们给 Docker 添加国内镜像加速器，这里我使用阿里云的镜像加速器，如何申请阿里云的镜像加速器请自行百度。&lt;/p&gt;
+&lt;p&gt;编辑 /usr/lib/systemd/system/docker.service 找到 &lt;code&gt;ExecStart=/usr/bin/dockerd&lt;/code&gt; 改成如下配置&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;注：–registry-mirror= 后的网址请修改成阿里云申请的加速器地址&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -387,7 +448,7 @@
     <link href="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/"/>
     <id>http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/</id>
     <published>2017-03-12T16:00:00.000Z</published>
-    <updated>2017-07-20T00:35:23.000Z</updated>
+    <updated>2017-07-20T02:28:39.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。</p>
 <blockquote>
@@ -404,6 +465,7 @@
 <blockquote>
 <p>关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：<a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></p>
 </blockquote>
+<a id="more"></a>
 <h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
 <ul>
 <li>MuteGPIO 由 Noid 0x19 的VREF_80 0x50+0x0100+0x19 &gt; 1342242841（我的 Node 节点是 VREF_HIZ，但是从 ID3 和 ID13 提取的都有这个，当时我不确定是否这个值会影响结果，故此我也加进去了）</li>
@@ -443,7 +505,21 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;帖子链接：&lt;a href=&quot;http://bbs.pcbeta.com/viewthread-1734702-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;修改-AppleALC&quot;&gt;&lt;a href=&quot;#修改-AppleALC&quot; class=&quot;headerlink&quot; title=&quot;修改 AppleALC&quot;&gt;&lt;/a&gt;修改 AppleALC&lt;/h1&gt;&lt;h2 id=&quot;过程整理&quot;&gt;&lt;a href=&quot;#过程整理&quot; class=&quot;headerlink&quot; title=&quot;过程整理&quot;&gt;&lt;/a&gt;过程整理&lt;/h2&gt;&lt;p&gt;根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样，他内置麦克风有效节点是 Node 0x1a 而我的是 Node 0x1b，故此我并不可以直接使用他的驱动以及方法。&lt;/p&gt;
+&lt;p&gt;后来我看他的过程，是使用 layout13，他 layout13 本来就有 LineIn 这个线路输入节点，而我并没有，Pathmap 里面也没有关于 0x19 （25）节点的路径，故此我声卡要耳机麦克风生效的话，必须使用符合以下条件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;layout4.xml 设定 Inputs 的 Mic 和 LineIn。&lt;/li&gt;
+&lt;li&gt;添加 LineIn 的 MuteGPIO（如果你的节点是 VREF_80 或者其他数值的话）&lt;/li&gt;
+&lt;li&gt;PlatformsX.xml 中需要添加 Node 0X19 的有效路径。&lt;/li&gt;
+&lt;li&gt;PinConfigData.kext 里添加 Node 0x19的 ConfigData。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：&lt;a href=&quot;http://bbs.pcbeta.com/viewthread-1733228-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://bbs.pcbeta.com/viewthread-1733228-1-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -469,10 +545,9 @@
     <link href="http://hexo.neroxps.cn/2017/03/09/9CC3-EFI-README/"/>
     <id>http://hexo.neroxps.cn/2017/03/09/9CC3-EFI-README/</id>
     <published>2017-03-08T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:31:49.000Z</updated>
     
-    <content type="html"><![CDATA[<p>[TOC]</p>
-<h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><p>本文件适用于华硕 9CC3 笔记本芯片组。查看方法，win 下鲁大师 &gt; 详细报表。</p>
+    <content type="html"><![CDATA[<h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><p>本文件适用于华硕 9CC3 笔记本芯片组。查看方法，win 下鲁大师 &gt; 详细报表。</p>
 <p>本 CLOVER 所有的 ACPI 修改均使用 Hotpatch 方式，补丁模块化，故无 DSDT。</p>
 <p>本 EFI 在 VM510LI 测试通过</p>
 <p>欢迎各位 9CC3 笔记本芯片组的朋友测试，可加群一齐讨论与反馈问题 QQ 群号:621151130</p>
@@ -484,6 +559,7 @@
 <li>UHD-4K/SSDT-Config.aml（如果是4K 屏幕请替换此文件到 CLOVER/ACPI/patched。</li>
 <li>usr/bin/hda-verb （睡眠唤醒无声及开机耳机只有背景声使用，配合 CodecCommander.kext 使用，详见帖子 <a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></li>
 </ul>
+<a id="more"></a>
 <h2 id="ACPI-文件说明"><a href="#ACPI-文件说明" class="headerlink" title="ACPI 文件说明"></a>ACPI 文件说明</h2><h3 id="SSDT-BATT-VM510LI-aml"><a href="#SSDT-BATT-VM510LI-aml" class="headerlink" title="SSDT-BATT-VM510LI.aml"></a>SSDT-BATT-VM510LI.aml</h3><blockquote>
 <p>ASUS R557LI 无需使用此 SSDT，仅需放入 ACPIBatteryManager.kext<br>ASUS W519LI 电量无法显示，暂时未知什么问题导致。#2017年03月09日10:24:06</p>
 </blockquote>
@@ -723,8 +799,18 @@
     
     <summary type="html">
     
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=&quot;使用说明&quot;&gt;&lt;/a&gt;使用说明&lt;/h1&gt;&lt;p&gt;本文件适用于华硕 9CC3 笔记本芯片组。查看方法，win 下鲁大师 &amp;gt; 详细报表。&lt;/p&gt;
+      &lt;h1 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=&quot;使用说明&quot;&gt;&lt;/a&gt;使用说明&lt;/h1&gt;&lt;p&gt;本文件适用于华硕 9CC3 笔记本芯片组。查看方法，win 下鲁大师 &amp;gt; 详细报表。&lt;/p&gt;
+&lt;p&gt;本 CLOVER 所有的 ACPI 修改均使用 Hotpatch 方式，补丁模块化，故无 DSDT。&lt;/p&gt;
+&lt;p&gt;本 EFI 在 VM510LI 测试通过&lt;/p&gt;
+&lt;p&gt;欢迎各位 9CC3 笔记本芯片组的朋友测试，可加群一齐讨论与反馈问题 QQ 群号:621151130&lt;/p&gt;
+&lt;p&gt;EFI 下载地址：&lt;a href=&quot;https://blog.neroxps.cn/blog/macOS/9CC3-EFI-2017-03-09.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;9CC3-EFI-2017-03-09.zip&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;目录说明&quot;&gt;&lt;a href=&quot;#目录说明&quot; class=&quot;headerlink&quot; title=&quot;目录说明&quot;&gt;&lt;/a&gt;目录说明&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;CLOVER （Clover 目录，请放置在 EFI目录下。需要注意的只有两个地方，CLOVER 的 ACPI 文件夹和 Kext 文件夹。）&lt;/li&gt;
+&lt;li&gt;Hotpatch （ 所使用到的 hotpatch 源代码。）&lt;/li&gt;
+&lt;li&gt;Library/Extensions/DummyX86PP_MBP121_800.kext （建议放在系统盘 /Library/Extensions 下并修复权限，DummyX86PP_MBP121_800.kext 是为了修改 X86PlatformPlugin 中的机型数据，将最低 1300MHz 频率改成最低 800MHz。（可要可不要））&lt;/li&gt;
+&lt;li&gt;UHD-4K/SSDT-Config.aml（如果是4K 屏幕请替换此文件到 CLOVER/ACPI/patched。&lt;/li&gt;
+&lt;li&gt;usr/bin/hda-verb （睡眠唤醒无声及开机耳机只有背景声使用，配合 CodecCommander.kext 使用，详见帖子 &lt;a href=&quot;http://bbs.pcbeta.com/viewthread-1733228-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://bbs.pcbeta.com/viewthread-1733228-1-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -795,7 +881,7 @@
     <link href="http://hexo.neroxps.cn/2017/02/26/ACPI-Memo/"/>
     <id>http://hexo.neroxps.cn/2017/02/26/ACPI-Memo/</id>
     <published>2017-02-25T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:29:54.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>有时候查看 ACPI 时候，为了熟悉他的逻辑，需要学习一些 ACPI 语法，这里是关于 ACPI 语法的备忘录。</strong></p>
 <p><strong>本备忘均从 《Advanced Configuration and Power Interface Specification》 查阅，并使用 Google 翻译得来，本人英语极渣故此不确保翻译准确，如有需要请查阅原版文档。</strong></p>
@@ -805,6 +891,7 @@
 <h2 id="LOr（逻辑或）"><a href="#LOr（逻辑或）" class="headerlink" title="LOr（逻辑或）"></a>LOr（逻辑或）</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p><code>LOr（Source1，Source2）=&gt; Boolean Source1 || Source2 =&gt; Boolean</code></p>
 <h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><p>Source1和Source2被计算为整数。 </p>
 <h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>如果任一值不为零，则返回True; 否则返回False。</p>
+<a id="more"></a>
 <h2 id="Decrement-整数递减"><a href="#Decrement-整数递减" class="headerlink" title="Decrement (整数递减)"></a>Decrement (整数递减)</h2><h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p><code>Decrement (Minuend) =&gt; Integer Minuend-- =&gt; Integer</code></p>
 <h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>Minuend应该为一个整数。</p>
 <h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>此操作将Minuend减1，并将结果存储回Minuend。 等效于 <code>Subtract（Minuend，1，Minuend）</code>。 下溢条件被忽略，结果为Ones。</p>
@@ -875,7 +962,7 @@
 <li>OSPM必须通过ECDT中描述的嵌入式控制器访问嵌入式控制器操作区域，然后才能执行任何控制方法。 在OSPM运行_REG（EmbeddedControl，0）后，这些操作区域可能无法访问。将_REG放置在与操作区域声明相同的范围中。 当在该范围中声明的操作区域可供使用时，OS将在给定范围中运行_REG。</li>
 </ol>
 <p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Scope(\_SB.PCI0) &#123;    OperationRegion(OPR1, PCI_Config, ...)    Method(_REG, 2) &#123;...&#125;            // OSPM在PCIO操作区域处理程序时执行此操作                                     // 状态更改    Device(PCI1) &#123;        Method(2) &#123;...&#125;        Device(ETH0) &#123;            OperationRegion(OPR2, PCI_Config, ...)            Method(_REG,2) &#123;...&#125;        &#125;</div><div class="line">    &#125;    Device(ISA0) &#123;        OperationRegion(OPR3, SystemIO, ...)        Method(_REG, 2) &#123;...&#125;       // OSPM在ISAO操作区域处理程序时执行此操作                                    // 状态更改        Device(EC0) &#123;            Name(_HID, EISAID(&quot;PNP0C09&quot;))            OperationRegion(OPR4, EmbeddedControl, ...)            Method(_REG, 2) &#123;...&#125;    // OSPM在EC操作区域执行此操作        &#125;</div><div class="line">    &#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Scope(\_SB.PCI0) &#123;</div><div class="line">    OperationRegion(OPR1, PCI_Config, ...)</div><div class="line">    Method(_REG, 2) &#123;...&#125;            // OSPM在PCIO操作区域处理程序时执行此操作</div><div class="line">                                     // 状态更改</div><div class="line">    Device(PCI1) &#123;</div><div class="line">        Method(2) &#123;...&#125;</div><div class="line">        Device(ETH0) &#123;</div><div class="line">            OperationRegion(OPR2, PCI_Config, ...)</div><div class="line">            Method(_REG,2) &#123;...&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Device(ISA0) &#123;</div><div class="line">        OperationRegion(OPR3, SystemIO, ...)</div><div class="line">        Method(_REG, 2) &#123;...&#125;       // OSPM在ISAO操作区域处理程序时执行此操作</div><div class="line">                                    // 状态更改</div><div class="line">        Device(EC0) &#123;</div><div class="line">            Name(_HID, EISAID(&quot;PNP0C09&quot;))</div><div class="line">            OperationRegion(OPR4, EmbeddedControl, ...)</div><div class="line">            Method(_REG, 2) &#123;...&#125;    // OSPM在EC操作区域执行此操作</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当PCI0操作区域处理程序就绪时，OSPM将运行在PCI0范围中声明的_REG方法，以指示PCI0空间操作区域访问在PCI0范围内可用（换句话说，允许OPR1访问）。</p>
 <p>当ISA0操作处理程序就绪时，OSPM将在ISA0作用域中运行_REG方法，以指示I / O空间操作区域访问在该范围内可用（换句话说，允许OPR3访问）。</p>
 <p>最后，当嵌入式控制器操作区域处理程序就绪时，OSPM将在EC0作用域中运行_REG方法，以指示EC空间操作区域访问在EC0范围内可用（换句话说，允许OPR4访问）。</p>
@@ -886,7 +973,13 @@
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;有时候查看 ACPI 时候，为了熟悉他的逻辑，需要学习一些 ACPI 语法，这里是关于 ACPI 语法的备忘录。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;本备忘均从 《Advanced Configuration and Power Interfac
+&lt;p&gt;&lt;strong&gt;本备忘均从 《Advanced Configuration and Power Interface Specification》 查阅，并使用 Google 翻译得来，本人英语极渣故此不确保翻译准确，如有需要请查阅原版文档。&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;运算符&quot;&gt;&lt;a href=&quot;#运算符&quot; class=&quot;headerlink&quot; title=&quot;运算符&quot;&gt;&lt;/a&gt;运算符&lt;/h1&gt;&lt;h2 id=&quot;LEqual（逻辑等）&quot;&gt;&lt;a href=&quot;#LEqual（逻辑等）&quot; class=&quot;headerlink&quot; title=&quot;LEqual（逻辑等）&quot;&gt;&lt;/a&gt;LEqual（逻辑等）&lt;/h2&gt;&lt;h3 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;p&gt;&lt;code&gt;LEqual（Source1，Source2）=&amp;gt; Boolean Source1 == Source2 =&amp;gt; Boolean&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h3&gt;&lt;p&gt;Source1和Source2必须各自求值为整数，字符串或缓冲区。 Source1的数据类型指示所需的Source2类型。 如果需要匹配Source1的类型，则会隐式转换Source2。&lt;/p&gt;
+&lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;如果值相等，则返回True; 否则返回False。 对于整数，执行数字比较。 对于字符串和缓冲区，只有当两个长度相同并且逐字节比较的结果表明完全相等时才返回True。&lt;/p&gt;
+&lt;h2 id=&quot;LOr（逻辑或）&quot;&gt;&lt;a href=&quot;#LOr（逻辑或）&quot; class=&quot;headerlink&quot; title=&quot;LOr（逻辑或）&quot;&gt;&lt;/a&gt;LOr（逻辑或）&lt;/h2&gt;&lt;h3 id=&quot;语法-1&quot;&gt;&lt;a href=&quot;#语法-1&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;p&gt;&lt;code&gt;LOr（Source1，Source2）=&amp;gt; Boolean Source1 || Source2 =&amp;gt; Boolean&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;参数-1&quot;&gt;&lt;a href=&quot;#参数-1&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h3&gt;&lt;p&gt;Source1和Source2被计算为整数。 &lt;/p&gt;
+&lt;h3 id=&quot;描述-1&quot;&gt;&lt;a href=&quot;#描述-1&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;如果任一值不为零，则返回True; 否则返回False。&lt;/p&gt;
     
     </summary>
     
@@ -910,7 +1003,7 @@
     <link href="http://hexo.neroxps.cn/2017/02/25/Hotpatch/"/>
     <id>http://hexo.neroxps.cn/2017/02/25/Hotpatch/</id>
     <published>2017-02-24T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:25:41.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>本笔记参考 RehabMan 指南 <a href="https://www.tonymacx86.com/threads/guide-using-clover-to-hotpatch-acpi.200137/" target="_blank" rel="external">[Guide] Using Clover to “hotpatch” ACPI</a> </p>
@@ -928,6 +1021,7 @@
 <p>如果有兴趣可以去看看 RahabMan 帖子.</p>
 <p>之前我在 DSDT 打的补丁有.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot;Fix _WAK Arg0 v2&quot; </div><div class="line">&quot;HPET Fix&quot; </div><div class="line">&quot;SMBUS Fix&quot;</div><div class="line">&quot;IRQ Fix&quot; </div><div class="line">&quot;RTC Fix&quot; </div><div class="line">&quot;OS Check Fix（Windows 7）&quot; </div><div class="line">&quot;OS Check Fix（Windows 8）&quot; </div><div class="line">&quot;Fix Mutex with non-zero SyncLevel&quot; //对比了下 这个补丁是不需要打的</div><div class="line">&quot;Rename GFX0 to IGPU&quot; </div><div class="line">&quot;Brightness fix(Haswell/Broadwell)&quot;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="Clover-常规补丁"><a href="#Clover-常规补丁" class="headerlink" title="Clover 常规补丁"></a>Clover 常规补丁</h2><ul>
 <li><code>Fix _WAK Arg0 v2</code>  →   <code>ACPI &gt; DSDT &gt; FIX_WAK_200000</code></li>
 <li><code>IRQ Fix</code> 和 <code>HPET Fix</code> → <code>ACPI &gt; DSDT &gt; FixHPET_0010</code> 和 <code>ACPI &gt; DSDT &gt; FixIPIC_0040</code></li>
@@ -1195,7 +1289,21 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;本笔记参考 RehabMan 指南 &lt;a href=&quot;https://www.tonymacx86.com/threads/guide-using-clover-to-hotpatch-acpi.200137/&quot; target=&quot;_blank&quot; r
+&lt;p&gt;本笔记参考 RehabMan 指南 &lt;a href=&quot;https://www.tonymacx86.com/threads/guide-using-clover-to-hotpatch-acpi.200137/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;[Guide] Using Clover to “hotpatch” ACPI&lt;/a&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;Hotpatch-简述&quot;&gt;&lt;a href=&quot;#Hotpatch-简述&quot; class=&quot;headerlink&quot; title=&quot;Hotpatch 简述&quot;&gt;&lt;/a&gt;Hotpatch 简述&lt;/h2&gt;&lt;p&gt;什么是 Hotpatch? &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RehabMan 的介绍是:&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;That guide uses what is known as “static patching”. In order to inject patched ACPI files, we extract native ACPI, disassemble them, make changes, then recompile and place the files in ACPI/patched, so that Clover injects the patched ACPI instead of native ACPI. With the techniques detailed in this guide, the changes can be made directly to the ACPI binaries provided by BIOS, skipping the extract, disassembly, and recompilation steps.&lt;/p&gt;
+&lt;p&gt;该指南使用所谓的“静态修补”。 为了注入修补的ACPI文件，我们提取本地ACPI，反汇编，进行更改，然后重新编译并将文件放在ACPI / patched中，以便Clover注入修补的ACPI而不是本机ACPI。 使用本指南中详述的技术，可以直接对BIOS提供的ACPI二进制文件进行更改，跳过提取，反汇编和重新编译步骤。(翻译来自 Google 翻译)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;我的理解:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其实 Hotpatch 就是将所有修补 ACPI 文件的补丁变成一个一个模块,通过重命名主板提供的 ACPI 文件原来的 Method (方法/函数) 来禁用原有的方法,再用 SSDT 来放入我们修改后的(已修补)的 Method (方法/函数).&lt;/p&gt;
+&lt;p&gt;当然上面所说的是终极解决的办法,其实还有很多很简单的方法能够完成 ACPI 补丁的功能.&lt;/p&gt;
+&lt;p&gt;如果有兴趣可以去看看 RahabMan 帖子.&lt;/p&gt;
+&lt;p&gt;之前我在 DSDT 打的补丁有.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;Fix _WAK Arg0 v2&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;HPET Fix&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;SMBUS Fix&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;IRQ Fix&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;RTC Fix&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;OS Check Fix（Windows 7）&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;OS Check Fix（Windows 8）&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;Fix Mutex with non-zero SyncLevel&amp;quot; //对比了下 这个补丁是不需要打的&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;Rename GFX0 to IGPU&amp;quot; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;Brightness fix(Haswell/Broadwell)&amp;quot;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -1219,13 +1327,14 @@
     <link href="http://hexo.neroxps.cn/2017/01/31/ASUS-VM510LI-Disable-graphics/"/>
     <id>http://hexo.neroxps.cn/2017/01/31/ASUS-VM510LI-Disable-graphics/</id>
     <published>2017-01-30T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:29:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>找到了 _OFF 方法是在 SSDT11定义的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Scope (\_SB.PCI0.RP05.PEGP)</div><div class="line">&#123;</div><div class="line">    Method (_ON, 0, Serialized)  // _ON_: Power On</div><div class="line">    &#123;</div><div class="line">        SGON ()</div><div class="line">        Notify (\_SB.PCI0.RP05, Zero)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Method (_OFF, 0, Serialized)  // _OFF: Power Off</div><div class="line">    &#123;</div><div class="line">        SGOF ()</div><div class="line">        Notify (\_SB.PCI0.RP05, Zero)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>发现其中 _OFF 方法调用了 SGOF 方法。</p>
 <p>查找到 SGOF 方法是在 SSDT10 定义的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Method (SGOF, 0, Serialized)</div><div class="line">&#123;</div><div class="line">    If (LEqual (CCHK (Zero), Zero))</div><div class="line">    &#123;</div><div class="line">        Return (Zero)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Store (Zero, ONOF)</div><div class="line">    Store (\_SB.PCI0.LPCB.EC0.RRAM (0x0521), Local0)</div><div class="line">    And (Local0, 0xCF, Local0)</div><div class="line">    \_SB.PCI0.LPCB.EC0.WRAM (0x0521, Local0)</div><div class="line">    \_SB.PCI0.LPCB.EC0.WRAM (0x0520, 0x91)</div><div class="line">    \_SB.PCI0.LPCB.EC0.WRAM (0x03A4, Zero)</div><div class="line">    \_SB.PCI0.LPCB.EC0.WRAM (0x03A5, Zero)</div><div class="line">    Store (LCTL, ELCT)</div><div class="line">    Store (SVID, HVID)</div><div class="line">    Store (SDID, HDID)</div><div class="line">    Store (One, LNKD)</div><div class="line">    While (LNotEqual (LNKS, Zero))</div><div class="line">    &#123;</div><div class="line">        Sleep (One)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    SGPO (HLRS, One)</div><div class="line">    SGPO (PWEN, Zero)</div><div class="line">    Return (Zero)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>其中调用了有四行 EC0 的代码。记下来，然后将这些代码注释掉。修改后如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Method (SGOF, 0, Serialized)</div><div class="line">&#123;</div><div class="line">    If (LEqual (CCHK (Zero), Zero))</div><div class="line">    &#123;</div><div class="line">        Return (Zero)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Store (Zero, ONOF)</div><div class="line">    // Store (\_SB.PCI0.LPCB.EC0.RRAM (0x0521), Local0)</div><div class="line">    // And (Local0, 0xCF, Local0)</div><div class="line">    // \_SB.PCI0.LPCB.EC0.WRAM (0x0521, Local0)</div><div class="line">    // \_SB.PCI0.LPCB.EC0.WRAM (0x0520, 0x91)</div><div class="line">    // \_SB.PCI0.LPCB.EC0.WRAM (0x03A4, Zero)</div><div class="line">    // \_SB.PCI0.LPCB.EC0.WRAM (0x03A5, Zero)</div><div class="line">    Store (LCTL, ELCT)</div><div class="line">    Store (SVID, HVID)</div><div class="line">    Store (SDID, HDID)</div><div class="line">    Store (One, LNKD)</div><div class="line">    While (LNotEqual (LNKS, Zero))</div><div class="line">    &#123;</div><div class="line">        Sleep (One)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    SGPO (HLRS, One)</div><div class="line">    SGPO (PWEN, Zero)</div><div class="line">    Return (Zero)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>找到 _INI 方法是在 SSDT10 里面</p>
@@ -1244,7 +1353,10 @@
     <summary type="html">
     
       &lt;p&gt;找到了 _OFF 方法是在 SSDT11定义的。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Scope (\_SB.PCI0.RP05.PEGP)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Method (_ON, 0, Serialized)  // _ON_: Power On&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        SGON ()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Notify (\_SB.PCI0.RP05, Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Method (_OFF, 0, Serialized)  // _OFF: Power Off&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        SGOF ()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Notify (\_SB.PCI0.RP05, Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;发现其中 _OFF 方法调用了 SGOF 方法。&lt;/p&gt;
+&lt;p&gt;查找到 SGOF 方法是在 SSDT10 定义的。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Method (SGOF, 0, Serialized)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    If (LEqual (CCHK (Zero), Zero))&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Return (Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Store (Zero, ONOF)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Store (\_SB.PCI0.LPCB.EC0.RRAM (0x0521), Local0)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    And (Local0, 0xCF, Local0)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    \_SB.PCI0.LPCB.EC0.WRAM (0x0521, Local0)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    \_SB.PCI0.LPCB.EC0.WRAM (0x0520, 0x91)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    \_SB.PCI0.LPCB.EC0.WRAM (0x03A4, Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    \_SB.PCI0.LPCB.EC0.WRAM (0x03A5, Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Store (LCTL, ELCT)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Store (SVID, HVID)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Store (SDID, HDID)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Store (One, LNKD)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    While (LNotEqual (LNKS, Zero))&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Sleep (One)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    SGPO (HLRS, One)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    SGPO (PWEN, Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Return (Zero)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -1268,7 +1380,7 @@
     <link href="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/"/>
     <id>http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/</id>
     <published>2017-01-17T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:29:15.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝</p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容：</p>
@@ -1297,6 +1409,7 @@
 <li>Save Table</li>
 <li>一个一个 SSDT 保存。SSDT 开头才需要保存，其他不需要管。</li>
 </ol>
+<a id="more"></a>
 <h4 id="导出-EDID-参数"><a href="#导出-EDID-参数" class="headerlink" title="导出 EDID 参数"></a>导出 EDID 参数</h4><p>这个只是备用，看远景上扒贴看到很多人驱动核心显卡后内置屏幕无法显示，只能接入 HDMI 接外屏，这时候就需要注入 EDID 参数了（还有上面提取到的 Video Bios）</p>
 <p>方法：</p>
 <ol>
@@ -1442,7 +1555,33 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝&lt;/p
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝&lt;/p&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;p&gt;趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容：&lt;/p&gt;
+&lt;h4 id=&quot;导出显卡-Bios-备用&quot;&gt;&lt;a href=&quot;#导出显卡-Bios-备用&quot; class=&quot;headerlink&quot; title=&quot;导出显卡 Bios 备用&quot;&gt;&lt;/a&gt;导出显卡 Bios 备用&lt;/h4&gt;&lt;p&gt;方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 AIDA64 Engineer；&lt;/li&gt;
+&lt;li&gt;查看，勾上状态栏。（此时软件下方应该会出现了一个框。）&lt;/li&gt;
+&lt;li&gt;右键状态栏 Video Debug。&lt;/li&gt;
+&lt;li&gt;Video Bios Dump&lt;/li&gt;
+&lt;li&gt;点开显示设备→图形处理器（GPU）查看 PCI 设备的 ID（8086-1616）&lt;/li&gt;
+&lt;li&gt;将导出的 bin 文件重命名为 8086-1616.rom 备用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;导出-ACPI-的-DSDT-和-SSDT（Windows）&quot;&gt;&lt;a href=&quot;#导出-ACPI-的-DSDT-和-SSDT（Windows）&quot; class=&quot;headerlink&quot; title=&quot;导出 ACPI 的 DSDT 和 SSDT（Windows）&quot;&gt;&lt;/a&gt;导出 ACPI 的 DSDT 和 SSDT（Windows）&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;建议使用 Ubuntu 方法提取&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;DSDT 和 SSDT 是必须导出的，但是有很多方法，我比较喜欢在 Linux 导出，不知道为啥感觉它纯正点（其实是一样的，就是个人感觉 Linux 好一点而已。）&lt;/p&gt;
+&lt;p&gt;新版的 AIDA64 Engineer 可以在 WIN10 下导出 DSDT 和 SSDT 了。老板好像是不可以的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本笔记的 AIDA64 Engineer 版本为 5.80.4000&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;菜单栏工具&lt;/li&gt;
+&lt;li&gt;ACPI 浏览器&lt;/li&gt;
+&lt;li&gt;Save DSDT&lt;/li&gt;
+&lt;li&gt;Save Table&lt;/li&gt;
+&lt;li&gt;一个一个 SSDT 保存。SSDT 开头才需要保存，其他不需要管。&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -1466,13 +1605,12 @@
     <link href="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/"/>
     <id>http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/</id>
     <published>2017-01-15T16:00:00.000Z</published>
-    <updated>2017-07-20T00:40:44.000Z</updated>
+    <updated>2017-07-20T02:28:19.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <h2 id="本文说明"><a href="#本文说明" class="headerlink" title="本文说明"></a>本文说明</h2><p>本文转载至远景论坛 daxuexinsheng 的帖子 <a href="http://bbs.pcbeta.com/viewthread-1571455-1-1.html" target="_blank" rel="external">[教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
 <p>近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。</p>
 </blockquote>
-<p>[toc]</p>
 <h2 id="翻译授权信息"><a href="#翻译授权信息" class="headerlink" title="翻译授权信息"></a>翻译授权信息</h2><p>  本教程原作者是tonymacx86网站的Rehabman。本贴，是对原贴的 翻译 与 补充。已经得到Rehabman的授权。相关信息如下：</p>
 <p><img src="/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-01.png" alt="授权信息"></p>
 <p>  请尊重原贴作者 与 本贴楼主。原作者把自己丰富的经验分享给了大家，本贴作者每个贴子平均花了3个小时翻译。<br>所以，转载请注明出处：</p>
@@ -1488,6 +1626,7 @@
 <li>使用补丁修改</li>
 <li>编译并保存，再放到引导特定的目录</li>
 </ul>
+<a id="more"></a>
 <h2 id="提取原始ACPI文件"><a href="#提取原始ACPI文件" class="headerlink" title="提取原始ACPI文件"></a>提取原始ACPI文件</h2><p>  所有BIOS都实现了把ACPI文件提交给操作系统的功能。所以，基于任何操作系统，你都可以通过操作系统提取出原始ACPI文件，之后再进行修改。Linux、OS X、Windows、Clover都可以用来提取原始ACPI文件。这些方式提取的文件是完全相同的，只是由于使用的提取工具不同，文件名会不同。</p>
 <p>  本教程将主要介绍3种提取方式：在OS X使用patchmatic工具（Rehabman编写的终端程序），在Clover启动界面按F4，还有使用Linux。</p>
 <h3 id="使用patchmatic工具提取"><a href="#使用patchmatic工具提取" class="headerlink" title="使用patchmatic工具提取"></a>使用patchmatic工具提取</h3><p>  如果你已经有了OS X环境，并且还没有使用修改过的DSDT/SSDT，就可以使用patchmatic工具提取原始DSDT/SSDT。到这里下载编译好的patchmatic工具：<a href="https://github.com/RehabMan/OS-X-MaciASL-patchmatic" target="_blank" rel="external">https://github.com/RehabMan/OS-X-MaciASL-patchmatic</a> （仔细阅读patchmatic工具的README）。为了方便使用，你可以把程序拷贝到 /usr/bin 文件夹。（放到这里，在任何地方都可以调用）</p>
@@ -1645,7 +1784,24 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;h2 id=&quot;本文说明&quot;&gt;&lt;a href=&quot;#本文说明&quot; class=&quot;headerlink&quot; title=&quot;本文说明&quot;&gt;&lt;/a&gt;本文说明&lt;/h2&gt;&lt;p&gt;本文转载至远景论坛 daxuexinsheng 的帖子 &lt;a href=&quot;http://bbs.p
+&lt;h2 id=&quot;本文说明&quot;&gt;&lt;a href=&quot;#本文说明&quot; class=&quot;headerlink&quot; title=&quot;本文说明&quot;&gt;&lt;/a&gt;本文说明&lt;/h2&gt;&lt;p&gt;本文转载至远景论坛 daxuexinsheng 的帖子 &lt;a href=&quot;http://bbs.pcbeta.com/viewthread-1571455-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;[教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;近期远景论坛访问异常，还需要改 hosts 才能正常访问，而远景几乎是国内比较大的黑苹果权威论坛，为了防止一些珍贵的文献无法访问，而又方便日后翻查，我决定转载一些有用的文章。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;翻译授权信息&quot;&gt;&lt;a href=&quot;#翻译授权信息&quot; class=&quot;headerlink&quot; title=&quot;翻译授权信息&quot;&gt;&lt;/a&gt;翻译授权信息&lt;/h2&gt;&lt;p&gt;  本教程原作者是tonymacx86网站的Rehabman。本贴，是对原贴的 翻译 与 补充。已经得到Rehabman的授权。相关信息如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2017/01/16/extract_edit_dsdt/extract_edit_dsdt-01.png&quot; alt=&quot;授权信息&quot;&gt;&lt;/p&gt;
+&lt;p&gt;  请尊重原贴作者 与 本贴楼主。原作者把自己丰富的经验分享给了大家，本贴作者每个贴子平均花了3个小时翻译。&lt;br&gt;所以，转载请注明出处：&lt;/p&gt;
+&lt;p&gt;原贴地址：&lt;a href=&quot;http://www.tonymacx86.com/yosemite-laptop-support/152573-guide-patching-laptop-dsdt-ssdts.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.tonymacx86.com/yosemite-laptop-support/152573-guide-patching-laptop-dsdt-ssdts.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本贴地址：&lt;a href=&quot;http://bbs.pcbeta.com/viewthread-1571455-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://bbs.pcbeta.com/viewthread-1571455-1-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;  为了能让OS X的特性能够在普通PC上正常工作，就需要修改（可以利用补丁）DSDT和SSDT。本教程的目的，就是介绍如何利用现有补丁，修改你电脑的原始OEM DSDT/SSDT。&lt;/p&gt;
+&lt;p&gt;  虽然你可以用其它型号的电脑的DSDT，但这样的后果是会造成更多问题。你不能保证用别的型号电脑的DSDT是没问题的。如果你用了别的电脑的ACPI文件，即便是硬件配置非常相似，也可能会造成 系统不稳定 和 一些奇葩的问题。&lt;/p&gt;
+&lt;p&gt;使用补丁修改DSDT/SSDT包含了以下步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提取原始ACPI文件&lt;/li&gt;
+&lt;li&gt;反编译原始文件&lt;/li&gt;
+&lt;li&gt;分析并筛选这些原始文件&lt;/li&gt;
+&lt;li&gt;使用补丁修改&lt;/li&gt;
+&lt;li&gt;编译并保存，再放到引导特定的目录&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -1736,65 +1892,11 @@
   </entry>
   
   <entry>
-    <title>黑苹果手记</title>
-    <link href="http://hexo.neroxps.cn/2017/01/05/Hackintosh-00/"/>
-    <id>http://hexo.neroxps.cn/2017/01/05/Hackintosh-00/</id>
-    <published>2017-01-04T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在3年前，接触过黑苹果，在家里的台式机里面装过一个，当时安装的是懒人版，也没有怎么系统的学习过黑苹果的相关知识，纯粹乱搞。</p>
-<p>2016年12月份，突发奇想尝试下这台老掉牙的 Dell Inspiron 14z 5423 笔记本能否安装黑苹果，就开始尝试安装之路了。</p>
-<h2 id="安装-macOS-Sierra"><a href="#安装-macOS-Sierra" class="headerlink" title="安装 macOS Sierra"></a>安装 macOS Sierra</h2><p>我是要么不搞，要么就搞最新的，也准备常用 Mac 系统。</p>
-<p>我下载的系统版本是《macOS Sierra 10.12.2(16C67)正式版》，这个是一个 dmg 镜像文件，引用原帖的一句话：</p>
-<blockquote>
-<p>原版dmg镜像只能安装在 GPT 分区格式的硬盘上，懒人版cdr镜像可以安装在MBR格式和 GPT 分区格式的硬盘上。</p>
-</blockquote>
-<p>镜像下载原帖链接：<a href="http://bbs.pcbeta.com/viewthread-1729052-1-2.html" target="_blank" rel="external">[下载] 【迎新年礼品】Clover3961_U_macOS Sierra 10.12.2(16C67)正式版dmg原版免费下载</a></p>
-<p>故此我们安装的硬盘分区格式必须为 GPT。</p>
-<p>我是安装在笔记本的SSD上，也是淘宝的二手货，挺耐用的，反正比机械硬盘快就行了。故此</p>
-<h2 id="笔记本配置"><a href="#笔记本配置" class="headerlink" title="笔记本配置"></a>笔记本配置</h2><p>我的笔记本的配置如下。</p>
-<p><img src="/2017/01/05/Hackintosh-00/ludashi.jpg" alt="笔记本配置"></p>
-<ul>
-<li>CPU：一般笔记本只要 CPU 是 Intel I 系列，都可以装黑苹果。</li>
-<li>网卡：一般 Dell 都是配的 Intel 的无线网卡，图中显示的是博通的无线网卡是我从淘宝淘的，才 18 块，而且支持 5G，唯一缺点就是没有了蓝牙。想了下，不要蓝牙也没关系了，就是我的蓝牙鼠标用不了罢了。</li>
-<li>独立显卡：笔记本就别想独立显卡能用了，因为基本上黑苹果是无法切换使用的，而且如果不屏蔽它的话，还会耗电。</li>
-<li>声卡：IDT 的声卡有驱动，这个驱动折腾了我很久很久才完美，后续会将过程写上。</li>
-</ul>
-<h2 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h2><p>其实安装黑苹果遇到第一个问题就是引导，因为苹果系统只认他们自己的主板，其他主板是不认的，故此很多人第一步连进入安装都进不去。</p>
-<p>黑苹果引导需要引导工具，需要有一个工具欺骗苹果系统，让苹果系统认为自己是跑在 Mac 的主机里。这引导系统目前有二个。</p>
-<ul>
-<li>变色龙 （Chameleon）</li>
-<li>四叶草 （Clover）</li>
-</ul>
-<p>变色龙年代比较早了，前期黑苹果都用变色龙搞。</p>
-<p>四叶草比变色龙出生迟一点，但是并不影响它的实用性。我推荐使用四叶草，因为对新手来说，他提供更多补丁功能。</p>
-<p>对于</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在3年前，接触过黑苹果，在家里的台式机里面装过一个，当时安装的是懒人版，也没有怎么系统的学习过黑苹果的相关知识，纯粹乱搞。&lt;/p&gt;
-&lt;p&gt;2
-    
-    </summary>
-    
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
-    
-    
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
-    
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
-    
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
-    
-  </entry>
-  
-  <entry>
     <title>利用 Seafile 命令行客户端同步 GitBlog</title>
     <link href="http://hexo.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/"/>
     <id>http://hexo.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/</id>
     <published>2016-12-14T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:24:43.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于 GitBlog 无后台编辑，故此每次在电脑写好博客，还需要用 SSH 或其他方式上传文件比较麻烦，而服务器本来就部署了 Seafile，故此可以使用 Seafile 的命令行客户端来作为同步工具。</p>
 <h2 id="需要使用工具"><a href="#需要使用工具" class="headerlink" title="需要使用工具"></a>需要使用工具</h2><ul>
@@ -1805,6 +1907,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-cli_4.3.2_x86-64.tar.gz</div><div class="line">tar xzf seafile-cli_4.3.2_x86-64.tar.gz</div></pre></td></tr></table></figure>
 <p>####初始化和安装守护进程</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> seafile-cli-4.3.2</div><div class="line"><span class="comment"># 选择存储seafile客户端设置的文件夹（例如）~/.seafile-client</span></div><div class="line">mkdir ~/.seafile-client            <span class="comment"># 创建客户端设置文件夹</span></div><div class="line">./seaf-cli init -d ~/.seafile-client  <span class="comment"># 初始化客户端，并指定客户端的配置文件目录</span></div><div class="line">./seaf-cli start	<span class="comment"># 启动守护程序</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>####在您的环境中安装 Seafile 客户端</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 建立 seaf-cli 命令软连接到系统环境中</span></div><div class="line">ln -s `readlink -f seaf-cli` /usr/bin/</div></pre></td></tr></table></figure>
 <p>####建立同步</p>
@@ -1825,7 +1928,15 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;由于 GitBlog 无后台编辑，故此每次在电脑写好博客，还需要用 SSH 或其他方式上传文件比较麻烦，而服务器本来就部署了 Seafile
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;由于 GitBlog 无后台编辑，故此每次在电脑写好博客，还需要用 SSH 或其他方式上传文件比较麻烦，而服务器本来就部署了 Seafile，故此可以使用 Seafile 的命令行客户端来作为同步工具。&lt;/p&gt;
+&lt;h2 id=&quot;需要使用工具&quot;&gt;&lt;a href=&quot;#需要使用工具&quot; class=&quot;headerlink&quot; title=&quot;需要使用工具&quot;&gt;&lt;/a&gt;需要使用工具&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;已搭建好的 Seafile 服务器（搭建方法详细请看&lt;a href=&quot;https://manual-cn.seafile.com/deploy/using_mysql.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方手册&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;Seafile Terminal 客户端和 Windows 客户端（&lt;a href=&quot;https://www.seafile.com/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.seafile.com/download/&lt;/a&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Seaf-Cli-安装方法&quot;&gt;&lt;a href=&quot;#Seaf-Cli-安装方法&quot; class=&quot;headerlink&quot; title=&quot;Seaf-Cli 安装方法&quot;&gt;&lt;/a&gt;Seaf-Cli 安装方法&lt;/h2&gt;&lt;p&gt;####下载客户端&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-cli_4.3.2_x86-64.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;tar xzf seafile-cli_4.3.2_x86-64.tar.gz&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;####初始化和安装守护进程&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; seafile-cli-4.3.2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 选择存储seafile客户端设置的文件夹（例如）~/.seafile-client&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;mkdir ~/.seafile-client            &lt;span class=&quot;comment&quot;&gt;# 创建客户端设置文件夹&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;./seaf-cli init -d ~/.seafile-client  &lt;span class=&quot;comment&quot;&gt;# 初始化客户端，并指定客户端的配置文件目录&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;./seaf-cli start	&lt;span class=&quot;comment&quot;&gt;# 启动守护程序&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -1845,24 +1956,27 @@
     <link href="http://hexo.neroxps.cn/2016/12/08/nginx-https-http2-installation/"/>
     <id>http://hexo.neroxps.cn/2016/12/08/nginx-https-http2-installation/</id>
     <published>2016-12-07T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:25:18.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。后来 Google 了一番，发现 http2 需要 openssl 1.0.2 版本支持，而 Centos7 默认 yum 的 openssl 版本是 1.0.1 故此需要使用新版的 openssl 1.1.0c 编译 nginx。</p>
 <h2 id="下载-openssl-源码"><a href="#下载-openssl-源码" class="headerlink" title="下载 openssl 源码"></a>下载 openssl 源码</h2><p>到 openssl 官网下载源码：<a href="https://www.openssl.org/source/" target="_blank" rel="external">https://www.openssl.org/source/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /usr/src</div><div class="line">wget https://www.openssl.org/source/openssl-1.1.0c.tar.gz</div><div class="line">tar xzf openssl-1.1.0c.tar.gz &amp;&amp; rm openssl-1.1.0c.tar.gz -f</div></pre></td></tr></table></figure>
-<h2 id="卸载旧版-nginx-编译安装-nginx"><a href="#卸载旧版-nginx-编译安装-nginx" class="headerlink" title="卸载旧版 nginx 编译安装 nginx"></a>卸载旧版 nginx 编译安装 nginx</h2><h3 id="下载-nginx-源码包"><a href="#下载-nginx-源码包" class="headerlink" title="下载 nginx 源码包"></a>下载 nginx 源码包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /usr/src</div><div class="line">yum remove nginx</div><div class="line">wget http://nginx.org/download/nginx-1.10.2.tar.gz</div><div class="line">tar xzf nginx-1.10.2.tar.gz &amp;&amp; rm -f nginx-1.10.2.tar.gz</div><div class="line">cd nginx-1.10.2</div></pre></td></tr></table></figure>
-<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># 使用官方参数配置，仅添加 openssl 源码 --with-openssl=/usr/src/openssl-1.1.0c</div><div class="line">./configure --prefix=/etc/nginx \</div><div class="line">--sbin-path=/usr/sbin/nginx \</div><div class="line">--conf-path=/etc/nginx/nginx.conf \</div><div class="line">--error-log-path=/var/log/nginx/error.log \</div><div class="line">--http-log-path=/var/log/nginx/access.log \</div><div class="line">--pid-path=/var/run/nginx.pid \</div><div class="line">--lock-path=/var/run/nginx.lock \</div><div class="line">--http-client-body-temp-path=/var/cache/nginx/client_temp \</div><div class="line">--http-proxy-temp-path=/var/cache/nginx/proxy_temp \</div><div class="line">--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \</div><div class="line">--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \</div><div class="line">--http-scgi-temp-path=/var/cache/nginx/scgi_temp \</div><div class="line">--user=nginx \</div><div class="line">--group=nginx \</div><div class="line">--with-openssl=/usr/src/openssl-1.1.0c \</div><div class="line">--with-http_ssl_module \</div><div class="line">--with-http_realip_module \</div><div class="line">--with-http_addition_module \</div><div class="line">--with-http_sub_module \</div><div class="line">--with-http_dav_module \</div><div class="line">--with-http_flv_module \</div><div class="line">--with-http_mp4_module \</div><div class="line">--with-http_gunzip_module \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--with-http_random_index_module \</div><div class="line">--with-http_secure_link_module \</div><div class="line">--with-http_stub_status_module \</div><div class="line">--with-http_auth_request_module \</div><div class="line">--with-threads \</div><div class="line">--with-stream \</div><div class="line">--with-stream_ssl_module \</div><div class="line">--with-http_slice_module \</div><div class="line">--with-mail \</div><div class="line">--with-mail_ssl_module \</div><div class="line">--with-file-aio \</div><div class="line">--with-http_v2_module \</div><div class="line">--with-ipv6 </div><div class="line"></div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/src</div><div class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.0c.tar.gz</div><div class="line">tar xzf openssl-1.1.0c.tar.gz &amp;&amp; rm openssl-1.1.0c.tar.gz -f</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="卸载旧版-nginx-编译安装-nginx"><a href="#卸载旧版-nginx-编译安装-nginx" class="headerlink" title="卸载旧版 nginx 编译安装 nginx"></a>卸载旧版 nginx 编译安装 nginx</h2><h3 id="下载-nginx-源码包"><a href="#下载-nginx-源码包" class="headerlink" title="下载 nginx 源码包"></a>下载 nginx 源码包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/src</div><div class="line">yum remove nginx</div><div class="line">wget http://nginx.org/download/nginx-1.10.2.tar.gz</div><div class="line">tar xzf nginx-1.10.2.tar.gz &amp;&amp; rm -f nginx-1.10.2.tar.gz</div><div class="line"><span class="built_in">cd</span> nginx-1.10.2</div></pre></td></tr></table></figure>
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用官方参数配置，仅添加 openssl 源码 --with-openssl=/usr/src/openssl-1.1.0c</span></div><div class="line">./configure --prefix=/etc/nginx \</div><div class="line">--sbin-path=/usr/sbin/nginx \</div><div class="line">--conf-path=/etc/nginx/nginx.conf \</div><div class="line">--error-log-path=/var/<span class="built_in">log</span>/nginx/error.log \</div><div class="line">--http-log-path=/var/<span class="built_in">log</span>/nginx/access.log \</div><div class="line">--pid-path=/var/run/nginx.pid \</div><div class="line">--lock-path=/var/run/nginx.lock \</div><div class="line">--http-client-body-temp-path=/var/cache/nginx/client_temp \</div><div class="line">--http-proxy-temp-path=/var/cache/nginx/proxy_temp \</div><div class="line">--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \</div><div class="line">--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \</div><div class="line">--http-scgi-temp-path=/var/cache/nginx/scgi_temp \</div><div class="line">--user=nginx \</div><div class="line">--group=nginx \</div><div class="line">--with-openssl=/usr/src/openssl-1.1.0c \</div><div class="line">--with-http_ssl_module \</div><div class="line">--with-http_realip_module \</div><div class="line">--with-http_addition_module \</div><div class="line">--with-http_sub_module \</div><div class="line">--with-http_dav_module \</div><div class="line">--with-http_flv_module \</div><div class="line">--with-http_mp4_module \</div><div class="line">--with-http_gunzip_module \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--with-http_random_index_module \</div><div class="line">--with-http_secure_link_module \</div><div class="line">--with-http_stub_status_module \</div><div class="line">--with-http_auth_request_module \</div><div class="line">--with-threads \</div><div class="line">--with-stream \</div><div class="line">--with-stream_ssl_module \</div><div class="line">--with-http_slice_module \</div><div class="line">--with-mail \</div><div class="line">--with-mail_ssl_module \</div><div class="line">--with-file-aio \</div><div class="line">--with-http_v2_module \</div><div class="line">--with-ipv6 </div><div class="line"></div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
 <p>查询 nginx 版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@vultr conf.d]# nginx -V</div><div class="line">nginx version: nginx/1.10.2</div><div class="line">built by gcc 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) </div><div class="line">built with OpenSSL 1.1.0c  10 Nov 2016</div><div class="line">TLS SNI support enabled</div><div class="line">configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-openssl=/usr/src/openssl-1.1.0c --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-http_auth_request_module --with-threads --with-stream --with-stream_ssl_module --with-http_slice_module --with-mail --with-mail_ssl_module --with-file-aio --with-http_v2_module --with-ipv6</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@vultr conf.d]<span class="comment"># nginx -V</span></div><div class="line">nginx version: nginx/1.10.2</div><div class="line">built by gcc 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) </div><div class="line">built with OpenSSL 1.1.0c  10 Nov 2016</div><div class="line">TLS SNI support enabled</div><div class="line">configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/<span class="built_in">log</span>/nginx/error.log --http-log-path=/var/<span class="built_in">log</span>/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-openssl=/usr/src/openssl-1.1.0c --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-http_auth_request_module --with-threads --with-stream --with-stream_ssl_module --with-http_slice_module --with-mail --with-mail_ssl_module --with-file-aio --with-http_v2_module --with-ipv6</div></pre></td></tr></table></figure>
 <p>已经是 openssl 1.1.0c 版本了</p>
-<h3 id="编写-systemd-服务文件"><a href="#编写-systemd-服务文件" class="headerlink" title="编写 systemd 服务文件"></a>编写 systemd 服务文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">vim /etc/systemd/system/multi-user.target.wants/nginx.service</div><div class="line"></div><div class="line"># 输入以下内容</div><div class="line"></div><div class="line">[Unit]</div><div class="line">Description=nginx - high performance web server</div><div class="line">Documentation=http://nginx.org/en/docs/</div><div class="line">After=network.target remote-fs.target nss-lookup.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/run/nginx.pid</div><div class="line">ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf</div><div class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</div><div class="line">ExecReload=/bin/kill -s HUP $MAINPID</div><div class="line">ExecStop=/bin/kill -s QUIT $MAINPID</div><div class="line">PrivateTmp=true</div><div class="line"> </div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">[root@localhost ~]# cat /etc/systemd/system/multi-user.target.wants/nginx.service</div><div class="line">[Unit]</div><div class="line">Description=nginx - high performance web server</div><div class="line">Documentation=http://nginx.org/en/docs/</div><div class="line">After=network.target remote-fs.target nss-lookup.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/run/nginx.pid</div><div class="line">ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf</div><div class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</div><div class="line">ExecReload=/bin/kill -s HUP $MAINPID</div><div class="line">ExecStop=/bin/kill -s QUIT $MAINPID</div><div class="line">PrivateTmp=true</div><div class="line"> </div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line"></div><div class="line">:wq</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">systemctl daemon-reload</div><div class="line">systemctl start nginx</div><div class="line"></div><div class="line"># 修改 nginx 主配置提取自 rpm 包</div><div class="line"></div><div class="line">vim /etc/nginx/nginx.conf</div><div class="line"></div><div class="line"></div><div class="line">user  nginx;</div><div class="line">worker_processes  1;</div><div class="line"></div><div class="line">error_log  /var/log/nginx/error.log warn;</div><div class="line">pid        /var/run/nginx.pid;</div><div class="line"></div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       /etc/nginx/mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</div><div class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</div><div class="line"></div><div class="line">    access_log  /var/log/nginx/access.log  main;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    #tcp_nopush     on;</div><div class="line"></div><div class="line">    keepalive_timeout  65;</div><div class="line"></div><div class="line">    #gzip  on;</div><div class="line"></div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">[root@vultr ~]# nginx -s reload</div></pre></td></tr></table></figure>
+<h3 id="编写-systemd-服务文件"><a href="#编写-systemd-服务文件" class="headerlink" title="编写 systemd 服务文件"></a>编写 systemd 服务文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">vim /etc/systemd/system/multi-user.target.wants/nginx.service</div><div class="line"></div><div class="line"><span class="comment"># 输入以下内容</span></div><div class="line"></div><div class="line">[Unit]</div><div class="line">Description=nginx - high performance web server</div><div class="line">Documentation=http://nginx.org/en/docs/</div><div class="line">After=network.target remote-fs.target nss-lookup.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/run/nginx.pid</div><div class="line">ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf</div><div class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</div><div class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></div><div class="line">ExecStop=/bin/<span class="built_in">kill</span> -s QUIT <span class="variable">$MAINPID</span></div><div class="line">PrivateTmp=<span class="literal">true</span></div><div class="line"> </div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">[root@localhost ~]<span class="comment"># cat /etc/systemd/system/multi-user.target.wants/nginx.service</span></div><div class="line">[Unit]</div><div class="line">Description=nginx - high performance web server</div><div class="line">Documentation=http://nginx.org/en/docs/</div><div class="line">After=network.target remote-fs.target nss-lookup.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/run/nginx.pid</div><div class="line">ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf</div><div class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</div><div class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></div><div class="line">ExecStop=/bin/<span class="built_in">kill</span> -s QUIT <span class="variable">$MAINPID</span></div><div class="line">PrivateTmp=<span class="literal">true</span></div><div class="line"> </div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line"></div><div class="line">:wq</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">systemctl daemon-reload</div><div class="line">systemctl start nginx</div><div class="line"></div><div class="line"><span class="comment"># 修改 nginx 主配置提取自 rpm 包</span></div><div class="line"></div><div class="line">vim /etc/nginx/nginx.conf</div><div class="line"></div><div class="line"></div><div class="line">user  nginx;</div><div class="line">worker_processes  1;</div><div class="line"></div><div class="line">error_log  /var/<span class="built_in">log</span>/nginx/error.log warn;</div><div class="line">pid        /var/run/nginx.pid;</div><div class="line"></div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       /etc/nginx/mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    log_format  main  <span class="string">'$remote_addr - $remote_user [$time_local] "$request" '</span></div><div class="line">                      <span class="string">'$status $body_bytes_sent "$http_referer" '</span></div><div class="line">                      <span class="string">'"$http_user_agent" "$http_x_forwarded_for"'</span>;</div><div class="line"></div><div class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access.log  main;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    <span class="comment">#tcp_nopush     on;</span></div><div class="line"></div><div class="line">    keepalive_timeout  65;</div><div class="line"></div><div class="line">    <span class="comment">#gzip  on;</span></div><div class="line"></div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">[root@vultr ~]<span class="comment"># nginx -s reload</span></div></pre></td></tr></table></figure>
 <h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>刷新一下页面，发现已经是 http2 协议了。</p>
 <p>END</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在折腾 GitBlog，顺便想将网站的 http1.1 协议更改为 http2，修改好 nginx 配置后发现依然还是 http1.1。后来 Google 了一番，发现 http2 需要 openssl 1.0.2 版本支持，而 Centos7 默认 yum 的 openssl 版本是 1.0.1 故此需要使用新版的 openssl 1.1.0c 编译 nginx。&lt;/p&gt;
+&lt;h2 id=&quot;下载-openssl-源码&quot;&gt;&lt;a href=&quot;#下载-openssl-源码&quot; class=&quot;headerlink&quot; title=&quot;下载 openssl 源码&quot;&gt;&lt;/a&gt;下载 openssl 源码&lt;/h2&gt;&lt;p&gt;到 openssl 官网下载源码：&lt;a href=&quot;https://www.openssl.org/source/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.openssl.org/source/&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /usr/src&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;wget https://www.openssl.org/&lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt;/openssl-1.1.0c.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;tar xzf openssl-1.1.0c.tar.gz &amp;amp;&amp;amp; rm openssl-1.1.0c.tar.gz -f&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -1882,7 +1996,7 @@
     <link href="http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/"/>
     <id>http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/</id>
     <published>2016-12-05T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T02:30:08.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="网络拓扑及环境说明"><a href="#网络拓扑及环境说明" class="headerlink" title="网络拓扑及环境说明"></a>网络拓扑及环境说明</h2><p><img src="/2016/12/06/ac1000-reijie/01.png" alt="拓扑图"></p>
 <ul>
@@ -1946,7 +2060,8 @@ ip dhcp pool vlan054
  network 172.16.54.0 255.255.255.0
  dns-server 202.96.128.166
  default-router 172.16.54.254
-</code></pre><h3 id="2-接入交换机配置"><a href="#2-接入交换机配置" class="headerlink" title="2. 接入交换机配置"></a>2. 接入交换机配置</h3><pre><code># 配置 AP 管理 VLAN 与业务 VLAN.
+</code></pre><a id="more"></a>
+<h3 id="2-接入交换机配置"><a href="#2-接入交换机配置" class="headerlink" title="2. 接入交换机配置"></a>2. 接入交换机配置</h3><pre><code># 配置 AP 管理 VLAN 与业务 VLAN.
 vlan 52
  name AP管理
 vlan 53
@@ -1988,7 +2103,69 @@ interface FastEthernet 0/17
     
     <summary type="html">
     
-      &lt;h2 id=&quot;网络拓扑及环境说明&quot;&gt;&lt;a href=&quot;#网络拓扑及环境说明&quot; class=&quot;headerlink&quot; title=&quot;网络拓扑及环境说明&quot;&gt;&lt;/a&gt;网络拓扑及环境说明&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2016/12/06/ac1000-reijie/01.png
+      &lt;h2 id=&quot;网络拓扑及环境说明&quot;&gt;&lt;a href=&quot;#网络拓扑及环境说明&quot; class=&quot;headerlink&quot; title=&quot;网络拓扑及环境说明&quot;&gt;&lt;/a&gt;网络拓扑及环境说明&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2016/12/06/ac1000-reijie/01.png&quot; alt=&quot;拓扑图&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置目的:实现不同 SSID 分配不同 VLAN&lt;ul&gt;
+&lt;li&gt;SSID = Office = Vlan 53&lt;/li&gt;
+&lt;li&gt;SSID = Guest = Vlan 54&lt;/li&gt;
+&lt;li&gt;管理 VLAN = VLAN 52&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;无线产品&lt;ul&gt;
+&lt;li&gt;TP-Link AC1000&lt;/li&gt;
+&lt;li&gt;TP-Link TL-AP306I-PoE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;交换机产品&lt;ul&gt;
+&lt;li&gt;核心交换机: 锐捷 S8610&lt;/li&gt;
+&lt;li&gt;接入交换机: 锐捷 S3760E-24&lt;blockquote&gt;
+&lt;p&gt;POE供电交换机接在接入交换机后,这里并不体现.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;配置要点&quot;&gt;&lt;a href=&quot;#配置要点&quot; class=&quot;headerlink&quot; title=&quot;配置要点&quot;&gt;&lt;/a&gt;配置要点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;AC 与核心交换机连接链路为 Trunk &lt;/li&gt;
+&lt;li&gt;无线管理 VLAN,AP SSID VLAN,需要配通.&lt;/li&gt;
+&lt;li&gt;部署 AP 上线需要的 DHCP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;配置过程&quot;&gt;&lt;a href=&quot;#配置过程&quot; class=&quot;headerlink&quot; title=&quot;配置过程&quot;&gt;&lt;/a&gt;配置过程&lt;/h2&gt;&lt;h3 id=&quot;1-配置核心交换机&quot;&gt;&lt;a href=&quot;#1-配置核心交换机&quot; class=&quot;headerlink&quot; title=&quot;1. 配置核心交换机&quot;&gt;&lt;/a&gt;1. 配置核心交换机&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;#新建管理 VLAN 52
+vlan 52
+ name AP管理
+
+#新建业务 VLAN 53 ; VLAN 54
+vlan 53
+ name SSID-Office
+vlan 54
+ name SSID-Guest
+
+# 配置各 VLAN 网关
+interface VLAN 52
+ ip address 172.16.52.254 255.255.255.0
+!
+interface VLAN 53
+ ip address 172.16.53.254 255.255.255.0
+!
+interface VLAN 54
+ ip address 172.16.54.254 255.255.255.0
+
+# 配置 interface GigabitEthernet 2/3 为 Trunk口,且只允许 VLAN 52-54 通过.
+interface GigabitEthernet 2/3
+ switchport mode trunk
+ switchport trunk allowed vlan remove 1-51,55-4094
+
+# 配置各 VLAN DHCP 服务器,这里我只配置两个业务 VLAN 的 DHCP,AP 的 DHCP 由 AC 分配.
+ip dhcp pool vlan053
+ network 172.16.53.0 255.255.255.0
+ dns-server 202.96.128.166
+ default-router 172.16.53.254
+!
+ip dhcp pool vlan054
+ network 172.16.54.0 255.255.255.0
+ dns-server 202.96.128.166
+ default-router 172.16.54.254
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -2000,6 +2177,52 @@ interface FastEthernet 0/17
       <category term="TP-Link" scheme="http://hexo.neroxps.cn/tags/TP-Link/"/>
     
       <category term="无线" scheme="http://hexo.neroxps.cn/tags/%E6%97%A0%E7%BA%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Seafile 在线测试</title>
+    <link href="http://hexo.neroxps.cn/2016/12/05/test/"/>
+    <id>http://hexo.neroxps.cn/2016/12/05/test/</id>
+    <published>2016-12-04T16:00:00.000Z</published>
+    <updated>2017-07-19T12:47:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="测试与-Seafile-整合"><a href="#测试与-Seafile-整合" class="headerlink" title="测试与 Seafile 整合"></a>测试与 Seafile 整合</h1><p>使用 Seafile 同步博客文件夹,进行快捷更新博客内容。</p>
+<p>这一段是利用 Seafile 手机客户端添加的</p>
+<h1 id="以下测试博客的音频功能是否正常"><a href="#以下测试博客的音频功能是否正常" class="headerlink" title="以下测试博客的音频功能是否正常"></a>以下测试博客的音频功能是否正常</h1><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=5264302&auto=1&height=66"></iframe>
+
+
+<h1 id="以下测试视频播放功能"><a href="#以下测试视频播放功能" class="headerlink" title="以下测试视频播放功能"></a>以下测试视频播放功能</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/IKfQE7ZrLVw" frameborder="0" allowfullscreen></iframe>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;测试与-Seafile-整合&quot;&gt;&lt;a href=&quot;#测试与-Seafile-整合&quot; class=&quot;headerlink&quot; title=&quot;测试与 Seafile 整合&quot;&gt;&lt;/a&gt;测试与 Seafile 整合&lt;/h1&gt;&lt;p&gt;使用 Seafile 同步博客文件夹,进行快
+    
+    </summary>
+    
+      <category term="test" scheme="http://hexo.neroxps.cn/categories/test/"/>
+    
+    
+      <category term="test" scheme="http://hexo.neroxps.cn/tags/test/"/>
+    
+      <category term="test2" scheme="http://hexo.neroxps.cn/tags/test2/"/>
+    
+      <category term="test3" scheme="http://hexo.neroxps.cn/tags/test3/"/>
+    
+      <category term="test4" scheme="http://hexo.neroxps.cn/tags/test4/"/>
+    
+      <category term="abc5" scheme="http://hexo.neroxps.cn/tags/abc5/"/>
+    
+      <category term="tddd6" scheme="http://hexo.neroxps.cn/tags/tddd6/"/>
+    
+      <category term="teet7" scheme="http://hexo.neroxps.cn/tags/teet7/"/>
+    
+      <category term="trrr8" scheme="http://hexo.neroxps.cn/tags/trrr8/"/>
+    
+      <category term="te21129" scheme="http://hexo.neroxps.cn/tags/te21129/"/>
+    
+      <category term="tdf10" scheme="http://hexo.neroxps.cn/tags/tdf10/"/>
     
   </entry>
   

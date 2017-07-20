@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-02.png">
 <meta property="og:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-03.png">
-<meta property="og:updated_time" content="2017-07-20T00:35:23.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:28:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使二合一声卡耳机麦克风生效整理">
 <meta name="twitter:description" content="前言自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。  帖子链接：【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想  修改 AppleALC过程整理根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样">
@@ -446,6 +446,7 @@
 <blockquote>
 <p>关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：<a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></p>
 </blockquote>
+<a id="more"></a>
 <h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
 <ul>
 <li>MuteGPIO 由 Noid 0x19 的VREF_80 0x50+0x0100+0x19 &gt; 1342242841（我的 Node 节点是 VREF_HIZ，但是从 ID3 和 ID13 提取的都有这个，当时我不确定是否这个值会影响结果，故此我也加进去了）</li>
@@ -620,7 +621,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="安装 Docker 参考 《Docker 从入门到实践》  我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。 1curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - 给 Docker 添加加速器因为 Doc">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:31:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给 Seafile 部署 onlyoffice">
 <meta name="twitter:description" content="安装 Docker 参考 《Docker 从入门到实践》  我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。 1curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - 给 Docker 添加加速器因为 Doc">
@@ -431,13 +431,14 @@
 <p>参考 <a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">《Docker 从入门到实践》</a></p>
 </blockquote>
 <p>我是在 Centos 7下搭建 Seafile，这里使用阿里云的 Centos 7 Docker 安装脚本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
 <h3 id="给-Docker-添加加速器"><a href="#给-Docker-添加加速器" class="headerlink" title="给 Docker 添加加速器"></a>给 Docker 添加加速器</h3><p>因为 Docker 的镜像服务器是在国外，所以我们给 Docker 添加国内镜像加速器，这里我使用阿里云的镜像加速器，如何申请阿里云的镜像加速器请自行百度。</p>
 <p>编辑 /usr/lib/systemd/system/docker.service 找到 <code>ExecStart=/usr/bin/dockerd</code> 改成如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/bin/dockerd --registry-mirror=https://xxxxxxxx.mirror.aliyuncs.com</div></pre></td></tr></table></figure>
 <p><strong>注：–registry-mirror= 后的网址请修改成阿里云申请的加速器地址</strong></p>
+<a id="more"></a>
 <p>修改后重载 systemd 配置、启动 Docker、设置 Docker 为开机自启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div><div class="line">systemctl start docker</div><div class="line">systemctl enable docker</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div><div class="line">systemctl start docker</div><div class="line">systemctl <span class="built_in">enable</span> docker</div></pre></td></tr></table></figure>
 <h3 id="部署-OnlyOffice-documentserver"><a href="#部署-OnlyOffice-documentserver" class="headerlink" title="部署 OnlyOffice-documentserver"></a>部署 OnlyOffice-documentserver</h3><ul>
 <li>构建 OnlyOffice-documentserver 镜像</li>
 </ul>
@@ -446,12 +447,12 @@
 <li>部署官方的 onlyoffice Docker 镜像，但因为官方的 Docker 镜像里没有中文字体，故此显示中文字体上会出现各种异常。</li>
 <li>我基于官方的 Docker 镜像制作了一个 Dockerfile <a href="https://github.com/neroxps/Docker-Only-Office-Chinese-font" target="_blank" rel="external">项目地址</a>，只要利用这个 Dockerfile 构建镜像即可。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/neroxps/Docker-Only-Office-Chinese-font.git</div><div class="line">cd Docker-Only-Office-Chinese-font</div><div class="line">docker build -t onlyoffice/chinese .</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/neroxps/Docker-Only-Office-Chinese-font.git</div><div class="line"><span class="built_in">cd</span> Docker-Only-Office-Chinese-font</div><div class="line">docker build -t onlyoffice/chinese .</div></pre></td></tr></table></figure>
 <blockquote>
 <p>winfont 目录下是 windows 下的中文字体，如果你有其他字体需要，也可以将字体上传到这个目录里面，再构建镜像。</p>
 </blockquote>
 <p>构建完毕后查看下我们现在的镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server Docker-Only-Office-Chinese-font]# docker images</div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">onlyoffice/chinese          latest              5065553b1240        About a minute ago   1.68GB</div><div class="line">onlyoffice/documentserver   latest              f5ff5f9ec0c4        2 weeks ago          1.41GB</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server Docker-Only-Office-Chinese-font]<span class="comment"># docker images</span></div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">onlyoffice/chinese          latest              5065553b1240        About a minute ago   1.68GB</div><div class="line">onlyoffice/documentserver   latest              f5ff5f9ec0c4        2 weeks ago          1.41GB</div></pre></td></tr></table></figure>
 <p>onlyoffice 的 documentserver 镜像是提供在线编辑服务的，镜像内已包含了 nginx 服务器，支持 80 端口和 443 端口，如果有合法证书，我们可以使用 https 连接。</p>
 <blockquote>
 <p>onlyoffice-documentserver Docker 使用方法参考 <a href="https://github.com/ONLYOFFICE/Docker-DocumentServer" target="_blank" rel="external">Docker-DocumentServer</a></p>
@@ -459,23 +460,23 @@
 <ul>
 <li>将证书复制到 onlyoffice 证书目录路径</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#假设当前目录在证书目录下</div><div class="line">mkdir -p /app/onlyoffice/DocumentServer/data/certs</div><div class="line">cp fullchain1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.crt</div><div class="line">cp privkey1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.key</div><div class="line">openssl dhparam -out /app/onlyoffice/DocumentServer/data/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#假设当前目录在证书目录下</span></div><div class="line">mkdir -p /app/onlyoffice/DocumentServer/data/certs</div><div class="line">cp fullchain1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.crt</div><div class="line">cp privkey1.pem /app/onlyoffice/DocumentServer/data/certs/onlyoffice.key</div><div class="line">openssl dhparam -out /app/onlyoffice/DocumentServer/data/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
 <ul>
 <li>生成 onlyoffice 日志目录</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /app/onlyoffice/DocumentServer/logs</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /app/onlyoffice/DocumentServer/logs</div></pre></td></tr></table></figure>
 <h3 id="运行-OnlyOffice-documentserver"><a href="#运行-OnlyOffice-documentserver" class="headerlink" title="运行 OnlyOffice-documentserver"></a>运行 OnlyOffice-documentserver</h3><p>完成部署后我们就可以运行 OnlyOffice-documentserver 了。</p>
 <p>由于我的 Seafile 是用 nginx 部署了 https，443端口已被占用了，大家如果公网 ip 多可以忽略，我是部署在内网，公网是 ADSL，故此只有一个公网 ip，所以 OnlyOffice-documentserver 不能使用 443 端口了。</p>
 <ul>
 <li>使用 https</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 7443:443 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 7443:443 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
 <ul>
 <li>使用 http</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 780:80 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -itd -p 780:80 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \</div><div class="line">-v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</div><div class="line">--restart=always \</div><div class="line">--name office onlyoffice/chinese</div></pre></td></tr></table></figure>
 <p>这时候我们可以运行 <code>docker logs office</code> 来观察运行情况。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server certs]# docker logs office</div><div class="line">guest</div><div class="line"> * Starting PostgreSQL 9.3 database server                               [ OK ] </div><div class="line"> * Starting message broker rabbitmq-server                               [ OK ] </div><div class="line">Starting redis-server: redis-server.</div><div class="line">Starting supervisor: supervisord.</div><div class="line">Generating AllFonts.js, please wait...Done</div><div class="line">onlyoffice-documentserver:docservice: stopped</div><div class="line">onlyoffice-documentserver:docservice: started</div><div class="line">onlyoffice-documentserver:converter: stopped</div><div class="line">onlyoffice-documentserver:converter: started</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@seafile-server certs]<span class="comment"># docker logs office</span></div><div class="line">guest</div><div class="line"> * Starting PostgreSQL 9.3 database server                               [ OK ] </div><div class="line"> * Starting message broker rabbitmq-server                               [ OK ] </div><div class="line">Starting redis-server: redis-server.</div><div class="line">Starting supervisor: supervisord.</div><div class="line">Generating AllFonts.js, please wait...Done</div><div class="line">onlyoffice-documentserver:docservice: stopped</div><div class="line">onlyoffice-documentserver:docservice: started</div><div class="line">onlyoffice-documentserver:converter: stopped</div><div class="line">onlyoffice-documentserver:converter: started</div></pre></td></tr></table></figure>
 <p>通过 web 访问 <a href="https://demo.domain.com:7443" target="_blank" rel="external">https://demo.domain.com:7443</a> 可以看到 『Document Server is running』表明服务已经正常运行了。</p>
 <h3 id="配置-Seafile-6-1-0，让其使用-onlyoffice"><a href="#配置-Seafile-6-1-0，让其使用-onlyoffice" class="headerlink" title="配置 Seafile 6.1.0，让其使用 onlyoffice"></a>配置 Seafile 6.1.0，让其使用 onlyoffice</h3><blockquote>
 <p>参考 <a href="https://manual.seafile.com/deploy/only_office.html" target="_blank" rel="external">Seafile Manual/Only Office</a></p>
@@ -483,13 +484,13 @@
 <ul>
 <li>编辑 seahub_settings.py 加入下方配置</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Enable Only Office</div><div class="line">ENABLE_ONLYOFFICE = True</div><div class="line">VERIFY_ONLYOFFICE_CERTIFICATE = True</div><div class="line">ONLYOFFICE_APIJS_URL = &apos;https://demo.domain.com:7443/web-apps/apps/api/documents/api.js&apos;</div><div class="line">ONLYOFFICE_FILE_EXTENSION = (&apos;doc&apos;, &apos;docx&apos;, &apos;ppt&apos;, &apos;pptx&apos;, &apos;xls&apos;, &apos;xlsx&apos;, &apos;odt&apos;, &apos;fodt&apos;, &apos;odp&apos;, &apos;fodp&apos;, &apos;ods&apos;, &apos;fods&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Enable Only Office</span></div><div class="line">ENABLE_ONLYOFFICE = True</div><div class="line">VERIFY_ONLYOFFICE_CERTIFICATE = True</div><div class="line">ONLYOFFICE_APIJS_URL = <span class="string">'https://demo.domain.com:7443/web-apps/apps/api/documents/api.js'</span></div><div class="line">ONLYOFFICE_FILE_EXTENSION = (<span class="string">'doc'</span>, <span class="string">'docx'</span>, <span class="string">'ppt'</span>, <span class="string">'pptx'</span>, <span class="string">'xls'</span>, <span class="string">'xlsx'</span>, <span class="string">'odt'</span>, <span class="string">'fodt'</span>, <span class="string">'odp'</span>, <span class="string">'fodp'</span>, <span class="string">'ods'</span>, <span class="string">'fods'</span>)</div></pre></td></tr></table></figure>
 <p><strong>注1：其中 <code>VERIFY_ONLYOFFICE_CERTIFICATE</code> 选项如果 onlyoffice 使用了 https 的话可以选择更改为 True 提高安全性，如果是使用 http 协议则改为 False</strong></p>
 <p><strong>注2：如果没使用 memcached 的话，还需要执行 <code>rm /tmp/seahub_cached/</code>清空缓存</strong></p>
 <ul>
 <li>重启 seahub 使得配置生效</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#假设当前在 seafile-server-latest 目录下</div><div class="line">rm -f ../conf/seahub_settings.pyc</div><div class="line">./seahub.sh restart-fastcgi</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#假设当前在 seafile-server-latest 目录下</span></div><div class="line">rm -f ../conf/seahub_settings.pyc</div><div class="line">./seahub.sh restart-fastcgi</div></pre></td></tr></table></figure>
 <p>尽情享受吧！</p>
 <h3 id="使用体会"><a href="#使用体会" class="headerlink" title="使用体会"></a>使用体会</h3><p>onlyoffice 还是不错的，加载速度快，界面友善，我与同事测试过，多人同时编辑一个文件的时候毫无问题。</p>
 <p>但是它目前缺点也十分明显，界面没有中文语言，对中文支持也不好，例如我们在 word 里面的字体叫『等线』，但是 onlyoffice 里面叫 『DengXian』，有时候它并不能识别，故此会识别成默认英文字体，导致一堆口口。</p>
@@ -625,7 +626,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

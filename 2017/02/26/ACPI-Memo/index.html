@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/02/26/ACPI-Memo/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="有时候查看 ACPI 时候，为了熟悉他的逻辑，需要学习一些 ACPI 语法，这里是关于 ACPI 语法的备忘录。 本备忘均从 《Advanced Configuration and Power Interface Specification》 查阅，并使用 Google 翻译得来，本人英语极渣故此不确保翻译准确，如有需要请查阅原版文档。 运算符LEqual（逻辑等）语法LEqual（Source1">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:29:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ACPI 一些备忘">
 <meta name="twitter:description" content="有时候查看 ACPI 时候，为了熟悉他的逻辑，需要学习一些 ACPI 语法，这里是关于 ACPI 语法的备忘录。 本备忘均从 《Advanced Configuration and Power Interface Specification》 查阅，并使用 Google 翻译得来，本人英语极渣故此不确保翻译准确，如有需要请查阅原版文档。 运算符LEqual（逻辑等）语法LEqual（Source1">
@@ -435,6 +435,7 @@
 <h2 id="LOr（逻辑或）"><a href="#LOr（逻辑或）" class="headerlink" title="LOr（逻辑或）"></a>LOr（逻辑或）</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p><code>LOr（Source1，Source2）=&gt; Boolean Source1 || Source2 =&gt; Boolean</code></p>
 <h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><p>Source1和Source2被计算为整数。 </p>
 <h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>如果任一值不为零，则返回True; 否则返回False。</p>
+<a id="more"></a>
 <h2 id="Decrement-整数递减"><a href="#Decrement-整数递减" class="headerlink" title="Decrement (整数递减)"></a>Decrement (整数递减)</h2><h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p><code>Decrement (Minuend) =&gt; Integer Minuend-- =&gt; Integer</code></p>
 <h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>Minuend应该为一个整数。</p>
 <h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>此操作将Minuend减1，并将结果存储回Minuend。 等效于 <code>Subtract（Minuend，1，Minuend）</code>。 下溢条件被忽略，结果为Ones。</p>
@@ -505,7 +506,7 @@
 <li>OSPM必须通过ECDT中描述的嵌入式控制器访问嵌入式控制器操作区域，然后才能执行任何控制方法。 在OSPM运行_REG（EmbeddedControl，0）后，这些操作区域可能无法访问。将_REG放置在与操作区域声明相同的范围中。 当在该范围中声明的操作区域可供使用时，OS将在给定范围中运行_REG。</li>
 </ol>
 <p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Scope(\_SB.PCI0) &#123;    OperationRegion(OPR1, PCI_Config, ...)    Method(_REG, 2) &#123;...&#125;            // OSPM在PCIO操作区域处理程序时执行此操作                                     // 状态更改    Device(PCI1) &#123;        Method(2) &#123;...&#125;        Device(ETH0) &#123;            OperationRegion(OPR2, PCI_Config, ...)            Method(_REG,2) &#123;...&#125;        &#125;</div><div class="line">    &#125;    Device(ISA0) &#123;        OperationRegion(OPR3, SystemIO, ...)        Method(_REG, 2) &#123;...&#125;       // OSPM在ISAO操作区域处理程序时执行此操作                                    // 状态更改        Device(EC0) &#123;            Name(_HID, EISAID(&quot;PNP0C09&quot;))            OperationRegion(OPR4, EmbeddedControl, ...)            Method(_REG, 2) &#123;...&#125;    // OSPM在EC操作区域执行此操作        &#125;</div><div class="line">    &#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Scope(\_SB.PCI0) &#123;</div><div class="line">    OperationRegion(OPR1, PCI_Config, ...)</div><div class="line">    Method(_REG, 2) &#123;...&#125;            // OSPM在PCIO操作区域处理程序时执行此操作</div><div class="line">                                     // 状态更改</div><div class="line">    Device(PCI1) &#123;</div><div class="line">        Method(2) &#123;...&#125;</div><div class="line">        Device(ETH0) &#123;</div><div class="line">            OperationRegion(OPR2, PCI_Config, ...)</div><div class="line">            Method(_REG,2) &#123;...&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Device(ISA0) &#123;</div><div class="line">        OperationRegion(OPR3, SystemIO, ...)</div><div class="line">        Method(_REG, 2) &#123;...&#125;       // OSPM在ISAO操作区域处理程序时执行此操作</div><div class="line">                                    // 状态更改</div><div class="line">        Device(EC0) &#123;</div><div class="line">            Name(_HID, EISAID(&quot;PNP0C09&quot;))</div><div class="line">            OperationRegion(OPR4, EmbeddedControl, ...)</div><div class="line">            Method(_REG, 2) &#123;...&#125;    // OSPM在EC操作区域执行此操作</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当PCI0操作区域处理程序就绪时，OSPM将运行在PCI0范围中声明的_REG方法，以指示PCI0空间操作区域访问在PCI0范围内可用（换句话说，允许OPR1访问）。</p>
 <p>当ISA0操作处理程序就绪时，OSPM将在ISA0作用域中运行_REG方法，以指示I / O空间操作区域访问在该范围内可用（换句话说，允许OPR3访问）。</p>
 <p>最后，当嵌入式控制器操作区域处理程序就绪时，OSPM将在EC0作用域中运行_REG方法，以指示EC空间操作区域访问在EC0范围内可用（换句话说，允许OPR4访问）。</p>
@@ -648,7 +649,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="Zabbix 搭建文档概述计划使用 docker 搭建 Zabbix 监控系统。 安装 Docker参考 Ubuntu、Debian 系列安装 Docker 部署 Mariadb-Server一、建立数据库本地目录12mkdir -p ~/zabbix/database/mysqlmkdir ~/zabbix/database/conf.d 二、运行 Mariadb-Server Docker12">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:updated_time" content="2017-07-20T02:19:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Docker 部署 Zabbix 3.2 记录">
 <meta name="twitter:description" content="Zabbix 搭建文档概述计划使用 docker 搭建 Zabbix 监控系统。 安装 Docker参考 Ubuntu、Debian 系列安装 Docker 部署 Mariadb-Server一、建立数据库本地目录12mkdir -p ~/zabbix/database/mysqlmkdir ~/zabbix/database/conf.d 二、运行 Mariadb-Server Docker12">
@@ -435,6 +435,7 @@
 <p>这里会产生一个问题，由于默认的 mariadb 是使用<code>latin1</code>字符集来创建数据库，这时候我们在 Zabbix 录入中文字符的时候会导致出错，故此需要进入 mariadb-docker 内删除新建好的<code>zabbix</code>数据库，再使用<code>utf8</code>新建数据库。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it zabbix-db mysql -uroot -p<span class="string">'mysql_root_password'</span></div><div class="line">MariaDB [(none)]&gt; drop database zabbix;</div><div class="line">MariaDB [(none)]&gt; create database zabbix default charset utf8;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>此时，数据库已经以 utf8 新建好了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MariaDB [(none)]&gt; show create database zabbix;</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">| Database | Create Database                                                 |</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">| zabbix   | CREATE DATABASE `zabbix` /*!40100 DEFAULT CHARACTER SET utf8 */ |</div><div class="line">+----------+-----------------------------------------------------------------+</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</div><div class="line"></div><div class="line">MariaDB [(none)]&gt;quit</div></pre></td></tr></table></figure>
 <blockquote>
@@ -584,7 +585,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
