@@ -102,14 +102,14 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="前言自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。  帖子链接：【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想  修改 AppleALC过程整理根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样">
-<meta property="og:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png">
-<meta property="og:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-02.png">
-<meta property="og:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-03.png">
-<meta property="og:updated_time" content="2017-07-19T12:47:36.000Z">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-02.png">
+<meta property="og:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-03.png">
+<meta property="og:updated_time" content="2017-07-20T00:35:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使二合一声卡耳机麦克风生效整理">
 <meta name="twitter:description" content="前言自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。  帖子链接：【声卡驱动完善进阶】——关于耳机杂音解决办法及三节点信息驱动双麦克风的猜想  修改 AppleALC过程整理根据关云长羽的帖子，启发了我，我是 ALC233，和他的声卡一摸一样，但是我们两个的 Codec 并不一样">
-<meta name="twitter:image" content="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png">
+<meta name="twitter:image" content="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png">
 
 
 
@@ -429,14 +429,14 @@
 <blockquote>
 <p>关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：<a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></p>
 </blockquote>
-<h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
+<h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
 <ul>
 <li>MuteGPIO 由 Noid 0x19 的VREF_80 0x50+0x0100+0x19 &gt; 1342242841（我的 Node 节点是 VREF_HIZ，但是从 ID3 和 ID13 提取的都有这个，当时我不确定是否这个值会影响结果，故此我也加进去了）</li>
 <li>SignalProcessing 可以放在 Mic，也可以放在 LineIn，放在那里那里就有麦克风降噪。详细可以看看紫米的帖子<strong><a href="http://bbs.pcbeta.com/viewthread-623626-1-1.html" target="_blank" rel="external">完整製作仿冒 LegacyHDA.kext (12/16)</a></strong></li>
 </ul>
 <h2 id="Platforms4-xml"><a href="#Platforms4-xml" class="headerlink" title="Platforms4.xml"></a>Platforms4.xml</h2><p>在 AppleALC 里面，ALC233 ID4 的 PathMaps 是没有 Node 0x19 的路径的，因为 Node 19在我们的 Codec 里面根本不是有效节点。</p>
 <p>但既然关云长羽说尝试一下将 Node 0x19这个当成有效的 LineIn 节点来做，那么我就直接按照仿冒贴的方法，找到 0X19的 PathMaps。（怎么找请看上面说到的紫米帖）</p>
-<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-02.png" alt="PathMaps配置"></p>
+<p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-02.png" alt="PathMaps配置"></p>
 <h2 id="PinConfigData-kext-添加-Node-0X19-的-ConfigData"><a href="#PinConfigData-kext-添加-Node-0X19-的-ConfigData" class="headerlink" title="PinConfigData.kext 添加 Node 0X19 的 ConfigData"></a>PinConfigData.kext 添加 Node 0X19 的 ConfigData</h2><p>这里我偷了下懒，直接从 ID3 和 ID13 复制了 019开头的四组节点信息过来，因为同款声卡，Codec 是一样的，既然前人已经写了数据，那么应该差不了多少。</p>
 <p>提取 AppleALC ID4 的 ConfigData</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F90 </div><div class="line">01B71C20 01B71D00 01B71EA0 01B71F90 </div><div class="line">02171C30 02171D10 02171E21 02171F01 </div><div class="line">01470C02</div></pre></td></tr></table></figure>
@@ -449,7 +449,7 @@
 <p>用 EAPD-Codec-Commander-master RM 项目的 widget_dump.sh 查看，发现一开机因为我用了脚本，开机是设置 0X19为24，故此第一次插入是正常的，然而拔出后，0X19变成02了，而 0X1B（内置麦克风节点）变成24，再插入耳机，这两个数字不会变了，一直是那样。</p>
 <p>后来反复研究无果，编译 AppleALC，修改了无数遍 layout 和 Pathmap，折腾的死去活来的。</p>
 <p>第二天，复习关云长羽的帖子，发现他提到的 ALCPlugFix 帖子，我又去看了下这个项目的代码和关云长羽提到的 main.m 文件源码部分，不会编程，但是我发现了一个比较有趣的地方。</p>
-<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-03.png" alt="main.m"></p>
+<p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-03.png" alt="main.m"></p>
 <h1 id="使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定"><a href="#使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定" class="headerlink" title="使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定"></a>使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定</h1><p>ALCPlugFix 这个程序，作者没有写任何的说明，我也是从关云长羽的帖子得知这个程序。</p>
 <p><strong><a href="https://github.com/goodwin/ALCPlugFix" target="_blank" rel="external">ALCPlugFix 项目地址</a></strong></p>
 <p>后来发现个程序会检测耳机的插入和拔出情况，根据插入或者拔出，可以运行 Shell。</p>
@@ -608,7 +608,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -619,7 +619,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -630,7 +630,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

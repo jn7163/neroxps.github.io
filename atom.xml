@@ -387,7 +387,7 @@
     <link href="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/"/>
     <id>http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/</id>
     <published>2017-03-12T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
+    <updated>2017-07-20T00:35:23.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自我这台华硕 VM510LI 安装黑苹果以来一直留下两个问题未解决，一是 VGA，二是耳机麦克风无输入。今天终于在远景坛友关云长羽帖子的帮助下解决了麦克风无输入的问题。</p>
 <blockquote>
@@ -404,14 +404,14 @@
 <blockquote>
 <p>关于 LineIn 这个节点查找，为何是0X19，关云长羽原贴上有说，而我猜测是不是和修改 Pin Widget Control 后耳机正常无杂音的节点有关系？关于耳机杂音问题参考我之前写的帖子：<a href="http://bbs.pcbeta.com/viewthread-1733228-1-1.html" target="_blank" rel="external">http://bbs.pcbeta.com/viewthread-1733228-1-1.html</a></p>
 </blockquote>
-<h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
+<h2 id="layout4-xml"><a href="#layout4-xml" class="headerlink" title="layout4.xml"></a>layout4.xml</h2><p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-01.png" alt="layout4配置"></p>
 <ul>
 <li>MuteGPIO 由 Noid 0x19 的VREF_80 0x50+0x0100+0x19 &gt; 1342242841（我的 Node 节点是 VREF_HIZ，但是从 ID3 和 ID13 提取的都有这个，当时我不确定是否这个值会影响结果，故此我也加进去了）</li>
 <li>SignalProcessing 可以放在 Mic，也可以放在 LineIn，放在那里那里就有麦克风降噪。详细可以看看紫米的帖子<strong><a href="http://bbs.pcbeta.com/viewthread-623626-1-1.html" target="_blank" rel="external">完整製作仿冒 LegacyHDA.kext (12/16)</a></strong></li>
 </ul>
 <h2 id="Platforms4-xml"><a href="#Platforms4-xml" class="headerlink" title="Platforms4.xml"></a>Platforms4.xml</h2><p>在 AppleALC 里面，ALC233 ID4 的 PathMaps 是没有 Node 0x19 的路径的，因为 Node 19在我们的 Codec 里面根本不是有效节点。</p>
 <p>但既然关云长羽说尝试一下将 Node 0x19这个当成有效的 LineIn 节点来做，那么我就直接按照仿冒贴的方法，找到 0X19的 PathMaps。（怎么找请看上面说到的紫米帖）</p>
-<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-02.png" alt="PathMaps配置"></p>
+<p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-02.png" alt="PathMaps配置"></p>
 <h2 id="PinConfigData-kext-添加-Node-0X19-的-ConfigData"><a href="#PinConfigData-kext-添加-Node-0X19-的-ConfigData" class="headerlink" title="PinConfigData.kext 添加 Node 0X19 的 ConfigData"></a>PinConfigData.kext 添加 Node 0X19 的 ConfigData</h2><p>这里我偷了下懒，直接从 ID3 和 ID13 复制了 019开头的四组节点信息过来，因为同款声卡，Codec 是一样的，既然前人已经写了数据，那么应该差不了多少。</p>
 <p>提取 AppleALC ID4 的 ConfigData</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">01471C10 01471D00 01471E17 01471F90 </div><div class="line">01B71C20 01B71D00 01B71EA0 01B71F90 </div><div class="line">02171C30 02171D10 02171E21 02171F01 </div><div class="line">01470C02</div></pre></td></tr></table></figure>
@@ -424,7 +424,7 @@
 <p>用 EAPD-Codec-Commander-master RM 项目的 widget_dump.sh 查看，发现一开机因为我用了脚本，开机是设置 0X19为24，故此第一次插入是正常的，然而拔出后，0X19变成02了，而 0X1B（内置麦克风节点）变成24，再插入耳机，这两个数字不会变了，一直是那样。</p>
 <p>后来反复研究无果，编译 AppleALC，修改了无数遍 layout 和 Pathmap，折腾的死去活来的。</p>
 <p>第二天，复习关云长羽的帖子，发现他提到的 ALCPlugFix 帖子，我又去看了下这个项目的代码和关云长羽提到的 main.m 文件源码部分，不会编程，但是我发现了一个比较有趣的地方。</p>
-<p><img src="https://blog.neroxps.cn/blog/macOS/img/Combo-Audio-Ext-Mic-03.png" alt="main.m"></p>
+<p><img src="/2017/03/13/Combo-Audio-Ext-Mic/Combo-Audio-Ext-Mic-03.png" alt="main.m"></p>
 <h1 id="使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定"><a href="#使用-ALCPlugFix-解决耳机插入拔出的-Pin-Widget-Control-设定" class="headerlink" title="使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定"></a>使用 ALCPlugFix 解决耳机插入拔出的 Pin Widget Control 设定</h1><p>ALCPlugFix 这个程序，作者没有写任何的说明，我也是从关云长羽的帖子得知这个程序。</p>
 <p><strong><a href="https://github.com/goodwin/ALCPlugFix" target="_blank" rel="external">ALCPlugFix 项目地址</a></strong></p>
 <p>后来发现个程序会检测耳机的插入和拔出情况，根据插入或者拔出，可以运行 Shell。</p>
@@ -1504,6 +1504,37 @@
   </entry>
   
   <entry>
+    <title>【转载】 VMware Fusion 8 Pro 序列号</title>
+    <link href="http://hexo.neroxps.cn/2017/01/12/vmware-fusion-8-pro-key/"/>
+    <id>http://hexo.neroxps.cn/2017/01/12/vmware-fusion-8-pro-key/</id>
+    <published>2017-01-11T16:00:00.000Z</published>
+    <updated>2017-07-20T00:39:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文转载自 <a href="http://www.tianwaihome.com/2015/08/vmware-fusion-8-pro-key.html" target="_blank" rel="external">天外之家-VMware Fusion 8 Pro 序列号</a></p>
+</blockquote>
+<p><img src="/2017/01/12/vmware-fusion-8-pro-key/download-vmware-fusion-or-fusion-pro-trial.jpg" alt="vmware-fusion-or-fusion-pro-trial"></p>
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a href="http://www.vmware.com/cn/products/fusion/fusion-evaluation" target="_blank" rel="external">http://www.vmware.com/cn/products/fusion/fusion-evaluation</a></p>
+<h3 id="提供几枚key："><a href="#提供几枚key：" class="headerlink" title="提供几枚key："></a>提供几枚key：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">FA3RK-FHGD5-M88TZ-V4WEZ-MVAW0</div><div class="line">FU75U-4KD5L-0845Z-JEXNZ-MLKD8</div><div class="line">UV7XK-4PXEJ-080WY-4WXQT-NC0ZF</div><div class="line">VC79R-6NF81-M84XZ-VNW5G-NKUW8</div><div class="line">GC1HA-01Z14-H8D2P-04NNZ-Z6RY0</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文转载自 &lt;a href=&quot;http://www.tianwaihome.com/2015/08/vmware-fusion-8-pro-key.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;天外之家-VMware F
+    
+    </summary>
+    
+      <category term="macOS" scheme="http://hexo.neroxps.cn/categories/macOS/"/>
+    
+    
+      <category term="虚拟机、VMware" scheme="http://hexo.neroxps.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81VMware/"/>
+    
+      <category term="Fusion 8" scheme="http://hexo.neroxps.cn/tags/Fusion-8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>黑苹果手记</title>
     <link href="http://hexo.neroxps.cn/2017/01/05/Hackintosh-00/"/>
     <id>http://hexo.neroxps.cn/2017/01/05/Hackintosh-00/</id>
@@ -1768,140 +1799,6 @@ interface FastEthernet 0/17
       <category term="TP-Link" scheme="http://hexo.neroxps.cn/tags/TP-Link/"/>
     
       <category term="无线" scheme="http://hexo.neroxps.cn/tags/%E6%97%A0%E7%BA%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MarkLite 基本语法</title>
-    <link href="http://hexo.neroxps.cn/2016/12/05/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
-    <id>http://hexo.neroxps.cn/2016/12/05/基本语法/</id>
-    <published>2016-12-04T16:00:00.000Z</published>
-    <updated>2017-07-19T12:47:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>在使用MarkLite之前你需要先了解一下关于markdown的基本语法，如果你已经掌握了，请无视本文档，如果还没有，那现在开始学习吧。</p>
-</blockquote>
-<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><ul>
-<li>使用 <code>#</code> 表示标题，一级标题使用一个 <code>#</code> ，二级标题使用两个 <code>##</code> ，以此类推，共有六级标题。</li>
-<li>使用 <code>=====</code> 表示高阶标题，使用 <code>---------</code> 表示次阶标题。</li>
-</ul>
-<ol>
-<li><code>#</code> 和标题之间最好加一个空格。不要问我为什么，貌似有时候不会被识别为标题？已经忘记自己为什么要加空格了，也许是任性。</li>
-<li><code>====</code> 和 <code>----</code> 表示标题时，大于等于2个都可以表示。</li>
-<li>我通常在标题分级时使用标题标记，这个的用处很明了了。</li>
-</ol>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 这是一级标题</div><div class="line">## 这是二级标题</div><div class="line">### 这是三级标题</div><div class="line">###### 这是六级标题</div></pre></td></tr></table></figure>
-<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这是一级标题</div><div class="line">========</div><div class="line"></div><div class="line">这是二级标题</div><div class="line">--------------</div></pre></td></tr></table></figure>
-<h1 id="这是一级标题-1"><a href="#这是一级标题-1" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题-1"><a href="#这是二级标题-1" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="2-引用"><a href="#2-引用" class="headerlink" title="2.引用"></a>2.引用</h3><p>使用 <code>&gt;</code> 表示引用， <code>&gt;&gt;</code> 表示引用里面再套一层引用，依次类推。</p>
-<ol>
-<li>如果 <code>&gt;</code> 和 <code>&gt;&gt;</code> 嵌套使用的话，从 <code>&gt;&gt;</code> 退到 <code>&gt;</code> 时，必须之间要加一个空格或者 <code>&gt;</code> 作为过渡，否则默认为下一行和上一行是同一级别的引用。如示例所示。</li>
-<li>引用标记里可以使用其他标记，如：有序列表或无序列表标记，代码标记等。<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; 这是一级引用</div><div class="line">&gt;&gt;这是二级引用</div><div class="line">&gt;&gt;&gt; 这是三级引用</div><div class="line"></div><div class="line">&gt;这是一级引用</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>这是一级引用</p>
-<blockquote>
-<p>这是二级引用</p>
-<blockquote>
-<p>这是三级引用</p>
-</blockquote>
-</blockquote>
-<p>这是一级引用</p>
-</blockquote>
-<h3 id="1-3-代码块"><a href="#1-3-代码块" class="headerlink" title="1.3 代码块"></a>1.3 代码块</h3><p>使用三个`表示代码块。</p>
-<ol>
-<li><code>这个符号是在</code>Esc` 键下面，切换到英文下即可。</li>
-<li>本文档所有使用讲解Markdown语法标记示例的地方都是使用代码块标记的。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
-<h3 id="1-4-行内代码"><a href="#1-4-行内代码" class="headerlink" title="1.4 行内代码"></a>1.4 行内代码</h3><p>使用``表示行内代码。本页部分文字中间的英文字母就是使用行内代码标记标记的。</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是`javascript`代码</div></pre></td></tr></table></figure>
-<p>这是 <code>javascript</code> 代码</p>
-<h4 id="1-5-链接"><a href="#1-5-链接" class="headerlink" title="1.5 链接"></a>1.5 链接</h4><p>使用 <code>[](link)</code> 表示行内链接。其中：</p>
-<ul>
-<li><code>[]</code> 内的内容为要添加链接的文字。</li>
-<li><code>link</code> 为链接地址。</li>
-</ul>
-<p>示例</p>
-<p>我觉得<a href="https://appsto.re/cn/jK8Cbb.i" target="_blank" rel="external">MarkLite</a>真是个牛逼的编辑器😊.</p>
-<h3 id="1-6-导入图片"><a href="#1-6-导入图片" class="headerlink" title="1.6 导入图片"></a>1.6 导入图片</h3><p>使用 <code>![Alt text](/path/to/img.jpg)</code> 导入图片。其中：</p>
-<ul>
-<li><code>Alt text</code> 为如果图片无法显示时显示的文字；</li>
-<li><code>/path/to/img.jpg</code> 为图片所在路径；</li>
-</ul>
-<p>点击辅助键盘中的添加图片按钮，<strong>MarkLite</strong>会自动帮你帮你把图片上传到图片存储服务器，并补齐链接，让你一步到位，是不是很方便😊</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![MarkLite](https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg)</div></pre></td></tr></table></figure>
-<p><img src="https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg" alt="MarkLite"></p>
-<h4 id="1-7-粗体和斜体"><a href="#1-7-粗体和斜体" class="headerlink" title="1.7 粗体和斜体"></a>1.7 粗体和斜体</h4><ol>
-<li>使用 <code>**</code> 或者 <code>__</code> 表示粗体。</li>
-<li>使用 <code>*</code> 或者 <code>_</code> 表示斜体。</li>
-<li>前后的 <code>*</code> 或 <code>_</code> 与要 <strong>加粗或倾斜</strong> 的字体之间不能有空格。</li>
-</ol>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**粗体1**    __粗体2__</div><div class="line">*斜体1*    _斜体2_</div></pre></td></tr></table></figure>
-<p>粗体1 <strong>粗体2</strong></p>
-<p><em>斜体1</em> <em>斜体2</em></p>
-<h4 id="1-8-列表"><a href="#1-8-列表" class="headerlink" title="1.8 列表"></a>1.8 列表</h4><p>使用 <code>1\. 2\. 3.</code> 表示有序列表，使用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 表示无序列表。</p>
-<ol>
-<li>无序列表或有序列表标记和后面的文字之间要有一个空格隔开。</li>
-<li>有序列表标记不是按照你写的数字进行显示的，而是根据当前有序列表标记所在位置显示的，如示例1所示。</li>
-<li>无序列表的项目符号是按照实心圆、空心圆、实心方格的层级关系递进的，如例2所示。通常情况下，同一层级使用同一种标记表示，便于自己查看和管理。</li>
-<li>无序列表和有序列表标记的使用场景也很明了，故不多说。</li>
-</ol>
-<p>示例</p>
-<h4 id="例1：有序列表"><a href="#例1：有序列表" class="headerlink" title="例1：有序列表"></a>例1：有序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1\. 第一点</div><div class="line">2\. 第二点</div><div class="line">4\. 第三点</div></pre></td></tr></table></figure>
-<ol>
-<li>第一点</li>
-<li>第二点</li>
-<li>第三点</li>
-</ol>
-<h4 id="例2：无序列表"><a href="#例2：无序列表" class="headerlink" title="例2：无序列表"></a>例2：无序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ 呵呵</div><div class="line">	* 嘉嘉</div><div class="line">	- 嘻嘻</div><div class="line">	- 吼吼</div><div class="line">		- 嘎嘎</div><div class="line">		+ 桀桀</div><div class="line">* 哈哈</div></pre></td></tr></table></figure>
-<ul>
-<li>呵呵<ul>
-<li>嘉嘉</li>
-<li>嘻嘻</li>
-<li>吼吼<ul>
-<li>嘎嘎</li>
-<li>桀桀</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>哈哈</li>
-</ul>
-<h4 id="1-9-分割线"><a href="#1-9-分割线" class="headerlink" title="1.9 分割线"></a>1.9 分割线</h4><p>使用 <code>---</code> 或者 <code>***</code> 或者 <code>* * *</code> 表示水平分割线。</p>
-<ol>
-<li>只要 <code>*</code> 或者 <code>-</code> 大于等于三个就可组成一条平行线。</li>
-<li>使用 <code>---</code> 作为水平分割线时，要在它的前后都空一行，防止 <code>---</code> 被当成标题标记的表示方式。</li>
-</ol>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">* * *</div></pre></td></tr></table></figure>
-<h4 id="1-11-删除线"><a href="#1-11-删除线" class="headerlink" title="1.11 删除线"></a>1.11 删除线</h4><p>使用 <code>~~</code> 表示删除线。</p>
-<ol>
-<li>注意 <code>~~</code> 和 要添加删除线的文字之间不能有空格。</li>
-<li>我常使用在显示的告诉自己这行文字是要删除的。</li>
-</ol>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~这是一条删除线~~</div></pre></td></tr></table></figure>
-<p><del>这是一条删除线</del></p>
-<p><em>想要了解更多语法，请自行上网查阅</em></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;在使用MarkLite之前你需要先了解一下关于markdown的基本语法，如果你已经掌握了，请无视本文档，如果还没有，那现在开始学习吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;1-标题&quot;&gt;&lt;a href=&quot;#1-标题&quot; class=&quot;
-    
-    </summary>
-    
-      <category term="test" scheme="http://hexo.neroxps.cn/categories/test/"/>
-    
-    
-      <category term="test" scheme="http://hexo.neroxps.cn/tags/test/"/>
     
   </entry>
   
