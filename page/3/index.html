@@ -119,6 +119,7 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/page/3/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="这里就是一堆流水账和技术笔记 | LINUX初学者 | 黑苹果初学者">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nero Blog">
 <meta name="twitter:description" content="这里就是一堆流水账和技术笔记 | LINUX初学者 | 黑苹果初学者">
@@ -138,9 +139,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'WJLDIEBAYI',
+      apiKey: '084e9f2e63c4b34a4aecc924a43f504e',
+      indexName: 'nero',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -286,22 +287,26 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+
 
 
 
@@ -320,6 +325,158 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2016/12/05/test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nero Hau">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nero Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/05/test/" itemprop="url">Seafile 在线测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-05T00:00:00+08:00">
+                2016-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/test/" itemprop="url" rel="index">
+                    <span itemprop="name">test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/05/test/" class="leancloud_visitors" data-flag-title="Seafile 在线测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="测试与-Seafile-整合"><a href="#测试与-Seafile-整合" class="headerlink" title="测试与 Seafile 整合"></a>测试与 Seafile 整合</h1><p>使用 Seafile 同步博客文件夹,进行快捷更新博客内容。</p>
+<p>这一段是利用 Seafile 手机客户端添加的</p>
+<h1 id="以下测试博客的音频功能是否正常"><a href="#以下测试博客的音频功能是否正常" class="headerlink" title="以下测试博客的音频功能是否正常"></a>以下测试博客的音频功能是否正常</h1><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=5264302&auto=1&height=66"></iframe>
+
+
+<h1 id="以下测试视频播放功能"><a href="#以下测试视频播放功能" class="headerlink" title="以下测试视频播放功能"></a>以下测试视频播放功能</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/IKfQE7ZrLVw" frameborder="0" allowfullscreen></iframe>
+
+<p><a href="https://blog.neroxps.cn/blog/macOS/9999.zip" target="_blank" rel="external">9999.zip</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -430,7 +587,8 @@
 
       
         
-          <blockquote>
+          
+            <blockquote>
 <p>在使用MarkLite之前你需要先了解一下关于markdown的基本语法，如果你已经掌握了，请无视本文档，如果还没有，那现在开始学习吧。</p>
 </blockquote>
 <h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><ul>
@@ -443,14 +601,104 @@
 <li>我通常在标题分级时使用标题标记，这个的用处很明了了。</li>
 </ol>
 <h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 这是一级标题</div><div class="line">## 这是二级标题</div><div class="line">### 这是三级标题</div><div class="line">###### 这是六级标题</div></pre></td></tr></table></figure>
-<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/05/基本语法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这是一级标题</div><div class="line">========</div><div class="line"></div><div class="line">这是二级标题</div><div class="line">--------------</div></pre></td></tr></table></figure>
+<h1 id="这是一级标题-1"><a href="#这是一级标题-1" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题-1"><a href="#这是二级标题-1" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="2-引用"><a href="#2-引用" class="headerlink" title="2.引用"></a>2.引用</h3><p>使用 <code>&gt;</code> 表示引用， <code>&gt;&gt;</code> 表示引用里面再套一层引用，依次类推。</p>
+<ol>
+<li>如果 <code>&gt;</code> 和 <code>&gt;&gt;</code> 嵌套使用的话，从 <code>&gt;&gt;</code> 退到 <code>&gt;</code> 时，必须之间要加一个空格或者 <code>&gt;</code> 作为过渡，否则默认为下一行和上一行是同一级别的引用。如示例所示。</li>
+<li>引用标记里可以使用其他标记，如：有序列表或无序列表标记，代码标记等。<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; 这是一级引用</div><div class="line">&gt;&gt;这是二级引用</div><div class="line">&gt;&gt;&gt; 这是三级引用</div><div class="line"></div><div class="line">&gt;这是一级引用</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>这是一级引用</p>
+<blockquote>
+<p>这是二级引用</p>
+<blockquote>
+<p>这是三级引用</p>
+</blockquote>
+</blockquote>
+<p>这是一级引用</p>
+</blockquote>
+<h3 id="1-3-代码块"><a href="#1-3-代码块" class="headerlink" title="1.3 代码块"></a>1.3 代码块</h3><p>使用三个`表示代码块。</p>
+<ol>
+<li><code>这个符号是在</code>Esc` 键下面，切换到英文下即可。</li>
+<li>本文档所有使用讲解Markdown语法标记示例的地方都是使用代码块标记的。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
+<h3 id="1-4-行内代码"><a href="#1-4-行内代码" class="headerlink" title="1.4 行内代码"></a>1.4 行内代码</h3><p>使用``表示行内代码。本页部分文字中间的英文字母就是使用行内代码标记标记的。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是`javascript`代码</div></pre></td></tr></table></figure>
+<p>这是 <code>javascript</code> 代码</p>
+<h4 id="1-5-链接"><a href="#1-5-链接" class="headerlink" title="1.5 链接"></a>1.5 链接</h4><p>使用 <code>[](link)</code> 表示行内链接。其中：</p>
+<ul>
+<li><code>[]</code> 内的内容为要添加链接的文字。</li>
+<li><code>link</code> 为链接地址。</li>
+</ul>
+<p>示例</p>
+<p>我觉得<a href="https://appsto.re/cn/jK8Cbb.i" target="_blank" rel="external">MarkLite</a>真是个牛逼的编辑器😊.</p>
+<h3 id="1-6-导入图片"><a href="#1-6-导入图片" class="headerlink" title="1.6 导入图片"></a>1.6 导入图片</h3><p>使用 <code>![Alt text](/path/to/img.jpg)</code> 导入图片。其中：</p>
+<ul>
+<li><code>Alt text</code> 为如果图片无法显示时显示的文字；</li>
+<li><code>/path/to/img.jpg</code> 为图片所在路径；</li>
+</ul>
+<p>点击辅助键盘中的添加图片按钮，<strong>MarkLite</strong>会自动帮你帮你把图片上传到图片存储服务器，并补齐链接，让你一步到位，是不是很方便😊</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![MarkLite](https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg)</div></pre></td></tr></table></figure>
+<p><img src="https://i1.piimg.com/567954/ea65f02e0cd670a4.jpg" alt="MarkLite"></p>
+<h4 id="1-7-粗体和斜体"><a href="#1-7-粗体和斜体" class="headerlink" title="1.7 粗体和斜体"></a>1.7 粗体和斜体</h4><ol>
+<li>使用 <code>**</code> 或者 <code>__</code> 表示粗体。</li>
+<li>使用 <code>*</code> 或者 <code>_</code> 表示斜体。</li>
+<li>前后的 <code>*</code> 或 <code>_</code> 与要 <strong>加粗或倾斜</strong> 的字体之间不能有空格。</li>
+</ol>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**粗体1**    __粗体2__</div><div class="line">*斜体1*    _斜体2_</div></pre></td></tr></table></figure>
+<p>粗体1 <strong>粗体2</strong></p>
+<p><em>斜体1</em> <em>斜体2</em></p>
+<h4 id="1-8-列表"><a href="#1-8-列表" class="headerlink" title="1.8 列表"></a>1.8 列表</h4><p>使用 <code>1\. 2\. 3.</code> 表示有序列表，使用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 表示无序列表。</p>
+<ol>
+<li>无序列表或有序列表标记和后面的文字之间要有一个空格隔开。</li>
+<li>有序列表标记不是按照你写的数字进行显示的，而是根据当前有序列表标记所在位置显示的，如示例1所示。</li>
+<li>无序列表的项目符号是按照实心圆、空心圆、实心方格的层级关系递进的，如例2所示。通常情况下，同一层级使用同一种标记表示，便于自己查看和管理。</li>
+<li>无序列表和有序列表标记的使用场景也很明了，故不多说。</li>
+</ol>
+<p>示例</p>
+<h4 id="例1：有序列表"><a href="#例1：有序列表" class="headerlink" title="例1：有序列表"></a>例1：有序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1\. 第一点</div><div class="line">2\. 第二点</div><div class="line">4\. 第三点</div></pre></td></tr></table></figure>
+<ol>
+<li>第一点</li>
+<li>第二点</li>
+<li>第三点</li>
+</ol>
+<h4 id="例2：无序列表"><a href="#例2：无序列表" class="headerlink" title="例2：无序列表"></a>例2：无序列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ 呵呵</div><div class="line">	* 嘉嘉</div><div class="line">	- 嘻嘻</div><div class="line">	- 吼吼</div><div class="line">		- 嘎嘎</div><div class="line">		+ 桀桀</div><div class="line">* 哈哈</div></pre></td></tr></table></figure>
+<ul>
+<li>呵呵<ul>
+<li>嘉嘉</li>
+<li>嘻嘻</li>
+<li>吼吼<ul>
+<li>嘎嘎</li>
+<li>桀桀</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>哈哈</li>
+</ul>
+<h4 id="1-9-分割线"><a href="#1-9-分割线" class="headerlink" title="1.9 分割线"></a>1.9 分割线</h4><p>使用 <code>---</code> 或者 <code>***</code> 或者 <code>* * *</code> 表示水平分割线。</p>
+<ol>
+<li>只要 <code>*</code> 或者 <code>-</code> 大于等于三个就可组成一条平行线。</li>
+<li>使用 <code>---</code> 作为水平分割线时，要在它的前后都空一行，防止 <code>---</code> 被当成标题标记的表示方式。</li>
+</ol>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">* * *</div></pre></td></tr></table></figure>
+<h4 id="1-11-删除线"><a href="#1-11-删除线" class="headerlink" title="1.11 删除线"></a>1.11 删除线</h4><p>使用 <code>~~</code> 表示删除线。</p>
+<ol>
+<li>注意 <code>~~</code> 和 要添加删除线的文字之间不能有空格。</li>
+<li>我常使用在显示的告诉自己这行文字是要删除的。</li>
+</ol>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~这是一条删除线~~</div></pre></td></tr></table></figure>
+<p><del>这是一条删除线</del></p>
+<p><em>想要了解更多语法，请自行上网查阅</em></p>
+
+          
         
       
     </div>
@@ -737,19 +985,107 @@
 
       
         
-          <h3 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1. 安装环境"></a>1. 安装环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">sudo python get-pip.py</div><div class="line">sudo yum install java-1.7.0-openjdk poppler-utils python-devel python-setuptools \</div><div class="line">python-imaging MySQL-python mariadb-server python-memcached python-ldap \</div><div class="line">python-urllib3</div></pre></td></tr></table></figure>
+          
+            <h3 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1. 安装环境"></a>1. 安装环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">sudo python get-pip.py</div><div class="line">sudo yum install java-1.7.0-openjdk poppler-utils python-devel python-setuptools \</div><div class="line">python-imaging MySQL-python mariadb-server python-memcached python-ldap \</div><div class="line">python-urllib3</div></pre></td></tr></table></figure>
 <p>sudo pip install boto requests</p>
 <p>vim /etc/yum.repos.d/nginx.repo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/7/x86_64/<span class="variable">$basearch</span>/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/7/x86_64/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
 <p>yum install nginx</p>
 <h3 id="2-配置-mariadb"><a href="#2-配置-mariadb" class="headerlink" title="2. 配置 mariadb"></a>2. 配置 mariadb</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 启动 mariadb</span></div><div class="line">systemctl start mariadb</div><div class="line"></div><div class="line"><span class="comment">#设置为开机启动</span></div><div class="line">systemctl <span class="built_in">enable</span> mariadb</div><div class="line"></div><div class="line"><span class="comment"># 设置 root 密码</span></div><div class="line">mysqladmin -u root password <span class="string">"newpass"</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/03/Seafile_Pro_部署文档/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h3 id="3-安装-Seafile-Pro"><a href="#3-安装-Seafile-Pro" class="headerlink" title="3. 安装 Seafile Pro"></a>3. 安装 Seafile Pro</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div></pre></td><td class="code"><pre><div class="line"># 创建程序目录,建议在 home 目录下,方便权限管理.</div><div class="line">mkdir -p /home/haiwen</div><div class="line"></div><div class="line"># 将下载获得的压缩包放在 /home/haiwen 目录下</div><div class="line">[root@localhost haiwen]# ll</div><div class="line">总用量 97492</div><div class="line">-rw-r--r-- 1 root root 99831302 11月 19 15:40 seafile-pro-server_6.0.3_x86-64.tar.gz</div><div class="line"></div><div class="line">tar xzf seafile-pro-server_6.0.3_x86-64.tar.gz </div><div class="line">cd seafile-pro-server-6.0.3/</div><div class="line"></div><div class="line">./setup-seafile-mysql.sh </div><div class="line">Checking python on this machine ...</div><div class="line">Checking python module: setuptools ... Done.</div><div class="line">Checking python module: python-imaging ... Done.</div><div class="line">Checking python module: python-mysqldb ... Done.</div><div class="line"></div><div class="line">Checking for java ...Done.</div><div class="line"></div><div class="line">-----------------------------------------------------------------</div><div class="line">This script will guide you to setup your seafile server using MySQL.</div><div class="line">Make sure you have read seafile server manual at</div><div class="line"></div><div class="line">		https://github.com/haiwen/seafile/wiki</div><div class="line"></div><div class="line">Press ENTER to continue</div><div class="line">-----------------------------------------------------------------</div><div class="line"></div><div class="line"></div><div class="line">What is the name of the server? It will be displayed on the client.</div><div class="line">3 - 15 letters or digits</div><div class="line">[ server name ] cloud</div><div class="line"></div><div class="line">What is the ip or domain of the server?</div><div class="line">For example: www.mycompany.com, 192.168.1.101</div><div class="line">[ This server&apos;s ip or domain ] demo.neroxps.cn</div><div class="line"></div><div class="line">Where do you want to put your seafile data?</div><div class="line">Please use a volume with enough free space</div><div class="line">[ default &quot;/home/haiwen/seafile-data&quot; ] </div><div class="line"></div><div class="line">Which port do you want to use for the seafile fileserver?</div><div class="line">[ default &quot;8082&quot; ] </div><div class="line"></div><div class="line">-------------------------------------------------------</div><div class="line">Please choose a way to initialize seafile databases:</div><div class="line">-------------------------------------------------------</div><div class="line"></div><div class="line">[1] Create new ccnet/seafile/seahub databases</div><div class="line">[2] Use existing ccnet/seafile/seahub databases</div><div class="line"></div><div class="line">[ 1 or 2 ] 1</div><div class="line"></div><div class="line">What is the host of mysql server?</div><div class="line">[ default &quot;localhost&quot; ] </div><div class="line"></div><div class="line">What is the port of mysql server?</div><div class="line">[ default &quot;3306&quot; ] </div><div class="line"></div><div class="line">What is the password of the mysql root user?</div><div class="line">[ root password ] </div><div class="line"></div><div class="line">verifying password of user root ...  done</div><div class="line"></div><div class="line">Enter the name for mysql user of seafile. It would be created if not exists.</div><div class="line">[ default &quot;seafile&quot; ] </div><div class="line"></div><div class="line">Enter the password for mysql user &quot;seafile&quot;:</div><div class="line">[ password for seafile ] </div><div class="line"></div><div class="line">Enter the database name for ccnet-server:</div><div class="line">[ default &quot;ccnet-db&quot; ] </div><div class="line"></div><div class="line">Enter the database name for seafile-server:</div><div class="line">[ default &quot;seafile-db&quot; ] </div><div class="line"></div><div class="line">Enter the database name for seahub:</div><div class="line">[ default &quot;seahub-db&quot; ] </div><div class="line"></div><div class="line">---------------------------------</div><div class="line">This is your configuration</div><div class="line">---------------------------------</div><div class="line"></div><div class="line">	server name:            cloud</div><div class="line">	server ip/domain:       demo.neroxps.cn</div><div class="line"></div><div class="line">	seafile data dir:       /home/haiwen/seafile-data</div><div class="line">	fileserver port:        8082</div><div class="line"></div><div class="line">	database:               create new</div><div class="line">	ccnet database:         ccnet-db</div><div class="line">	seafile database:       seafile-db</div><div class="line">	seahub database:        seahub-db</div><div class="line">	database user:          seafile</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">---------------------------------</div><div class="line">Press ENTER to continue, or Ctrl-C to abort</div><div class="line">---------------------------------</div><div class="line"></div><div class="line">Generating ccnet configuration ...</div><div class="line"></div><div class="line">done</div><div class="line">Successly create configuration dir /home/haiwen/ccnet.</div><div class="line">Generating seafile configuration ...</div><div class="line"></div><div class="line">Done.</div><div class="line">done</div><div class="line">Generating seahub configuration ...</div><div class="line"></div><div class="line">----------------------------------------</div><div class="line">Now creating seahub database tables ...</div><div class="line"></div><div class="line">----------------------------------------</div><div class="line"></div><div class="line">creating seafile-server-latest symbolic link ...  done</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">-----------------------------------------------------------------</div><div class="line">Your seafile server configuration has been finished successfully.</div><div class="line">-----------------------------------------------------------------</div><div class="line"></div><div class="line">run seafile server:     ./seafile.sh &#123; start | stop | restart &#125;</div><div class="line">run seahub  server:     ./seahub.sh  &#123; start &lt;port&gt; | stop | restart &lt;port&gt; &#125;</div><div class="line"></div><div class="line">-----------------------------------------------------------------</div><div class="line">If you are behind a firewall, remember to allow input/output of these tcp ports:</div><div class="line">-----------------------------------------------------------------</div><div class="line"></div><div class="line">port of seafile fileserver:   8082</div><div class="line">port of seahub:               8000</div><div class="line"></div><div class="line">When problems occur, Refer to</div><div class="line"></div><div class="line">		https://github.com/haiwen/seafile/wiki</div><div class="line"></div><div class="line">for information.</div></pre></td></tr></table></figure>
+<ul>
+<li>设置 Seafile 启动脚本为全局可用,方便启动,无需切换到程序目录启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s /home/haiwen/seafile-server-latest/seafile.sh /usr/local/bin/seafile</div><div class="line">ln -s /home/haiwen/seafile-server-latest/seahub.sh /usr/local/bin/seahub</div></pre></td></tr></table></figure>
+<h3 id="4-部署-nginx-反向代理"><a href="#4-部署-nginx-反向代理" class="headerlink" title="4. 部署 nginx 反向代理"></a>4. 部署 nginx 反向代理</h3><p>vim /etc/nginx/conf.d/seafile.conf</p>
+<ul>
+<li>输入如下内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">	listen 80;</div><div class="line">	server_name demo.neroxps.cn;</div><div class="line"></div><div class="line">	proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line"></div><div class="line">	location / &#123;</div><div class="line">		fastcgi_pass    127.0.0.1:8000;</div><div class="line">		fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;</div><div class="line">		fastcgi_param   PATH_INFO           $fastcgi_script_name;</div><div class="line"></div><div class="line">		fastcgi_param    SERVER_PROTOCOL        $server_protocol;</div><div class="line">		fastcgi_param   QUERY_STRING        $query_string;</div><div class="line">		fastcgi_param   REQUEST_METHOD      $request_method;</div><div class="line">		fastcgi_param   CONTENT_TYPE        $content_type;</div><div class="line">		fastcgi_param   CONTENT_LENGTH      $content_length;</div><div class="line">		fastcgi_param    SERVER_ADDR         $server_addr;</div><div class="line">		fastcgi_param    SERVER_PORT         $server_port;</div><div class="line">		fastcgi_param    SERVER_NAME         $server_name;</div><div class="line">		fastcgi_param   REMOTE_ADDR         $remote_addr;</div><div class="line"></div><div class="line">		access_log      /var/log/nginx/seahub.access.log;</div><div class="line">		error_log       /var/log/nginx/seahub.error.log;</div><div class="line">		fastcgi_read_timeout 36000;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	location /seafhttp &#123;</div><div class="line">		rewrite ^/seafhttp(.*)$ $1 break;</div><div class="line">		proxy_pass http://127.0.0.1:8082;</div><div class="line">		client_max_body_size 0;</div><div class="line">		proxy_connect_timeout  36000s;</div><div class="line">		proxy_read_timeout  36000s;</div><div class="line">		proxy_send_timeout  36000s;</div><div class="line">		send_timeout  36000s;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	location /media &#123;</div><div class="line">		root /home/haiwen/seafile-server-latest/seahub;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>取消默认配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak</div><div class="line">nginx -s reload</div></pre></td></tr></table></figure>
+<ul>
+<li>启动 nginx 并设置为开机启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl start nginx</div><div class="line">systemctl enable nginx</div></pre></td></tr></table></figure>
+<ul>
+<li>开放防火墙规则</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --add-service http</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
+<ul>
+<li>启动 Seafile 测试</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">seafile start</div><div class="line"></div><div class="line"># 由于我这个是免费版,所以只支持 3 用户的授权</div><div class="line">** Message: seafile-controller.c(1084): loading seafdav config from /home/haiwen/conf/seafdav.conf</div><div class="line"></div><div class="line">License file /home/haiwen/seafile-license.txt does not exist, allow at most 3 trial users</div><div class="line">[11/22/16 15:04:50] ../common/session.c(139): using config file /home/haiwen/conf/ccnet.conf</div><div class="line">Starting seafile server, please wait ...</div><div class="line">** Message: seafile-controller.c(1084): loading seafdav config from /home/haiwen/conf/seafdav.conf</div><div class="line"></div><div class="line">License file /home/haiwen/seafile-license.txt does not exist, allow at most 3 trial users</div><div class="line">Seafile server started</div><div class="line"></div><div class="line">Done.</div><div class="line"></div><div class="line">seafile start-fastcgi</div><div class="line"># 启动 seahub 时会要求设置管理员账号密码</div><div class="line"></div><div class="line">LC_ALL is not set in ENV, set to en_US.UTF-8</div><div class="line">Starting seahub (fastcgi) at 127.0.0.1:8000 ...</div><div class="line"></div><div class="line">----------------------------------------</div><div class="line">It&apos;s the first time you start the seafile server. Now let&apos;s create the admin account</div><div class="line">----------------------------------------</div><div class="line"></div><div class="line">What is the email for the admin account?</div><div class="line">[ admin email ] neroxps@gmail.com</div><div class="line"></div><div class="line">What is the password for the admin account?</div><div class="line">[ admin password ] </div><div class="line"></div><div class="line">Enter the password again:</div><div class="line">[ admin password again ] </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">----------------------------------------</div><div class="line">Successfully created seafile admin</div><div class="line">----------------------------------------</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">Seahub is started</div><div class="line"></div><div class="line">Done.</div></pre></td></tr></table></figure>
+<p>访问 <a href="http://demo.neroxps.cn" target="_blank" rel="external">http://demo.neroxps.cn</a><br>成功 可以登录 但是无法上传.</p>
+<p>打开 <a href="http://demo.neroxps.cn/sys/settings/" target="_blank" rel="external">http://demo.neroxps.cn/sys/settings/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SERVICE_URL = http://demo.neroxps.cn</div><div class="line">FILE_SERVER_ROOT = http://demo.neroxps.cn/seafhttp</div></pre></td></tr></table></figure>
+<p>测试 上传成功.</p>
+<h3 id="5-配置-memcached-加速我们的-web-服务"><a href="#5-配置-memcached-加速我们的-web-服务" class="headerlink" title="5. 配置 memcached 加速我们的 web 服务"></a>5. 配置 memcached 加速我们的 web 服务</h3><ul>
+<li>安装 memcached</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install memcached</div><div class="line">systemctl start memcached</div><div class="line">systemctl enable memcached</div></pre></td></tr></table></figure>
+<ul>
+<li>修改 /home/haiwen/conf/seahub_settings.py 加入以下内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CACHES = &#123;</div><div class="line">	&apos;default&apos;: &#123;</div><div class="line">		&apos;BACKEND&apos;: &apos;django.core.cache.backends.memcached.MemcachedCache&apos;,</div><div class="line">		&apos;LOCATION&apos;: &apos;127.0.0.1:11211&apos;,</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>删除 seahub_settings.pyc 重启 seahub 使配置生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">rm /home/haiwen/conf/seahub_settings.pyc -f</div><div class="line">seahub restart-fastcgi</div><div class="line">```	</div><div class="line"></div><div class="line">### 6. 部署 office 预览功能</div><div class="line">* 安装 LibreOffice4.1+ 和 Python-UNO</div><div class="line"></div><div class="line">```	</div><div class="line">yum install libreoffice libreoffice-headless libreoffice-pyuno # centos7 默认安装 libreoffice-4.3.7.2-5.el7_2.1.x86_64 符合使用要求</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装中文字体<br>将 windows 下需要用到的字体拷贝到 Centos 下.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mkdir /usr/share/fonts/chinese</div><div class="line">[root@localhost chinese]# ll</div><div class="line">总用量 124316</div><div class="line">-rw-r--r-- 1 root root 16217976 7月  17 06:28 Dengb.ttf</div><div class="line">-rw-r--r-- 1 root root 15151172 7月  17 06:28 Dengl.ttf</div><div class="line">-rw-r--r-- 1 root root 16092228 7月  17 06:28 Deng.ttf</div><div class="line">-rw-r--r-- 1 root root 16247072 7月  16 19:42 msyhbd.ttc</div><div class="line">-rw-r--r-- 1 root root 12003540 7月  16 19:42 msyhl.ttc</div><div class="line">-rw-r--r-- 1 root root 23607740 7月  16 19:42 msyh.ttc</div><div class="line">-rw-r--r-- 1 root root  9751720 7月  17 06:28 simhei.ttf</div><div class="line">-rw-r--r-- 1 root root 18214356 7月  16 19:42 simsun.ttc</div></pre></td></tr></table></figure>
+<ul>
+<li>修改文件权限</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ..</div><div class="line">chmod -R 755 /usr/share/fonts/chinese</div></pre></td></tr></table></figure>
+<ul>
+<li>安装ttmkfdir来搜索目录中所有的字体信息，并汇总生成fonts.scale文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install ttmkfdir</div><div class="line">ttmkfdir -e /usr/share/X11/fonts/encodings/encodings.dir</div></pre></td></tr></table></figure>
+<ul>
+<li>修改字体配置文件了，首先通过编辑器打开配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">vim /etc/fonts/fonts.conf</div><div class="line">--- Font directory list ---</div><div class="line"></div><div class="line">		&lt;dir&gt;/usr/share/fonts&lt;/dir&gt;</div><div class="line">		&lt;dir&gt;/usr/share/fonts/chinese&lt;/dir&gt; ###加入这行</div><div class="line">		&lt;dir&gt;/usr/share/X11/fonts/Type1&lt;/dir&gt; &lt;dir&gt;/usr/share/X11/fonts/TTF&lt;/dir&gt; &lt;dir&gt;/usr/local/share/fonts&lt;/dir&gt;</div><div class="line">		&lt;dir prefix=&quot;xdg&quot;&gt;fonts&lt;/dir&gt;</div><div class="line">		--- the following element will be removed in the future ---</div><div class="line">		&lt;dir&gt;~/.fonts&lt;/dir&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>刷新字体缓存 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">fc-cache</div><div class="line">fc-list</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerif-Bold.ttf: DejaVu Serif:style=Bold</div><div class="line">/usr/share/fonts/liberation/LiberationSerif-Italic.ttf: Liberation Serif:style=Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerif-Italic.ttf: DejaVu Serif:style=Italic</div><div class="line">/usr/share/fonts/liberation/LiberationSans-Bold.ttf: Liberation Sans:style=Bold</div><div class="line">/usr/share/fonts/liberation/LiberationMono-Bold.ttf: Liberation Mono:style=Bold</div><div class="line">/usr/share/fonts/chinese/msyhbd.ttc: Microsoft YaHei UI:style=Bold,Negreta,tučné,fed,Fett,Έντονα,Negrita,Lihavoitu,Gras,Félkövér,Grassetto,Vet,Halvfet,Pogrubiony,Negrito,Полужирный,Fet,Kalın,Krepko,Lodia</div><div class="line">/usr/share/fonts/chinese/Deng.ttf: 等线,DengXian:style=Regular</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansMono-BoldOblique.ttf: DejaVu Sans Mono:style=Bold Oblique</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansCondensed-Oblique.ttf: DejaVu Sans,DejaVu Sans Condensed:style=Condensed Oblique,Oblique</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansCondensed-Bold.ttf: DejaVu Sans,DejaVu Sans Condensed:style=Condensed Bold,Bold</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansMono.ttf: DejaVu Sans Mono:style=Book</div><div class="line">/usr/share/fonts/liberation/LiberationSerif-BoldItalic.ttf: Liberation Serif:style=Bold Italic</div><div class="line">/usr/share/fonts/chinese/simsun.ttc: 宋体,SimSun:style=常规,Regular</div><div class="line">/usr/share/X11/fonts/Type1/c0611bt_.pfb: Courier 10 Pitch:style=Bold Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansMono-Bold.ttf: DejaVu Sans Mono:style=Bold</div><div class="line">/usr/share/fonts/chinese/msyh.ttc: 微软雅黑,Microsoft YaHei:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta</div><div class="line">/usr/share/X11/fonts/Type1/UTBI____.pfa: Utopia:style=Bold Italic</div><div class="line">/usr/share/fonts/liberation/LiberationSerif-Regular.ttf: Liberation Serif:style=Regular</div><div class="line">/usr/share/fonts/liberation/LiberationSerif-Bold.ttf: Liberation Serif:style=Bold</div><div class="line">/usr/share/fonts/chinese/simhei.ttf: 黑体,SimHei:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta</div><div class="line">/usr/share/fonts/chinese/Dengl.ttf: 等线,DengXian,DengXian Light,等线 Light:style=Light,Regular</div><div class="line">/usr/share/fonts/chinese/msyh.ttc: Microsoft YaHei UI:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta</div><div class="line">/usr/share/fonts/liberation/LiberationMono-Italic.ttf: Liberation Mono:style=Italic</div><div class="line">/usr/share/fonts/google-crosextra-caladea/Caladea-Bold.ttf: Caladea:style=Bold</div><div class="line">/usr/share/X11/fonts/Type1/c0419bt_.pfb: Courier 10 Pitch:style=Regular</div><div class="line">/usr/share/fonts/dejavu/DejaVuSans.ttf: DejaVu Sans:style=Book</div><div class="line">/usr/share/fonts/google-crosextra-carlito/Carlito-BoldItalic.ttf: Carlito:style=Bold Italic</div><div class="line">/usr/share/fonts/chinese/msyhl.ttc: 微软雅黑,Microsoft YaHei,Microsoft YaHei Light,微软雅黑 Light:style=Light,Regular</div><div class="line">/usr/share/fonts/chinese/msyhbd.ttc: 微软雅黑,Microsoft YaHei:style=Bold,Negreta,tučné,fed,Fett,Έντονα,Negrita,Lihavoitu,Gras,Félkövér,Grassetto,Vet,Halvfet,Pogrubiony,Negrito,Полужирный,Fet,Kalın,Krepko,Lodia</div><div class="line">/usr/share/fonts/liberation/LiberationSans-BoldItalic.ttf: Liberation Sans:style=Bold Italic</div><div class="line">/usr/share/fonts/google-crosextra-carlito/Carlito-Regular.ttf: Carlito:style=Regular</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerifCondensed-BoldItalic.ttf: DejaVu Serif,DejaVu Serif Condensed:style=Condensed Bold Italic,Bold Italic</div><div class="line">/usr/share/X11/fonts/Type1/c0648bt_.pfb: Bitstream Charter:style=Regular</div><div class="line">/usr/share/fonts/chinese/simsun.ttc: 新宋体,NSimSun:style=常规,Regular</div><div class="line">/usr/share/fonts/chinese/msyhl.ttc: Microsoft YaHei UI,Microsoft YaHei UI Light:style=Light,Regular</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerifCondensed-Bold.ttf: DejaVu Serif,DejaVu Serif Condensed:style=Condensed Bold,Bold</div><div class="line">/usr/share/fonts/chinese/Dengb.ttf: 等线,DengXian:style=Bold</div><div class="line">/usr/share/fonts/google-crosextra-carlito/Carlito-Italic.ttf: Carlito:style=Italic</div><div class="line">/usr/share/fonts/opensymbol/opens___.ttf: OpenSymbol:style=Regular</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerif.ttf: DejaVu Serif:style=Book</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansMono-Oblique.ttf: DejaVu Sans Mono:style=Oblique</div><div class="line">/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf: DejaVu Sans:style=Bold</div><div class="line">/usr/share/fonts/google-crosextra-caladea/Caladea-Regular.ttf: Caladea:style=Regular</div><div class="line">/usr/share/X11/fonts/Type1/cursor.pfa: Cursor:style=Regular</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerifCondensed.ttf: DejaVu Serif,DejaVu Serif Condensed:style=Condensed,Book</div><div class="line">/usr/share/X11/fonts/Type1/UTB_____.pfa: Utopia:style=Bold</div><div class="line">/usr/share/fonts/liberation/LiberationMono-Regular.ttf: Liberation Mono:style=Regular</div><div class="line">/usr/share/X11/fonts/Type1/c0583bt_.pfb: Courier 10 Pitch:style=Bold</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerifCondensed-Italic.ttf: DejaVu Serif,DejaVu Serif Condensed:style=Condensed Italic,Italic</div><div class="line">/usr/share/X11/fonts/Type1/UTI_____.pfa: Utopia:style=Italic</div><div class="line">/usr/share/fonts/google-crosextra-caladea/Caladea-Italic.ttf: Caladea:style=Italic</div><div class="line">/usr/share/fonts/google-crosextra-carlito/Carlito-Bold.ttf: Carlito:style=Bold</div><div class="line">/usr/share/fonts/liberation/LiberationSans-Italic.ttf: Liberation Sans:style=Italic</div><div class="line">/usr/share/X11/fonts/Type1/c0582bt_.pfb: Courier 10 Pitch:style=Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf: DejaVu Sans,DejaVu Sans Condensed:style=Condensed,Book</div><div class="line">/usr/share/fonts/dejavu/DejaVuSerif-BoldItalic.ttf: DejaVu Serif:style=Bold Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSans-ExtraLight.ttf: DejaVu Sans,DejaVu Sans Light:style=ExtraLight</div><div class="line">/usr/share/fonts/liberation/LiberationMono-BoldItalic.ttf: Liberation Mono:style=Bold Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSansCondensed-BoldOblique.ttf: DejaVu Sans,DejaVu Sans Condensed:style=Condensed Bold Oblique,Bold Oblique</div><div class="line">/usr/share/X11/fonts/Type1/c0633bt_.pfb: Bitstream Charter:style=Bold Italic</div><div class="line">/usr/share/fonts/liberation/LiberationSans-Regular.ttf: Liberation Sans:style=Regular</div><div class="line">/usr/share/X11/fonts/Type1/c0649bt_.pfb: Bitstream Charter:style=Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSans-Oblique.ttf: DejaVu Sans:style=Oblique</div><div class="line">/usr/share/X11/fonts/Type1/c0632bt_.pfb: Bitstream Charter:style=Bold</div><div class="line">/usr/share/fonts/google-crosextra-caladea/Caladea-BoldItalic.ttf: Caladea:style=Bold Italic,Italic</div><div class="line">/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf: DejaVu Sans:style=Bold Oblique</div><div class="line">/usr/share/X11/fonts/Type1/UTRG____.pfa: Utopia:style=Regular</div></pre></td></tr></table></figure>
+<p>看到新添加的字体即可.</p>
+<p>测试预览,已正常</p>
+<h2 id="7-部署在线-libreoffice-编辑"><a href="#7-部署在线-libreoffice-编辑" class="headerlink" title="7. 部署在线 libreoffice 编辑"></a>7. 部署在线 libreoffice 编辑</h2><ul>
+<li>给域名申请一个 SSL 证书,这里我已经有,不演示了.</li>
+<li>我给 libreoffice 的域名是 test.neroxps.cn 已经申请 letsencrypt 的 SSL 证书.并且放到该目录<code>/etc/ssl/test.neroxps.cn</code></li>
+<li>使用 Nginx 的网上服务collabora，配置文件例如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">vim /etc/nginx/conf.d/office.conf</div><div class="line">server &#123;</div><div class="line">listen       443 ssl;</div><div class="line">server_name  test.neroxps.cn;</div><div class="line"></div><div class="line">ssl_certificate /etc/ssl/test.neroxps.cn/fullchain1.pem;</div><div class="line">ssl_certificate_key /etc/ssl/test.neroxps.cn/privkey1.pem;</div><div class="line"></div><div class="line"># static files</div><div class="line">location ^~ /loleaflet &#123;</div><div class="line">	proxy_pass https://localhost:9980;</div><div class="line">	proxy_set_header Host $http_host;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># WOPI discovery URL</div><div class="line">location ^~ /hosting/discovery &#123;</div><div class="line">	proxy_pass https://localhost:9980;</div><div class="line">	proxy_set_header Host $http_host;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># websockets, download, presentation and image upload</div><div class="line">location ^~ /lool &#123;</div><div class="line">	proxy_pass https://localhost:9980;</div><div class="line">	proxy_set_header Upgrade $http_upgrade;</div><div class="line">	proxy_set_header Connection &quot;upgrade&quot;;</div><div class="line">	proxy_set_header Host $http_host;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 重置 nginx 配置</div><div class="line">nginx -s reload</div></pre></td></tr></table></figure>
+<ul>
+<li>修改防火墙启用 https 服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --add-service https</div><div class="line">firewall-cmd --reload</div><div class="line">```	</div><div class="line"></div><div class="line">* 安装 docker</div></pre></td></tr></table></figure>
+<p>yum -y install docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 注册阿里云开发者帐号帐号</div><div class="line">https://cr.console.aliyun.com/</div><div class="line"></div><div class="line">登陆后取得专属加速器地址，类似这样https://xxxxxx.mirror.aliyuncs.com</div><div class="line"></div><div class="line">* 配置Docker加速器</div></pre></td></tr></table></figure></p>
+<p>vim /etc/sysconfig/docker</p>
+<p>OPTIONS=’–selinux-enabled –log-driver=journald –registry-mirror=<a href="https://xxxxxx.mirror.aliyuncs.com" target="_blank" rel="external">https://xxxxxx.mirror.aliyuncs.com</a>‘  #修改 OPTIONS 这句,添加阿里云加速器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 启动 docker 并设置为开机启动</div></pre></td></tr></table></figure></p>
+<p>systemctl start docker<br>systemctl enable docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">* 安装/启动 libreoffice 在线服务</div></pre></td></tr></table></figure></p>
+<h1 id="下载collabora-code"><a href="#下载collabora-code" class="headerlink" title="下载collabora/code"></a>下载collabora/code</h1><p>docker pull collabora/code</p>
+<h1 id="启动-collabora-code-注意-这里的域名是-seafile-的域名-并不是-office-在线服务的域名"><a href="#启动-collabora-code-注意-这里的域名是-seafile-的域名-并不是-office-在线服务的域名" class="headerlink" title="启动 collabora/code 注意,这里的域名是 seafile 的域名,并不是 office 在线服务的域名"></a>启动 collabora/code 注意,这里的域名是 seafile 的域名,并不是 office 在线服务的域名</h1><p>docker run -d -t -p 9980:9980 -e “domain=demo\.neroxps\.cn” –restart always –cap-add MKNOD collabora/code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 修改 seahub_settings.py 启用在线 office 编辑功能.</div><div class="line"></div><div class="line">vim /home/haiwen/conf/seahub_settings.py</div><div class="line">** 注意修改 OFFICE_WEB_APP_BASE_URL 为 上面 nginx 的域名 **</div></pre></td></tr></table></figure></p>
+<h1 id="Enable-LibreOffice-Online"><a href="#Enable-LibreOffice-Online" class="headerlink" title="Enable LibreOffice Online"></a>Enable LibreOffice Online</h1><p>ENABLE_OFFICE_WEB_APP = True</p>
+<h1 id="Url-of-LibreOffice-Online’s-discovery-page"><a href="#Url-of-LibreOffice-Online’s-discovery-page" class="headerlink" title="Url of LibreOffice Online’s discovery page"></a>Url of LibreOffice Online’s discovery page</h1><h1 id="The-discovery-page-tells-Seafile-how-to-interact-with-LibreOffice-Online-when-view-file-online"><a href="#The-discovery-page-tells-Seafile-how-to-interact-with-LibreOffice-Online-when-view-file-online" class="headerlink" title="The discovery page tells Seafile how to interact with LibreOffice Online when view file online"></a>The discovery page tells Seafile how to interact with LibreOffice Online when view file online</h1><h1 id="You-should-change-https-collabora-online-seafile-com-hosting-discovery-to-your-actual-LibreOffice-Online-server-address"><a href="#You-should-change-https-collabora-online-seafile-com-hosting-discovery-to-your-actual-LibreOffice-Online-server-address" class="headerlink" title="You should change https://collabora-online.seafile.com/hosting/discovery to your actual LibreOffice Online server address"></a>You should change <code>https://collabora-online.seafile.com/hosting/discovery</code> to your actual LibreOffice Online server address</h1><p>OFFICE_WEB_APP_BASE_URL = ‘<a href="https://test.neroxps.cn/hosting/discovery" target="_blank" rel="external">https://test.neroxps.cn/hosting/discovery</a>‘</p>
+<h1 id="Expiration-of-WOPI-access-token"><a href="#Expiration-of-WOPI-access-token" class="headerlink" title="Expiration of WOPI access token"></a>Expiration of WOPI access token</h1><h1 id="WOPI-access-token-is-a-string-used-by-Seafile-to-determine-the-file’s"><a href="#WOPI-access-token-is-a-string-used-by-Seafile-to-determine-the-file’s" class="headerlink" title="WOPI access token is a string used by Seafile to determine the file’s"></a>WOPI access token is a string used by Seafile to determine the file’s</h1><h1 id="identity-and-permissions-when-use-LibreOffice-Online-view-it-online"><a href="#identity-and-permissions-when-use-LibreOffice-Online-view-it-online" class="headerlink" title="identity and permissions when use LibreOffice Online view it online"></a>identity and permissions when use LibreOffice Online view it online</h1><h1 id="And-for-security-reason-this-token-should-expire-after-a-set-time-period"><a href="#And-for-security-reason-this-token-should-expire-after-a-set-time-period" class="headerlink" title="And for security reason, this token should expire after a set time period"></a>And for security reason, this token should expire after a set time period</h1><p>WOPI_ACCESS_TOKEN_EXPIRATION = 30 * 60   # seconds</p>
+<h1 id="List-of-file-formats-that-you-want-to-view-through-LibreOffice-Online"><a href="#List-of-file-formats-that-you-want-to-view-through-LibreOffice-Online" class="headerlink" title="List of file formats that you want to view through LibreOffice Online"></a>List of file formats that you want to view through LibreOffice Online</h1><h1 id="You-can-change-this-value-according-to-your-preferences"><a href="#You-can-change-this-value-according-to-your-preferences" class="headerlink" title="You can change this value according to your preferences"></a>You can change this value according to your preferences</h1><h1 id="And-of-course-you-should-make-sure-your-LibreOffice-Online-supports-to-preview"><a href="#And-of-course-you-should-make-sure-your-LibreOffice-Online-supports-to-preview" class="headerlink" title="And of course you should make sure your LibreOffice Online supports to preview"></a>And of course you should make sure your LibreOffice Online supports to preview</h1><h1 id="the-files-with-the-specified-extensions"><a href="#the-files-with-the-specified-extensions" class="headerlink" title="the files with the specified extensions"></a>the files with the specified extensions</h1><p>OFFICE_WEB_APP_FILE_EXTENSION = (‘ods’, ‘xls’, ‘xlsb’, ‘xlsm’, ‘xlsx’,’ppsx’, ‘ppt’, ‘pptm’, ‘pptx’, ‘doc’, ‘docm’, ‘docx’)</p>
+<h1 id="Enable-edit-files-through-LibreOffice-Online"><a href="#Enable-edit-files-through-LibreOffice-Online" class="headerlink" title="Enable edit files through LibreOffice Online"></a>Enable edit files through LibreOffice Online</h1><p>ENABLE_OFFICE_WEB_APP_EDIT = True</p>
+<h1 id="types-of-files-should-be-editable-through-LibreOffice-Online"><a href="#types-of-files-should-be-editable-through-LibreOffice-Online" class="headerlink" title="types of files should be editable through LibreOffice Online"></a>types of files should be editable through LibreOffice Online</h1><p>OFFICE_WEB_APP_EDIT_FILE_EXTENSION = (‘ods’, ‘xls’, ‘xlsb’, ‘xlsm’, ‘xlsx’,’ppsx’, ‘ppt’, ‘pptm’, ‘pptx’, ‘doc’, ‘docm’, ‘docx’)<br>```    </p>
+<ul>
+<li><p>删除 seahub_settings.pyc 文件<br>  <code>rm seahub_settings.pyc -f</code></p>
+</li>
+<li><p>重启 seahub<br>  <code>seahub restart-fastcgi</code></p>
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -891,17 +1227,24 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>seafile 可以使用 CSV 导入用户名密码来新建用户,但是只能导入用户名和密码,名称则无法导入,但是用户名只能用邮箱这点不是很方便,故此需要找到一个批量导入账号名称的办法.</p>
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>seafile 可以使用 CSV 导入用户名密码来新建用户,但是只能导入用户名和密码,名称则无法导入,但是用户名只能用邮箱这点不是很方便,故此需要找到一个批量导入账号名称的办法.</p>
 <h2 id="数据库结构"><a href="#数据库结构" class="headerlink" title="数据库结构"></a>数据库结构</h2><p>seafile 的账号和密码均存储在 mysql 的 ccnet-db 数据库内,但账号的详细信息例如名称、电话、部门这些信息是存储在 seahub-db 数据库里面.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">MariaDB [(none)]&gt; use seahub-db</div><div class="line">Reading table information for completion of table and column names</div><div class="line">You can turn off this feature to get a quicker startup with -A</div><div class="line"></div><div class="line">Database changed</div><div class="line">MariaDB [seahub-db]&gt; show tables;</div><div class="line">+-------------------------------------------+</div><div class="line">| Tables_in_seahub-db                       |</div><div class="line">+-------------------------------------------+</div><div class="line">| api2_token                                |</div><div class="line">| api2_tokenv2                              |</div><div class="line">| avatar_avatar                             |</div><div class="line">| avatar_groupavatar                        |</div><div class="line">| base_clientlogintoken                     |</div><div class="line">| base_commandslastcheck                    |</div><div class="line">| base_devicetoken                          |</div><div class="line">| base_filecomment                          |</div><div class="line">| base_filediscuss                          |</div><div class="line">| base_groupenabledmodule                   |</div><div class="line">| base_innerpubmsg                          |</div><div class="line">| base_innerpubmsgreply                     |</div><div class="line">| base_userenabledmodule                    |</div><div class="line">| base_userlastlogin                        |</div><div class="line">| base_userstarredfiles                     |</div><div class="line">| captcha_captchastore                      |</div><div class="line">| constance_config                          |</div><div class="line">| contacts_contact                          |</div><div class="line">| django_content_type                       |</div><div class="line">| django_migrations                         |</div><div class="line">| django_session                            |</div><div class="line">| group_groupmessage                        |</div><div class="line">| group_messageattachment                   |</div><div class="line">| group_messagereply                        |</div><div class="line">| group_publicgroup                         |</div><div class="line">| institutions_institution                  |</div><div class="line">| institutions_institutionadmin             |</div><div class="line">| invitations_invitation                    |</div><div class="line">| message_usermessage                       |</div><div class="line">| message_usermsgattachment                 |</div><div class="line">| message_usermsglastcheck                  |</div><div class="line">| notifications_notification                |</div><div class="line">| notifications_usernotification            |</div><div class="line">| options_useroptions                       |</div><div class="line">| organizations_orgmemberquota              |</div><div class="line">| post_office_attachment                    |</div><div class="line">| post_office_attachment_emails             |</div><div class="line">| post_office_email                         |</div><div class="line">| post_office_emailtemplate                 |</div><div class="line">| post_office_log                           |</div><div class="line">| profile_detailedprofile                   |</div><div class="line">| profile_profile                           |</div><div class="line">| registration_registrationprofile          |</div><div class="line">| share_anonymousshare                      |</div><div class="line">| share_fileshare                           |</div><div class="line">| share_orgfileshare                        |</div><div class="line">| share_privatefiledirshare                 |</div><div class="line">| share_uploadlinkshare                     |</div><div class="line">| sysadmin_extra_userloginlog               |</div><div class="line">| termsandconditions_termsandconditions     |</div><div class="line">| termsandconditions_usertermsandconditions |</div><div class="line">| two_factor_phonedevice                    |</div><div class="line">| two_factor_staticdevice                   |</div><div class="line">| two_factor_statictoken                    |</div><div class="line">| two_factor_totpdevice                     |</div><div class="line">| wiki_groupwiki                            |</div><div class="line">| wiki_personalwiki                         |</div><div class="line">+-------------------------------------------+</div><div class="line">57 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
 <p>其中<code>profile_profile</code>是存放个人资料的表,而<code>profile_detailedprofile</code>是存放电话号码的表格,他们均以一个字段<code>user</code>(用户名邮箱)来做标识达成一一对应.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/05/Seafile-import-Username-phonenumber/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">MariaDB [(none)]&gt; use seahub-db;</div><div class="line">Reading table information for completion of table and column names</div><div class="line">You can turn off this feature to get a quicker startup with -A</div><div class="line"></div><div class="line">Database changed</div><div class="line">MariaDB [seahub-db]&gt; desc profile_profile;</div><div class="line">+---------------+--------------+------+-----+---------+----------------+</div><div class="line">| Field         | Type         | Null | Key | Default | Extra          |</div><div class="line">+---------------+--------------+------+-----+---------+----------------+</div><div class="line">| id            | int(11)      | NO   | PRI | NULL    | auto_increment |</div><div class="line">| user          | varchar(254) | NO   | UNI | NULL    |                |</div><div class="line">| nickname      | varchar(64)  | NO   |     | NULL    |                |</div><div class="line">| intro         | longtext     | NO   |     | NULL    |                |</div><div class="line">| lang_code     | longtext     | YES  |     | NULL    |                |</div><div class="line">| login_id      | varchar(225) | YES  | UNI | NULL    |                |</div><div class="line">| contact_email | varchar(225) | YES  | MUL | NULL    |                |</div><div class="line">| institution   | varchar(225) | YES  | MUL | NULL    |                |</div><div class="line">+---------------+--------------+------+-----+---------+----------------+</div><div class="line">8 rows in set (0.00 sec)</div><div class="line">MariaDB [seahub-db]&gt; desc profile_detailedprofile;</div><div class="line">+------------+--------------+------+-----+---------+----------------+</div><div class="line">| Field      | Type         | Null | Key | Default | Extra          |</div><div class="line">+------------+--------------+------+-----+---------+----------------+</div><div class="line">| id         | int(11)      | NO   | PRI | NULL    | auto_increment |</div><div class="line">| user       | varchar(255) | NO   | MUL | NULL    |                |</div><div class="line">| department | varchar(512) | NO   |     | NULL    |                |</div><div class="line">| telephone  | varchar(100) | NO   |     | NULL    |                |</div><div class="line">+------------+--------------+------+-----+---------+----------------+</div><div class="line">4 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>那么我们只需要将我们的信息导入到这两个表就可以了</p>
+<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><p>比如现在我们需要导入用户名:zhangsan@domain.com;名称:张三;电话:12345678.<br>名称是在<code>profile_profile</code>里面字段是<code>nickname</code>,而电话是在<code>profile_detailedprofile</code>里面,字段是<code>telephone</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 名称导入</div><div class="line">insert into profile_profile (user,nickname) values (&apos;zhangsan@domain.com&apos;,&apos;张三&apos;)</div><div class="line"># 电话号码导入</div><div class="line">insert into profile_detailedprofile (user,telephone) values (&apos;zhangsan@domain.com&apos;,&apos;12345678&apos;)</div></pre></td></tr></table></figure>
+<p>如果多条数据导入可以这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 名称导入</div><div class="line">insert into profile_profile (user,nickname) values (&apos;zhangsan@domain.com&apos;,&apos;张三&apos;),(&apos;lisi@domain.com&apos;,&apos;李四&apos;)</div><div class="line"># 电话号码导入</div><div class="line">insert into profile_detailedprofile (user,telephone) values (&apos;zhangsan@domain.com&apos;,&apos;12345678&apos;),(&apos;lisi@domain.com&apos;,&apos;87654321&apos;)</div></pre></td></tr></table></figure>
+<p>导入完成后打开用户页面就能见到用户名称和电话号码,其他字段的属性导入也是差不多</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://www.ahlinux.com/mysql/11352.html" target="_blank" rel="external">mysql批量插入(insert)与批量更新(update)的例子</a></p>
+<h2 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h2><ol>
+<li>2016年11月7日:经 Seafile 中文论坛兄弟(skipto)提醒,数据库 id 字段是自动添加,无需导入,把 id 导入字段删除.</li>
+</ol>
+
+          
         
       
     </div>
@@ -1043,7 +1386,8 @@
 
       
         
-          <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一. 简介"></a>一. 简介</h2><p>GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。它摆脱了在线编辑器排版困难，无法实时预览的缺点，一切都交给Markdown来完成，一篇博客就是一个Markdown文件。同时也支持评论，代码高亮，数学公式，页面PV统计等常用功能。GitBlog提供了不同的主题样式，你可以根据自己的喜好配置，如果你想自己制作博客主题，也是非常容易的。GitBlog还支持整站静态导出，你完全可以导出整站静态网页部署到Github Pages。</p>
+          
+            <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一. 简介"></a>一. 简介</h2><p>GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。它摆脱了在线编辑器排版困难，无法实时预览的缺点，一切都交给Markdown来完成，一篇博客就是一个Markdown文件。同时也支持评论，代码高亮，数学公式，页面PV统计等常用功能。GitBlog提供了不同的主题样式，你可以根据自己的喜好配置，如果你想自己制作博客主题，也是非常容易的。GitBlog还支持整站静态导出，你完全可以导出整站静态网页部署到Github Pages。</p>
 <h2 id="二-功能特点"><a href="#二-功能特点" class="headerlink" title="二. 功能特点"></a>二. 功能特点</h2><ol>
 <li>使用Markdown  </li>
 <li>评论框  </li>
@@ -1063,13 +1407,26 @@
 <li>多主题支持，可自制主题  </li>
 <li>博客，分类，标签，归档  </li>
 </ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/07/31/welcome/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h2 id="四-环境要求"><a href="#四-环境要求" class="headerlink" title="四. 环境要求"></a>四. 环境要求</h2><p>PHP 5.2.4+</p>
+<h2 id="五-安装步骤"><a href="#五-安装步骤" class="headerlink" title="五. 安装步骤"></a>五. 安装步骤</h2><ol>
+<li>下载GitBlog源代码  </li>
+<li>解压上传到你的PHP网站根目录  </li>
+<li>打开浏览器，访问网站首页  </li>
+<li>上传Markdown文件到<code>posts</code>文件夹  </li>
+</ol>
+<h2 id="六-详细说明"><a href="#六-详细说明" class="headerlink" title="六. 详细说明"></a>六. 详细说明</h2><p><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/install.md" target="_blank" rel="external">1. 安装</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/struct.md" target="_blank" rel="external">2. 目录结构</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/config.md" target="_blank" rel="external">3. 配置说明</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/edit.md" target="_blank" rel="external">4. 编写博客</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/other-func.md" target="_blank" rel="external">5. 评论，订阅，统计等</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/cache.md" target="_blank" rel="external">6. 缓存机制</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/export.md" target="_blank" rel="external">7. 全站静态导出</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/theme.md" target="_blank" rel="external">8. 主题制作</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/nginx.md" target="_blank" rel="external">9. 在Nginx上运行GitBlog</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/apache.md" target="_blank" rel="external">10. 在Apache上运行GitBlog</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/sae.md" target="_blank" rel="external">11. 在SAE上运行GitBlog</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/github-pages.md" target="_blank" rel="external">12. 使用GitBlog和Github Pages搭建博客</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/update.md" target="_blank" rel="external">13. Gitblog升级</a><br><a href="https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/wordpress.md" target="_blank" rel="external">14. 从wordpress导入</a></p>
+<h2 id="七-问题及bug反馈"><a href="#七-问题及bug反馈" class="headerlink" title="七. 问题及bug反馈"></a>七. 问题及bug反馈</h2><p>如果在实际使用过程中对GitBlog有新的功能需求，或者在使用GitBlog的过程中发现了Bug，欢迎反馈给我。可以直接在Github上提交，也可以发邮件至<code>164068300[AT]qq.com</code>与我取得联系，我将及时回复。如果你自己制作了漂亮好用的主题，也非常欢迎你提交给我，我会在这里展示你的主题链接。如果你正在使用GitBlog，也可以告诉我，我将也会在这里列出使用者名单。如果你想和其他GitBlog使用者讨论交流，欢迎加入QQ群<code>84692078</code>。</p>
+<h2 id="八-使用者列表"><a href="#八-使用者列表" class="headerlink" title="八. 使用者列表"></a>八. 使用者列表</h2><ul>
+<li><a href="http://blog.hiweeds.net" target="_blank" rel="external">Weeds</a></li>
+<li><a href="http://xiaochengzi.sinaapp.com" target="_blank" rel="external">橙子</a></li>
+<li><a href="http://jockchou.com" target="_blank" rel="external">jockchou</a></li>
+<li><a href="http://github.com/jockchou/gitblogdoc" target="_blank" rel="external">GitBlog Doc</a></li>
+<li><a href="http://zxy.link" target="_blank" rel="external">zxy</a>  </li>
+</ul>
+<h2 id="九-感谢"><a href="#九-感谢" class="headerlink" title="九. 感谢"></a>九. 感谢</h2><p>GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们对Gitblog的良好建议与Bug反馈。</p>
+<p>QQ群：<code>84692078</code><br>作者邮箱：<code>164068300[AT]qq.com</code>    </p>
+
+          
         
       
     </div>
@@ -1152,7 +1509,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1174,7 +1531,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1391,324 +1748,20 @@
 
   
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 

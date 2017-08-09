@@ -120,7 +120,8 @@
 <meta property="og:url" content="http://hexo.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="概述 GoodERP 官方网址 GoodERP GitHub  GoodERP 核心基于 Odoo 项目 GoodERP 论坛  部署环境 系统：Debian 8 最小化安装 内存：4G  硬盘：40G    参考官方论坛：Debian\ubuntu上源码安装GoodERP  GoodERP 需要准备由于 GoodERP 是基于 Odoo 做的二次开发，故此可以参考 Odoo 的源码搭建文档。">
-<meta property="og:updated_time" content="2017-07-20T02:28:06.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-09T09:33:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记 GoodERP 部署">
 <meta name="twitter:description" content="概述 GoodERP 官方网址 GoodERP GitHub  GoodERP 核心基于 Odoo 项目 GoodERP 论坛  部署环境 系统：Debian 8 最小化安装 内存：4G  硬盘：40G    参考官方论坛：Debian\ubuntu上源码安装GoodERP  GoodERP 需要准备由于 GoodERP 是基于 Odoo 做的二次开发，故此可以参考 Odoo 的源码搭建文档。">
@@ -140,9 +141,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'WJLDIEBAYI',
+      apiKey: '084e9f2e63c4b34a4aecc924a43f504e',
+      indexName: 'nero',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -286,22 +287,26 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+
 
 
 
@@ -447,25 +452,21 @@
 <li><strong>PostgreSQL</strong></li>
 <li><strong>Nodejs</strong></li>
 </ul>
-<h3 id="切换国内163源"><a href="#切换国内163源" class="headerlink" title="切换国内163源"></a>切换国内163源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list</div><div class="line">deb http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">EOF</div><div class="line">sudo apt update &amp;&amp; sudo apt -y upgrade</div></pre></td></tr></table></figure>
-<a id="more"></a>
+<h3 id="切换国内163源"><a href="#切换国内163源" class="headerlink" title="切换国内163源"></a>切换国内163源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list</div><div class="line">deb http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib</div><div class="line">deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib</div><div class="line">EOF</div><div class="line">sudo apt update &amp;&amp; sudo apt -y upgrade</div></pre></td></tr></table></figure>
 <h3 id="安装必要的软件"><a href="#安装必要的软件" class="headerlink" title="安装必要的软件"></a>安装必要的软件</h3><blockquote>
 <p><strong>注意：由于使用了 nodesource.com 的安装脚本，建议搭建翻墙环境运行以下命令</strong></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y curl wget git vim unzip python python-setuptools\</div><div class="line">&amp;&amp; curl -sL https://bootstrap.pypa.io/get-pip.py | sudo -E python - \</div><div class="line">&amp;&amp; curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \</div><div class="line">&amp;&amp; sudo apt-get install -y nodejs \</div><div class="line">&amp;&amp; sudo npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org \</div><div class="line">&amp;&amp; sudo npm install -g less \</div><div class="line">&amp;&amp; sudo apt-get -y build-dep python-lxml \</div><div class="line">&amp;&amp; sudo apt-get -y install libldap2-dev libsasl2-dev \</div><div class="line">&amp;&amp; curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \</div><div class="line">&amp;&amp; <span class="built_in">echo</span> <span class="string">'40e8b906de658a2221b15e4e8cd82565a47d7ee8 wkhtmltox.deb'</span> | sha1sum -c - \</div><div class="line">&amp;&amp; sudo dpkg --force-depends -i wkhtmltox.deb \</div><div class="line">&amp;&amp; sudo apt-get -y install -f --no-install-recommends</div></pre></td></tr></table></figure>
-<h1 id="PostgreSQL-安装"><a href="#PostgreSQL-安装" class="headerlink" title="PostgreSQL 安装"></a>PostgreSQL 安装</h1><h2 id="通过-apt-get-安装-PostgreSQL"><a href="#通过-apt-get-安装-PostgreSQL" class="headerlink" title="通过 apt-get 安装 PostgreSQL"></a>通过 apt-get 安装 PostgreSQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y postgresql postgresql-server-dev-9.4</div></pre></td></tr></table></figure>
-<h2 id="配置-PostgreSQL"><a href="#配置-PostgreSQL" class="headerlink" title="配置 PostgreSQL"></a>配置 PostgreSQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u postgres createuser --createdb --no-createrole --no-superuser --pwprompt good <span class="comment">#创建数据库用户good，输入两次密码good</span></div></pre></td></tr></table></figure>
-<h1 id="GoodERP-安装"><a href="#GoodERP-安装" class="headerlink" title="GoodERP 安装"></a>GoodERP 安装</h1><h2 id="步骤1：新建-good-用户"><a href="#步骤1：新建-good-用户" class="headerlink" title="步骤1：新建 good 用户"></a>步骤1：新建 good 用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo adduser good</div><div class="line">sudo su good</div><div class="line"><span class="built_in">cd</span> ~</div></pre></td></tr></table></figure>
-<h2 id="步骤2：从-Github-中下载-GoodERP-源代码"><a href="#步骤2：从-Github-中下载-GoodERP-源代码" class="headerlink" title="步骤2：从 Github 中下载 GoodERP 源代码"></a>步骤2：从 Github 中下载 GoodERP 源代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http://github.com/osbzr/gooderp_addons </div><div class="line">git <span class="built_in">clone</span> http://github.com/osbzr/base</div><div class="line"><span class="built_in">exit</span></div></pre></td></tr></table></figure>
-<h2 id="步骤3：修改-pip-源为国内源（豆瓣）"><a href="#步骤3：修改-pip-源为国内源（豆瓣）" class="headerlink" title="步骤3：修改 pip 源为国内源（豆瓣）"></a>步骤3：修改 pip 源为国内源（豆瓣）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo mkdir ~/.pip</div><div class="line">cat &lt;&lt;EOF | sudo tee ~/.pip/pip.conf</div><div class="line">[global]</div><div class="line">index-url = https://pypi.douban.com/simple</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<blockquote>
-<p>2017-07-20更新以上步骤是多余的，不操作也没问题</p>
-</blockquote>
-<h2 id="步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）"><a href="#步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）" class="headerlink" title="步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）"></a>步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r base/requirements.txt -i https://pypi.douban.com/simple \</div><div class="line">&amp;&amp; sudo pip install simplejson httplib2 -i https://pypi.douban.com/simple</div></pre></td></tr></table></figure>
-<h1 id="配置-GoodERP"><a href="#配置-GoodERP" class="headerlink" title="配置 GoodERP"></a>配置 GoodERP</h1><h2 id="编辑-gooderp-conf"><a href="#编辑-gooderp-conf" class="headerlink" title="编辑 ~/gooderp.conf"></a>编辑 ~/gooderp.conf</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/gooderp.conf</div><div class="line">[options]</div><div class="line">db_user = good</div><div class="line">db_password = good</div><div class="line">addons_path = /home/good/gooderp_addons</div><div class="line">logfile = /home/good/gooderp.log</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><h3 id="1-创建服务文件"><a href="#1-创建服务文件" class="headerlink" title="1. 创建服务文件"></a>1. 创建服务文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/gooderp.service </div><div class="line">[Unit]</div><div class="line">Description=GoodERP</div><div class="line">Documentation=http://www.gooderp.org/</div><div class="line">After=network.target postgresql.service</div><div class="line"></div><div class="line">[Service]</div><div class="line"><span class="comment"># Ubuntu/Debian convention:</span></div><div class="line">Type=simple</div><div class="line">User=good</div><div class="line">ExecStart=/usr/bin/python /home/good/base/odoo-bin -c /home/good/gooderp.conf</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h3 id="2-让配置文件生效"><a href="#2-让配置文件生效" class="headerlink" title="2. 让配置文件生效"></a>2. 让配置文件生效</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl daemon-reload</div></pre></td></tr></table></figure>
-<h3 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl <span class="built_in">enable</span> gooderp.service</div><div class="line">sudo systemctl <span class="built_in">enable</span> postgresql.service</div><div class="line">sudo systemctl start gooderp.service</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y curl wget git vim unzip python python-setuptools\</div><div class="line">&amp;&amp; curl -sL https://bootstrap.pypa.io/get-pip.py | sudo -E python - \</div><div class="line">&amp;&amp; curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \</div><div class="line">&amp;&amp; sudo apt-get install -y nodejs \</div><div class="line">&amp;&amp; sudo npm config set registry https://registry.npm.taobao.org \</div><div class="line">&amp;&amp; sudo npm install -g less \</div><div class="line">&amp;&amp; sudo apt-get -y build-dep python-lxml \</div><div class="line">&amp;&amp; sudo apt-get -y install libldap2-dev libsasl2-dev \</div><div class="line">&amp;&amp; curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \</div><div class="line">&amp;&amp; echo &apos;40e8b906de658a2221b15e4e8cd82565a47d7ee8 wkhtmltox.deb&apos; | sha1sum -c - \</div><div class="line">&amp;&amp; sudo dpkg --force-depends -i wkhtmltox.deb \</div><div class="line">&amp;&amp; sudo apt-get -y install -f --no-install-recommends</div></pre></td></tr></table></figure>
+<h1 id="PostgreSQL-安装"><a href="#PostgreSQL-安装" class="headerlink" title="PostgreSQL 安装"></a>PostgreSQL 安装</h1><h2 id="通过-apt-get-安装-PostgreSQL"><a href="#通过-apt-get-安装-PostgreSQL" class="headerlink" title="通过 apt-get 安装 PostgreSQL"></a>通过 apt-get 安装 PostgreSQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y postgresql postgresql-server-dev-9.4</div></pre></td></tr></table></figure>
+<h2 id="配置-PostgreSQL"><a href="#配置-PostgreSQL" class="headerlink" title="配置 PostgreSQL"></a>配置 PostgreSQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u postgres createuser --createdb --no-createrole --no-superuser --pwprompt good #创建数据库用户good，输入两次密码good</div></pre></td></tr></table></figure>
+<h1 id="GoodERP-安装"><a href="#GoodERP-安装" class="headerlink" title="GoodERP 安装"></a>GoodERP 安装</h1><h2 id="步骤1：新建-good-用户"><a href="#步骤1：新建-good-用户" class="headerlink" title="步骤1：新建 good 用户"></a>步骤1：新建 good 用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo adduser good</div><div class="line">sudo su good</div><div class="line">cd ~</div></pre></td></tr></table></figure>
+<h2 id="步骤2：从-Github-中下载-GoodERP-源代码"><a href="#步骤2：从-Github-中下载-GoodERP-源代码" class="headerlink" title="步骤2：从 Github 中下载 GoodERP 源代码"></a>步骤2：从 Github 中下载 GoodERP 源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone http://github.com/osbzr/gooderp_addons </div><div class="line">git clone http://github.com/osbzr/base</div><div class="line">exit</div></pre></td></tr></table></figure>
+<h2 id="步骤3：修改-pip-源为国内源（豆瓣）"><a href="#步骤3：修改-pip-源为国内源（豆瓣）" class="headerlink" title="步骤3：修改 pip 源为国内源（豆瓣）"></a>步骤3：修改 pip 源为国内源（豆瓣）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo mkdir ~/.pip</div><div class="line">cat &lt;&lt;EOF | sudo tee ~/.pip/pip.conf</div><div class="line">[global]</div><div class="line">index-url = https://pypi.douban.com/simple</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h2 id="步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）"><a href="#步骤4：使用-pip-安装-GoodERP-的-Python-模块（这里的过程会很漫长）" class="headerlink" title="步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）"></a>步骤4：使用 pip 安装 GoodERP 的 Python 模块（这里的过程会很漫长）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r base/requirements.txt -i https://pypi.douban.com/simple \</div><div class="line">&amp;&amp; sudo pip install simplejson httplib2 -i https://pypi.douban.com/simple</div></pre></td></tr></table></figure>
+<h1 id="配置-GoodERP"><a href="#配置-GoodERP" class="headerlink" title="配置 GoodERP"></a>配置 GoodERP</h1><h2 id="编辑-gooderp-conf"><a href="#编辑-gooderp-conf" class="headerlink" title="编辑 ~/gooderp.conf"></a>编辑 ~/gooderp.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | tee ~/gooderp.conf</div><div class="line">[options]</div><div class="line">db_user = good</div><div class="line">db_password = good</div><div class="line">addons_path = /home/good/gooderp_addons</div><div class="line">logfile = /home/good/gooderp.log</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><h3 id="1-创建服务文件"><a href="#1-创建服务文件" class="headerlink" title="1. 创建服务文件"></a>1. 创建服务文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/gooderp.service </div><div class="line">[Unit]</div><div class="line">Description=GoodERP</div><div class="line">Documentation=http://www.gooderp.org/</div><div class="line">After=network.target postgresql.service</div><div class="line"></div><div class="line">[Service]</div><div class="line"># Ubuntu/Debian convention:</div><div class="line">Type=simple</div><div class="line">User=good</div><div class="line">ExecStart=/usr/bin/python /home/good/base/odoo-bin -c /home/good/gooderp.conf</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="2-让配置文件生效"><a href="#2-让配置文件生效" class="headerlink" title="2. 让配置文件生效"></a>2. 让配置文件生效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl daemon-reload</div></pre></td></tr></table></figure>
+<h3 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable gooderp.service</div><div class="line">sudo systemctl enable postgresql.service</div><div class="line">sudo systemctl start gooderp.service</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -601,7 +602,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -623,7 +624,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -867,324 +868,20 @@
 
   
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
