@@ -1952,27 +1952,50 @@ interface FastEthernet 0/17
   </entry>
   
   <entry>
-    <title>重庆老火锅</title>
-    <link href="http://hexo.neroxps.cn/2016/12/05/2016-12-5-blog/"/>
-    <id>http://hexo.neroxps.cn/2016/12/05/2016-12-5-blog/</id>
+    <title>Seafile 在线测试</title>
+    <link href="http://hexo.neroxps.cn/2016/12/05/test/"/>
+    <id>http://hexo.neroxps.cn/2016/12/05/test/</id>
     <published>2016-12-04T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="重庆佩姐老火锅，还可以，广东人只能接受微辣。但是配菜量足，新装修环境还可以。"><a href="#重庆佩姐老火锅，还可以，广东人只能接受微辣。但是配菜量足，新装修环境还可以。" class="headerlink" title="重庆佩姐老火锅，还可以，广东人只能接受微辣。但是配菜量足，新装修环境还可以。"></a>重庆佩姐老火锅，还可以，广东人只能接受微辣。但是配菜量足，新装修环境还可以。</h3><p><img src="https://i1.piimg.com/567954/b7b720b9696c209ft.jpg" alt="MarkLite"></p>
-<p><img src="https://i1.piimg.com/567954/3eca7ea5288c5811t.jpg" alt="MarkLite"></p>
-<p><img src="https://i1.piimg.com/567954/428162265378ca3et.jpg" alt="MarkLite"></p>
+    <content type="html"><![CDATA[<h1 id="测试与-Seafile-整合"><a href="#测试与-Seafile-整合" class="headerlink" title="测试与 Seafile 整合"></a>测试与 Seafile 整合</h1><p>使用 Seafile 同步博客文件夹,进行快捷更新博客内容。</p>
+<p>这一段是利用 Seafile 手机客户端添加的</p>
+<h1 id="以下测试博客的音频功能是否正常"><a href="#以下测试博客的音频功能是否正常" class="headerlink" title="以下测试博客的音频功能是否正常"></a>以下测试博客的音频功能是否正常</h1><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=5264302&auto=1&height=66"></iframe>
+
+
+<h1 id="以下测试视频播放功能"><a href="#以下测试视频播放功能" class="headerlink" title="以下测试视频播放功能"></a>以下测试视频播放功能</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/IKfQE7ZrLVw" frameborder="0" allowfullscreen></iframe>
+
+<p><a href="https://blog.neroxps.cn/blog/macOS/9999.zip" target="_blank" rel="external">9999.zip</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;重庆佩姐老火锅，还可以，广东人只能接受微辣。但是配菜量足，新装修环境还可以。&quot;&gt;&lt;a href=&quot;#重庆佩姐老火锅，还可以，广东人只能接受微辣。但是配菜量足，新装修环境还可以。&quot; class=&quot;headerlink&quot; title=&quot;重庆佩姐老火锅，还可以，广东人只
+      &lt;h1 id=&quot;测试与-Seafile-整合&quot;&gt;&lt;a href=&quot;#测试与-Seafile-整合&quot; class=&quot;headerlink&quot; title=&quot;测试与 Seafile 整合&quot;&gt;&lt;/a&gt;测试与 Seafile 整合&lt;/h1&gt;&lt;p&gt;使用 Seafile 同步博客文件夹,进行快
     
     </summary>
     
-      <category term="饮食" scheme="http://hexo.neroxps.cn/categories/%E9%A5%AE%E9%A3%9F/"/>
+      <category term="test" scheme="http://hexo.neroxps.cn/categories/test/"/>
     
     
-      <category term="重庆火锅" scheme="http://hexo.neroxps.cn/tags/%E9%87%8D%E5%BA%86%E7%81%AB%E9%94%85/"/>
+      <category term="test" scheme="http://hexo.neroxps.cn/tags/test/"/>
+    
+      <category term="test2" scheme="http://hexo.neroxps.cn/tags/test2/"/>
+    
+      <category term="test3" scheme="http://hexo.neroxps.cn/tags/test3/"/>
+    
+      <category term="test4" scheme="http://hexo.neroxps.cn/tags/test4/"/>
+    
+      <category term="abc5" scheme="http://hexo.neroxps.cn/tags/abc5/"/>
+    
+      <category term="tddd6" scheme="http://hexo.neroxps.cn/tags/tddd6/"/>
+    
+      <category term="teet7" scheme="http://hexo.neroxps.cn/tags/teet7/"/>
+    
+      <category term="trrr8" scheme="http://hexo.neroxps.cn/tags/trrr8/"/>
+    
+      <category term="te21129" scheme="http://hexo.neroxps.cn/tags/te21129/"/>
+    
+      <category term="tdf10" scheme="http://hexo.neroxps.cn/tags/tdf10/"/>
     
   </entry>
   
