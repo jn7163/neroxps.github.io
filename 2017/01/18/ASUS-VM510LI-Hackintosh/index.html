@@ -117,17 +117,17 @@
 <meta name="keywords" content="黑苹果,Mac,Hackintosh,ASUS,VM510LI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华硕 VM510LI 黑苹果手记">
-<meta property="og:url" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/index.html">
+<meta property="og:url" content="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/index.html">
 <meta property="og:site_name" content="Nero Blog">
 <meta property="og:description" content="前言装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝 准备工作趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容： 导出显卡 Bios 备用方法：  打开 AIDA64 Engineer； 查看，勾上状态栏。（此时软件下方应该会出现了一个框。） 右键状态栏 Video D">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/no_kext_summary.JPG">
-<meta property="og:image" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/RAM.jpg">
+<meta property="og:image" content="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/no_kext_summary.JPG">
+<meta property="og:image" content="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/RAM.jpg">
 <meta property="og:updated_time" content="2017-08-09T09:33:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="华硕 VM510LI 黑苹果手记">
 <meta name="twitter:description" content="前言装完我那台老掉牙的 Dell 笔记本黑苹果系统后，嫌弃它分辨率太低了，我又将我的目光转向老婆公司送的华硕 VM510LI 笔记本。😝 准备工作趁目前 Windows 平台还在的时候，先下载 AIDA64 Engineer，导出以下内容： 导出显卡 Bios 备用方法：  打开 AIDA64 Engineer； 查看，勾上状态栏。（此时软件下方应该会出现了一个框。） 右键状态栏 Video D">
-<meta name="twitter:image" content="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/no_kext_summary.JPG">
+<meta name="twitter:image" content="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/no_kext_summary.JPG">
 
 
 
@@ -155,7 +155,7 @@
 
 
 
-  <link rel="canonical" href="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/"/>
+  <link rel="canonical" href="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/"/>
 
 
 
@@ -338,7 +338,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/">
+    <link itemprop="mainEntityOfPage" href="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nero Hau">
@@ -485,7 +485,7 @@
 <p>最后你可以下载个鲁大师，保存一下配置截图，方便有啥问题到远景论坛求助。</p>
 <p>AIDA64 则可以导出详细报告，这样可以快速确定鲁大师搞不清楚的一些芯片型号，例如我这个笔记本，鲁大师显示的是 Intel 的声卡，估计是 HDMI 搞鬼，但是实际上是 Realtek ALC233 这个声卡 AppleALC 项目有驱动，只是要慢慢试 ID 了。</p>
 <h4 id="Ubuntu-下提取-ACPI-下的-DSDT-和-SSDT"><a href="#Ubuntu-下提取-ACPI-下的-DSDT-和-SSDT" class="headerlink" title="Ubuntu 下提取 ACPI 下的 DSDT 和 SSDT"></a>Ubuntu 下提取 ACPI 下的 DSDT 和 SSDT</h4><p>我是不太放心 Windows 下提取的 DSDT 和 SSDT，总觉得不够全，故此我又做了个 Ubuntu 的 Live CD 启动盘，来获取 DSDT 和 SSDT。</p>
-<p>方法见我另一篇博客：<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
+<p>方法见我另一篇博客：<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
 <p>从《制作Ubuntu启动U盘》看起。</p>
 <p>我这台 VM510LI 在 Windows 下提取的 SSDT 就12个，但是在 Linux 下，dynamic 文件夹下还有三个 SSDT，总共14个。</p>
 <h4 id="Ubuntu-下提取-codec"><a href="#Ubuntu-下提取-codec" class="headerlink" title="Ubuntu 下提取 codec"></a>Ubuntu 下提取 codec</h4><p>codec 是制作仿冒声卡必备，虽然我这个声卡 AppleALC 项目支持，但既然已经到 Ubuntu 下了，顺手也备份下来，或许以后用得着。</p>
@@ -548,7 +548,7 @@
 <h5 id="ACPI-Error-DSM-Namespace-lookup-failure"><a href="#ACPI-Error-DSM-Namespace-lookup-failure" class="headerlink" title="ACPI Error: [_DSM] Namespace lookup failure"></a>ACPI Error: [_DSM] Namespace lookup failure</h5><p>这个 _DSM 是与显卡相关的错误，遇到这个错误我们就要利用之前在 Ubuntu 提取的 DSDT 和 SSDT 来解决了。</p>
 <p>反编译得到的 SSDT.aml 和 DSDT.aml 文件，最终得到的是 *.dsl 文件。</p>
 <p>用 MaciASL 打开 DSDT.dsl，点击界面上方的 Patch 按钮，找到 [syn] Remove _DSM methods，点击它，再点击 Apply 应用。</p>
-<p>修改 DSDT 和 SSDT 的方法请参考我上一篇转载的博文 :<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
+<p>修改 DSDT 和 SSDT 的方法请参考我上一篇转载的博文 :<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
 <p>将编译好的 DSDT 和 SSDT 放入到 U盘的 EFI/CLOVER/ACPI/patched 目录，**注意：SSDT的命名方式必须为 SSDT-1.aml、SSDT-2.aml。</p>
 <p>在 Clover 的配置文件加入 SSDT 的排列顺序，ACPI&gt;SortedOrder。从 SSDT-1.aml 排序下去。DSDT name 填写 DSDT.aml。</p>
 <p>最后勾上 Drop OEM，我理解的意思应该就是拒绝所有主板提供的 SSDT 和 DSDT。</p>
@@ -597,7 +597,7 @@
 <p>修改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">External (_SB_.PCI0.LPCB.H_EC.ECRD, MethodObj)</div></pre></td></tr></table></figure>
 <p>其余 SSDT 均无错误。</p>
-<h4 id="常用补丁应用"><a href="#常用补丁应用" class="headerlink" title="常用补丁应用"></a>常用补丁应用</h4><p>在 <a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a> 中，常用补丁里面提及了一些常用补丁，并且这些补丁一般不会造成什么问题，后来我翻查了 RehabMan 的原帖，有两个补丁是有条件限制的，这些补丁要看自己的情况而添加。</p>
+<h4 id="常用补丁应用"><a href="#常用补丁应用" class="headerlink" title="常用补丁应用"></a>常用补丁应用</h4><p>在 <a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a> 中，常用补丁里面提及了一些常用补丁，并且这些补丁一般不会造成什么问题，后来我翻查了 RehabMan 的原帖，有两个补丁是有条件限制的，这些补丁要看自己的情况而添加。</p>
 <p>引用原话</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&quot;Fix _WAK Arg0 v2&quot;</div><div class="line">&quot;HPET Fix&quot;</div><div class="line">&quot;SMBUS Fix&quot;</div><div class="line">&quot;IRQ Fix&quot;</div><div class="line">&quot;RTC Fix&quot;</div><div class="line">&quot;OS Check Fix&quot;</div><div class="line">&quot;Fix Mutex with non-zero SyncLevel&quot;</div><div class="line">&quot;Fix PNOT/PPNT&quot; (use only if you&apos;re dropping CPU related SSDTs) 仅适用于删除了 CPU 的 SSDT 使用。</div><div class="line">&quot;Add IMEI&quot; (do not use if your DSDT or SSDTs already have IMEI/HECI/MEI device) 如果你的 DSDT 或 SSDT 存在 IMEI/HECI/MEI 的 device 的话，就不要用这个补丁。</div></pre></td></tr></table></figure>
 <p>最终我只应用了以下补丁</p>

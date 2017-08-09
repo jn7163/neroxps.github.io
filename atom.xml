@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://hexo.neroxps.cn/"/>
+  <link href="http://blog.neroxps.cn/"/>
   <updated>2017-08-09T09:33:54.000Z</updated>
-  <id>http://hexo.neroxps.cn/</id>
+  <id>http://blog.neroxps.cn/</id>
   
   <author>
     <name>Nero Hau</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>zabbix-agent 安装及升级</title>
-    <link href="http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/"/>
-    <id>http://hexo.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/</id>
+    <link href="http://blog.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/"/>
+    <id>http://blog.neroxps.cn/2017/07/15/Zabbix-agent-installation-Debian/</id>
     <published>2017-07-14T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -46,17 +46,17 @@
     
     </summary>
     
-      <category term="IT技术 Linux" scheme="http://hexo.neroxps.cn/categories/IT%E6%8A%80%E6%9C%AF-Linux/"/>
+      <category term="IT技术 Linux" scheme="http://blog.neroxps.cn/categories/IT%E6%8A%80%E6%9C%AF-Linux/"/>
     
     
-      <category term="Zabbix" scheme="http://hexo.neroxps.cn/tags/Zabbix/"/>
+      <category term="Zabbix" scheme="http://blog.neroxps.cn/tags/Zabbix/"/>
     
   </entry>
   
   <entry>
     <title>Zabbix 邮件警告</title>
-    <link href="http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/"/>
-    <id>http://hexo.neroxps.cn/2017/07/13/Zabbix-SMTP/</id>
+    <link href="http://blog.neroxps.cn/2017/07/13/Zabbix-SMTP/"/>
+    <id>http://blog.neroxps.cn/2017/07/13/Zabbix-SMTP/</id>
     <published>2017-07-12T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -142,17 +142,17 @@
     
     </summary>
     
-      <category term="IT技术 Linux" scheme="http://hexo.neroxps.cn/categories/IT%E6%8A%80%E6%9C%AF-Linux/"/>
+      <category term="IT技术 Linux" scheme="http://blog.neroxps.cn/categories/IT%E6%8A%80%E6%9C%AF-Linux/"/>
     
     
-      <category term="Zabbix" scheme="http://hexo.neroxps.cn/tags/Zabbix/"/>
+      <category term="Zabbix" scheme="http://blog.neroxps.cn/tags/Zabbix/"/>
     
   </entry>
   
   <entry>
     <title>使用 Docker 部署 Zabbix 3.2 记录</title>
-    <link href="http://hexo.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/"/>
-    <id>http://hexo.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/</id>
+    <link href="http://blog.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/"/>
+    <id>http://blog.neroxps.cn/2017/07/01/Zabbix-Installation-Docker/</id>
     <published>2017-06-30T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -192,17 +192,17 @@
     
     </summary>
     
-      <category term="IT技术 Linux" scheme="http://hexo.neroxps.cn/categories/IT%E6%8A%80%E6%9C%AF-Linux/"/>
+      <category term="IT技术 Linux" scheme="http://blog.neroxps.cn/categories/IT%E6%8A%80%E6%9C%AF-Linux/"/>
     
     
-      <category term="Zabbix" scheme="http://hexo.neroxps.cn/tags/Zabbix/"/>
+      <category term="Zabbix" scheme="http://blog.neroxps.cn/tags/Zabbix/"/>
     
   </entry>
   
   <entry>
     <title>记 GoodERP 部署</title>
-    <link href="http://hexo.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/"/>
-    <id>http://hexo.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/</id>
+    <link href="http://blog.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/"/>
+    <id>http://blog.neroxps.cn/2017/06/15/GoodERP-Setup-Debian-8/</id>
     <published>2017-06-14T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -251,23 +251,23 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://hexo.neroxps.cn/categories/Linux/"/>
+      <category term="Linux" scheme="http://blog.neroxps.cn/categories/Linux/"/>
     
     
-      <category term="ERP" scheme="http://hexo.neroxps.cn/tags/ERP/"/>
+      <category term="ERP" scheme="http://blog.neroxps.cn/tags/ERP/"/>
     
-      <category term="Linux" scheme="http://hexo.neroxps.cn/tags/Linux/"/>
+      <category term="Linux" scheme="http://blog.neroxps.cn/tags/Linux/"/>
     
-      <category term="GoodERP" scheme="http://hexo.neroxps.cn/tags/GoodERP/"/>
+      <category term="GoodERP" scheme="http://blog.neroxps.cn/tags/GoodERP/"/>
     
-      <category term="Odoo" scheme="http://hexo.neroxps.cn/tags/Odoo/"/>
+      <category term="Odoo" scheme="http://blog.neroxps.cn/tags/Odoo/"/>
     
   </entry>
   
   <entry>
     <title>给 Seafile 部署 onlyoffice</title>
-    <link href="http://hexo.neroxps.cn/2017/05/27/%E7%BB%99_Seafile_%E9%83%A8%E7%BD%B2_onlyoffice/"/>
-    <id>http://hexo.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/</id>
+    <link href="http://blog.neroxps.cn/2017/05/27/%E7%BB%99_Seafile_%E9%83%A8%E7%BD%B2_onlyoffice/"/>
+    <id>http://blog.neroxps.cn/2017/05/27/给_Seafile_部署_onlyoffice/</id>
     <published>2017-05-26T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -347,19 +347,19 @@
     
     </summary>
     
-      <category term="Seafile" scheme="http://hexo.neroxps.cn/categories/Seafile/"/>
+      <category term="Seafile" scheme="http://blog.neroxps.cn/categories/Seafile/"/>
     
     
-      <category term="seafile" scheme="http://hexo.neroxps.cn/tags/seafile/"/>
+      <category term="seafile" scheme="http://blog.neroxps.cn/tags/seafile/"/>
     
-      <category term="onlyoffice" scheme="http://hexo.neroxps.cn/tags/onlyoffice/"/>
+      <category term="onlyoffice" scheme="http://blog.neroxps.cn/tags/onlyoffice/"/>
     
   </entry>
   
   <entry>
     <title>最近小记（2017年04月18日）</title>
-    <link href="http://hexo.neroxps.cn/2017/04/18/2017-04-18-blog/"/>
-    <id>http://hexo.neroxps.cn/2017/04/18/2017-04-18-blog/</id>
+    <link href="http://blog.neroxps.cn/2017/04/18/2017-04-18-blog/"/>
+    <id>http://blog.neroxps.cn/2017/04/18/2017-04-18-blog/</id>
     <published>2017-04-17T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -375,17 +375,17 @@
     
     </summary>
     
-      <category term="日记" scheme="http://hexo.neroxps.cn/categories/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日记" scheme="http://blog.neroxps.cn/categories/%E6%97%A5%E8%AE%B0/"/>
     
     
-      <category term="日记" scheme="http://hexo.neroxps.cn/tags/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日记" scheme="http://blog.neroxps.cn/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>使二合一声卡耳机麦克风生效整理</title>
-    <link href="http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/"/>
-    <id>http://hexo.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/</id>
+    <link href="http://blog.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/"/>
+    <id>http://blog.neroxps.cn/2017/03/13/Combo-Audio-Ext-Mic/</id>
     <published>2017-03-12T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:55.000Z</updated>
     
@@ -447,27 +447,27 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="VM510LI" scheme="http://hexo.neroxps.cn/tags/VM510LI/"/>
+      <category term="VM510LI" scheme="http://blog.neroxps.cn/tags/VM510LI/"/>
     
-      <category term="ALC233" scheme="http://hexo.neroxps.cn/tags/ALC233/"/>
+      <category term="ALC233" scheme="http://blog.neroxps.cn/tags/ALC233/"/>
     
   </entry>
   
   <entry>
     <title>华硕 VM510L EFI 分享 9CC3笔记本主板芯片通用</title>
-    <link href="http://hexo.neroxps.cn/2017/03/09/9CC3-EFI-README/"/>
-    <id>http://hexo.neroxps.cn/2017/03/09/9CC3-EFI-README/</id>
+    <link href="http://blog.neroxps.cn/2017/03/09/9CC3-EFI-README/"/>
+    <id>http://blog.neroxps.cn/2017/03/09/9CC3-EFI-README/</id>
     <published>2017-03-08T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:56.000Z</updated>
     
@@ -728,25 +728,25 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="VM510LI" scheme="http://hexo.neroxps.cn/tags/VM510LI/"/>
+      <category term="VM510LI" scheme="http://blog.neroxps.cn/tags/VM510LI/"/>
     
   </entry>
   
   <entry>
     <title>BCM94252HMB 国家地区代码修改</title>
-    <link href="http://hexo.neroxps.cn/2017/03/07/BCM94352-5GHz-CN/"/>
-    <id>http://hexo.neroxps.cn/2017/03/07/BCM94352-5GHz-CN/</id>
+    <link href="http://blog.neroxps.cn/2017/03/07/BCM94352-5GHz-CN/"/>
+    <id>http://blog.neroxps.cn/2017/03/07/BCM94352-5GHz-CN/</id>
     <published>2017-03-06T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -773,27 +773,27 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="VM510LI" scheme="http://hexo.neroxps.cn/tags/VM510LI/"/>
+      <category term="VM510LI" scheme="http://blog.neroxps.cn/tags/VM510LI/"/>
     
-      <category term="BCM94252HMB" scheme="http://hexo.neroxps.cn/tags/BCM94252HMB/"/>
+      <category term="BCM94252HMB" scheme="http://blog.neroxps.cn/tags/BCM94252HMB/"/>
     
   </entry>
   
   <entry>
     <title>ACPI 一些备忘</title>
-    <link href="http://hexo.neroxps.cn/2017/02/26/ACPI-Memo/"/>
-    <id>http://hexo.neroxps.cn/2017/02/26/ACPI-Memo/</id>
+    <link href="http://blog.neroxps.cn/2017/02/26/ACPI-Memo/"/>
+    <id>http://blog.neroxps.cn/2017/02/26/ACPI-Memo/</id>
     <published>2017-02-25T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -890,25 +890,25 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="ACPI" scheme="http://hexo.neroxps.cn/tags/ACPI/"/>
+      <category term="ACPI" scheme="http://blog.neroxps.cn/tags/ACPI/"/>
     
   </entry>
   
   <entry>
     <title>华硕 VM510LI Hotpatch</title>
-    <link href="http://hexo.neroxps.cn/2017/02/25/Hotpatch/"/>
-    <id>http://hexo.neroxps.cn/2017/02/25/Hotpatch/</id>
+    <link href="http://blog.neroxps.cn/2017/02/25/Hotpatch/"/>
+    <id>http://blog.neroxps.cn/2017/02/25/Hotpatch/</id>
     <published>2017-02-24T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1199,25 +1199,25 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="VM510LI" scheme="http://hexo.neroxps.cn/tags/VM510LI/"/>
+      <category term="VM510LI" scheme="http://blog.neroxps.cn/tags/VM510LI/"/>
     
   </entry>
   
   <entry>
     <title>华硕 VM510LI 屏蔽独显</title>
-    <link href="http://hexo.neroxps.cn/2017/01/31/ASUS-VM510LI-Disable-graphics/"/>
-    <id>http://hexo.neroxps.cn/2017/01/31/ASUS-VM510LI-Disable-graphics/</id>
+    <link href="http://blog.neroxps.cn/2017/01/31/ASUS-VM510LI-Disable-graphics/"/>
+    <id>http://blog.neroxps.cn/2017/01/31/ASUS-VM510LI-Disable-graphics/</id>
     <published>2017-01-30T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1248,25 +1248,25 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="VM510LI" scheme="http://hexo.neroxps.cn/tags/VM510LI/"/>
+      <category term="VM510LI" scheme="http://blog.neroxps.cn/tags/VM510LI/"/>
     
   </entry>
   
   <entry>
     <title>华硕 VM510LI 黑苹果手记</title>
-    <link href="http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/"/>
-    <id>http://hexo.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/</id>
+    <link href="http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/"/>
+    <id>http://blog.neroxps.cn/2017/01/18/ASUS-VM510LI-Hackintosh/</id>
     <published>2017-01-17T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1320,7 +1320,7 @@
 <p>最后你可以下载个鲁大师，保存一下配置截图，方便有啥问题到远景论坛求助。</p>
 <p>AIDA64 则可以导出详细报告，这样可以快速确定鲁大师搞不清楚的一些芯片型号，例如我这个笔记本，鲁大师显示的是 Intel 的声卡，估计是 HDMI 搞鬼，但是实际上是 Realtek ALC233 这个声卡 AppleALC 项目有驱动，只是要慢慢试 ID 了。</p>
 <h4 id="Ubuntu-下提取-ACPI-下的-DSDT-和-SSDT"><a href="#Ubuntu-下提取-ACPI-下的-DSDT-和-SSDT" class="headerlink" title="Ubuntu 下提取 ACPI 下的 DSDT 和 SSDT"></a>Ubuntu 下提取 ACPI 下的 DSDT 和 SSDT</h4><p>我是不太放心 Windows 下提取的 DSDT 和 SSDT，总觉得不够全，故此我又做了个 Ubuntu 的 Live CD 启动盘，来获取 DSDT 和 SSDT。</p>
-<p>方法见我另一篇博客：<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
+<p>方法见我另一篇博客：<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
 <p>从《制作Ubuntu启动U盘》看起。</p>
 <p>我这台 VM510LI 在 Windows 下提取的 SSDT 就12个，但是在 Linux 下，dynamic 文件夹下还有三个 SSDT，总共14个。</p>
 <h4 id="Ubuntu-下提取-codec"><a href="#Ubuntu-下提取-codec" class="headerlink" title="Ubuntu 下提取 codec"></a>Ubuntu 下提取 codec</h4><p>codec 是制作仿冒声卡必备，虽然我这个声卡 AppleALC 项目支持，但既然已经到 Ubuntu 下了，顺手也备份下来，或许以后用得着。</p>
@@ -1383,7 +1383,7 @@
 <h5 id="ACPI-Error-DSM-Namespace-lookup-failure"><a href="#ACPI-Error-DSM-Namespace-lookup-failure" class="headerlink" title="ACPI Error: [_DSM] Namespace lookup failure"></a>ACPI Error: [_DSM] Namespace lookup failure</h5><p>这个 _DSM 是与显卡相关的错误，遇到这个错误我们就要利用之前在 Ubuntu 提取的 DSDT 和 SSDT 来解决了。</p>
 <p>反编译得到的 SSDT.aml 和 DSDT.aml 文件，最终得到的是 *.dsl 文件。</p>
 <p>用 MaciASL 打开 DSDT.dsl，点击界面上方的 Patch 按钮，找到 [syn] Remove _DSM methods，点击它，再点击 Apply 应用。</p>
-<p>修改 DSDT 和 SSDT 的方法请参考我上一篇转载的博文 :<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
+<p>修改 DSDT 和 SSDT 的方法请参考我上一篇转载的博文 :<a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a></p>
 <p>将编译好的 DSDT 和 SSDT 放入到 U盘的 EFI/CLOVER/ACPI/patched 目录，**注意：SSDT的命名方式必须为 SSDT-1.aml、SSDT-2.aml。</p>
 <p>在 Clover 的配置文件加入 SSDT 的排列顺序，ACPI&gt;SortedOrder。从 SSDT-1.aml 排序下去。DSDT name 填写 DSDT.aml。</p>
 <p>最后勾上 Drop OEM，我理解的意思应该就是拒绝所有主板提供的 SSDT 和 DSDT。</p>
@@ -1432,7 +1432,7 @@
 <p>修改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">External (_SB_.PCI0.LPCB.H_EC.ECRD, MethodObj)</div></pre></td></tr></table></figure>
 <p>其余 SSDT 均无错误。</p>
-<h4 id="常用补丁应用"><a href="#常用补丁应用" class="headerlink" title="常用补丁应用"></a>常用补丁应用</h4><p>在 <a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html" target="_blank" rel="external">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a> 中，常用补丁里面提及了一些常用补丁，并且这些补丁一般不会造成什么问题，后来我翻查了 RehabMan 的原帖，有两个补丁是有条件限制的，这些补丁要看自己的情况而添加。</p>
+<h4 id="常用补丁应用"><a href="#常用补丁应用" class="headerlink" title="常用补丁应用"></a>常用补丁应用</h4><p>在 <a href="https://blog.neroxps.cn/blog/macOS/extract_edit_dsdt.html">[转载][教程] [授权翻译] 使用补丁修改DSDT/SSDT [DSDT/SSDT综合教程]</a> 中，常用补丁里面提及了一些常用补丁，并且这些补丁一般不会造成什么问题，后来我翻查了 RehabMan 的原帖，有两个补丁是有条件限制的，这些补丁要看自己的情况而添加。</p>
 <p>引用原话</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&quot;Fix _WAK Arg0 v2&quot;</div><div class="line">&quot;HPET Fix&quot;</div><div class="line">&quot;SMBUS Fix&quot;</div><div class="line">&quot;IRQ Fix&quot;</div><div class="line">&quot;RTC Fix&quot;</div><div class="line">&quot;OS Check Fix&quot;</div><div class="line">&quot;Fix Mutex with non-zero SyncLevel&quot;</div><div class="line">&quot;Fix PNOT/PPNT&quot; (use only if you&apos;re dropping CPU related SSDTs) 仅适用于删除了 CPU 的 SSDT 使用。</div><div class="line">&quot;Add IMEI&quot; (do not use if your DSDT or SSDTs already have IMEI/HECI/MEI device) 如果你的 DSDT 或 SSDT 存在 IMEI/HECI/MEI 的 device 的话，就不要用这个补丁。</div></pre></td></tr></table></figure>
 <p>最终我只应用了以下补丁</p>
@@ -1446,25 +1446,25 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="ASUS" scheme="http://hexo.neroxps.cn/tags/ASUS/"/>
+      <category term="ASUS" scheme="http://blog.neroxps.cn/tags/ASUS/"/>
     
-      <category term="VM510LI" scheme="http://hexo.neroxps.cn/tags/VM510LI/"/>
+      <category term="VM510LI" scheme="http://blog.neroxps.cn/tags/VM510LI/"/>
     
   </entry>
   
   <entry>
     <title>\[转载\]\[教程\] \[授权翻译\] 使用补丁修改DSDT/SSDT \[DSDT/SSDT综合教程\]</title>
-    <link href="http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/"/>
-    <id>http://hexo.neroxps.cn/2017/01/16/extract_edit_dsdt/</id>
+    <link href="http://blog.neroxps.cn/2017/01/16/extract_edit_dsdt/"/>
+    <id>http://blog.neroxps.cn/2017/01/16/extract_edit_dsdt/</id>
     <published>2017-01-15T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1649,23 +1649,23 @@
     
     </summary>
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/categories/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
     
-      <category term="黑苹果" scheme="http://hexo.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+      <category term="黑苹果" scheme="http://blog.neroxps.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
     
-      <category term="Mac" scheme="http://hexo.neroxps.cn/tags/Mac/"/>
+      <category term="Mac" scheme="http://blog.neroxps.cn/tags/Mac/"/>
     
-      <category term="Hackintosh" scheme="http://hexo.neroxps.cn/tags/Hackintosh/"/>
+      <category term="Hackintosh" scheme="http://blog.neroxps.cn/tags/Hackintosh/"/>
     
-      <category term="dsdt" scheme="http://hexo.neroxps.cn/tags/dsdt/"/>
+      <category term="dsdt" scheme="http://blog.neroxps.cn/tags/dsdt/"/>
     
   </entry>
   
   <entry>
     <title>最近小记（2017年01月14日）</title>
-    <link href="http://hexo.neroxps.cn/2017/01/14/2017-1-14-blog/"/>
-    <id>http://hexo.neroxps.cn/2017/01/14/2017-1-14-blog/</id>
+    <link href="http://blog.neroxps.cn/2017/01/14/2017-1-14-blog/"/>
+    <id>http://blog.neroxps.cn/2017/01/14/2017-1-14-blog/</id>
     <published>2017-01-13T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1697,17 +1697,17 @@
     
     </summary>
     
-      <category term="日记" scheme="http://hexo.neroxps.cn/categories/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日记" scheme="http://blog.neroxps.cn/categories/%E6%97%A5%E8%AE%B0/"/>
     
     
-      <category term="日记" scheme="http://hexo.neroxps.cn/tags/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日记" scheme="http://blog.neroxps.cn/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>【转载】 VMware Fusion 8 Pro 序列号</title>
-    <link href="http://hexo.neroxps.cn/2017/01/12/vmware-fusion-8-pro-key/"/>
-    <id>http://hexo.neroxps.cn/2017/01/12/vmware-fusion-8-pro-key/</id>
+    <link href="http://blog.neroxps.cn/2017/01/12/vmware-fusion-8-pro-key/"/>
+    <id>http://blog.neroxps.cn/2017/01/12/vmware-fusion-8-pro-key/</id>
     <published>2017-01-11T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1726,21 +1726,21 @@
     
     </summary>
     
-      <category term="macOS" scheme="http://hexo.neroxps.cn/categories/macOS/"/>
+      <category term="macOS" scheme="http://blog.neroxps.cn/categories/macOS/"/>
     
     
-      <category term="虚拟机、VMware" scheme="http://hexo.neroxps.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81VMware/"/>
+      <category term="虚拟机、VMware" scheme="http://blog.neroxps.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81VMware/"/>
     
-      <category term="Fusion" scheme="http://hexo.neroxps.cn/tags/Fusion/"/>
+      <category term="Fusion" scheme="http://blog.neroxps.cn/tags/Fusion/"/>
     
-      <category term="8" scheme="http://hexo.neroxps.cn/tags/8/"/>
+      <category term="8" scheme="http://blog.neroxps.cn/tags/8/"/>
     
   </entry>
   
   <entry>
     <title>利用 Seafile 命令行客户端同步 GitBlog</title>
-    <link href="http://hexo.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/"/>
-    <id>http://hexo.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/</id>
+    <link href="http://blog.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/"/>
+    <id>http://blog.neroxps.cn/2016/12/15/seaf-cli-gitblog-sync/</id>
     <published>2016-12-14T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1777,21 +1777,21 @@
     
     </summary>
     
-      <category term="Seafile,IT技术" scheme="http://hexo.neroxps.cn/categories/Seafile-IT%E6%8A%80%E6%9C%AF/"/>
+      <category term="Seafile,IT技术" scheme="http://blog.neroxps.cn/categories/Seafile-IT%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Seafile" scheme="http://hexo.neroxps.cn/tags/Seafile/"/>
+      <category term="Seafile" scheme="http://blog.neroxps.cn/tags/Seafile/"/>
     
-      <category term="Gitblog" scheme="http://hexo.neroxps.cn/tags/Gitblog/"/>
+      <category term="Gitblog" scheme="http://blog.neroxps.cn/tags/Gitblog/"/>
     
-      <category term="seaf-cli" scheme="http://hexo.neroxps.cn/tags/seaf-cli/"/>
+      <category term="seaf-cli" scheme="http://blog.neroxps.cn/tags/seaf-cli/"/>
     
   </entry>
   
   <entry>
     <title>Centos7 部署 http2</title>
-    <link href="http://hexo.neroxps.cn/2016/12/08/nginx-https-http2-installation/"/>
-    <id>http://hexo.neroxps.cn/2016/12/08/nginx-https-http2-installation/</id>
+    <link href="http://blog.neroxps.cn/2016/12/08/nginx-https-http2-installation/"/>
+    <id>http://blog.neroxps.cn/2016/12/08/nginx-https-http2-installation/</id>
     <published>2016-12-07T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1814,21 +1814,21 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://hexo.neroxps.cn/categories/Linux/"/>
+      <category term="Linux" scheme="http://blog.neroxps.cn/categories/Linux/"/>
     
     
-      <category term="nginx" scheme="http://hexo.neroxps.cn/tags/nginx/"/>
+      <category term="nginx" scheme="http://blog.neroxps.cn/tags/nginx/"/>
     
-      <category term="http2.https" scheme="http://hexo.neroxps.cn/tags/http2-https/"/>
+      <category term="http2.https" scheme="http://blog.neroxps.cn/tags/http2-https/"/>
     
-      <category term="安全" scheme="http://hexo.neroxps.cn/tags/%E5%AE%89%E5%85%A8/"/>
+      <category term="安全" scheme="http://blog.neroxps.cn/tags/%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
   <entry>
     <title>TP-Link AC1000 在锐捷网路内设置 AP 上线</title>
-    <link href="http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/"/>
-    <id>http://hexo.neroxps.cn/2016/12/06/ac1000-reijie/</id>
+    <link href="http://blog.neroxps.cn/2016/12/06/ac1000-reijie/"/>
+    <id>http://blog.neroxps.cn/2016/12/06/ac1000-reijie/</id>
     <published>2016-12-05T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1940,21 +1940,21 @@ interface FastEthernet 0/17
     
     </summary>
     
-      <category term="网络" scheme="http://hexo.neroxps.cn/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://blog.neroxps.cn/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
-      <category term="锐捷" scheme="http://hexo.neroxps.cn/tags/%E9%94%90%E6%8D%B7/"/>
+      <category term="锐捷" scheme="http://blog.neroxps.cn/tags/%E9%94%90%E6%8D%B7/"/>
     
-      <category term="TP-Link" scheme="http://hexo.neroxps.cn/tags/TP-Link/"/>
+      <category term="TP-Link" scheme="http://blog.neroxps.cn/tags/TP-Link/"/>
     
-      <category term="无线" scheme="http://hexo.neroxps.cn/tags/%E6%97%A0%E7%BA%BF/"/>
+      <category term="无线" scheme="http://blog.neroxps.cn/tags/%E6%97%A0%E7%BA%BF/"/>
     
   </entry>
   
   <entry>
     <title>Seafile 在线测试</title>
-    <link href="http://hexo.neroxps.cn/2016/12/05/test/"/>
-    <id>http://hexo.neroxps.cn/2016/12/05/test/</id>
+    <link href="http://blog.neroxps.cn/2016/12/05/test/"/>
+    <id>http://blog.neroxps.cn/2016/12/05/test/</id>
     <published>2016-12-04T16:00:00.000Z</published>
     <updated>2017-08-09T09:33:54.000Z</updated>
     
@@ -1965,7 +1965,7 @@ interface FastEthernet 0/17
 
 <h1 id="以下测试视频播放功能"><a href="#以下测试视频播放功能" class="headerlink" title="以下测试视频播放功能"></a>以下测试视频播放功能</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/IKfQE7ZrLVw" frameborder="0" allowfullscreen></iframe>
 
-<p><a href="https://blog.neroxps.cn/blog/macOS/9999.zip" target="_blank" rel="external">9999.zip</a></p>
+<p><a href="https://blog.neroxps.cn/blog/macOS/9999.zip">9999.zip</a></p>
 ]]></content>
     
     <summary type="html">
@@ -1974,28 +1974,28 @@ interface FastEthernet 0/17
     
     </summary>
     
-      <category term="test" scheme="http://hexo.neroxps.cn/categories/test/"/>
+      <category term="test" scheme="http://blog.neroxps.cn/categories/test/"/>
     
     
-      <category term="test" scheme="http://hexo.neroxps.cn/tags/test/"/>
+      <category term="test" scheme="http://blog.neroxps.cn/tags/test/"/>
     
-      <category term="test2" scheme="http://hexo.neroxps.cn/tags/test2/"/>
+      <category term="test2" scheme="http://blog.neroxps.cn/tags/test2/"/>
     
-      <category term="test3" scheme="http://hexo.neroxps.cn/tags/test3/"/>
+      <category term="test3" scheme="http://blog.neroxps.cn/tags/test3/"/>
     
-      <category term="test4" scheme="http://hexo.neroxps.cn/tags/test4/"/>
+      <category term="test4" scheme="http://blog.neroxps.cn/tags/test4/"/>
     
-      <category term="abc5" scheme="http://hexo.neroxps.cn/tags/abc5/"/>
+      <category term="abc5" scheme="http://blog.neroxps.cn/tags/abc5/"/>
     
-      <category term="tddd6" scheme="http://hexo.neroxps.cn/tags/tddd6/"/>
+      <category term="tddd6" scheme="http://blog.neroxps.cn/tags/tddd6/"/>
     
-      <category term="teet7" scheme="http://hexo.neroxps.cn/tags/teet7/"/>
+      <category term="teet7" scheme="http://blog.neroxps.cn/tags/teet7/"/>
     
-      <category term="trrr8" scheme="http://hexo.neroxps.cn/tags/trrr8/"/>
+      <category term="trrr8" scheme="http://blog.neroxps.cn/tags/trrr8/"/>
     
-      <category term="te21129" scheme="http://hexo.neroxps.cn/tags/te21129/"/>
+      <category term="te21129" scheme="http://blog.neroxps.cn/tags/te21129/"/>
     
-      <category term="tdf10" scheme="http://hexo.neroxps.cn/tags/tdf10/"/>
+      <category term="tdf10" scheme="http://blog.neroxps.cn/tags/tdf10/"/>
     
   </entry>
   
